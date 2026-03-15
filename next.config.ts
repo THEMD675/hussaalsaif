@@ -62,9 +62,16 @@ const nextConfig: NextConfig = {
         headers: [
           ...securityHeaders,
           {
-            // HTML pages: revalidate on every request (no stale cache)
             key: "Cache-Control",
-            value: "public, s-maxage=0, must-revalidate",
+            value: "no-cache, no-store, must-revalidate",
+          },
+          {
+            key: "Pragma",
+            value: "no-cache",
+          },
+          {
+            key: "Expires",
+            value: "0",
           },
         ],
       },
