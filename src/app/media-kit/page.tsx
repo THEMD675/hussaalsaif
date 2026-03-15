@@ -4,16 +4,16 @@ import Image from "next/image";
 import Link from "next/link";
 
 const STATS = [
-  { value: "337K+", label: "Combined Reach" },
+  { value: "528K+", label: "Combined Reach" },
+  { value: "2.5M+", label: "YouTube Views" },
   { value: "10.6M+", label: "TikTok Likes" },
   { value: "14", label: "Brand Partners" },
-  { value: "4.8%", label: "Avg. Engagement" },
 ];
 
 const PLATFORMS = [
   { name: "Instagram", handle: "@hussa.ss", url: "https://instagram.com/hussa.ss", followers: "141K", engagement: "4.8%", color: "#E1306C" },
   { name: "TikTok", handle: "@hussa.502", url: "https://tiktok.com/@hussa.502", followers: "196K", engagement: "10.6M likes", color: "#000000" },
-  { name: "YouTube", handle: "@hussaalsaif", url: "https://youtube.com/@hussaalsaif", followers: "Growing", engagement: "20 videos", color: "#FF0000" },
+  { name: "YouTube", handle: "@hussaalsaif", url: "https://youtube.com/@hussaalsaif", followers: "191K", engagement: "2.5M views", color: "#FF0000" },
   { name: "Snapchat", handle: "@hussa.alsaif", url: "https://snapchat.com/add/hussa.alsaif", followers: "Active", engagement: "Daily stories", color: "#FFFC00" },
 ];
 
@@ -210,7 +210,7 @@ export default function MediaKit() {
                   Beauty &amp; Culture Icon &mdash; Saudi Arabia
                 </p>
                 <p className="text-gray-400 max-w-md leading-[1.8] text-[14px] mb-8">
-                  330K+ engaged followers across 5 platforms. 10.6M+ TikTok likes. 13+ brand partnerships with the world&apos;s most discerning beauty houses.
+                  528K+ combined reach across Instagram, TikTok &amp; YouTube. 2.5M+ YouTube views. 10.6M+ TikTok likes. 14 brand partnerships with the world&apos;s most discerning beauty houses.
                 </p>
                 <div className="flex flex-wrap gap-3 mb-8">
                   {["Beauty", "Fashion", "Lifestyle", "Curly Hair", "Bilingual AR/EN"].map((tag) => (

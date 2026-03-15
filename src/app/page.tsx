@@ -21,19 +21,19 @@ const ParticleField = dynamic(() => import("@/components/ParticleField"), { ssr:
 const SmoothScroll = dynamic(() => import("@/components/SmoothScroll"), { ssr: false });
 
 const BRANDS = [
-  { name: "Sephora", logo: "/images/brands/sephora.svg" },
-  { name: "Fendi", logo: "/images/brands/fendi.svg" },
-  { name: "Too Faced", logo: "/images/brands/too-faced.svg" },
-  { name: "Estée Lauder", logo: "/images/brands/estee-lauder.svg" },
-  { name: "Dyson", logo: "/images/brands/dyson.svg" },
-  { name: "Kérastase", logo: "/images/brands/kerastase.svg" },
-  { name: "Herbal Essences", logo: "/images/brands/herbal-essences.svg" },
-  { name: "Redken", logo: "/images/brands/redken.svg" },
-  { name: "MAC", logo: "/images/brands/mac.svg" },
-  { name: "Wella", logo: "/images/brands/wella.svg" },
-  { name: "Level Shoes", logo: "/images/brands/level-shoes.svg" },
-  { name: "Sol de Janeiro", logo: "/images/brands/sol-de-janeiro.svg" },
-  { name: "Denman", logo: "/images/brands/denman.svg" },
+  { name: "Sephora", logo: "/images/brands/sephora.svg", color: "#000000" },
+  { name: "Fendi", logo: "/images/brands/fendi.svg", color: "#000000" },
+  { name: "Too Faced", logo: "/images/brands/too-faced.svg", color: "#E91E8C" },
+  { name: "Estée Lauder", logo: "/images/brands/estee-lauder.svg", color: "#002B5C" },
+  { name: "Dyson", logo: "/images/brands/dyson.svg", color: "#DA291C" },
+  { name: "Kérastase", logo: "/images/brands/kerastase.svg", color: "#000000" },
+  { name: "Herbal Essences", logo: "/images/brands/herbal-essences.svg", color: "#006B3F" },
+  { name: "Redken", logo: "/images/brands/redken.svg", color: "#000000" },
+  { name: "MAC", logo: "/images/brands/mac.svg", color: "#000000" },
+  { name: "Wella", logo: "/images/brands/wella.svg", color: "#C4161C" },
+  { name: "Level Shoes", logo: "/images/brands/level-shoes.svg", color: "#000000" },
+  { name: "Sol de Janeiro", logo: "/images/brands/sol-de-janeiro.svg", color: "#F7C948" },
+  { name: "Denman", logo: "/images/brands/denman.svg", color: "#E30613" },
 ];
 
 const PROJECTS = [
@@ -100,10 +100,10 @@ const PROJECTS = [
 ];
 
 const STATS = [
-  { value: "13+", label: "Brand Partners" },
-  { value: "330K+", label: "Followers" },
+  { value: "528K+", label: "Combined Reach" },
+  { value: "2.5M+", label: "YouTube Views" },
   { value: "10.6M+", label: "TikTok Likes" },
-  { value: "5", label: "Platforms" },
+  { value: "14", label: "Brand Partners" },
 ];
 
 const SOCIALS = [
@@ -316,7 +316,7 @@ export default function Home() {
         <p className="text-center text-[10px] font-medium tracking-[0.4em] uppercase text-gray-300 mb-8">Trusted By</p>
         <div className="flex animate-marquee whitespace-nowrap items-center" aria-hidden="true">
           {[...BRANDS, ...BRANDS, ...BRANDS].map((brand, i) => (
-            <div key={i} className="mx-10 sm:mx-14 shrink-0 opacity-30 hover:opacity-70 transition-all duration-700 grayscale hover:grayscale-0 hover:scale-110">
+            <div key={i} className="mx-10 sm:mx-14 shrink-0 opacity-60 hover:opacity-100 transition-all duration-500 hover:scale-110">
               <Image
                 src={brand.logo}
                 alt={brand.name}
