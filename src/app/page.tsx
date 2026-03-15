@@ -1,20 +1,15 @@
 "use client";
 
-import { useRef, useEffect, useState, Suspense } from "react";
+import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import Image from "next/image";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ScrollReveal from "@/components/ScrollReveal";
 import MagneticButton from "@/components/MagneticButton";
 import TextReveal from "@/components/TextReveal";
-import ImageReveal from "@/components/ImageReveal";
 import HorizontalScroll from "@/components/HorizontalScroll";
 import ContactForm from "@/components/ContactForm";
 import AnimatedCounter from "@/components/AnimatedCounter";
 import { trackCTA, trackSocial, trackEmail, trackNav, initScrollDepthTracking } from "@/lib/analytics";
-
-gsap.registerPlugin(ScrollTrigger);
 
 const BackToTop = dynamic(() => import("@/components/BackToTop"), { ssr: false });
 const ParticleField = dynamic(() => import("@/components/ParticleField"), { ssr: false });
@@ -139,24 +134,6 @@ const MEDIA_KIT_ITEMS = [
 
 export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const heroImageRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (!heroImageRef.current) return;
-    const ctx = gsap.context(() => {
-      gsap.to(heroImageRef.current, {
-        yPercent: 15,
-        ease: "none",
-        scrollTrigger: {
-          trigger: heroImageRef.current,
-          start: "top bottom",
-          end: "bottom top",
-          scrub: true,
-        },
-      });
-    });
-    return () => ctx.revert();
-  }, []);
 
   useEffect(() => {
     if (!mobileMenuOpen) return;
@@ -304,7 +281,7 @@ export default function Home() {
               </ScrollReveal>
             </div>
             <ScrollReveal delay={0.3}>
-              <div ref={heroImageRef} className="hero-image-wrapper rounded-3xl h-[420px] sm:h-[520px] lg:h-[620px] shadow-2xl shadow-[#89BBdf]/8 overflow-hidden relative">
+              <div className="hero-image-wrapper rounded-3xl h-[420px] sm:h-[520px] lg:h-[620px] shadow-2xl shadow-[#89BBdf]/8 overflow-hidden relative">
                 {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
                 <video
                   autoPlay
@@ -450,7 +427,7 @@ export default function Home() {
                 <div key={project.brand} className="group">
                   <div className="relative aspect-[4/5] rounded-2xl overflow-hidden mb-4">
                     {project.video ? (
-                      <video autoPlay loop muted playsInline preload="metadata" poster={project.image} className="absolute inset-0 w-full h-full object-cover">
+                      <video autoPlay loop muted playsInline preload="none" poster={project.image} className="absolute inset-0 w-full h-full object-cover">
                         <source src={project.video} type="video/mp4" />
                       </video>
                     ) : (
