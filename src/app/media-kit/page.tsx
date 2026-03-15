@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const STATS = [
   { value: "330K+", label: "Combined Followers" },
-  { value: "20%+", label: "Avg. Engagement Rate" },
+  { value: "5", label: "Platforms" },
   { value: "10.6M+", label: "TikTok Likes" },
   { value: "13+", label: "Brand Partners" },
 ];
@@ -18,18 +18,18 @@ const PLATFORMS = [
 ];
 
 const DEMOGRAPHICS = [
-  { label: "Female", value: "84%", description: "of audience" },
-  { label: "18-34", value: "76%", description: "age range" },
-  { label: "Saudi Arabia", value: "68%", description: "primary market" },
-  { label: "GCC Region", value: "91%", description: "total reach" },
+  { label: "Primarily Women", description: "Young Saudi women who set beauty and fashion trends in their circles" },
+  { label: "Gen Z & Millennials", description: "The 18-34 demographic with the highest purchasing power in the Gulf" },
+  { label: "Saudi-First", description: "Rooted in Saudi Arabia with strong reach across the wider GCC" },
+  { label: "High Intent", description: "An audience that discovers, trusts, and buys based on Hussa's recommendations" },
 ];
 
 const AUDIENCE_INTERESTS = [
-  { name: "Beauty & Skincare", percent: 92 },
-  { name: "Fashion & Luxury", percent: 87 },
-  { name: "Lifestyle & Wellness", percent: 78 },
-  { name: "Travel & Hospitality", percent: 64 },
-  { name: "Food & Dining", percent: 58 },
+  { name: "Beauty & Skincare", description: "Product reviews, tutorials, and skincare routines drive the conversation" },
+  { name: "Fashion & Luxury", description: "From high street to haute couture, her audience follows her style closely" },
+  { name: "Lifestyle & Wellness", description: "Self-care, wellness, and daily routines resonate deeply" },
+  { name: "Travel & Hospitality", description: "Destination and hotel content that inspires real bookings" },
+  { name: "Food & Dining", description: "Restaurant and cafe culture content with strong local engagement" },
 ];
 
 const BRANDS = [
@@ -111,29 +111,29 @@ const CASE_STUDIES = [
     image: "/images/beauty-editorials.jpg",
     brand: "Sephora Collection",
     category: "Beauty Campaign",
-    description: "Full-funnel beauty campaign across Instagram & TikTok. Product launch content driving in-store traffic across KSA.",
-    result: "Strong engagement and retail impact",
+    description: "Brand partnership across Instagram and TikTok for Sephora's KSA product launches.",
+    result: "Ongoing partnership",
   },
   {
     image: "/images/brand-campaigns.jpg",
     brand: "Fendi FW25",
     category: "Fashion",
-    description: "Luxury fashion partnership featuring event coverage and editorial-style content for regional launch.",
-    result: "High-impact regional campaign",
+    description: "Fashion content partnership for Fendi's regional presence.",
+    result: "Brand collaboration",
   },
   {
     image: "/images/gallery-5.jpg",
     brand: "Too Faced x Sephora ME",
     category: "Beauty",
-    description: "Exclusive collaboration content for regional Sephora launch. In-store and digital activation.",
-    result: "Strong consumer response across channels",
+    description: "Beauty content for the Too Faced x Sephora Middle East collaboration.",
+    result: "Brand partnership",
   },
   {
     image: "/images/event-coverage.jpg",
     brand: "Estee Lauder",
     category: "Skincare",
-    description: "Premium skincare campaign with educational content series and product deep-dives.",
-    result: "Long-term brand relationship",
+    description: "Skincare content partnership with Estée Lauder.",
+    result: "Brand partnership",
   },
 ];
 
@@ -207,7 +207,7 @@ export default function MediaKit() {
                   <span className="text-gradient">AlSaif</span>
                 </h1>
                 <p className="text-gray-500 max-w-md leading-[1.8] text-[16px] font-medium mb-4">
-                  Content Creator &amp; Brand Ambassador
+                  Beauty &amp; Culture Figure
                 </p>
                 <p className="text-gray-400 max-w-md leading-[1.8] text-[14px] mb-8">
                   Connecting global brands with 330K+ highly engaged Saudi &amp; GCC consumers
@@ -313,10 +313,9 @@ export default function MediaKit() {
 
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 mb-16">
               {DEMOGRAPHICS.map((demo) => (
-                <div key={demo.label} className="demo-card rounded-2xl p-7 sm:p-9 text-center">
-                  <p className="text-4xl sm:text-5xl font-serif font-bold text-gradient mb-2">{demo.value}</p>
-                  <p className="text-gray-900 font-semibold text-[14px] mb-1">{demo.label}</p>
-                  <p className="text-gray-400 text-[12px]">{demo.description}</p>
+                <div key={demo.label} className="demo-card rounded-2xl p-7 sm:p-9">
+                  <p className="text-[#89BBdf] font-serif font-bold text-[18px] sm:text-[20px] mb-2">{demo.label}</p>
+                  <p className="text-gray-500 text-[13px] leading-relaxed">{demo.description}</p>
                 </div>
               ))}
             </div>
@@ -326,16 +325,11 @@ export default function MediaKit() {
               <h3 className="font-serif text-xl font-bold mb-8">Audience Interests</h3>
               <div className="space-y-5">
                 {AUDIENCE_INTERESTS.map((interest) => (
-                  <div key={interest.name}>
-                    <div className="flex justify-between mb-2">
-                      <span className="text-gray-600 text-[14px] font-medium">{interest.name}</span>
-                      <span className="text-[#89BBdf] text-[14px] font-semibold">{interest.percent}%</span>
-                    </div>
-                    <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
-                      <div
-                        className="h-full bg-gradient-to-r from-[#89BBdf] to-[#a8d4f0] rounded-full transition-all duration-700"
-                        style={{ width: `${interest.percent}%` }}
-                      />
+                  <div key={interest.name} className="flex items-start gap-3">
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#89BBdf] mt-2 shrink-0" />
+                    <div>
+                      <p className="text-gray-900 text-[14px] font-semibold mb-0.5">{interest.name}</p>
+                      <p className="text-gray-400 text-[13px] leading-relaxed">{interest.description}</p>
                     </div>
                   </div>
                 ))}
@@ -418,7 +412,7 @@ export default function MediaKit() {
               Campaign Case Studies
             </h2>
             <p className="text-gray-400 text-[15px] mb-12 max-w-lg">
-              Each project is a strategic collaboration with measurable commercial impact.
+              A selection of brand collaborations across beauty, fashion, and lifestyle.
             </p>
 
             <div className="grid sm:grid-cols-2 gap-6">
@@ -499,8 +493,8 @@ export default function MediaKit() {
 
             <div className="grid grid-cols-3 gap-4 max-w-md mx-auto mt-10 pt-10 border-t border-white/5">
               <div className="text-center">
-                <p className="text-white font-serif font-bold text-lg">24hrs</p>
-                <p className="text-gray-500 text-[11px] mt-1">Response Time</p>
+                <p className="text-white font-serif font-bold text-lg">Fast</p>
+                <p className="text-gray-500 text-[11px] mt-1">Response</p>
               </div>
               <div className="text-center">
                 <p className="text-white font-serif font-bold text-lg">EN &amp; AR</p>

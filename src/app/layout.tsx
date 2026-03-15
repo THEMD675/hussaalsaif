@@ -26,20 +26,20 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://hussaalsaif.com"),
   title: {
     default:
-      "Hussa AlSaif — Saudi Content Creator & Brand Ambassador | 330K+ Followers",
+      "Hussa AlSaif — Beauty & Culture | Saudi Arabia | 330K+ Followers",
     template: "%s | Hussa AlSaif",
   },
   description:
-    "Hussa AlSaif is a leading Saudi content creator and brand ambassador with 330K+ followers. Partnered with Sephora, Estee Lauder, MAC, Fendi, Dyson & more. Beauty, fashion & lifestyle influencer based in Khobar & Riyadh, Saudi Arabia.",
+    "Hussa AlSaif is Saudi Arabia's leading beauty and culture figure with 330K+ followers. Partnered with Sephora, Estee Lauder, MAC, Fendi, Dyson & more. Based in Khobar & Riyadh.",
   keywords: [
     "Hussa AlSaif",
     "حصه السيف",
-    "Saudi content creator",
-    "Saudi influencer",
+    "Saudi beauty figure",
+    "Saudi culture icon",
     "brand ambassador Saudi Arabia",
-    "beauty influencer KSA",
-    "fashion influencer Saudi",
-    "lifestyle content creator",
+    "beauty authority KSA",
+    "fashion figure Saudi",
+    "beauty and culture Saudi Arabia",
     "GCC influencer",
     "Khobar influencer",
     "Riyadh content creator",
@@ -71,9 +71,9 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Hussa AlSaif — Saudi Content Creator & Brand Ambassador",
+    title: "Hussa AlSaif — Beauty & Culture | Saudi Arabia",
     description:
-      "Saudi content creator with 330K+ followers. Partnered with Sephora, Estee Lauder, MAC, Fendi, Dyson & more. Beauty, fashion & lifestyle influencer in Khobar & Riyadh.",
+      "Saudi Arabia's leading beauty and culture figure with 330K+ followers. Partnered with Sephora, Estee Lauder, MAC, Fendi, Dyson & more. Based in Khobar & Riyadh.",
     type: "website",
     locale: "en_US",
     alternateLocale: "ar_SA",
@@ -84,20 +84,20 @@ export const metadata: Metadata = {
         url: "https://hussaalsaif.com/images/hero.jpg",
         width: 1200,
         height: 630,
-        alt: "Hussa AlSaif — Saudi Content Creator and Brand Ambassador based in Khobar and Riyadh",
+        alt: "Hussa AlSaif — Beauty & Culture, Saudi Arabia",
         type: "image/jpeg",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Hussa AlSaif — Saudi Content Creator & Brand Ambassador",
+    title: "Hussa AlSaif — Beauty & Culture | Saudi Arabia",
     description:
-      "330K+ followers. Partnered with Sephora, Estee Lauder, MAC, Fendi & more. Beauty, fashion & lifestyle influencer in KSA.",
+      "330K+ followers. Partnered with Sephora, Estee Lauder, MAC, Fendi & more. Saudi Arabia's defining beauty and culture figure.",
     images: [
       {
         url: "https://hussaalsaif.com/images/hero.jpg",
-        alt: "Hussa AlSaif — Saudi Content Creator and Brand Ambassador",
+        alt: "Hussa AlSaif — Beauty & Culture, Saudi Arabia",
       },
     ],
     creator: "@hussaalsaif",
@@ -133,11 +133,11 @@ const personJsonLd = {
     width: 1200,
     height: 630,
     caption:
-      "Hussa AlSaif — Saudi Content Creator and Brand Ambassador",
+      "Hussa AlSaif — Beauty & Culture, Saudi Arabia",
   },
-  jobTitle: "Content Creator & Brand Ambassador",
+  jobTitle: "Beauty & Culture Figure",
   description:
-    "Leading Saudi content creator and brand ambassador with 330K+ combined followers across Instagram, TikTok, YouTube, and Snapchat. Specializing in beauty, fashion, and lifestyle content for the GCC market.",
+    "Saudi Arabia's leading beauty and culture figure with 330K+ combined followers across Instagram, TikTok, YouTube, and Snapchat. The defining voice in beauty, fashion, and culture for the GCC market.",
   nationality: { "@type": "Country", name: "Saudi Arabia" },
   address: [
     {
@@ -189,10 +189,10 @@ const personJsonLd = {
   },
   hasOccupation: {
     "@type": "Occupation",
-    name: "Content Creator & Brand Ambassador",
+    name: "Beauty & Culture Figure",
     occupationLocation: { "@type": "Country", name: "Saudi Arabia" },
     skills:
-      "Content Creation, Brand Partnerships, Social Media Marketing, Beauty Content, Fashion Styling",
+      "Beauty Authority, Brand Partnerships, Cultural Leadership, Editorial Direction, Fashion Styling",
   },
 };
 
@@ -203,7 +203,7 @@ const websiteJsonLd = {
   url: "https://hussaalsaif.com",
   name: "Hussa AlSaif",
   description:
-    "Official website of Hussa AlSaif — Saudi content creator and brand ambassador",
+    "Official website of Hussa AlSaif — Beauty & Culture, Saudi Arabia",
   publisher: { "@id": "https://hussaalsaif.com/#person" },
   inLanguage: ["en", "ar"],
 };
@@ -213,9 +213,9 @@ const webPageJsonLd = {
   "@type": "WebPage",
   "@id": "https://hussaalsaif.com/#webpage",
   url: "https://hussaalsaif.com",
-  name: "Hussa AlSaif — Saudi Content Creator & Brand Ambassador",
+  name: "Hussa AlSaif — Beauty & Culture | Saudi Arabia",
   description:
-    "Hussa AlSaif is a leading Saudi content creator and brand ambassador with 330K+ followers. Partnered with Sephora, Estee Lauder, MAC, Fendi, Dyson & more.",
+    "Hussa AlSaif is Saudi Arabia's leading beauty and culture figure with 330K+ followers. Partnered with Sephora, Estee Lauder, MAC, Fendi, Dyson & more.",
   isPartOf: { "@id": "https://hussaalsaif.com/#website" },
   about: { "@id": "https://hussaalsaif.com/#person" },
   inLanguage: "en",
@@ -247,9 +247,9 @@ const campaignsJsonLd = {
       position: 1,
       item: {
         "@type": "CreativeWork",
-        name: "Sephora Collection — Full-Funnel Beauty Campaign",
+        name: "Sephora Collection — Brand Partnership",
         description:
-          "Full-funnel beauty campaign across Instagram & TikTok driving in-store traffic across KSA. Strong audience engagement and retail impact.",
+          "Brand partnership across Instagram and TikTok for Sephora's KSA product launches.",
         creator: { "@id": "https://hussaalsaif.com/#person" },
         about: { "@type": "Brand", name: "Sephora" },
         genre: "Beauty Campaign",
@@ -261,9 +261,9 @@ const campaignsJsonLd = {
       position: 2,
       item: {
         "@type": "CreativeWork",
-        name: "Fendi FW25 — Luxury Fashion Partnership",
+        name: "Fendi — Fashion Partnership",
         description:
-          "Luxury fashion partnership with event coverage and editorial content for regional launch. High-impact regional campaign.",
+          "Fashion content partnership for Fendi's regional presence.",
         creator: { "@id": "https://hussaalsaif.com/#person" },
         about: { "@type": "Brand", name: "Fendi" },
         genre: "Fashion",
@@ -275,9 +275,9 @@ const campaignsJsonLd = {
       position: 3,
       item: {
         "@type": "CreativeWork",
-        name: "Estee Lauder — Premium Skincare Campaign",
+        name: "Estée Lauder — Brand Partnership",
         description:
-          "Premium skincare campaign with educational content series and product deep-dives. Long-term brand relationship with strong audience resonance.",
+          "Skincare content partnership with Estée Lauder.",
         creator: { "@id": "https://hussaalsaif.com/#person" },
         about: { "@type": "Brand", name: "Estee Lauder" },
         genre: "Skincare",
@@ -289,9 +289,9 @@ const campaignsJsonLd = {
       position: 4,
       item: {
         "@type": "CreativeWork",
-        name: "Too Faced x Sephora ME — Exclusive Collaboration",
+        name: "Too Faced x Sephora ME — Brand Partnership",
         description:
-          "Exclusive collaboration for regional Sephora launch. In-store and digital activation with strong consumer response.",
+          "Beauty content for the Too Faced x Sephora Middle East collaboration.",
         creator: { "@id": "https://hussaalsaif.com/#person" },
         about: { "@type": "Brand", name: "Too Faced" },
         genre: "Beauty",
@@ -303,9 +303,9 @@ const campaignsJsonLd = {
       position: 5,
       item: {
         "@type": "CreativeWork",
-        name: "MAC Cosmetics — Creative Makeup Series",
+        name: "MAC Cosmetics — Brand Partnership",
         description:
-          "Creative makeup content series featuring new collection launches and tutorials. Recurring campaign partnership.",
+          "Makeup content for MAC new collection launches.",
         creator: { "@id": "https://hussaalsaif.com/#person" },
         about: { "@type": "Brand", name: "MAC Cosmetics" },
         genre: "Makeup",
@@ -317,9 +317,9 @@ const campaignsJsonLd = {
       position: 6,
       item: {
         "@type": "CreativeWork",
-        name: "Herbal Essences — GCC Product Campaign",
+        name: "Herbal Essences — Brand Partnership",
         description:
-          "Multi-platform product integration with authentic storytelling for the GCC curly hair community.",
+          "Hair care content aligned with the GCC curly hair movement.",
         creator: { "@id": "https://hussaalsaif.com/#person" },
         about: { "@type": "Brand", name: "Herbal Essences" },
         genre: "Hair Care",
@@ -331,9 +331,9 @@ const campaignsJsonLd = {
       position: 7,
       item: {
         "@type": "CreativeWork",
-        name: "Sol de Janeiro — Saudi Market Launch",
+        name: "Sol de Janeiro — Brand Partnership",
         description:
-          "Lifestyle-driven brand awareness campaign introducing Sol de Janeiro to the Saudi market.",
+          "Lifestyle content introducing Sol de Janeiro to the Saudi market.",
         creator: { "@id": "https://hussaalsaif.com/#person" },
         about: { "@type": "Brand", name: "Sol de Janeiro" },
         genre: "Lifestyle",
@@ -345,9 +345,9 @@ const campaignsJsonLd = {
       position: 8,
       item: {
         "@type": "CreativeWork",
-        name: "La Belle — Regional Fashion Editorial",
+        name: "La Belle — Brand Partnership",
         description:
-          "Regional fashion brand partnership with editorial content and event coverage.",
+          "Fashion content partnership with La Belle.",
         creator: { "@id": "https://hussaalsaif.com/#person" },
         about: { "@type": "Brand", name: "La Belle" },
         genre: "Fashion",
@@ -359,9 +359,9 @@ const campaignsJsonLd = {
       position: 9,
       item: {
         "@type": "CreativeWork",
-        name: "Level Shoes — Luxury Footwear Campaign",
+        name: "Level Shoes — Brand Partnership",
         description:
-          "Luxury footwear campaign with styling content and in-store activation.",
+          "Styling and fashion content with Level Shoes.",
         creator: { "@id": "https://hussaalsaif.com/#person" },
         about: { "@type": "Brand", name: "Level Shoes" },
         genre: "Fashion",

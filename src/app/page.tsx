@@ -18,6 +18,8 @@ gsap.registerPlugin(ScrollTrigger);
 
 const BackToTop = dynamic(() => import("@/components/BackToTop"), { ssr: false });
 const CustomCursor = dynamic(() => import("@/components/CustomCursor"), { ssr: false });
+const CursorGlow = dynamic(() => import("@/components/CursorGlow"), { ssr: false });
+const Preloader = dynamic(() => import("@/components/Preloader"), { ssr: false });
 
 const ParticleField = dynamic(() => import("@/components/ParticleField"), { ssr: false });
 const SmoothScroll = dynamic(() => import("@/components/SmoothScroll"), { ssr: false });
@@ -43,71 +45,71 @@ const PROJECTS = [
     image: "/images/beauty-editorials.jpg",
     brand: "Sephora Collection",
     category: "Beauty",
-    description: "Full creative direction for a regional product launch. In-store and digital activation across KSA.",
+    description: "Brand partnership across Instagram and TikTok for Sephora's KSA product launches.",
     result: "Ongoing partnership",
   },
   {
     image: "/images/brand-campaigns.jpg",
     brand: "Fendi FW25",
     category: "Fashion",
-    description: "Editorial partnership for the regional FW25 debut. Front row, backstage, and campaign content.",
-    result: "Regional launch content",
+    description: "Fashion content partnership for Fendi's regional presence.",
+    result: "Brand collaboration",
   },
   {
     image: "/images/gallery-6.jpg",
     brand: "Herbal Essences",
     category: "Hair Care",
-    description: "Multi-platform storytelling campaign anchored in the GCC curly hair movement.",
-    result: "Multi-platform campaign",
+    description: "Hair care content aligned with the GCC curly hair movement Hussa helped pioneer.",
+    result: "Brand partnership",
   },
   {
     image: "/images/gallery-5.jpg",
     brand: "Too Faced x Sephora ME",
     category: "Beauty",
-    description: "Exclusive launch collaboration for the Middle East market. Digital and retail activation.",
-    result: "Regional launch collaboration",
+    description: "Beauty content for the Too Faced x Sephora Middle East collaboration.",
+    result: "Brand partnership",
   },
   {
     image: "/images/gallery-4.jpg",
     brand: "Sol de Janeiro",
     category: "Lifestyle",
-    description: "Brand introduction to the Saudi market through lifestyle-driven storytelling.",
-    result: "Regional launch content",
+    description: "Lifestyle content introducing Sol de Janeiro to the Saudi market.",
+    result: "Brand partnership",
   },
   {
     image: "/images/event-coverage.jpg",
     brand: "Estee Lauder",
     category: "Skincare",
-    description: "Premium editorial campaign and content series for a new skincare launch.",
-    result: "Long-term brand relationship",
+    description: "Skincare content partnership with Estée Lauder.",
+    result: "Brand partnership",
   },
   {
     image: "/images/gallery-1.jpg",
     brand: "MAC Cosmetics",
     category: "Makeup",
-    description: "Creative campaign for new collection launches and seasonal editorial content.",
-    result: "Recurring campaign partner",
+    description: "Makeup content for MAC new collection launches.",
+    result: "Brand partnership",
   },
   {
     image: "/images/gallery-7.jpg",
     brand: "La Belle",
     category: "Fashion",
-    description: "Regional fashion partnership with editorial and event content.",
-    result: "Brand ambassador",
+    description: "Fashion content partnership with La Belle.",
+    result: "Brand partnership",
   },
   {
     image: "/images/gallery-2.jpg",
     brand: "Level Shoes",
     category: "Fashion",
-    description: "Luxury retail campaign with styling content and in-store presence.",
-    result: "Exclusive styling partnership",
+    description: "Styling and fashion content with Level Shoes.",
+    result: "Brand partnership",
   },
 ];
 
 const STATS = [
-  { value: "13+", label: "Brand Partnerships" },
-  { value: "330K+", label: "Total Followers" },
-  { value: "3+", label: "Return Collaborations" },
+  { value: "13+", label: "Brand Partners" },
+  { value: "330K+", label: "Followers" },
+  { value: "10.6M+", label: "TikTok Likes" },
   { value: "5", label: "Platforms" },
 ];
 
@@ -119,18 +121,18 @@ const SOCIALS = [
 ];
 
 const DEMOGRAPHICS = [
-  { label: "Women", value: "84%", description: "of audience" },
-  { label: "18-34", value: "76%", description: "age range" },
-  { label: "Saudi Arabia", value: "68%", description: "primary market" },
-  { label: "GCC Region", value: "91%", description: "total reach" },
+  { label: "Primarily Women", icon: "female", description: "Young Saudi women who set beauty and fashion trends in their circles" },
+  { label: "Gen Z & Millennials", icon: "age", description: "The 18-34 demographic with the highest purchasing power in the Gulf" },
+  { label: "Saudi-First", icon: "location", description: "Rooted in Saudi Arabia with strong reach across the wider GCC" },
+  { label: "High Intent", icon: "intent", description: "An audience that discovers, trusts, and buys based on Hussa's recommendations" },
 ];
 
 const AUDIENCE_INTERESTS = [
-  "Beauty & Skincare",
-  "Fashion & Luxury",
-  "Lifestyle & Wellness",
-  "Travel & Hospitality",
-  "Food & Dining",
+  { name: "Beauty & Skincare", description: "Product reviews, tutorials, and skincare routines drive the conversation" },
+  { name: "Fashion & Luxury", description: "From high street to haute couture, her audience follows her style closely" },
+  { name: "Lifestyle & Wellness", description: "Self-care, wellness, and daily routines resonate deeply" },
+  { name: "Travel & Hospitality", description: "Destination and hotel content that inspires real bookings" },
+  { name: "Food & Dining", description: "Restaurant and cafe culture content with strong local engagement" },
 ];
 
 const MEDIA_KIT_ITEMS = [
@@ -144,6 +146,7 @@ const MEDIA_KIT_ITEMS = [
 
 export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [preloaderDone, setPreloaderDone] = useState(false);
   const heroImageRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -186,8 +189,10 @@ export default function Home() {
 
   return (
     <main className="relative">
+      {!preloaderDone && <Preloader onComplete={() => setPreloaderDone(true)} />}
       <SmoothScroll />
       <CustomCursor />
+      <CursorGlow />
       <BackToTop />
 
       {/* -- NAV -- */}
@@ -197,11 +202,11 @@ export default function Home() {
             Hussa<span className="text-[#89BBdf]">.</span>
           </a>
           <div className="hidden md:flex items-center gap-10 text-[13px] font-medium tracking-wide uppercase text-gray-400">
-            <a href="#world" onClick={() => trackNav("World")} className="hover:text-[#89BBdf] transition-colors duration-300">World</a>
-            <a href="#about" onClick={() => trackNav("About")} className="hover:text-[#89BBdf] transition-colors duration-300">About</a>
-            <a href="#work" onClick={() => trackNav("Portfolio")} className="hover:text-[#89BBdf] transition-colors duration-300">Portfolio</a>
-            <a href="#audience" onClick={() => trackNav("Reach")} className="hover:text-[#89BBdf] transition-colors duration-300">Reach</a>
-            <a href="#contact" onClick={() => trackNav("Contact")} className="hover:text-[#89BBdf] transition-colors duration-300">Contact</a>
+            <a href="#world" onClick={() => trackNav("World")} className="nav-link hover:text-[#89BBdf] transition-colors duration-300">World</a>
+            <a href="#about" onClick={() => trackNav("About")} className="nav-link hover:text-[#89BBdf] transition-colors duration-300">About</a>
+            <a href="#work" onClick={() => trackNav("Portfolio")} className="nav-link hover:text-[#89BBdf] transition-colors duration-300">Portfolio</a>
+            <a href="#audience" onClick={() => trackNav("Reach")} className="nav-link hover:text-[#89BBdf] transition-colors duration-300">Reach</a>
+            <a href="#contact" onClick={() => trackNav("Contact")} className="nav-link hover:text-[#89BBdf] transition-colors duration-300">Contact</a>
           </div>
           <div className="flex items-center gap-3">
             <a href="#partnership" onClick={() => trackCTA("Partnerships", "nav")} className="hidden sm:inline-block border border-[#89BBdf]/30 hover:border-[#89BBdf] text-[#89BBdf] px-5 py-2.5 rounded-full text-[12px] font-semibold transition-all duration-300">
@@ -273,10 +278,10 @@ export default function Home() {
               </ScrollReveal>
               <ScrollReveal delay={0.4}>
                 <p className="text-gray-500 max-w-md leading-[1.8] mb-4 text-[16px] font-medium">
-                  The authority on beauty, hair, and style for a generation of Saudi women. When Hussa speaks, her audience acts.
+                  She doesn&apos;t follow trends. She sets them. The defining voice in Saudi beauty, hair, and culture.
                 </p>
                 <p className="text-gray-400 max-w-md leading-[1.8] mb-10 text-[14px]">
-                  Trusted by Sephora, Fendi, Estee Lauder, MAC, Dyson &amp; the world&apos;s most discerning beauty houses.
+                  Sephora. Fendi. Estee Lauder. MAC. Dyson. The world&apos;s most discerning houses choose Hussa.
                 </p>
               </ScrollReveal>
               <ScrollReveal delay={0.5}>
@@ -306,7 +311,7 @@ export default function Home() {
       </section>
 
       {/* -- BRAND MARQUEE -- */}
-      <section className="py-12 sm:py-16 border-y border-gray-100/60 overflow-hidden bg-white/50" aria-label="Brand partners">
+      <section className="marquee-container py-12 sm:py-16 border-y border-gray-100/60 bg-white/50" aria-label="Brand partners">
         <div className="flex animate-marquee whitespace-nowrap items-center" aria-hidden="true">
           {[...BRANDS, ...BRANDS, ...BRANDS].map((brand, i) => (
             <div key={i} className="mx-8 sm:mx-12 shrink-0 opacity-40 hover:opacity-80 transition-opacity duration-500 grayscale hover:grayscale-0">
@@ -333,7 +338,7 @@ export default function Home() {
             What happens when brands partner with Hussa.
           </TextReveal>
           <ScrollReveal delay={0.1}>
-            <p className="text-gray-400 text-[15px] mb-16 max-w-lg">She doesn&apos;t just create content. She creates demand. Products sell out. Launches trend. Brands become part of the conversation.</p>
+            <p className="text-gray-400 text-[15px] mb-16 max-w-lg">When Hussa partners with a brand, her audience pays attention. 13+ global brands trust her to introduce their products to the Saudi and GCC market.</p>
           </ScrollReveal>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 mb-20">
             {STATS.map((stat, i) => (
@@ -350,21 +355,21 @@ export default function Home() {
               <div className="result-card rounded-2xl p-8 sm:p-10">
                 <div className="text-[#89BBdf] text-3xl font-serif font-bold mb-3">Impact</div>
                 <div className="text-gray-900 font-semibold text-[15px] mb-2">Content That Converts</div>
-                <p className="text-gray-400 text-[13px] leading-relaxed">Hussa&apos;s campaigns drive real consumer action. Her audience trusts her recommendations and acts on them &mdash; that&apos;s why brands keep coming back.</p>
+                <p className="text-gray-400 text-[13px] leading-relaxed">Hussa brings editorial instinct and genuine taste to every collaboration. Her audience trusts her voice &mdash; which is why brands choose to work with her.</p>
               </div>
             </ScrollReveal>
             <ScrollReveal delay={0.2}>
               <div className="result-card rounded-2xl p-8 sm:p-10">
                 <div className="text-[#89BBdf] text-3xl font-serif font-bold mb-3">Repeat</div>
                 <div className="text-gray-900 font-semibold text-[15px] mb-2">Brands Come Back</div>
-                <p className="text-gray-400 text-[13px] leading-relaxed">Sephora, Estee Lauder, MAC, Kerastase &mdash; the biggest names in beauty don&apos;t partner once. They build ongoing relationships because the results speak for themselves.</p>
+                <p className="text-gray-400 text-[13px] leading-relaxed">Sephora, Estee Lauder, MAC, Kerastase &mdash; Hussa has built relationships with 13+ global brands across beauty, fashion, and lifestyle.</p>
               </div>
             </ScrollReveal>
             <ScrollReveal delay={0.3}>
               <div className="result-card rounded-2xl p-8 sm:p-10">
                 <div className="text-[#89BBdf] text-3xl font-serif font-bold mb-3">Cultural</div>
                 <div className="text-gray-900 font-semibold text-[15px] mb-2">She Sets the Tone</div>
-                <p className="text-gray-400 text-[13px] leading-relaxed">In the Saudi beauty space, Hussa doesn&apos;t follow trends. She is the reference point &mdash; from curly hair routines to what&apos;s worth buying this season.</p>
+                <p className="text-gray-400 text-[13px] leading-relaxed">From curly hair routines to seasonal beauty picks, Hussa creates the content Saudi women search for. She pioneered the GCC curly hair movement and her audience looks to her first.</p>
               </div>
             </ScrollReveal>
           </div>
@@ -453,10 +458,9 @@ export default function Home() {
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 mb-16">
             {DEMOGRAPHICS.map((demo, i) => (
               <ScrollReveal key={demo.label} delay={0.1 * i}>
-                <div className="demo-card rounded-2xl p-7 sm:p-9 text-center">
-                  <p className="text-4xl sm:text-5xl font-serif font-bold text-gradient mb-2"><AnimatedCounter value={demo.value} /></p>
-                  <p className="text-gray-900 font-semibold text-[14px] mb-1">{demo.label}</p>
-                  <p className="text-gray-400 text-[12px]">{demo.description}</p>
+                <div className="demo-card rounded-2xl p-7 sm:p-9">
+                  <p className="text-[#89BBdf] font-serif font-bold text-[18px] sm:text-[20px] mb-2">{demo.label}</p>
+                  <p className="text-gray-500 text-[13px] leading-relaxed">{demo.description}</p>
                 </div>
               </ScrollReveal>
             ))}
@@ -465,17 +469,13 @@ export default function Home() {
             <ScrollReveal delay={0.2}>
               <div className="glass rounded-2xl p-8 sm:p-10">
                 <h3 className="font-serif text-xl font-bold mb-6">What They Care About</h3>
-                <div className="space-y-4">
-                  {AUDIENCE_INTERESTS.map((interest, i) => (
-                    <div key={interest} className="flex items-center gap-4">
-                      <div className="flex-1">
-                        <div className="flex justify-between mb-1.5">
-                          <span className="text-gray-600 text-[13px] font-medium">{interest}</span>
-                          <span className="text-[#89BBdf] text-[13px] font-semibold">{[92, 87, 78, 64, 58][i]}%</span>
-                        </div>
-                        <div className="h-1.5 bg-gray-100 rounded-full overflow-hidden">
-                          <div className="h-full bg-gradient-to-r from-[#89BBdf] to-[#a8d4f0] rounded-full" style={{ width: `${[92, 87, 78, 64, 58][i]}%` }} />
-                        </div>
+                <div className="space-y-5">
+                  {AUDIENCE_INTERESTS.map((interest) => (
+                    <div key={interest.name} className="flex items-start gap-3">
+                      <div className="w-1.5 h-1.5 rounded-full bg-[#89BBdf] mt-2 shrink-0" />
+                      <div>
+                        <p className="text-gray-900 text-[14px] font-semibold mb-0.5">{interest.name}</p>
+                        <p className="text-gray-400 text-[13px] leading-relaxed">{interest.description}</p>
                       </div>
                     </div>
                   ))}
@@ -606,8 +606,8 @@ export default function Home() {
           <ScrollReveal delay={0.4}>
             <div className="grid grid-cols-3 gap-4 max-w-md mx-auto mt-12 pt-12 border-t border-white/5">
               <div className="text-center">
-                <p className="text-white font-serif font-bold text-lg">48hrs</p>
-                <p className="text-gray-500 text-[11px] mt-1">Response Time</p>
+                <p className="text-white font-serif font-bold text-lg">Fast</p>
+                <p className="text-gray-500 text-[11px] mt-1">Response</p>
               </div>
               <div className="text-center">
                 <p className="text-white font-serif font-bold text-lg">English & Arabic</p>
