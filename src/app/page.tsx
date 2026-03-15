@@ -39,6 +39,7 @@ const BRANDS = [
 const PROJECTS = [
   {
     image: "/images/sephora-campaign.jpg",
+    video: "/videos/sephora.mp4",
     brand: "Sephora Collection",
     category: "Beauty",
     description: "Lip tint launch content across Instagram and TikTok for Sephora's KSA market.",
@@ -46,6 +47,7 @@ const PROJECTS = [
   },
   {
     image: "/images/fendi-campaign.jpg",
+    video: "/videos/fendi.mp4",
     brand: "Fendi FW25",
     category: "Fashion",
     description: "Fashion week content partnership for Fendi's Fall/Winter 2025 regional presence.",
@@ -60,6 +62,7 @@ const PROJECTS = [
   },
   {
     image: "/images/toofaced-campaign.jpg",
+    video: "/videos/toofaced.mp4",
     brand: "Too Faced x Sephora ME",
     category: "Beauty",
     description: "Ramadan collection haul and looks for the Too Faced x Sephora Middle East collaboration.",
@@ -81,6 +84,7 @@ const PROJECTS = [
   },
   {
     image: "/images/mac-campaign.jpg",
+    video: "/videos/mac.mp4",
     brand: "MAC Cosmetics",
     category: "Makeup",
     description: "Studio Radiance foundation and concealer review and tutorial content.",
@@ -426,7 +430,13 @@ export default function Home() {
               <ScrollReveal key={project.brand} delay={0.08 * i}>
                 <div className="group">
                   <div className="relative aspect-[4/5] rounded-2xl overflow-hidden mb-4">
-                    <Image src={project.image} alt={`${project.brand} — ${project.category}`} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" />
+                    {project.video ? (
+                      <video autoPlay loop muted playsInline preload="none" poster={project.image} className="absolute inset-0 w-full h-full object-cover">
+                        <source src={project.video} type="video/mp4" />
+                      </video>
+                    ) : (
+                      <Image src={project.image} alt={`${project.brand} — ${project.category}`} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" />
+                    )}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
                     <div className="absolute bottom-5 left-5 right-5">
                       <p className="text-xs font-semibold tracking-[0.2em] uppercase text-[#89BBdf] mb-1.5">{project.category}</p>

@@ -9,6 +9,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 interface Project {
   image: string;
+  video?: string;
   brand: string;
   category: string;
   description?: string;
@@ -62,13 +63,27 @@ function ProjectCard({ project }: { project: Project }) {
           ref={imageWrapRef}
           className="absolute inset-0 transition-transform duration-700 ease-out"
         >
-          <Image
-            src={project.image}
-            alt={`${project.brand} ${project.category} campaign by Hussa AlSaif${project.result ? ` — ${project.result}` : ""}`}
-            fill
-            sizes="(max-width: 640px) 75vw, (max-width: 768px) 50vw, 35vw"
-            className="object-cover"
-          />
+          {project.video ? (
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="none"
+              poster={project.image}
+              className="absolute inset-0 w-full h-full object-cover"
+            >
+              <source src={project.video} type="video/mp4" />
+            </video>
+          ) : (
+            <Image
+              src={project.image}
+              alt={`${project.brand} ${project.category} campaign by Hussa AlSaif${project.result ? ` — ${project.result}` : ""}`}
+              fill
+              sizes="(max-width: 640px) 75vw, (max-width: 768px) 50vw, 35vw"
+              className="object-cover"
+            />
+          )}
         </div>
         <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
         <div className="absolute bottom-6 left-6 right-6">
