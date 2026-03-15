@@ -178,7 +178,7 @@ export default function Home() {
           <a href="#" aria-label="Hussa AlSaif - Home">
             <img src="/images/logo-hs.svg" alt="Hussa AlSaif" className="h-8 w-8 sm:h-9 sm:w-9 rounded-lg" />
           </a>
-          <div className="hidden md:flex items-center gap-10 text-[13px] font-medium tracking-wide uppercase text-gray-400">
+          <div className="hidden md:flex items-center gap-10 text-[13px] font-medium tracking-wide uppercase text-gray-500">
             <a href="#world" onClick={() => trackNav("World")} className="nav-link hover:text-[#89BBdf] transition-colors duration-300">World</a>
             <a href="#about" onClick={() => trackNav("About")} className="nav-link hover:text-[#89BBdf] transition-colors duration-300">About</a>
             <a href="#work" onClick={() => trackNav("Portfolio")} className="nav-link hover:text-[#89BBdf] transition-colors duration-300">Portfolio</a>
@@ -239,7 +239,7 @@ export default function Home() {
           <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-8 lg:gap-20 items-center">
             <div>
               <ScrollReveal delay={0.1}>
-                <p className="text-[#89BBdf] font-medium tracking-[0.35em] uppercase text-[11px] mb-8">
+                <p className="text-[#89BBdf] font-medium tracking-[0.35em] uppercase text-[12px] mb-8">
                   Beauty &amp; Culture &mdash; Saudi Arabia
                 </p>
               </ScrollReveal>
@@ -253,7 +253,7 @@ export default function Home() {
                 <p className="text-gray-500 max-w-md leading-[1.8] mb-4 text-[16px] font-medium">
                   The curly-hair icon with a Masters in Marketing, a book club, and the trust of the world&apos;s most discerning beauty houses.
                 </p>
-                <p className="text-gray-400 max-w-md leading-[1.8] mb-10 text-[14px]">
+                <p className="text-gray-500 max-w-md leading-[1.8] mb-10 text-[14px]">
                   Sephora. Fendi. Estée Lauder. MAC. Lancôme. P&amp;G.
                 </p>
               </ScrollReveal>
@@ -300,7 +300,7 @@ export default function Home() {
         <p className="text-center text-[10px] font-medium tracking-[0.4em] uppercase text-gray-300 mb-8">Trusted By</p>
         <div className="flex animate-marquee whitespace-nowrap items-center" aria-hidden="true">
           {[...BRANDS, ...BRANDS, ...BRANDS].map((brand, i) => (
-            <div key={i} className="mx-10 sm:mx-14 shrink-0 opacity-60 hover:opacity-100 transition-all duration-500 hover:scale-110">
+            <div key={i} className="mx-10 sm:mx-14 shrink-0 opacity-80 hover:opacity-100 transition-all duration-500 hover:scale-110">
               <Image
                 src={brand.logo}
                 alt={brand.name}
@@ -318,20 +318,20 @@ export default function Home() {
       <section id="world" className="py-28 sm:py-40 bg-white scroll-mt-20">
         <div className="max-w-7xl mx-auto px-5 sm:px-8">
           <ScrollReveal>
-            <p className="text-[#89BBdf] font-medium tracking-[0.35em] uppercase text-[11px] mb-6">The Hussa Effect</p>
+            <p className="text-[#89BBdf] font-medium tracking-[0.35em] uppercase text-[12px] mb-6">The Hussa Effect</p>
           </ScrollReveal>
           <TextReveal as="h2" className="font-serif text-3xl sm:text-4xl md:text-[2.8rem] font-bold leading-[1.15] mb-6">
             What happens when brands partner with Hussa.
           </TextReveal>
           <ScrollReveal delay={0.1}>
-            <p className="text-gray-400 text-[15px] mb-16 max-w-lg">When Hussa partners with a brand, her audience pays attention. Global names from Sephora to Fendi trust her to introduce their products to the Saudi and GCC market.</p>
+            <p className="text-gray-500 text-[15px] mb-16 max-w-lg">When Hussa partners with a brand, her audience pays attention. Global names from Sephora to Fendi trust her to introduce their products to the Saudi and GCC market.</p>
           </ScrollReveal>
           <ScrollReveal delay={0.1}>
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 mb-20">
               {STATS.map((stat) => (
                 <div key={stat.label} className="glass rounded-2xl p-7 sm:p-9 text-center hover:shadow-xl hover:shadow-[#89BBdf]/5 transition-all duration-500">
                   <p className="text-3xl sm:text-4xl font-serif font-bold text-gradient mb-2"><AnimatedCounter value={stat.value} /></p>
-                  <p className="text-[11px] text-gray-400 font-medium tracking-[0.15em] uppercase">{stat.label}</p>
+                  <p className="text-[12px] text-gray-500 font-medium tracking-[0.15em] uppercase">{stat.label}</p>
                 </div>
               ))}
             </div>
@@ -341,17 +341,17 @@ export default function Home() {
               <div className="result-card rounded-2xl p-8 sm:p-10">
                 <div className="text-[#89BBdf] text-3xl font-serif font-bold mb-3">Pioneer</div>
                 <div className="text-gray-900 font-semibold text-[15px] mb-2">She Started the Movement</div>
-                <p className="text-gray-400 text-[13px] leading-relaxed">She pioneered the GCC curly hair movement. When Hussa talks about a product, her audience searches for it.</p>
+                <p className="text-gray-500 text-[13px] leading-relaxed">She pioneered the GCC curly hair movement. When Hussa talks about a product, her audience searches for it.</p>
               </div>
               <div className="result-card rounded-2xl p-8 sm:p-10">
                 <div className="text-[#89BBdf] text-3xl font-serif font-bold mb-3">Repeat</div>
                 <div className="text-gray-900 font-semibold text-[15px] mb-2">Brands Come Back</div>
-                <p className="text-gray-400 text-[13px] leading-relaxed">Sephora, Estée Lauder, MAC, Lancôme &mdash; the brands that work with Hussa come back. Because the results speak.</p>
+                <p className="text-gray-500 text-[13px] leading-relaxed">Sephora, Estée Lauder, MAC, Lancôme &mdash; the brands that work with Hussa come back. Because the results speak.</p>
               </div>
               <div className="result-card rounded-2xl p-8 sm:p-10">
                 <div className="text-[#89BBdf] text-3xl font-serif font-bold mb-3">Cultural</div>
                 <div className="text-gray-900 font-semibold text-[15px] mb-2">Beyond Beauty</div>
-                <p className="text-gray-400 text-[13px] leading-relaxed">Book club host, bilingual storyteller, cultural tastemaker. She&apos;s not just beauty &mdash; she&apos;s culture.</p>
+                <p className="text-gray-500 text-[13px] leading-relaxed">Book club host, bilingual storyteller, cultural tastemaker. She&apos;s not just beauty &mdash; she&apos;s culture.</p>
               </div>
             </div>
           </ScrollReveal>
@@ -364,7 +364,7 @@ export default function Home() {
           <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
             <div>
               <ScrollReveal>
-                <p className="text-[#89BBdf] font-medium tracking-[0.35em] uppercase text-[11px] mb-6">Hussa AlSaif</p>
+                <p className="text-[#89BBdf] font-medium tracking-[0.35em] uppercase text-[12px] mb-6">Hussa AlSaif</p>
               </ScrollReveal>
               <TextReveal as="h2" className="font-serif text-3xl sm:text-4xl md:text-[2.8rem] font-bold leading-[1.15] mb-10">Not an influencer. A cultural force.</TextReveal>
               <ScrollReveal delay={0.2}>
@@ -399,11 +399,11 @@ export default function Home() {
       <section id="work" className="bg-white scroll-mt-20">
         <div className="max-w-7xl mx-auto px-5 sm:px-8 pt-28 sm:pt-40">
           <ScrollReveal>
-            <p className="text-[#89BBdf] font-medium tracking-[0.35em] uppercase text-[11px] mb-6">Selected Collaborations</p>
+            <p className="text-[#89BBdf] font-medium tracking-[0.35em] uppercase text-[12px] mb-6">Selected Collaborations</p>
           </ScrollReveal>
           <TextReveal as="h2" className="font-serif text-3xl sm:text-4xl md:text-[2.8rem] font-bold leading-[1.15] mb-4">A portfolio of world-class partnerships.</TextReveal>
           <ScrollReveal delay={0.1}>
-            <p className="text-gray-400 text-[15px] mb-8 max-w-lg">From global beauty houses to luxury fashion maisons. Each partnership is a meeting of equals &mdash; her creative vision, their brand world.</p>
+            <p className="text-gray-500 text-[15px] mb-8 max-w-lg">From global beauty houses to luxury fashion maisons. Each partnership is a meeting of equals &mdash; her creative vision, their brand world.</p>
           </ScrollReveal>
         </div>
         <div className="hidden md:block">
@@ -439,11 +439,11 @@ export default function Home() {
       <section id="audience" className="py-28 sm:py-40 bg-[#f8fbfe] scroll-mt-20">
         <div className="max-w-7xl mx-auto px-5 sm:px-8">
           <ScrollReveal>
-            <p className="text-[#89BBdf] font-medium tracking-[0.35em] uppercase text-[11px] mb-6">Her Audience</p>
+            <p className="text-[#89BBdf] font-medium tracking-[0.35em] uppercase text-[12px] mb-6">Her Audience</p>
           </ScrollReveal>
           <TextReveal as="h2" className="font-serif text-3xl sm:text-4xl md:text-[2.8rem] font-bold leading-[1.15] mb-6">The most valuable consumer in the Gulf.</TextReveal>
           <ScrollReveal delay={0.1}>
-            <p className="text-gray-400 text-[15px] mb-16 max-w-lg">Young Saudi women with purchasing power, brand awareness, and trust in Hussa&apos;s taste. This is the audience every beauty and fashion brand is trying to reach.</p>
+            <p className="text-gray-500 text-[15px] mb-16 max-w-lg">Young Saudi women with purchasing power, brand awareness, and trust in Hussa&apos;s taste. This is the audience every beauty and fashion brand is trying to reach.</p>
           </ScrollReveal>
           <ScrollReveal delay={0.1}>
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 mb-16">
@@ -465,7 +465,7 @@ export default function Home() {
                       <div className="w-1.5 h-1.5 rounded-full bg-[#89BBdf] mt-2 shrink-0" />
                       <div>
                         <p className="text-gray-900 text-[14px] font-semibold mb-0.5">{interest.name}</p>
-                        <p className="text-gray-400 text-[13px] leading-relaxed">{interest.description}</p>
+                        <p className="text-gray-500 text-[13px] leading-relaxed">{interest.description}</p>
                       </div>
                     </div>
                   ))}
@@ -480,7 +480,7 @@ export default function Home() {
                     <a key={s.name} href={s.url} target="_blank" rel="noopener noreferrer" onClick={() => trackSocial(s.name)} className="flex items-center justify-between group py-2">
                       <div>
                         <p className="font-semibold text-[14px] group-hover:text-[#89BBdf] transition-colors">{s.name}</p>
-                        <p className="text-gray-400 text-[12px]">{s.handle}</p>
+                        <p className="text-gray-500 text-[12px]">{s.handle}</p>
                       </div>
                       <div className="text-right">
                         {s.followers && (<p className="font-serif font-bold text-[#89BBdf] text-lg">{s.followers}</p>)}
@@ -498,11 +498,11 @@ export default function Home() {
       <section id="partnership" className="py-28 sm:py-40 bg-white scroll-mt-20">
         <div className="max-w-7xl mx-auto px-5 sm:px-8">
           <ScrollReveal>
-            <p className="text-[#89BBdf] font-medium tracking-[0.35em] uppercase text-[11px] mb-6">For Partners</p>
+            <p className="text-[#89BBdf] font-medium tracking-[0.35em] uppercase text-[12px] mb-6">For Partners</p>
           </ScrollReveal>
           <TextReveal as="h2" className="font-serif text-3xl sm:text-4xl md:text-[2.8rem] font-bold leading-[1.15] mb-6">Explore a collaboration with Hussa.</TextReveal>
           <ScrollReveal delay={0.1}>
-            <p className="text-gray-400 text-[15px] mb-16 max-w-lg">The partnership deck includes audience intelligence, past collaboration results, and creative scope. It&apos;s designed for teams evaluating a strategic fit.</p>
+            <p className="text-gray-500 text-[15px] mb-16 max-w-lg">The partnership deck includes audience intelligence, past collaboration results, and creative scope. It&apos;s designed for teams evaluating a strategic fit.</p>
           </ScrollReveal>
           <ScrollReveal delay={0.1}>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-16">
@@ -517,7 +517,7 @@ export default function Home() {
                     {item.icon === "play" && (<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#89BBdf" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>)}
                   </div>
                   <h3 className="font-semibold text-[15px] text-gray-900 mb-1.5">{item.title}</h3>
-                  <p className="text-gray-400 text-[13px] leading-relaxed">{item.desc}</p>
+                  <p className="text-gray-500 text-[13px] leading-relaxed">{item.desc}</p>
                 </div>
             ))}
           </div>
@@ -530,7 +530,7 @@ export default function Home() {
               </div>
               <div className="relative z-10">
                 <h3 className="font-serif text-2xl sm:text-3xl font-bold text-white leading-[1.15] mb-4">Request the Partnership Deck</h3>
-                <p className="text-gray-400 text-[15px] max-w-md mx-auto mb-8 leading-[1.8]">A curated overview of Hussa&apos;s world, audience, and collaboration framework &mdash; built for brand and agency teams.</p>
+                <p className="text-gray-500 text-[15px] max-w-md mx-auto mb-8 leading-[1.8]">A curated overview of Hussa&apos;s world, audience, and collaboration framework &mdash; built for brand and agency teams.</p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <MagneticButton href="/media-kit" onClick={() => trackCTA("View Partnership Deck", "partnership")} className="bg-[#89BBdf] hover:bg-[#6ea8d4] text-white px-10 py-4 rounded-full font-semibold transition-all text-[13px] tracking-wide inline-block shadow-lg shadow-[#89BBdf]/20">
                     View Partnership Deck
@@ -565,7 +565,7 @@ export default function Home() {
             </h2>
           </ScrollReveal>
           <ScrollReveal delay={0.2}>
-            <p className="text-gray-400 text-[15px] max-w-lg mx-auto mb-4 leading-[1.8]">Hussa works with a limited number of brands each quarter to ensure every collaboration receives the creative depth it deserves. If there&apos;s a fit, her team will be in touch.</p>
+            <p className="text-gray-500 text-[15px] max-w-lg mx-auto mb-4 leading-[1.8]">Hussa works with a limited number of brands each quarter to ensure every collaboration receives the creative depth it deserves. If there&apos;s a fit, her team will be in touch.</p>
           </ScrollReveal>
           <ScrollReveal delay={0.25}>
             <div className="flex flex-wrap justify-center gap-x-8 gap-y-2 text-gray-500 text-[13px] mb-12">
@@ -589,12 +589,12 @@ export default function Home() {
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                 Download Media Kit
               </a>
-              <a href="mailto:inquiries@hussaalsaif.com?subject=Urgent%20Partnership%20Inquiry" onClick={() => trackEmail("inquiries@hussaalsaif.com", "contact")} className="border border-white/10 hover:border-[#89BBdf]/40 text-gray-400 hover:text-[#89BBdf] px-8 py-3.5 rounded-full font-semibold transition-all text-[12px] tracking-wide inline-flex items-center gap-2">
+              <a href="mailto:inquiries@hussaalsaif.com?subject=Urgent%20Partnership%20Inquiry" onClick={() => trackEmail("inquiries@hussaalsaif.com", "contact")} className="border border-white/10 hover:border-[#89BBdf]/40 text-gray-500 hover:text-[#89BBdf] px-8 py-3.5 rounded-full font-semibold transition-all text-[12px] tracking-wide inline-flex items-center gap-2">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
                 Direct Email
               </a>
             </div>
-            <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-gray-600 text-[11px] tracking-[0.15em] uppercase">
+            <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-gray-600 text-[12px] tracking-[0.15em] uppercase">
               <a href="https://instagram.com/hussa.ss" target="_blank" rel="noopener noreferrer" onClick={() => trackSocial("Instagram")} className="hover:text-[#89BBdf] transition-colors">Instagram</a>
               <a href="https://tiktok.com/@hussa.502" target="_blank" rel="noopener noreferrer" onClick={() => trackSocial("TikTok")} className="hover:text-[#89BBdf] transition-colors">TikTok</a>
               <a href="https://youtube.com/@hussaalsaif" target="_blank" rel="noopener noreferrer" onClick={() => trackSocial("YouTube")} className="hover:text-[#89BBdf] transition-colors">YouTube</a>
@@ -610,16 +610,16 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4 sm:gap-6">
             <div className="flex flex-col items-center sm:items-start gap-1">
               <p className="font-serif text-xl font-bold text-white tracking-tight">Hussa AlSaif<span className="text-[#89BBdf]">.</span></p>
-              <p className="text-gray-600 text-[11px] tracking-[0.25em] uppercase">Saudi Arabia</p>
+              <p className="text-gray-600 text-[12px] tracking-[0.25em] uppercase">Saudi Arabia</p>
             </div>
-            <div className="flex flex-wrap justify-center gap-x-5 gap-y-2 text-[11px] sm:text-[12px] text-gray-500 tracking-wide">
+            <div className="flex flex-wrap justify-center gap-x-5 gap-y-2 text-[12px] sm:text-[12px] text-gray-500 tracking-wide">
               <a href="/media-kit" className="hover:text-[#89BBdf] transition-colors">Media Kit</a>
               <a href="/links" className="hover:text-[#89BBdf] transition-colors">Links</a>
               <a href="https://instagram.com/hussa.ss" target="_blank" rel="noopener noreferrer" onClick={() => trackSocial("Instagram")} className="hover:text-[#89BBdf] transition-colors">Instagram</a>
               <a href="https://tiktok.com/@hussa.502" target="_blank" rel="noopener noreferrer" onClick={() => trackSocial("TikTok")} className="hover:text-[#89BBdf] transition-colors">TikTok</a>
               <a href="mailto:inquiries@hussaalsaif.com?subject=Partnership%20Inquiry" onClick={() => trackEmail("inquiries@hussaalsaif.com", "footer")} className="hover:text-[#89BBdf] transition-colors">Contact</a>
             </div>
-            <p className="text-gray-600 text-[11px]">&copy; 2026 Hussa AlSaif</p>
+            <p className="text-gray-600 text-[12px]">&copy; 2026 Hussa AlSaif</p>
           </div>
         </div>
       </footer>
