@@ -576,34 +576,78 @@ export default function Home() {
         </div>
       </section>
 
-      {/* -- MEDIA KIT CTA -- */}
-      <section id="media-kit" className="py-20 sm:py-28 bg-white scroll-mt-20">
-        <div className="max-w-4xl mx-auto px-5 sm:px-8">
+      {/* -- MEDIA KIT -- */}
+      <section id="media-kit" className="py-28 sm:py-40 bg-white scroll-mt-20">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8">
           <ScrollReveal>
-            <div className="media-kit-cta rounded-3xl p-10 sm:p-16 text-center relative overflow-hidden">
+            <p className="text-[#89BBdf] font-medium tracking-[0.35em] uppercase text-[11px] mb-6">For Brand Managers</p>
+          </ScrollReveal>
+          <TextReveal as="h2" className="font-serif text-3xl sm:text-4xl md:text-[2.8rem] font-bold leading-[1.15] mb-6">
+            Everything you need to pitch internally.
+          </TextReveal>
+          <ScrollReveal delay={0.1}>
+            <p className="text-gray-400 text-[15px] mb-16 max-w-lg">
+              The media kit includes all the data, case studies, and pricing your team needs to make a decision. Request it and receive a PDF within 24 hours.
+            </p>
+          </ScrollReveal>
+
+          {/* Media Kit Items Grid */}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-16">
+            {MEDIA_KIT_ITEMS.map((item, i) => (
+              <ScrollReveal key={item.title} delay={0.08 * i}>
+                <div className="media-kit-card rounded-2xl p-7 sm:p-8">
+                  <div className="w-10 h-10 rounded-xl bg-[#89BBdf]/10 flex items-center justify-center mb-4">
+                    {item.icon === "chart" && (
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#89BBdf" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
+                    )}
+                    {item.icon === "grid" && (
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#89BBdf" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+                    )}
+                    {item.icon === "trending" && (
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#89BBdf" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+                    )}
+                    {item.icon === "star" && (
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#89BBdf" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    )}
+                    {item.icon === "tag" && (
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#89BBdf" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+                    )}
+                    {item.icon === "play" && (
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#89BBdf" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                    )}
+                  </div>
+                  <h3 className="font-semibold text-[15px] text-gray-900 mb-1.5">{item.title}</h3>
+                  <p className="text-gray-400 text-[13px] leading-relaxed">{item.desc}</p>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+
+          {/* CTA Card */}
+          <ScrollReveal delay={0.3}>
+            <div className="media-kit-cta rounded-3xl p-10 sm:p-14 text-center relative overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-[#0d1a26]" />
               <div className="absolute inset-0 opacity-30" aria-hidden="true">
                 <div className="absolute top-1/4 left-1/3 w-[400px] h-[400px] bg-[#89BBdf]/20 rounded-full blur-[120px]" />
               </div>
               <div className="relative z-10">
-                <p className="text-[#89BBdf] font-medium tracking-[0.35em] uppercase text-[11px] mb-6">For Brand Managers</p>
-                <h2 className="font-serif text-3xl sm:text-4xl font-bold text-white leading-[1.15] mb-4">
-                  Get the Full Media Kit
-                </h2>
+                <h3 className="font-serif text-2xl sm:text-3xl font-bold text-white leading-[1.15] mb-4">
+                  Request the Full Media Kit
+                </h3>
                 <p className="text-gray-400 text-[15px] max-w-md mx-auto mb-8 leading-[1.8]">
-                  Detailed audience analytics, rate card, campaign case studies, and content formats — everything you need to present to your team.
+                  Get a comprehensive PDF with all metrics, pricing, and case studies delivered to your inbox.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <MagneticButton href="mailto:inquiries@hussaalsaif.com?subject=Media%20Kit%20Request"
+                  <MagneticButton href="mailto:inquiries@hussaalsaif.com?subject=Media%20Kit%20Request&body=Hi%20Hussa%2C%0A%0AI%27d%20like%20to%20request%20your%20media%20kit.%0A%0ACompany%3A%20%0ARole%3A%20%0A%0AThank%20you!"
                     className="bg-[#89BBdf] hover:bg-[#6ea8d4] text-white px-10 py-4 rounded-full font-semibold transition-all text-[13px] tracking-wide inline-block shadow-lg shadow-[#89BBdf]/20">
                     Request Media Kit
                   </MagneticButton>
                   <MagneticButton href="#contact"
                     className="border border-white/15 hover:border-[#89BBdf] text-white hover:text-[#89BBdf] px-10 py-4 rounded-full font-semibold transition-all text-[13px] tracking-wide inline-block">
-                    Schedule a Call
+                    Or Send an Inquiry
                   </MagneticButton>
                 </div>
-                <p className="text-gray-500 text-[12px] mt-6">Typically responds within 24 hours</p>
+                <p className="text-gray-500 text-[12px] mt-6">PDF delivered within 24 hours</p>
               </div>
             </div>
           </ScrollReveal>
