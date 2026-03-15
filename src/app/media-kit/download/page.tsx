@@ -3,9 +3,9 @@
 import { useEffect } from "react";
 
 const BRANDS = [
-  "Sephora", "Fendi", "Too Faced", "Estee Lauder", "Dyson", "Kerastase",
-  "Herbal Essences", "Redken", "MAC", "Wella", "Level Shoes",
-  "Sol de Janeiro", "Denman", "LOCA Beauty",
+  "Sephora", "Fendi", "Too Faced", "Estée Lauder", "Lancôme",
+  "Herbal Essences", "MAC", "Wella", "P&G", "Oral-B",
+  "Level Shoes", "Sol de Janeiro", "Denman",
 ];
 
 export default function MediaKitDownload() {
