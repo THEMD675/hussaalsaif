@@ -108,15 +108,36 @@ export default function ContactForm() {
     setStatus("sending");
 
     try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...data, ...utmParams }),
-      });
+      // Send to both: our API (logging) + Formsubmit (actual email delivery)
+      const [apiRes, emailRes] = await Promise.allSettled([
+        fetch("/api/contact", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ ...data, ...utmParams }),
+        }),
+        fetch("https://formsubmit.co/ajax/hussa.alsaif07@gmail.com", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", Accept: "application/json" },
+          body: JSON.stringify({
+            name: data.name,
+            email: data.email,
+            company: data.company,
+            budget: data.budget,
+            "Partnership Type": data.partnershipType,
+            timeline: data.timeline,
+            message: data.message,
+            _subject: `New Inquiry: ${data.name} — ${data.company || "Direct"}`,
+            _template: "table",
+            _captcha: "false",
+          }),
+        }),
+      ]);
 
-      const result = await res.json();
+      // Consider success if either succeeded
+      const apiOk = apiRes.status === "fulfilled" && apiRes.value.ok;
+      const emailOk = emailRes.status === "fulfilled" && emailRes.value.ok;
 
-      if (res.ok && result.success) {
+      if (apiOk || emailOk) {
         trackFormSubmission({
           budget: data.budget,
           company: data.company,
@@ -125,7 +146,7 @@ export default function ContactForm() {
         form.reset();
       } else {
         setStatus("error");
-        setErrorMessage(result.error || "Something went wrong. Please try again.");
+        setErrorMessage("Something went wrong. Please try again.");
       }
     } catch {
       setStatus("error");
