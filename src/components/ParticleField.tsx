@@ -1,11 +1,10 @@
 "use client";
 
-import { useRef, useEffect, useState, useCallback } from "react";
+import { useRef, useEffect, useCallback } from "react";
 
 // Canvas 2D particle system — same visual, zero Three.js overhead (~700KB saved)
 export default function ParticleField() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [visible, setVisible] = useState(true);
   const mouseRef = useRef({ x: 0, y: 0 });
   const particlesRef = useRef<
     { x: number; y: number; baseX: number; baseY: number; size: number; phase: number; depth: number }[]
@@ -14,7 +13,7 @@ export default function ParticleField() {
 
   const init = useCallback((canvas: HTMLCanvasElement) => {
     const isMobile = window.innerWidth < 768;
-    const count = isMobile ? 80 : 250;
+    const count = isMobile ? 40 : 150;
     const w = canvas.width;
     const h = canvas.height;
 

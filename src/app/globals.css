@@ -70,51 +70,6 @@ body {
   border: 1px solid rgba(var(--color-primary-rgb), 0.15);
 }
 
-/* Glass variant for dark sections */
-.glass-dark {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-/* ── Section dividers ── */
-.section-divider {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  padding: 0;
-  margin: 0 auto;
-  width: 100%;
-  max-width: 200px;
-}
-
-.section-divider::before,
-.section-divider::after {
-  content: "";
-  flex: 1;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(var(--color-primary-rgb), 0.35), transparent);
-}
-
-.section-divider-dot {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: var(--color-primary);
-  opacity: 0.45;
-}
-
-/* Thin horizontal rule variant */
-.section-rule {
-  border: none;
-  height: 1px;
-  max-width: 120px;
-  margin: 0 auto;
-  background: linear-gradient(90deg, transparent, rgba(var(--color-primary-rgb), 0.25), transparent);
-}
-
 /* ── Marquee animation ── */
 @keyframes marquee {
   0% { transform: translateX(0); }
@@ -148,11 +103,6 @@ body {
   background: linear-gradient(to left, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0) 100%);
 }
 
-/* ── Noscript fallback ── */
-noscript .noscript-visible {
-  display: block !important;
-}
-
 /* ── Result cards ── */
 .result-card {
   background: linear-gradient(135deg, rgba(var(--color-primary-rgb), 0.05) 0%, rgba(255, 255, 255, 0.8) 100%);
@@ -182,20 +132,6 @@ noscript .noscript-visible {
    ======================== */
 .hero-image-wrapper {
   will-change: transform;
-}
-.hero-image {
-  object-position: center 20%;
-  filter: contrast(1.06) saturate(1.08) brightness(1.02);
-  transition: filter 0.6s ease;
-  animation: kenBurns 20s ease-in-out infinite alternate;
-}
-@keyframes kenBurns {
-  0% {
-    transform: scale(1) translate(0, 0);
-  }
-  100% {
-    transform: scale(1.08) translate(-1%, -2%);
-  }
 }
 
 /* ========================
@@ -323,15 +259,6 @@ noscript .noscript-visible {
 }
 .nav-link:hover::after {
   width: 100%;
-}
-
-/* ── Social link hover ── */
-.social-link {
-  position: relative;
-  transition: all 0.3s ease;
-}
-.social-link:hover {
-  padding-left: 8px;
 }
 
 /* ── Performance ── */

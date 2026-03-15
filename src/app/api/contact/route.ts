@@ -106,7 +106,7 @@ export async function POST(req: NextRequest) {
       </div>
     `;
 
-    // Method 1: Resend (if API key configured)
+    // Send via Resend if API key is configured
     if (RESEND_API_KEY) {
       const res = await fetch("https://api.resend.com/emails", {
         method: "POST",
@@ -118,7 +118,7 @@ export async function POST(req: NextRequest) {
           from: "Hussa AlSaif <onboarding@resend.dev>",
           to: [TO_EMAIL],
           reply_to: email.trim(),
-          subject: `🔔 New Partnership Inquiry — ${safeCompany || safeName}`,
+          subject: `New Partnership Inquiry — ${safeCompany || safeName}`,
           html: emailHtml,
         }),
       });
@@ -130,11 +130,7 @@ export async function POST(req: NextRequest) {
       console.error("Resend failed:", err);
     }
 
-    // Method 2: Direct SMTP via ImprovMX (emails to inquiries@hussaalsaif.com forward to Gmail)
-    // Since ImprovMX is configured, we can use their SMTP relay
-    // But we need credentials — skip for now
-
-    // Method 3: Log to Vercel + notify via structured log (always works)
+    // Fallback: log to Vercel Runtime Logs (always captured)
     const inquiry = {
       type: "PARTNERSHIP_INQUIRY",
       timestamp: new Date().toISOString(),
@@ -148,11 +144,8 @@ export async function POST(req: NextRequest) {
       ip,
     };
 
-    // This appears in Vercel Runtime Logs — always captured
-    console.log("📧 NEW INQUIRY:", JSON.stringify(inquiry));
+    console.log("NEW INQUIRY:", JSON.stringify(inquiry));
 
-    // Return success — inquiry is captured in logs even if email fails
-    // The user sees "Inquiry Received" and the data is in Vercel logs
     return NextResponse.json({ success: true });
   } catch (err) {
     console.error("Contact form error:", err);

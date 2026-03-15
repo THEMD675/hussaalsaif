@@ -33,7 +33,7 @@ const nextConfig: NextConfig = {
 
   // Tree-shake heavy packages
   experimental: {
-    optimizePackageImports: ["three", "gsap", "framer-motion", "lenis"],
+    optimizePackageImports: ["gsap", "lenis"],
   },
 
   // Image optimization
