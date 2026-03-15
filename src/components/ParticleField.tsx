@@ -44,6 +44,8 @@ export default function ParticleField() {
     function resize() {
       if (!canvas) return;
       const rect = canvas.getBoundingClientRect();
+      cachedW = rect.width;
+      cachedH = rect.height;
       canvas.width = rect.width * dpr;
       canvas.height = rect.height * dpr;
       ctx!.scale(dpr, dpr);
@@ -62,50 +64,51 @@ export default function ParticleField() {
 
     let time = 0;
 
+    let cachedW = canvas.getBoundingClientRect().width;
+    let cachedH = canvas.getBoundingClientRect().height;
+
     function animate() {
       if (!canvas || !ctx) return;
-      const rect = canvas.getBoundingClientRect();
-      const w = rect.width;
-      const h = rect.height;
 
-      ctx.clearRect(0, 0, w, h);
+      ctx.clearRect(0, 0, cachedW, cachedH);
       time += 0.008;
 
       const mx = mouseRef.current.x;
       const my = mouseRef.current.y;
 
-      for (const p of particlesRef.current) {
-        // Organic flowing motion
-        const ox = Math.sin(time * 1.5 + p.phase * 6) * 20 * (1 - p.depth * 0.5);
-        const oy = Math.cos(time * 1.2 + p.phase * 4) * 25 * (1 - p.depth * 0.5);
+      const particles = particlesRef.current;
+      const len = particles.length;
+      const sin = Math.sin;
+      const cos = Math.cos;
+      const t15 = time * 1.5;
+      const t12 = time * 1.2;
+      const mx05 = (mx - 0.5) * 30;
+      const my05 = (my - 0.5) * 30;
 
-        // Subtle mouse influence
-        const dx = (mx - 0.5) * 30 * (1 - p.depth);
-        const dy = (my - 0.5) * 30 * (1 - p.depth);
+      for (let i = 0; i < len; i++) {
+        const p = particles[i];
+        const depthFactor = 1 - p.depth;
+        const motionScale = 1 - p.depth * 0.5;
 
-        p.x = p.baseX + ox + dx;
-        p.y = p.baseY + oy + dy;
+        p.x = p.baseX + sin(t15 + p.phase * 6) * 20 * motionScale + mx05 * depthFactor;
+        p.y = p.baseY + cos(t12 + p.phase * 4) * 25 * motionScale + my05 * depthFactor;
 
-        // Depth-based opacity and size
-        const alpha = 0.08 + (1 - p.depth) * 0.35;
-        const size = p.size * (0.5 + (1 - p.depth) * 1.2);
+        const alpha = 0.08 + depthFactor * 0.35;
+        const size = p.size * (0.5 + depthFactor * 1.2);
 
-        // Color: baby blue gradient based on depth
-        const r = 137;
-        const g = 187 + Math.floor(p.depth * 30);
-        const b = 223 + Math.floor(p.depth * 20);
-
+        ctx.globalAlpha = alpha;
+        ctx.fillStyle = p.depth < 0.33 ? "#89BBdf" : p.depth < 0.66 ? "#a0cde6" : "#c4e0f5";
         ctx.beginPath();
-        ctx.arc(p.x, p.y, size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${alpha})`;
+        ctx.arc(p.x, p.y, size, 0, 6.283);
         ctx.fill();
       }
+      ctx.globalAlpha = 1;
 
       // Draw orbital rings
-      const isMobile = w < 768;
+      const isMobile = cachedW < 768;
       if (!isMobile) {
-        const cx = w * 0.5 + (mx - 0.5) * 20;
-        const cy = h * 0.5 + (my - 0.5) * 20;
+        const cx = cachedW * 0.5 + (mx - 0.5) * 20;
+        const cy = cachedH * 0.5 + (my - 0.5) * 20;
 
         for (let i = 0; i < 3; i++) {
           const radius = 120 + i * 60;

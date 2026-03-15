@@ -2,11 +2,34 @@
 
 import { useRef, useEffect, useState, type ReactNode } from "react";
 
+// Single shared IntersectionObserver for ALL ScrollReveal instances
+let sharedObserver: IntersectionObserver | null = null;
+const callbacks = new Map<Element, () => void>();
+
+function getObserver() {
+  if (sharedObserver) return sharedObserver;
+  sharedObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const cb = callbacks.get(entry.target);
+          if (cb) {
+            cb();
+            callbacks.delete(entry.target);
+            sharedObserver?.unobserve(entry.target);
+          }
+        }
+      });
+    },
+    { threshold: 0.08, rootMargin: "-30px" }
+  );
+  return sharedObserver;
+}
+
 interface ScrollRevealProps {
   children: ReactNode;
   className?: string;
   delay?: number;
-  direction?: "up" | "down" | "left" | "right";
 }
 
 export default function ScrollReveal({
@@ -21,18 +44,14 @@ export default function ScrollReveal({
     const el = ref.current;
     if (!el) return;
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.1, rootMargin: "-40px" }
-    );
-
+    const observer = getObserver();
+    callbacks.set(el, () => setVisible(true));
     observer.observe(el);
-    return () => observer.disconnect();
+
+    return () => {
+      callbacks.delete(el);
+      observer.unobserve(el);
+    };
   }, []);
 
   return (
@@ -43,7 +62,6 @@ export default function ScrollReveal({
         opacity: visible ? 1 : 0,
         transform: visible ? "translateY(0)" : "translateY(24px)",
         transition: `opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1) ${delay}s, transform 0.6s cubic-bezier(0.22, 1, 0.36, 1) ${delay}s`,
-        willChange: visible ? "auto" : "opacity, transform",
       }}
     >
       {children}
