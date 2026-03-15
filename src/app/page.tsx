@@ -202,9 +202,9 @@ export default function Home() {
 
       {/* -- NAV -- */}
       <nav className="fixed top-0 left-0 right-0 z-50 glass" role="navigation" aria-label="Main navigation">
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 py-5 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 sm:px-8 py-3 sm:py-5 flex items-center justify-between">
           <a href="#" aria-label="Hussa AlSaif - Home">
-            <img src="/images/logo-hs.svg" alt="Hussa AlSaif" className="h-9 w-9 rounded-lg" />
+            <img src="/images/logo-hs.svg" alt="Hussa AlSaif" className="h-8 w-8 sm:h-9 sm:w-9 rounded-lg" />
           </a>
           <div className="hidden md:flex items-center gap-10 text-[13px] font-medium tracking-wide uppercase text-gray-400">
             <a href="#world" onClick={() => trackNav("World")} className="nav-link hover:text-[#89BBdf] transition-colors duration-300">World</a>
@@ -213,11 +213,11 @@ export default function Home() {
             <a href="#audience" onClick={() => trackNav("Reach")} className="nav-link hover:text-[#89BBdf] transition-colors duration-300">Reach</a>
             <a href="#contact" onClick={() => trackNav("Contact")} className="nav-link hover:text-[#89BBdf] transition-colors duration-300">Contact</a>
           </div>
-          <div className="flex items-center gap-3">
-            <a href="#partnership" onClick={() => trackCTA("Partnerships", "nav")} className="hidden sm:inline-block border border-[#89BBdf]/30 hover:border-[#89BBdf] text-[#89BBdf] px-5 py-2.5 rounded-full text-[12px] font-semibold transition-all duration-300">
+          <div className="flex items-center gap-2 sm:gap-3">
+            <a href="#partnership" onClick={() => trackCTA("Partnerships", "nav")} className="hidden md:inline-block border border-[#89BBdf]/30 hover:border-[#89BBdf] text-[#89BBdf] px-5 py-2.5 rounded-full text-[12px] font-semibold transition-all duration-300">
               Partnerships
             </a>
-            <a href="#contact" onClick={() => trackCTA("Inquiries", "nav")} className="hidden sm:inline-block bg-gray-900 hover:bg-[#89BBdf] text-white px-6 py-2.5 rounded-full text-[13px] font-semibold transition-all duration-300">
+            <a href="#contact" onClick={() => trackCTA("Inquiries", "nav")} className="hidden md:inline-block bg-gray-900 hover:bg-[#89BBdf] text-white px-6 py-2.5 rounded-full text-[13px] font-semibold transition-all duration-300">
               Inquiries
             </a>
             <button
@@ -233,8 +233,8 @@ export default function Home() {
           </div>
         </div>
 
-        <div className={`md:hidden fixed inset-0 top-[68px] bg-white/95 backdrop-blur-2xl transition-all duration-500 ${mobileMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}>
-          <div className={`flex flex-col items-center justify-center h-full gap-8 transition-transform duration-500 ${mobileMenuOpen ? "translate-y-0" : "-translate-y-8"}`}>
+        <div className={`md:hidden fixed inset-0 top-[56px] sm:top-[68px] bg-white/95 backdrop-blur-2xl transition-all duration-500 ${mobileMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}>
+          <div className={`flex flex-col items-center justify-center h-full gap-6 transition-transform duration-500 ${mobileMenuOpen ? "translate-y-0" : "-translate-y-8"}`}>
             {[
               { href: "#world", label: "World" },
               { href: "#about", label: "About" },
@@ -247,19 +247,14 @@ export default function Home() {
                 key={link.href}
                 href={link.href}
                 onClick={() => trackNav(link.label)}
-                className="font-serif text-3xl font-bold text-gray-900 hover:text-[#89BBdf] transition-colors duration-300"
+                className="font-serif text-2xl sm:text-3xl font-bold text-gray-900 hover:text-[#89BBdf] transition-colors duration-300"
               >
                 {link.label}
               </a>
             ))}
-            <div className="flex gap-4 mt-4">
-              <a href="#partnership" onClick={() => trackCTA("Partnerships", "mobile-nav")} className="border border-[#89BBdf]/30 text-[#89BBdf] px-6 py-3 rounded-full text-[13px] font-semibold">
-                Partnerships
-              </a>
-              <a href="#contact" onClick={() => trackCTA("Inquiries", "mobile-nav")} className="bg-gray-900 text-white px-6 py-3 rounded-full text-[13px] font-semibold">
-                Inquiries
-              </a>
-            </div>
+            <a href="#contact" onClick={() => trackCTA("Inquiries", "mobile-nav")} className="mt-4 bg-gray-900 text-white px-8 py-3 rounded-full text-[13px] font-semibold">
+              Inquiries
+            </a>
           </div>
         </div>
       </nav>
@@ -627,7 +622,7 @@ export default function Home() {
                 Direct Email
               </a>
             </div>
-            <div className="flex justify-center gap-8 text-gray-600 text-[11px] tracking-[0.15em] uppercase">
+            <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-gray-600 text-[11px] tracking-[0.15em] uppercase">
               <a href="https://instagram.com/hussa.ss" target="_blank" rel="noopener noreferrer" onClick={() => trackSocial("Instagram")} className="hover:text-[#89BBdf] transition-colors">Instagram</a>
               <a href="https://tiktok.com/@hussa.502" target="_blank" rel="noopener noreferrer" onClick={() => trackSocial("TikTok")} className="hover:text-[#89BBdf] transition-colors">TikTok</a>
               <a href="https://youtube.com/@hussaalsaif" target="_blank" rel="noopener noreferrer" onClick={() => trackSocial("YouTube")} className="hover:text-[#89BBdf] transition-colors">YouTube</a>
@@ -639,18 +634,18 @@ export default function Home() {
 
       {/* -- FOOTER -- */}
       <footer className="bg-gray-950 border-t border-white/5">
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 py-12">
-          <div className="flex flex-col sm:flex-row justify-between items-center gap-6">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 py-8 sm:py-12">
+          <div className="flex flex-col sm:flex-row justify-between items-center gap-4 sm:gap-6">
             <div className="flex flex-col items-center sm:items-start gap-1">
               <p className="font-serif text-xl font-bold text-white tracking-tight">Hussa AlSaif<span className="text-[#89BBdf]">.</span></p>
               <p className="text-gray-600 text-[11px] tracking-[0.25em] uppercase">Saudi Arabia</p>
             </div>
-            <div className="flex items-center gap-8 text-[12px] text-gray-500 tracking-wide">
-              <a href="/media-kit" className="hover:text-[#89BBdf] transition-colors duration-300">Media Kit</a>
-              <a href="/links" className="hover:text-[#89BBdf] transition-colors duration-300">Links</a>
-              <a href="https://instagram.com/hussa.ss" target="_blank" rel="noopener noreferrer" onClick={() => trackSocial("Instagram")} className="hover:text-[#89BBdf] transition-colors duration-300">Instagram</a>
-              <a href="https://tiktok.com/@hussa.502" target="_blank" rel="noopener noreferrer" onClick={() => trackSocial("TikTok")} className="hover:text-[#89BBdf] transition-colors duration-300">TikTok</a>
-              <a href="mailto:inquiries@hussaalsaif.com?subject=Partnership%20Inquiry" onClick={() => trackEmail("inquiries@hussaalsaif.com", "footer")} className="hover:text-[#89BBdf] transition-colors duration-300">Contact</a>
+            <div className="flex flex-wrap justify-center gap-x-5 gap-y-2 text-[11px] sm:text-[12px] text-gray-500 tracking-wide">
+              <a href="/media-kit" className="hover:text-[#89BBdf] transition-colors">Media Kit</a>
+              <a href="/links" className="hover:text-[#89BBdf] transition-colors">Links</a>
+              <a href="https://instagram.com/hussa.ss" target="_blank" rel="noopener noreferrer" onClick={() => trackSocial("Instagram")} className="hover:text-[#89BBdf] transition-colors">Instagram</a>
+              <a href="https://tiktok.com/@hussa.502" target="_blank" rel="noopener noreferrer" onClick={() => trackSocial("TikTok")} className="hover:text-[#89BBdf] transition-colors">TikTok</a>
+              <a href="mailto:inquiries@hussaalsaif.com?subject=Partnership%20Inquiry" onClick={() => trackEmail("inquiries@hussaalsaif.com", "footer")} className="hover:text-[#89BBdf] transition-colors">Contact</a>
             </div>
             <p className="text-gray-600 text-[11px]">&copy; 2026 Hussa AlSaif</p>
           </div>
