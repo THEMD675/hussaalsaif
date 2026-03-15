@@ -3,30 +3,29 @@
 import { forwardRef } from 'react';
 
 import { motion } from 'framer-motion';
-import { CldImage } from 'next-cloudinary';
 
 import { Center } from '@/components';
 import { thumbnailOptions } from '@/data';
 import { randomId } from '@/utils';
 
+const COLORS = [
+  'from-[#89BBdf]/30 to-[#c4e0f5]/50',
+  'from-pink-100/50 to-rose-100/50',
+  'from-violet-100/50 to-purple-100/50',
+  'from-amber-100/50 to-orange-100/50',
+];
+
 const MotionComponent = motion(Center);
 
 export const ThumbnailModal = forwardRef(
-  /**
-   * @param {import('react').HTMLAttributes<HTMLElement> & { variants: import('framer-motion').Variants; active: boolean; index: number;}} props
-   * @param {import('react').ForwardedRef<HTMLElement>} ref
-   */
   function ThumbnailModal({ variants, active, index, ...props }, ref) {
-    const items = thumbnailOptions.map(({ title, image }) => {
+    const items = thumbnailOptions.map(({ title }, i) => {
       const id = randomId();
       return (
         <Center key={id} className='h-full w-full'>
-          <CldImage
-            src={image}
-            width={320}
-            height={320}
-            alt={`${title} thumbnail image`}
-          />
+          <div className={`w-full h-full bg-gradient-to-br ${COLORS[i % COLORS.length]} flex items-center justify-center`}>
+            <p className='text-2xl font-bold text-gray-400/50'>{title}</p>
+          </div>
         </Center>
       );
     });

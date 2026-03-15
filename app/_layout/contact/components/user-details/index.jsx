@@ -3,7 +3,6 @@
 import { motion } from 'framer-motion';
 import { ArrowDownLeft } from 'lucide-react';
 import Link from 'next/link';
-import { CldImage } from 'next-cloudinary';
 
 import { MagneticButton } from '@/components';
 
@@ -19,14 +18,9 @@ export function UserDetails({ transformX }) {
       <Row>
         <div className='flex items-center gap-8'>
           <ImageWrapper>
-            <CldImage
-              src='Dennis-Portfolio/images/mqtwxh5znybowgaljrbp'
-              className='rounded-full object-cover'
-              fill={true}
-              alt='Dennis Snellenberg Profile Picture'
-            />
+            <div className='w-full h-full rounded-full bg-gradient-to-br from-[#89BBdf] to-[#c4e0f5]' />
           </ImageWrapper>
-          <MainTitle>Let’s work</MainTitle>
+          <MainTitle>Let&apos;s work</MainTitle>
         </div>
         <div className='flex items-center justify-between'>
           <MainTitle>together</MainTitle>
@@ -54,24 +48,24 @@ export function UserDetails({ transformX }) {
       <Row>
         <div className='flex w-full flex-col gap-4 lg:flex-row'>
           <div>
-            <a href='mailto:info@dennissnellenberg.com'>
+            <a href='mailto:inquiries@hussaalsaif.com'>
               <MagneticButton
                 variant='outline'
                 size='md'
                 className='w-full border-muted-foreground'
               >
-                info@dennissnellenberg.com
+                inquiries@hussaalsaif.com
               </MagneticButton>
             </a>
           </div>
           <div>
-            <a href='tel:+31627847430'>
+            <a href='https://instagram.com/hussa.ss' target='_blank' rel='noopener noreferrer'>
               <MagneticButton
                 variant='outline'
                 size='md'
                 className='w-full border-muted-foreground'
               >
-                +31 6 27 84 74 30
+                @hussa.ss
               </MagneticButton>
             </a>
           </div>

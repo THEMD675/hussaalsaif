@@ -1,44 +1,42 @@
 'use client';
 
-import { CldImage, CldVideoPlayer } from 'next-cloudinary';
-
 import { Center } from '@/components';
 
 /**
  * @param {Object} props
  * @param {'image' | 'video'} props.type
  * @param {string} props.source
+ * @param {string} [props.alt]
  */
-export function ProjectSlider({ type, source }) {
+export function ProjectSlider({ type, source, alt = 'Hussa AlSaif' }) {
   const image =
     type === 'image' ? (
-      <CldImage
+      <img
         src={source}
-        className='object-cover'
-        fill={true}
-        alt='project items'
+        className='object-cover w-full h-full absolute inset-0'
+        alt={alt}
       />
     ) : null;
   const video =
     type === 'video' ? (
-      <CldVideoPlayer
+      <video
         src={source}
-        loop={true}
+        loop
         controls={false}
-        muted={true}
-        autoPlay='always'
-        width='100%'
-        height='100%'
-        className='!static !bg-transparent'
+        muted
+        autoPlay
+        playsInline
+        className='object-cover w-full h-full absolute inset-0'
       />
     ) : null;
 
   return (
     <Center
-      className='relative w-1/4 rounded'
+      className='relative w-1/4 rounded overflow-hidden'
       style={{
         minWidth: '150px',
         height: '20vw',
+        background: 'linear-gradient(135deg, #89BBdf 0%, #a8d4f0 50%, #d4e8f7 100%)',
       }}
     >
       {image}

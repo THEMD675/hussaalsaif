@@ -1,18 +1,18 @@
 export const socialMedias = [
   {
-    href: 'https://www.awwwards.com/dennissnellenberg/',
-    title: 'Awwwards',
-  },
-  {
-    href: 'https://www.instagram.com/codebydennis/',
+    href: 'https://www.instagram.com/hussa.ss/',
     title: 'Instagram',
   },
   {
-    href: 'https://dribbble.com/dennissnellenberg',
-    title: 'Dribbble',
+    href: 'https://www.tiktok.com/@hussa.502',
+    title: 'TikTok',
   },
   {
-    href: 'https://www.linkedin.com/in/dennissnellenberg/',
-    title: 'LinkedIn',
+    href: 'https://www.youtube.com/@hussaalsaif',
+    title: 'YouTube',
+  },
+  {
+    href: 'https://www.snapchat.com/add/hussa.alsaif',
+    title: 'Snapchat',
   },
 ];

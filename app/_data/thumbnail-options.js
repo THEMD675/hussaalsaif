@@ -1,22 +1,26 @@
 export const thumbnailOptions = [
   {
-    href: '/fabric',
-    title: 'FABRIC™',
+    href: '#',
+    title: 'Brand Campaigns',
     image: 'Dennis-Portfolio/images/hlz36eeb3ddfvqt9tex9',
+    category: 'Content & Strategy',
   },
   {
-    href: '/aanstekelijk',
-    title: 'Aanstekelijk',
+    href: '#',
+    title: 'Event Coverage',
     image: 'Dennis-Portfolio/images/aigt2q3xiqb8ovujzscc',
+    category: 'Red Carpet & Launches',
   },
   {
-    href: '/base-create',
-    title: 'Base Create',
+    href: '#',
+    title: 'Beauty Editorials',
     image: 'Dennis-Portfolio/images/ahuzarh793qmv9sdveyk',
+    category: 'Photoshoots & Campaigns',
   },
   {
-    href: '/avvr',
-    title: 'AVVR',
+    href: '#',
+    title: 'YouTube & Reels',
     image: 'Dennis-Portfolio/images/pzychyr1ans60gqlevhg',
+    category: 'Video Content',
   },
 ];

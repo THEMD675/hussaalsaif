@@ -2,37 +2,37 @@ export const projectOptions = {
   first: [
     {
       type: 'image',
-      source: 'Dennis-Portfolio/images/rpmf9egswyd8563mxe9t',
-    },
-    {
-      type: 'video',
-      source: 'Dennis-Portfolio/videos/fldn3dntkusr22roeybr',
+      source: '/images/placeholder-1.jpg',
     },
     {
       type: 'image',
-      source: 'Dennis-Portfolio/images/k7bp2wbfmalpjfk3yk5q',
+      source: '/images/placeholder-2.jpg',
     },
     {
-      type: 'video',
-      source: 'Dennis-Portfolio/videos/x8w8sbohl5wkfuelmkhu',
+      type: 'image',
+      source: '/images/placeholder-3.jpg',
+    },
+    {
+      type: 'image',
+      source: '/images/placeholder-4.jpg',
     },
   ],
   second: [
     {
       type: 'image',
-      source: 'Dennis-Portfolio/images/r4kcbkvkl0djjt0mxmcw',
-    },
-    {
-      type: 'video',
-      source: 'Dennis-Portfolio/videos/q0yepc6dssbosmdk3isu',
+      source: '/images/placeholder-5.jpg',
     },
     {
       type: 'image',
-      source: 'Dennis-Portfolio/images/ffoc9zsoeusptc7jcid5',
+      source: '/images/placeholder-6.jpg',
     },
     {
-      type: 'video',
-      source: 'Dennis-Portfolio/videos/usiswniv5qhgu2vamhnx',
+      type: 'image',
+      source: '/images/placeholder-7.jpg',
+    },
+    {
+      type: 'image',
+      source: '/images/placeholder-8.jpg',
     },
   ],
 };

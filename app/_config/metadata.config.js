@@ -1,42 +1,37 @@
 /** @type {import('next').Metadata} */
 export const rootMetadata = {
-  metadataBase: new URL('https://dennis-snellenberg-portfolio.vercel.app/'),
+  metadataBase: new URL('https://hussaalsaif.com/'),
   title: {
-    template: '%s | Dennis Snellenberg',
-    default: 'Dennis Snellenberg • Freelance Designer & Developer',
+    template: '%s | Hussa AlSaif',
+    default: 'Hussa AlSaif • Content Creator & Brand Ambassador',
   },
   description:
-    'Helping brands thrive in the digital world. Located in The Netherlands. Delivering tailor-made digital designs and building interactive websites from scratch. © Code by Dennis',
-  generator: 'Dennis Snellenberg',
-  applicationName: 'Dennis Snellenberg',
+    'Saudi-based lifestyle, beauty & fashion content creator. 140K+ followers across Instagram, TikTok, YouTube & Snapchat. Brand partnerships, event coverage & campaign collaborations.',
+  generator: 'Hussa AlSaif',
+  applicationName: 'Hussa AlSaif',
   referrer: 'origin-when-cross-origin',
-  keywords: ['Design', 'Develope', 'Freelance'],
+  keywords: ['Content Creator', 'Brand Ambassador', 'Beauty', 'Lifestyle', 'Saudi Arabia', 'Influencer'],
   authors: [
-    { name: 'Ali Bagheri', url: 'https://www.github.com/alibagheri2079' },
+    { name: 'Hussa AlSaif', url: 'https://hussaalsaif.com' },
   ],
-  creator: 'Ali Bagheri',
-  publisher: 'Ali Bagheri',
+  creator: 'Hussa AlSaif',
+  publisher: 'Hussa AlSaif',
   twitter: {
     card: 'summary_large_image',
-    title: 'Dennis Snellenberg',
+    title: 'Hussa AlSaif',
     description:
-      'Helping brands thrive in the digital world. Located in The Netherlands. Delivering tailor-made digital designs and building interactive websites from scratch. © Code by Dennis',
-    siteId: '1467726470533754880',
-    creator: '@AliBagheri2079',
-    creatorId: '1467726470533754880',
+      'Saudi-based lifestyle, beauty & fashion content creator. 140K+ followers. Brand partnerships & campaign collaborations.',
     images: {
-      url: 'https://dennis-snellenberg-portfolio.vercel.app/screenshot.png',
-      alt: 'Portfolio Screenshot',
+      url: 'https://hussaalsaif.com/screenshot.png',
+      alt: 'Hussa AlSaif Portfolio',
     },
   },
   robots: {
-    index: false,
+    index: true,
     follow: true,
-    nocache: true,
     googleBot: {
       index: true,
-      follow: false,
-      noimageindex: true,
+      follow: true,
       'max-video-preview': -1,
       'max-image-preview': 'large',
       'max-snippet': -1,

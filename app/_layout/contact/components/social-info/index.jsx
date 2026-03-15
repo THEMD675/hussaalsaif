@@ -29,12 +29,12 @@ export function SocialInfo() {
         <div className='flex gap-8'>
           <div>
             <ListTitle>Version</ListTitle>
-            <p className='mt-7'>2022 © Edition</p>
+            <p className='mt-7'>2026 © Edition</p>
           </div>
           <div>
             <ListTitle>Local time</ListTitle>
             <p className='mt-7'>
-              <time>04:01 PM GMT+2</time>
+              <time>Riyadh, GMT+3</time>
             </p>
           </div>
         </div>

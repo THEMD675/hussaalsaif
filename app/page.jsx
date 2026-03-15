@@ -10,9 +10,9 @@ import {
 
 /** @type {import('next').Metadata} */
 export const metadata = {
-  title: 'Home | Dennis Snellenberg',
+  title: 'Hussa AlSaif | Content Creator & Brand Ambassador',
   description:
-    'Helping brands thrive in the digital world. Located in The Netherlands. Delivering tailor-made digital designs and building interactive websites from scratch. © Code by Dennis',
+    'Saudi-based content creator and brand ambassador. Beauty, lifestyle, and fashion content across Instagram, TikTok, YouTube, and Snapchat. Based in Riyadh.',
 };
 
 export default function Home() {
