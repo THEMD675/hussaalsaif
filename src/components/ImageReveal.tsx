@@ -31,31 +31,33 @@ export default function ImageReveal({
   useEffect(() => {
     if (!containerRef.current || !overlayRef.current || !imageRef.current) return;
 
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: containerRef.current,
-        start: "top 80%",
-        toggleActions: "play none none none",
-      },
-    });
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top 80%",
+          toggleActions: "play none none none",
+        },
+      });
 
-    tl.to(overlayRef.current, {
-      scaleX: 0,
-      duration: 0.8,
-      ease: "power3.inOut",
-      transformOrigin: "right center",
-    }).from(
-      imageRef.current,
-      {
-        scale: 1.3,
-        duration: 1.2,
-        ease: "power3.out",
-      },
-      "-=0.4"
-    );
+      tl.to(overlayRef.current, {
+        scaleX: 0,
+        duration: 0.8,
+        ease: "power3.inOut",
+        transformOrigin: "right center",
+      }).from(
+        imageRef.current,
+        {
+          scale: 1.3,
+          duration: 1.2,
+          ease: "power3.out",
+        },
+        "-=0.4"
+      );
+    }, containerRef);
 
     return () => {
-      ScrollTrigger.getAll().forEach((t) => t.kill());
+      ctx.revert();
     };
   }, []);
 
@@ -71,6 +73,7 @@ export default function ImageReveal({
           src={src}
           alt={alt}
           fill={fill}
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 45vw"
           className={`object-cover ${className}`}
           priority={priority}
         />

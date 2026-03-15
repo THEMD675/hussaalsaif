@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "lenis/dist/lenis.css";
 
 @theme inline {
   --font-sans: var(--font-inter);
@@ -9,18 +10,22 @@
   background: rgba(137, 187, 223, 0.3);
 }
 
-html {
-  scroll-behavior: smooth;
+/* Let Lenis handle smooth scrolling - do NOT set scroll-behavior: smooth */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
 }
 
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-/* Smooth scroll sections */
-section {
-  will-change: transform;
 }
 
 /* Custom scrollbar */
@@ -54,11 +59,48 @@ section {
   border: 1px solid rgba(137, 187, 223, 0.15);
 }
 
-/* Marquee animation */
+/* Glass variant for dark sections */
+.glass-dark {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Marquee animation - seamless loop using exactly 2 copies */
 @keyframes marquee {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
 .animate-marquee {
   animation: marquee 25s linear infinite;
+}
+
+/* Noscript fallback */
+noscript .noscript-visible {
+  display: block !important;
+}
+
+/* Result cards */
+.result-card {
+  background: linear-gradient(135deg, rgba(137, 187, 223, 0.05) 0%, rgba(255, 255, 255, 0.8) 100%);
+  border: 1px solid rgba(137, 187, 223, 0.12);
+  transition: all 0.5s ease;
+}
+.result-card:hover {
+  border-color: rgba(137, 187, 223, 0.3);
+  box-shadow: 0 20px 60px rgba(137, 187, 223, 0.08);
+  transform: translateY(-2px);
+}
+
+/* Demo / demographic cards */
+.demo-card {
+  background: white;
+  border: 1px solid rgba(137, 187, 223, 0.1);
+  transition: all 0.5s ease;
+}
+.demo-card:hover {
+  border-color: rgba(137, 187, 223, 0.25);
+  box-shadow: 0 20px 60px rgba(137, 187, 223, 0.1);
+  transform: translateY(-4px);
 }

@@ -20,29 +20,31 @@ export default function HorizontalScroll({ projects }: { projects: Project[] }) 
   useEffect(() => {
     if (!containerRef.current || !trackRef.current) return;
 
-    const totalWidth = trackRef.current.scrollWidth - window.innerWidth;
+    const ctx = gsap.context(() => {
+      const totalWidth = trackRef.current!.scrollWidth - window.innerWidth;
 
-    gsap.to(trackRef.current, {
-      x: -totalWidth,
-      ease: "none",
-      scrollTrigger: {
-        trigger: containerRef.current,
-        start: "top top",
-        end: () => `+=${totalWidth}`,
-        pin: true,
-        scrub: 1,
-        invalidateOnRefresh: true,
-      },
-    });
+      gsap.to(trackRef.current, {
+        x: -totalWidth,
+        ease: "none",
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top top",
+          end: () => `+=${totalWidth}`,
+          pin: true,
+          scrub: 1,
+          invalidateOnRefresh: true,
+        },
+      });
+    }, containerRef);
 
     return () => {
-      ScrollTrigger.getAll().forEach((t) => t.kill());
+      ctx.revert();
     };
   }, []);
 
   return (
-    <div ref={containerRef} className="overflow-hidden">
-      <div ref={trackRef} className="flex gap-6 sm:gap-8 py-8 will-change-transform">
+    <div ref={containerRef} className="overflow-hidden touch-pan-y">
+      <div ref={trackRef} className="flex gap-6 sm:gap-8 py-8 pl-5 sm:pl-8 will-change-transform">
         {projects.map((project) => (
           <div
             key={project.brand}
@@ -51,8 +53,9 @@ export default function HorizontalScroll({ projects }: { projects: Project[] }) 
             <div className="relative aspect-[3/4] rounded-2xl sm:rounded-3xl overflow-hidden mb-4">
               <Image
                 src={project.image}
-                alt={project.brand}
+                alt={`${project.brand} — ${project.category}`}
                 fill
+                sizes="(max-width: 640px) 75vw, (max-width: 768px) 50vw, 35vw"
                 className="object-cover transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
@@ -67,6 +70,8 @@ export default function HorizontalScroll({ projects }: { projects: Project[] }) 
             </div>
           </div>
         ))}
+        {/* Spacer to allow last card to be fully visible */}
+        <div className="flex-shrink-0 w-[5vw]" aria-hidden="true" />
       </div>
     </div>
   );

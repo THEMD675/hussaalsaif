@@ -1,10 +1,10 @@
 "use client";
 
-import { useRef, useMemo } from "react";
+import { useRef, useMemo, useState, useEffect } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 
-function Particles({ count = 300 }) {
+function Particles({ count = 300 }: { count?: number }) {
   const mesh = useRef<THREE.Points>(null);
 
   const particles = useMemo(() => {
@@ -91,19 +91,44 @@ function FloatingArc() {
 }
 
 export default function ParticleField() {
+  const [canRender, setCanRender] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    // Check for WebGL support and device capability
+    try {
+      const canvas = document.createElement("canvas");
+      const gl = canvas.getContext("webgl") || canvas.getContext("experimental-webgl");
+      if (!gl) {
+        setCanRender(false);
+        return;
+      }
+    } catch {
+      setCanRender(false);
+      return;
+    }
+
+    const mobile = window.innerWidth < 768 || /Mobi|Android/i.test(navigator.userAgent);
+    setIsMobile(mobile);
+    setCanRender(true);
+  }, []);
+
+  if (!canRender) return null;
+
   return (
-    <div className="absolute inset-0 z-0">
+    <div className="absolute inset-0 z-0" aria-hidden="true">
       <Canvas
         camera={{ position: [0, 0, 7], fov: 50 }}
-        dpr={[1, 1.5]}
-        gl={{ antialias: true, alpha: true }}
+        dpr={isMobile ? [1, 1] : [1, 1.5]}
+        gl={{ antialias: !isMobile, alpha: true, powerPreference: "low-power" }}
         style={{ background: "transparent" }}
+        frameloop={isMobile ? "demand" : "always"}
       >
         <ambientLight intensity={0.4} />
         <pointLight position={[5, 3, 5]} intensity={3} color="#89BBdf" distance={25} />
-        <Particles />
-        <FloatingRing />
-        <FloatingArc />
+        <Particles count={isMobile ? 100 : 300} />
+        {!isMobile && <FloatingRing />}
+        {!isMobile && <FloatingArc />}
       </Canvas>
     </div>
   );

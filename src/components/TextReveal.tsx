@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useCallback } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -22,36 +22,69 @@ export default function TextReveal({
   stagger = 0.03,
 }: TextRevealProps) {
   const ref = useRef<HTMLElement>(null);
+  const hasAnimated = useRef(false);
 
-  useEffect(() => {
-    if (!ref.current) return;
+  const setupAnimation = useCallback(() => {
+    if (!ref.current || hasAnimated.current) return;
+    hasAnimated.current = true;
+
     const el = ref.current;
 
-    // Split text into words
-    const words = children.split(" ");
-    el.innerHTML = words
-      .map((word) => `<span class="inline-block overflow-hidden"><span class="inline-block translate-y-full">${word}</span></span>`)
-      .join(" ");
+    // Split text into words safely using DOM API instead of innerHTML
+    const text = children;
+    const words = text.split(" ");
+    el.textContent = "";
 
-    const spans = el.querySelectorAll("span > span");
-
-    gsap.to(spans, {
-      y: 0,
-      duration: 0.8,
-      stagger,
-      delay,
-      ease: "power3.out",
-      scrollTrigger: {
-        trigger: el,
-        start: "top 85%",
-        toggleActions: "play none none none",
-      },
+    const wordSpans: HTMLSpanElement[] = [];
+    words.forEach((word, i) => {
+      if (i > 0) {
+        el.appendChild(document.createTextNode(" "));
+      }
+      const wrapper = document.createElement("span");
+      wrapper.style.display = "inline-block";
+      wrapper.style.overflow = "hidden";
+      wrapper.style.verticalAlign = "bottom";
+      const inner = document.createElement("span");
+      inner.style.display = "inline-block";
+      inner.style.transform = "translateY(100%)";
+      inner.textContent = word;
+      wrapper.appendChild(inner);
+      el.appendChild(wrapper);
+      wordSpans.push(inner);
     });
 
-    return () => {
-      ScrollTrigger.getAll().forEach((t) => t.kill());
-    };
+    const ctx = gsap.context(() => {
+      gsap.to(wordSpans, {
+        y: 0,
+        duration: 0.8,
+        stagger,
+        delay,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: el,
+          start: "top 85%",
+          toggleActions: "play none none none",
+        },
+      });
+    }, el);
+
+    return ctx;
   }, [children, delay, stagger]);
 
-  return <Tag ref={ref as React.RefObject<HTMLElement & HTMLParagraphElement & HTMLHeadingElement>} className={className}>{children}</Tag>;
+  useEffect(() => {
+    hasAnimated.current = false;
+    const ctx = setupAnimation();
+    return () => {
+      ctx?.revert();
+    };
+  }, [setupAnimation]);
+
+  return (
+    <Tag
+      ref={ref as React.RefObject<HTMLHeadingElement & HTMLParagraphElement & HTMLSpanElement>}
+      className={className}
+    >
+      {children}
+    </Tag>
+  );
 }

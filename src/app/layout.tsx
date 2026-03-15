@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Inter } from "next/font/google";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -36,15 +38,51 @@ export const metadata: Metadata = {
   },
 };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Hussa AlSaif",
+  alternateName: "حصه السيف",
+  url: "https://hussaalsaif.com",
+  image: "https://hussaalsaif.com/images/hero.jpg",
+  jobTitle: "Content Creator & Brand Ambassador",
+  description:
+    "Saudi content creator & brand ambassador with 330K+ followers. Partnered with Sephora, Estée Lauder, MAC, Too Faced, Fendi & more.",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Khobar & Riyadh",
+    addressCountry: "SA",
+  },
+  sameAs: [
+    "https://instagram.com/hussa.ss",
+    "https://tiktok.com/@hussa.502",
+    "https://youtube.com/@hussaalsaif",
+    "https://snapchat.com/add/hussa.alsaif",
+    "https://linktr.ee/Hussaalsaif",
+    "https://fable.co/club/the-reading-room-with-hussa-205180405525",
+  ],
+  knowsAbout: ["Beauty", "Lifestyle", "Fashion", "Content Creation", "Brand Partnerships"],
+  alumniOf: {
+    "@type": "CollegeOrUniversity",
+    name: "Imam Abdulrahman Bin Faisal University",
+  },
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${playfair.variable} ${inter.variable} scroll-smooth`}>
+    <html lang="en" className={`${playfair.variable} ${inter.variable}`}>
       <body className="font-sans antialiased bg-[#fafcfe] text-gray-900 overflow-x-hidden">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         {children}
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
