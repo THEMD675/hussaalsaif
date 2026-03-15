@@ -1,19 +1,12 @@
 "use client";
 
-import { useRef, useEffect, useCallback } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
+import { useRef, useEffect, useState, type ReactNode } from "react";
 
 interface TextRevealProps {
-  children: string;
+  children: ReactNode;
   className?: string;
   as?: "h1" | "h2" | "h3" | "h4" | "p" | "span";
   delay?: number;
-  stagger?: number;
-  /** Split by "word" (default) or "char" for character-level animation */
-  splitBy?: "word" | "char";
 }
 
 export default function TextReveal({
@@ -21,100 +14,37 @@ export default function TextReveal({
   className = "",
   as: Tag = "p",
   delay = 0,
-  stagger = 0.04,
-  splitBy = "word",
 }: TextRevealProps) {
   const ref = useRef<HTMLElement>(null);
-  const hasAnimated = useRef(false);
-
-  const setupAnimation = useCallback(() => {
-    if (!ref.current || hasAnimated.current) return;
-    hasAnimated.current = true;
-
-    const el = ref.current;
-    const text = children;
-    el.textContent = "";
-
-    const animTargets: HTMLSpanElement[] = [];
-
-    if (splitBy === "char") {
-      const words = text.split(" ");
-      words.forEach((word, wi) => {
-        if (wi > 0) {
-          el.appendChild(document.createTextNode(" "));
-        }
-        const wordWrap = document.createElement("span");
-        wordWrap.style.display = "inline-block";
-        wordWrap.style.whiteSpace = "nowrap";
-
-        word.split("").forEach((char) => {
-          const wrapper = document.createElement("span");
-          wrapper.style.display = "inline-block";
-          wrapper.style.overflow = "hidden";
-          wrapper.style.verticalAlign = "bottom";
-          const inner = document.createElement("span");
-          inner.style.display = "inline-block";
-          inner.style.transform = "translateY(110%)";
-          inner.style.willChange = "transform";
-          inner.textContent = char;
-          wrapper.appendChild(inner);
-          wordWrap.appendChild(wrapper);
-          animTargets.push(inner);
-        });
-
-        el.appendChild(wordWrap);
-      });
-    } else {
-      const words = text.split(" ");
-      words.forEach((word, i) => {
-        if (i > 0) {
-          el.appendChild(document.createTextNode(" "));
-        }
-        const wrapper = document.createElement("span");
-        wrapper.style.display = "inline-block";
-        wrapper.style.overflow = "hidden";
-        wrapper.style.verticalAlign = "bottom";
-        const inner = document.createElement("span");
-        inner.style.display = "inline-block";
-        inner.style.transform = "translateY(110%)";
-        inner.style.willChange = "transform";
-        inner.textContent = word;
-        wrapper.appendChild(inner);
-        el.appendChild(wrapper);
-        animTargets.push(inner);
-      });
-    }
-
-    const ctx = gsap.context(() => {
-      gsap.to(animTargets, {
-        y: 0,
-        duration: 1,
-        stagger,
-        delay,
-        ease: "power4.out",
-        scrollTrigger: {
-          trigger: el,
-          start: "top 88%",
-          toggleActions: "play none none none",
-        },
-      });
-    }, el);
-
-    return ctx;
-  }, [children, delay, stagger, splitBy]);
+  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    hasAnimated.current = false;
-    const ctx = setupAnimation();
-    return () => {
-      ctx?.revert();
-    };
-  }, [setupAnimation]);
+    const el = ref.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1, rootMargin: "-40px" }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <Tag
       ref={ref as React.RefObject<HTMLHeadingElement & HTMLParagraphElement & HTMLSpanElement>}
       className={className}
+      style={{
+        opacity: visible ? 1 : 0,
+        transform: visible ? "translateY(0)" : "translateY(20px)",
+        transition: `opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1) ${delay}s, transform 0.7s cubic-bezier(0.22, 1, 0.36, 1) ${delay}s`,
+      }}
     >
       {children}
     </Tag>

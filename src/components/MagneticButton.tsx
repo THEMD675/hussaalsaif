@@ -1,7 +1,6 @@
 "use client";
 
 import { useRef, useState, useEffect, type ReactNode } from "react";
-import { motion } from "framer-motion";
 
 interface MagneticButtonProps {
   children: ReactNode;
@@ -19,7 +18,7 @@ export default function MagneticButton({
   onClick,
 }: MagneticButtonProps) {
   const ref = useRef<HTMLDivElement>(null);
-  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [pos, setPos] = useState({ x: 0, y: 0 });
   const isTouchRef = useRef(false);
 
   useEffect(() => {
@@ -31,41 +30,35 @@ export default function MagneticButton({
     if (isTouchRef.current || !ref.current) return;
     const { clientX, clientY } = e;
     const { left, top, width, height } = ref.current.getBoundingClientRect();
-    const x = (clientX - (left + width / 2)) * 0.3;
-    const y = (clientY - (top + height / 2)) * 0.3;
-    setPosition({ x, y });
+    setPos({
+      x: (clientX - (left + width / 2)) * 0.25,
+      y: (clientY - (top + height / 2)) * 0.25,
+    });
   };
 
-  const reset = () => setPosition({ x: 0, y: 0 });
+  const reset = () => setPos({ x: 0, y: 0 });
 
-  const inner = href ? (
-    <a
-      href={href}
-      target={target}
-      rel={target === "_blank" ? "noopener noreferrer" : undefined}
-      className={`${className} min-h-[44px] min-w-[44px] flex items-center justify-center`}
-      onClick={onClick}
-    >
-      {children}
-    </a>
-  ) : (
-    <div
-      className={`${className} min-h-[44px] min-w-[44px] flex items-center justify-center`}
-      onClick={onClick}
-    >
-      {children}
-    </div>
-  );
+  const Component = href ? "a" : "div";
 
   return (
-    <motion.div
+    <div
       ref={ref}
       onMouseMove={handleMouse}
       onMouseLeave={reset}
-      animate={{ x: position.x, y: position.y }}
-      transition={{ type: "spring", stiffness: 150, damping: 15, mass: 0.1 }}
+      style={{
+        transform: `translate(${pos.x}px, ${pos.y}px)`,
+        transition: "transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+      }}
     >
-      {inner}
-    </motion.div>
+      <Component
+        href={href}
+        target={target}
+        rel={target === "_blank" ? "noopener noreferrer" : undefined}
+        className={className}
+        onClick={onClick}
+      >
+        {children}
+      </Component>
+    </div>
   );
 }

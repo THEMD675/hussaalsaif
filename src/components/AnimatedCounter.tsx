@@ -1,7 +1,6 @@
 "use client";
 
 import { useRef, useEffect, useState } from "react";
-import { useInView } from "framer-motion";
 
 interface AnimatedCounterProps {
   value: string;
@@ -25,7 +24,18 @@ function parseValue(value: string): { prefix: string; number: number; decimals: 
 
 export default function AnimatedCounter({ value, className = "" }: AnimatedCounterProps) {
   const ref = useRef<HTMLSpanElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-50px" });
+  const [isInView, setIsInView] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setIsInView(true); observer.disconnect(); } },
+      { threshold: 0.1, rootMargin: "-50px" }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
   const [displayValue, setDisplayValue] = useState("0");
   const { prefix, number, decimals, suffix } = parseValue(value);
   const hasStarted = useRef(false);
