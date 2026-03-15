@@ -23,9 +23,19 @@ const ParticleField = dynamic(() => import("@/components/ParticleField"), { ssr:
 const SmoothScroll = dynamic(() => import("@/components/SmoothScroll"), { ssr: false });
 
 const BRANDS = [
-  "Sephora", "Fendi", "Too Faced", "Estee Lauder", "Dyson",
-  "Kerastase", "Herbal Essences", "Redken", "MAC",
-  "Wella Professionals", "Level Shoes", "La Belle", "Sol de Janeiro",
+  { name: "Sephora", logo: "/images/brands/sephora.svg" },
+  { name: "Fendi", logo: "/images/brands/fendi.svg" },
+  { name: "Too Faced", logo: "/images/brands/too-faced.svg" },
+  { name: "Estée Lauder", logo: "/images/brands/estee-lauder.svg" },
+  { name: "Dyson", logo: "/images/brands/dyson.svg" },
+  { name: "Kérastase", logo: "/images/brands/kerastase.svg" },
+  { name: "Herbal Essences", logo: "/images/brands/herbal-essences.svg" },
+  { name: "Redken", logo: "/images/brands/redken.svg" },
+  { name: "MAC", logo: "/images/brands/mac.svg" },
+  { name: "Wella", logo: "/images/brands/wella.svg" },
+  { name: "Level Shoes", logo: "/images/brands/level-shoes.svg" },
+  { name: "Sol de Janeiro", logo: "/images/brands/sol-de-janeiro.svg" },
+  { name: "Denman", logo: "/images/brands/denman.svg" },
 ];
 
 const PROJECTS = [
@@ -34,35 +44,35 @@ const PROJECTS = [
     brand: "Sephora Collection",
     category: "Beauty",
     description: "Full creative direction for a regional product launch. In-store and digital activation across KSA.",
-    result: "Sold out within opening weekend",
+    result: "Ongoing partnership",
   },
   {
     image: "/images/brand-campaigns.jpg",
     brand: "Fendi FW25",
     category: "Fashion",
     description: "Editorial partnership for the regional FW25 debut. Front row, backstage, and campaign content.",
-    result: "Official regional campaign face",
+    result: "Regional launch content",
   },
   {
     image: "/images/gallery-6.jpg",
     brand: "Herbal Essences",
     category: "Hair Care",
     description: "Multi-platform storytelling campaign anchored in the GCC curly hair movement.",
-    result: "Category-defining content series",
+    result: "Multi-platform campaign",
   },
   {
     image: "/images/gallery-5.jpg",
     brand: "Too Faced x Sephora ME",
     category: "Beauty",
     description: "Exclusive launch collaboration for the Middle East market. Digital and retail activation.",
-    result: "Collection sold out in 72 hours",
+    result: "Regional launch collaboration",
   },
   {
     image: "/images/gallery-4.jpg",
     brand: "Sol de Janeiro",
     category: "Lifestyle",
     description: "Brand introduction to the Saudi market through lifestyle-driven storytelling.",
-    result: "First Saudi market ambassador",
+    result: "Regional launch content",
   },
   {
     image: "/images/event-coverage.jpg",
@@ -96,9 +106,9 @@ const PROJECTS = [
 
 const STATS = [
   { value: "13+", label: "Brand Partnerships" },
-  { value: "72", label: "Hour Sell-Outs" },
+  { value: "330K+", label: "Total Followers" },
   { value: "3+", label: "Return Collaborations" },
-  { value: "1", label: "Saudi Beauty Voice" },
+  { value: "5", label: "Platforms" },
 ];
 
 const SOCIALS = [
@@ -296,10 +306,19 @@ export default function Home() {
       </section>
 
       {/* -- BRAND MARQUEE -- */}
-      <section className="py-10 border-y border-gray-100/60 overflow-hidden bg-white/50" aria-label="Brand partners">
-        <div className="flex animate-marquee whitespace-nowrap" aria-hidden="true">
-          {[...BRANDS, ...BRANDS].map((brand, i) => (
-            <span key={i} className="mx-8 sm:mx-14 text-lg sm:text-xl font-serif font-bold text-gray-200/80 tracking-wider">{brand}</span>
+      <section className="py-12 sm:py-16 border-y border-gray-100/60 overflow-hidden bg-white/50" aria-label="Brand partners">
+        <div className="flex animate-marquee whitespace-nowrap items-center" aria-hidden="true">
+          {[...BRANDS, ...BRANDS, ...BRANDS].map((brand, i) => (
+            <div key={i} className="mx-8 sm:mx-12 shrink-0 opacity-40 hover:opacity-80 transition-opacity duration-500 grayscale hover:grayscale-0">
+              <Image
+                src={brand.logo}
+                alt={brand.name}
+                width={120}
+                height={40}
+                className="h-8 sm:h-10 w-auto object-contain"
+                unoptimized
+              />
+            </div>
           ))}
         </div>
       </section>
@@ -329,9 +348,9 @@ export default function Home() {
           <div className="grid md:grid-cols-3 gap-6">
             <ScrollReveal delay={0.1}>
               <div className="result-card rounded-2xl p-8 sm:p-10">
-                <div className="text-[#89BBdf] text-3xl font-serif font-bold mb-3">Sell-Outs</div>
-                <div className="text-gray-900 font-semibold text-[15px] mb-2">Products Don&apos;t Last</div>
-                <p className="text-gray-400 text-[13px] leading-relaxed">Multiple product launches have sold out within 72 hours of Hussa&apos;s involvement. Not impressions. Not views. Empty shelves.</p>
+                <div className="text-[#89BBdf] text-3xl font-serif font-bold mb-3">Impact</div>
+                <div className="text-gray-900 font-semibold text-[15px] mb-2">Content That Converts</div>
+                <p className="text-gray-400 text-[13px] leading-relaxed">Hussa&apos;s campaigns drive real consumer action. Her audience trusts her recommendations and acts on them &mdash; that&apos;s why brands keep coming back.</p>
               </div>
             </ScrollReveal>
             <ScrollReveal delay={0.2}>

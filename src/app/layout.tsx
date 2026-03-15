@@ -60,8 +60,8 @@ export const metadata: Metadata = {
     telephone: false,
   },
   icons: {
-    icon: [{ url: "/favicon.ico", sizes: "any" }],
-    apple: [{ url: "/favicon.ico", sizes: "180x180" }],
+    icon: [{ url: "/images/logo-hs.svg", type: "image/svg+xml" }],
+    apple: [{ url: "/images/logo-hs.svg" }],
   },
   alternates: {
     canonical: "https://hussaalsaif.com",
@@ -249,7 +249,7 @@ const campaignsJsonLd = {
         "@type": "CreativeWork",
         name: "Sephora Collection — Full-Funnel Beauty Campaign",
         description:
-          "Full-funnel beauty campaign across Instagram & TikTok driving in-store traffic across KSA. 2.1M reach, 340K+ engagements.",
+          "Full-funnel beauty campaign across Instagram & TikTok driving in-store traffic across KSA. Strong audience engagement and retail impact.",
         creator: { "@id": "https://hussaalsaif.com/#person" },
         about: { "@type": "Brand", name: "Sephora" },
         genre: "Beauty Campaign",
@@ -263,7 +263,7 @@ const campaignsJsonLd = {
         "@type": "CreativeWork",
         name: "Fendi FW25 — Luxury Fashion Partnership",
         description:
-          "Luxury fashion partnership with event coverage and editorial content for regional launch. 1.8M impressions, 12% engagement rate.",
+          "Luxury fashion partnership with event coverage and editorial content for regional launch. High-impact regional campaign.",
         creator: { "@id": "https://hussaalsaif.com/#person" },
         about: { "@type": "Brand", name: "Fendi" },
         genre: "Fashion",
@@ -277,7 +277,7 @@ const campaignsJsonLd = {
         "@type": "CreativeWork",
         name: "Estee Lauder — Premium Skincare Campaign",
         description:
-          "Premium skincare campaign with educational content series and product deep-dives. 2.4M reach, 15% conversion lift.",
+          "Premium skincare campaign with educational content series and product deep-dives. Long-term brand relationship with strong audience resonance.",
         creator: { "@id": "https://hussaalsaif.com/#person" },
         about: { "@type": "Brand", name: "Estee Lauder" },
         genre: "Skincare",
@@ -291,7 +291,7 @@ const campaignsJsonLd = {
         "@type": "CreativeWork",
         name: "Too Faced x Sephora ME — Exclusive Collaboration",
         description:
-          "Exclusive collaboration for regional Sephora launch. In-store and digital activation. 1.5M reach, sold out in 72 hours.",
+          "Exclusive collaboration for regional Sephora launch. In-store and digital activation with strong consumer response.",
         creator: { "@id": "https://hussaalsaif.com/#person" },
         about: { "@type": "Brand", name: "Too Faced" },
         genre: "Beauty",
@@ -305,7 +305,7 @@ const campaignsJsonLd = {
         "@type": "CreativeWork",
         name: "MAC Cosmetics — Creative Makeup Series",
         description:
-          "Creative makeup content series featuring new collection launches and tutorials. 1.1M reach, 290K engagements.",
+          "Creative makeup content series featuring new collection launches and tutorials. Recurring campaign partnership.",
         creator: { "@id": "https://hussaalsaif.com/#person" },
         about: { "@type": "Brand", name: "MAC Cosmetics" },
         genre: "Makeup",
@@ -319,7 +319,7 @@ const campaignsJsonLd = {
         "@type": "CreativeWork",
         name: "Herbal Essences — GCC Product Campaign",
         description:
-          "Multi-platform product integration with authentic storytelling for the GCC market. 890K reach, 4.2x ROI.",
+          "Multi-platform product integration with authentic storytelling for the GCC curly hair community.",
         creator: { "@id": "https://hussaalsaif.com/#person" },
         about: { "@type": "Brand", name: "Herbal Essences" },
         genre: "Hair Care",
@@ -331,9 +331,9 @@ const campaignsJsonLd = {
       position: 7,
       item: {
         "@type": "CreativeWork",
-        name: "Sol de Janeiro — Saudi Summer Campaign",
+        name: "Sol de Janeiro — Saudi Market Launch",
         description:
-          "Lifestyle-driven brand awareness campaign for Saudi summer market. 1.2M impressions, 280K engagements.",
+          "Lifestyle-driven brand awareness campaign introducing Sol de Janeiro to the Saudi market.",
         creator: { "@id": "https://hussaalsaif.com/#person" },
         about: { "@type": "Brand", name: "Sol de Janeiro" },
         genre: "Lifestyle",
@@ -347,7 +347,7 @@ const campaignsJsonLd = {
         "@type": "CreativeWork",
         name: "La Belle — Regional Fashion Editorial",
         description:
-          "Regional fashion brand partnership with editorial content and event coverage. 670K reach, 8.7% engagement rate.",
+          "Regional fashion brand partnership with editorial content and event coverage.",
         creator: { "@id": "https://hussaalsaif.com/#person" },
         about: { "@type": "Brand", name: "La Belle" },
         genre: "Fashion",
@@ -361,7 +361,7 @@ const campaignsJsonLd = {
         "@type": "CreativeWork",
         name: "Level Shoes — Luxury Footwear Campaign",
         description:
-          "Luxury footwear campaign with styling content and in-store activation. 940K impressions, 210K engagements.",
+          "Luxury footwear campaign with styling content and in-store activation.",
         creator: { "@id": "https://hussaalsaif.com/#person" },
         about: { "@type": "Brand", name: "Level Shoes" },
         genre: "Fashion",

@@ -33,9 +33,19 @@ const AUDIENCE_INTERESTS = [
 ];
 
 const BRANDS = [
-  "Sephora", "Fendi", "Estee Lauder", "MAC", "Too Faced", "Dyson",
-  "Kerastase", "Herbal Essences", "Redken", "Wella Professionals",
-  "Level Shoes", "La Belle", "Sol de Janeiro",
+  { name: "Sephora", logo: "/images/brands/sephora.svg" },
+  { name: "Fendi", logo: "/images/brands/fendi.svg" },
+  { name: "Too Faced", logo: "/images/brands/too-faced.svg" },
+  { name: "Estée Lauder", logo: "/images/brands/estee-lauder.svg" },
+  { name: "Dyson", logo: "/images/brands/dyson.svg" },
+  { name: "Kérastase", logo: "/images/brands/kerastase.svg" },
+  { name: "Herbal Essences", logo: "/images/brands/herbal-essences.svg" },
+  { name: "Redken", logo: "/images/brands/redken.svg" },
+  { name: "MAC", logo: "/images/brands/mac.svg" },
+  { name: "Wella", logo: "/images/brands/wella.svg" },
+  { name: "Level Shoes", logo: "/images/brands/level-shoes.svg" },
+  { name: "Sol de Janeiro", logo: "/images/brands/sol-de-janeiro.svg" },
+  { name: "Denman", logo: "/images/brands/denman.svg" },
 ];
 
 const CONTENT_FORMATS = [
@@ -102,28 +112,28 @@ const CASE_STUDIES = [
     brand: "Sephora Collection",
     category: "Beauty Campaign",
     description: "Full-funnel beauty campaign across Instagram & TikTok. Product launch content driving in-store traffic across KSA.",
-    result: "2.1M reach, 340K+ engagements",
+    result: "Strong engagement and retail impact",
   },
   {
     image: "/images/brand-campaigns.jpg",
     brand: "Fendi FW25",
     category: "Fashion",
     description: "Luxury fashion partnership featuring event coverage and editorial-style content for regional launch.",
-    result: "1.8M impressions, 12% engagement rate",
+    result: "High-impact regional campaign",
   },
   {
     image: "/images/gallery-5.jpg",
     brand: "Too Faced x Sephora ME",
     category: "Beauty",
     description: "Exclusive collaboration content for regional Sephora launch. In-store and digital activation.",
-    result: "1.5M reach, sold out in 72 hours",
+    result: "Strong consumer response across channels",
   },
   {
     image: "/images/event-coverage.jpg",
     brand: "Estee Lauder",
     category: "Skincare",
     description: "Premium skincare campaign with educational content series and product deep-dives.",
-    result: "2.4M reach, 15% conversion lift",
+    result: "Long-term brand relationship",
   },
 ];
 
@@ -350,11 +360,17 @@ export default function MediaKit() {
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
               {BRANDS.map((brand) => (
                 <div
-                  key={brand}
-                  className="glass rounded-2xl p-6 sm:p-8 text-center hover:shadow-lg hover:shadow-[#89BBdf]/5 transition-all duration-500"
+                  key={brand.name}
+                  className="glass rounded-2xl p-6 sm:p-8 text-center hover:shadow-lg hover:shadow-[#89BBdf]/5 transition-all duration-500 flex flex-col items-center justify-center gap-3"
                 >
-                  <p className="font-serif text-lg font-bold text-gray-300 group-hover:text-gray-900 transition-colors">
-                    {brand}
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={brand.logo}
+                    alt={brand.name}
+                    className="h-8 sm:h-10 w-auto object-contain opacity-50 grayscale"
+                  />
+                  <p className="font-serif text-sm font-bold text-gray-300">
+                    {brand.name}
                   </p>
                 </div>
               ))}
