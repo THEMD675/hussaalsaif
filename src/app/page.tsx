@@ -179,6 +179,24 @@ export default function Home() {
     return initScrollDepthTracking();
   }, []);
 
+  // Force autoplay on all muted videos (iOS fix)
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const video = entry.target as HTMLVideoElement;
+          if (entry.isIntersecting) {
+            video.play().catch(() => {});
+          }
+        });
+      },
+      { threshold: 0.25 }
+    );
+    const videos = document.querySelectorAll("video[autoplay]");
+    videos.forEach((v) => observer.observe(v));
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <main className="relative">
       <SmoothScroll />
@@ -341,7 +359,7 @@ export default function Home() {
             What happens when brands partner with Hussa.
           </TextReveal>
           <ScrollReveal delay={0.1}>
-            <p className="text-gray-400 text-[15px] mb-16 max-w-lg">When Hussa partners with a brand, her audience pays attention. 13+ global brands trust her to introduce their products to the Saudi and GCC market.</p>
+            <p className="text-gray-400 text-[15px] mb-16 max-w-lg">When Hussa partners with a brand, her audience pays attention. Global names from Sephora to Fendi trust her to introduce their products to the Saudi and GCC market.</p>
           </ScrollReveal>
           <ScrollReveal delay={0.1}>
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 mb-20">
@@ -391,11 +409,11 @@ export default function Home() {
                 <p className="text-gray-500 leading-[1.85] mb-6 text-[15px]">141K Instagram followers from just 25 curated posts. 196K on TikTok with 10.6M+ likes. Every piece of content is a conversation, not a broadcast. When Hussa recommends something, her audience buys it.</p>
               </ScrollReveal>
               <ScrollReveal delay={0.4}>
-                <p className="text-gray-500 leading-[1.85] mb-8 text-[15px]">Beyond beauty: host of <em>The Reading Room</em> book club, bilingual storyteller across Arabic and English, with a Masters in Marketing. Brands don&apos;t brief Hussa &mdash; they collaborate with her.</p>
+                <p className="text-gray-500 leading-[1.85] mb-8 text-[15px]">Beyond beauty: host of <em>The Reading Room</em> book club, bilingual storyteller across Arabic and English. Brands don&apos;t brief Hussa &mdash; they collaborate with her.</p>
               </ScrollReveal>
               <ScrollReveal delay={0.5}>
                 <div className="flex flex-wrap gap-3">
-                  {["Beauty Authority", "Cultural Figure", "The Reading Room", "Masters in Marketing", "Bilingual AR/EN"].map((tag) => (
+                  {["Beauty Authority", "Cultural Figure", "The Reading Room", "Fine Arts", "Bilingual AR/EN"].map((tag) => (
                     <span key={tag} className="bg-[#89BBdf]/10 text-[#5a9ac5] px-4 py-2 rounded-full text-[12px] font-medium">{tag}</span>
                   ))}
                 </div>
@@ -432,7 +450,7 @@ export default function Home() {
                 <div key={project.brand} className="group">
                   <div className="relative aspect-[4/5] rounded-2xl overflow-hidden mb-4">
                     {project.video ? (
-                      <video autoPlay loop muted playsInline preload="none" poster={project.image} className="absolute inset-0 w-full h-full object-cover">
+                      <video autoPlay loop muted playsInline preload="metadata" poster={project.image} className="absolute inset-0 w-full h-full object-cover">
                         <source src={project.video} type="video/mp4" />
                       </video>
                     ) : (

@@ -9,13 +9,37 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function SmoothScroll() {
   useEffect(() => {
+    // Skip Lenis on mobile — native scroll is smoother on touch devices
+    const isMobile = window.innerWidth < 768 || "ontouchstart" in window;
+    if (isMobile) {
+      // Just handle anchor clicks natively
+      function handleAnchorClick(e: MouseEvent) {
+        const target = e.target as HTMLElement;
+        const anchor = target.closest("a[href^='#']");
+        if (!anchor) return;
+        const href = anchor.getAttribute("href");
+        if (!href) return;
+        if (href === "#") {
+          e.preventDefault();
+          window.scrollTo({ top: 0, behavior: "smooth" });
+          return;
+        }
+        const el = document.querySelector(href);
+        if (el) {
+          e.preventDefault();
+          el.scrollIntoView({ behavior: "smooth" });
+        }
+      }
+      document.addEventListener("click", handleAnchorClick);
+      return () => document.removeEventListener("click", handleAnchorClick);
+    }
+
+    // Desktop: Lenis smooth scroll
     const lenis = new Lenis({
-      duration: 1.4,
+      duration: 1.2,
       easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      touchMultiplier: 2,
     });
 
-    // Sync Lenis with GSAP ScrollTrigger
     lenis.on("scroll", ScrollTrigger.update);
 
     function tickerCallback(time: number) {
@@ -23,22 +47,16 @@ export default function SmoothScroll() {
     }
 
     gsap.ticker.add(tickerCallback);
-    gsap.ticker.lagSmoothing(0);
 
-    // Lightweight: no per-section parallax or body color transitions
-    // Let Lenis handle smooth scrolling, ScrollReveal handles section reveals
-
-    // Handle scroll-to for anchor links
     function handleAnchorClick(e: MouseEvent) {
       const target = e.target as HTMLElement;
       const anchor = target.closest("a[href^='#']");
       if (!anchor) return;
       const href = anchor.getAttribute("href");
-      if (!href || href === "#") {
-        if (href === "#") {
-          e.preventDefault();
-          lenis.scrollTo(0);
-        }
+      if (!href) return;
+      if (href === "#") {
+        e.preventDefault();
+        lenis.scrollTo(0);
         return;
       }
       const el = document.querySelector(href);
@@ -49,8 +67,6 @@ export default function SmoothScroll() {
     }
 
     document.addEventListener("click", handleAnchorClick);
-
-    // Ensure ScrollTrigger measurements are correct after Lenis is set up
     ScrollTrigger.refresh();
 
     return () => {

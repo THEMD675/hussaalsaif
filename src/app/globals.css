@@ -334,9 +334,25 @@ noscript .noscript-visible {
   padding-left: 8px;
 }
 
-/* ── Performance: GPU layer hints ── */
+/* ── Performance ── */
 .will-change-transform {
   will-change: transform;
+}
+
+/* Force video autoplay on iOS */
+video[autoplay] {
+  -webkit-transform: translateZ(0);
+}
+
+/* Prevent excessive GPU layers on mobile */
+@media (max-width: 768px) {
+  .result-card, .demo-card, .media-kit-card, .glass {
+    will-change: auto;
+    transform: none;
+  }
+  .result-card:hover, .demo-card:hover, .media-kit-card:hover {
+    transform: none;
+  }
 }
 
 /* ── Reduce motion for accessibility ── */
