@@ -110,11 +110,25 @@ export default function ParticleField() {
 
     const mobile = window.innerWidth < 768 || /Mobi|Android/i.test(navigator.userAgent);
     setIsMobile(mobile);
+
+    // Completely disable on low-end devices: low memory, high device pixel ratio on small screen, or slow connection
+    if (mobile) {
+      const lowMemory = (navigator as unknown as { deviceMemory?: number }).deviceMemory !== undefined
+        && (navigator as unknown as { deviceMemory?: number }).deviceMemory! <= 4;
+      const slowConnection = (navigator as unknown as { connection?: { effectiveType?: string } }).connection?.effectiveType === "2g"
+        || (navigator as unknown as { connection?: { effectiveType?: string } }).connection?.effectiveType === "slow-2g";
+      if (lowMemory || slowConnection) {
+        setCanRender(false);
+        return;
+      }
+    }
+
     setCanRender(true);
   }, []);
 
   if (!canRender) return null;
 
+  // On mobile, render a much lighter version — no rings/arcs, fewer particles, on-demand rendering
   return (
     <div className="absolute inset-0 z-0" aria-hidden="true">
       <Canvas
@@ -126,7 +140,7 @@ export default function ParticleField() {
       >
         <ambientLight intensity={0.4} />
         <pointLight position={[5, 3, 5]} intensity={3} color="#89BBdf" distance={25} />
-        <Particles count={isMobile ? 100 : 300} />
+        <Particles count={isMobile ? 80 : 300} />
         {!isMobile && <FloatingRing />}
         {!isMobile && <FloatingArc />}
       </Canvas>

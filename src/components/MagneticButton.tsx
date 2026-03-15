@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState, type ReactNode } from "react";
+import { useRef, useState, useEffect, type ReactNode } from "react";
 import { motion } from "framer-motion";
 
 interface MagneticButtonProps {
@@ -18,9 +18,16 @@ export default function MagneticButton({
 }: MagneticButtonProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
+
+  useEffect(() => {
+    setIsTouchDevice(
+      "ontouchstart" in window || navigator.maxTouchPoints > 0
+    );
+  }, []);
 
   const handleMouse = (e: React.MouseEvent) => {
-    if (!ref.current) return;
+    if (isTouchDevice || !ref.current) return;
     const { clientX, clientY } = e;
     const { left, top, width, height } = ref.current.getBoundingClientRect();
     const x = (clientX - (left + width / 2)) * 0.3;
@@ -29,6 +36,26 @@ export default function MagneticButton({
   };
 
   const reset = () => setPosition({ x: 0, y: 0 });
+
+  // On touch devices, render without the magnetic motion wrapper
+  if (isTouchDevice) {
+    return (
+      <div ref={ref}>
+        {href ? (
+          <a
+            href={href}
+            target={target}
+            rel={target === "_blank" ? "noopener noreferrer" : undefined}
+            className={`${className} min-h-[44px] min-w-[44px] flex items-center justify-center`}
+          >
+            {children}
+          </a>
+        ) : (
+          <div className={`${className} min-h-[44px] min-w-[44px] flex items-center justify-center`}>{children}</div>
+        )}
+      </div>
+    );
+  }
 
   return (
     <motion.div

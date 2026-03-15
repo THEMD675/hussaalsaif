@@ -25,6 +25,39 @@ export default function SmoothScroll() {
     gsap.ticker.add(tickerCallback);
     gsap.ticker.lagSmoothing(0);
 
+    // --- Section background color transitions ---
+    // Targets sections that transition between white and blue-tinted backgrounds
+    const sectionTransitions = [
+      { trigger: "#results", from: "#fafcfe", to: "#ffffff" },
+      { trigger: "#about", from: "#ffffff", to: "#f8fbfe" },
+      { trigger: "#work", from: "#f8fbfe", to: "#ffffff" },
+      { trigger: "#audience", from: "#ffffff", to: "#f8fbfe" },
+      { trigger: "#media-kit", from: "#f8fbfe", to: "#ffffff" },
+    ];
+
+    const sectionCtxs: gsap.Context[] = [];
+    sectionTransitions.forEach(({ trigger }) => {
+      const el = document.querySelector(trigger);
+      if (!el) return;
+      const ctx = gsap.context(() => {
+        gsap.fromTo(
+          el,
+          { opacity: 0.85 },
+          {
+            opacity: 1,
+            duration: 0.5,
+            scrollTrigger: {
+              trigger: el,
+              start: "top 80%",
+              end: "top 20%",
+              scrub: true,
+            },
+          }
+        );
+      });
+      sectionCtxs.push(ctx);
+    });
+
     // Handle scroll-to for anchor links (#about, #work, #contact, etc.)
     function handleAnchorClick(e: MouseEvent) {
       const target = e.target as HTMLElement;
@@ -50,6 +83,7 @@ export default function SmoothScroll() {
     return () => {
       document.removeEventListener("click", handleAnchorClick);
       gsap.ticker.remove(tickerCallback);
+      sectionCtxs.forEach((ctx) => ctx.revert());
       lenis.destroy();
     };
   }, []);

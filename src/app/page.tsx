@@ -10,8 +10,11 @@ import MagneticButton from "@/components/MagneticButton";
 import TextReveal from "@/components/TextReveal";
 import ImageReveal from "@/components/ImageReveal";
 import HorizontalScroll from "@/components/HorizontalScroll";
+import ContactForm from "@/components/ContactForm";
 
 gsap.registerPlugin(ScrollTrigger);
+
+const BackToTop = dynamic(() => import("@/components/BackToTop"), { ssr: false });
 
 const ParticleField = dynamic(() => import("@/components/ParticleField"), { ssr: false });
 const SmoothScroll = dynamic(() => import("@/components/SmoothScroll"), { ssr: false });
@@ -116,6 +119,17 @@ const AUDIENCE_INTERESTS = [
   "Travel & Hospitality",
   "Food & Dining",
 ];
+
+const MEDIA_KIT_ITEMS = [
+  { icon: "chart", title: "Audience Demographics", desc: "Age, gender, location, income, and interest breakdowns" },
+  { icon: "grid", title: "Platform Breakdown", desc: "Follower counts, growth rates, and per-platform analytics" },
+  { icon: "trending", title: "Engagement Rates", desc: "Likes, comments, shares, saves — benchmarked against industry" },
+  { icon: "star", title: "Past Campaign Results", desc: "Case studies with reach, ROI, and conversion data" },
+  { icon: "tag", title: "Rate Card", desc: "Pricing for Reels, TikToks, Stories, bundles, and ambassadorships" },
+  { icon: "play", title: "Content Formats", desc: "Reels, TikTok, YouTube, Stories, Event Coverage, UGC" },
+];
+
+const TRUSTED_BRANDS = ["Sephora", "Fendi", "Dyson", "Estee Lauder", "MAC", "Kerastase", "Too Faced"];
 
 export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -233,18 +247,18 @@ export default function Home() {
         <ParticleField />
         <div className="absolute inset-0 bg-gradient-to-b from-[#f0f7fc] via-[#fafcfe] to-white -z-10" />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 pt-32 sm:pt-40 pb-24">
-          <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-12 lg:gap-20 items-center">
+        <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 pt-28 sm:pt-40 pb-24 w-full">
+          <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-8 lg:gap-20 items-center">
             <div>
               <ScrollReveal delay={0.1}>
                 <p className="text-[#89BBdf] font-medium tracking-[0.35em] uppercase text-[11px] mb-8">
-                  Saudi Arabia&apos;s Leading Beauty & Lifestyle Voice
+                  Khobar &amp; Riyadh, Saudi Arabia
                 </p>
               </ScrollReveal>
 
               <ScrollReveal delay={0.2}>
                 <h1 className="font-serif font-bold tracking-tight leading-[0.88] mb-10"
-                  style={{ fontSize: "clamp(3.5rem, 8vw, 8rem)" }}>
+                  style={{ fontSize: "clamp(3.2rem, 8vw, 8rem)" }}>
                   Hussa<br /><span className="text-gradient">AlSaif</span>
                 </h1>
               </ScrollReveal>
@@ -272,18 +286,30 @@ export default function Home() {
             </div>
 
             <ScrollReveal delay={0.3}>
-              <ImageReveal
-                src="/images/hero.jpg"
-                alt="Hussa AlSaif"
-                containerClassName="rounded-3xl h-[400px] sm:h-[500px] lg:h-[600px] shadow-2xl shadow-[#89BBdf]/8"
-                priority
-              />
+              <div ref={heroImageRef} className="hero-image-wrapper rounded-3xl h-[420px] sm:h-[520px] lg:h-[620px] shadow-2xl shadow-[#89BBdf]/8 overflow-hidden relative">
+                <Image
+                  src="/images/hero.jpg"
+                  alt="Hussa AlSaif"
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 45vw"
+                  className="object-cover hero-image"
+                  priority
+                />
+              </div>
             </ScrollReveal>
           </div>
         </div>
 
+        {/* Scroll indicator - elegant chevron */}
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10" aria-hidden="true">
-          <div className="w-[1px] h-16 bg-gradient-to-b from-transparent via-[#89BBdf] to-transparent opacity-40 animate-pulse" />
+          <div className="scroll-indicator flex flex-col items-center gap-1">
+            <svg width="20" height="10" viewBox="0 0 20 10" fill="none" className="scroll-chevron">
+              <path d="M1 1L10 8L19 1" stroke="#89BBdf" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+            <svg width="20" height="10" viewBox="0 0 20 10" fill="none" className="scroll-chevron scroll-chevron-2">
+              <path d="M1 1L10 8L19 1" stroke="#89BBdf" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </div>
         </div>
       </section>
 
