@@ -9,7 +9,7 @@ import { MagneticButton, ParallaxFade, ParallaxReveal } from '@/components';
 import { Title, Wrapper } from './index.styled';
 
 const phrase =
-  'Creating authentic content that moves audiences. From brand campaigns to red carpet coverage. Beauty, lifestyle & fashion — across every platform.';
+  'Trusted by Sephora, Estée Lauder, MAC, Too Faced, Sol de Janeiro, P&G, Herbal Essences, Fendi, Level Shoes, La Belle, Assaf & Laverne. Beauty, lifestyle & fashion — across every platform.';
 
 export function Description() {
   return (
@@ -24,7 +24,7 @@ export function Description() {
         <div className='basis-7/12 lg:basis-3/12'>
           <ParallaxFade>
             <Balancer as='p' className='mt-2 text-base lg:text-lg'>
-              140K+ engaged followers across Instagram, TikTok, YouTube &
+              330K+ engaged followers across Instagram, TikTok, YouTube &
               Snapchat. Based in Riyadh, connecting global brands with the Saudi & GCC market.
             </Balancer>
           </ParallaxFade>

@@ -12,7 +12,7 @@ import {
 export const metadata = {
   title: 'Hussa AlSaif | Content Creator & Brand Ambassador',
   description:
-    'Saudi-based content creator and brand ambassador. Beauty, lifestyle, and fashion content across Instagram, TikTok, YouTube, and Snapchat. Based in Riyadh.',
+    'Saudi content creator & brand ambassador. Partnered with Sephora, Estée Lauder, MAC, Too Faced, Fendi, P&G & more. 330K+ followers. Based in Riyadh.',
 };
 
 export default function Home() {
