@@ -11,6 +11,23 @@ const BUDGET_OPTIONS = [
   { value: "100K+ SAR", label: "100K+ SAR" },
 ];
 
+const PARTNERSHIP_TYPES = [
+  { value: "", label: "Partnership type" },
+  { value: "Single Post", label: "Single Post" },
+  { value: "Campaign", label: "Campaign (3-5 posts)" },
+  { value: "Brand Ambassador", label: "Brand Ambassador" },
+  { value: "Event Appearance", label: "Event Appearance" },
+  { value: "Other", label: "Other" },
+];
+
+const TIMELINES = [
+  { value: "", label: "Timeline" },
+  { value: "This Month", label: "This Month" },
+  { value: "Next Month", label: "Next Month" },
+  { value: "Next Quarter", label: "Next Quarter" },
+  { value: "Flexible", label: "Flexible" },
+];
+
 interface FormErrors {
   name?: string;
   email?: string;
@@ -75,6 +92,8 @@ export default function ContactForm() {
       email: (formData.get("email") as string) || "",
       company: (formData.get("company") as string) || "",
       budget: (formData.get("budget") as string) || "",
+      partnershipType: (formData.get("partnershipType") as string) || "",
+      timeline: (formData.get("timeline") as string) || "",
       message: (formData.get("message") as string) || "",
       _honeypot: (formData.get("_honeypot") as string) || "",
     };
@@ -221,6 +240,37 @@ export default function ContactForm() {
             className="contact-input contact-select w-full"
           >
             {BUDGET_OPTIONS.map((opt) => (
+              <option key={opt.value} value={opt.value}>{opt.label}</option>
+            ))}
+          </select>
+        </div>
+      </div>
+
+      <div className="grid sm:grid-cols-2 gap-5">
+        <div>
+          <label htmlFor="cf-partnership" className="block text-gray-400 text-[12px] font-medium tracking-wide uppercase mb-2">
+            Partnership Type
+          </label>
+          <select
+            id="cf-partnership"
+            name="partnershipType"
+            className="contact-input contact-select w-full"
+          >
+            {PARTNERSHIP_TYPES.map((opt) => (
+              <option key={opt.value} value={opt.value}>{opt.label}</option>
+            ))}
+          </select>
+        </div>
+        <div>
+          <label htmlFor="cf-timeline" className="block text-gray-400 text-[12px] font-medium tracking-wide uppercase mb-2">
+            Timeline
+          </label>
+          <select
+            id="cf-timeline"
+            name="timeline"
+            className="contact-input contact-select w-full"
+          >
+            {TIMELINES.map((opt) => (
               <option key={opt.value} value={opt.value}>{opt.label}</option>
             ))}
           </select>

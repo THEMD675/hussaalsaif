@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Hussa AlSaif — Links | Social Media & Contact",
     description:
-      "Follow Hussa AlSaif on Instagram, TikTok, YouTube & Snapchat. Saudi content creator with 330K+ followers. Brand partnership inquiries welcome.",
+      "Follow Hussa AlSaif on Instagram, TikTok, YouTube & Snapchat. Saudi beauty & culture icon with 330K+ followers. Brand partnership inquiries welcome.",
     type: "website",
     url: "https://hussaalsaif.com/links",
     images: [
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Hussa AlSaif — Links",
     description:
-      "All of Hussa AlSaif's social media links. Saudi content creator with 330K+ followers.",
+      "All of Hussa AlSaif's social media links. Saudi beauty & culture icon with 330K+ followers.",
   },
 };
 
@@ -211,7 +211,7 @@ export default function LinksPage() {
             Hussa<span className="text-gradient">.</span>
           </h1>
           <p className="text-gray-500 text-[14px] leading-relaxed max-w-[280px] mx-auto">
-            Content Creator & Brand Ambassador
+            Beauty &amp; Culture Icon
           </p>
           <p className="text-[#89BBdf] text-[12px] font-medium tracking-wide mt-1">
             Khobar & Riyadh

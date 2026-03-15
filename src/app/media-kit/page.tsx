@@ -448,6 +448,40 @@ export default function MediaKit() {
         </section>
 
         {/* ============================================
+            PARTNERSHIP TIERS / RATE CARD
+            ============================================ */}
+        <section className="py-20 sm:py-28 bg-white print-break">
+          <div className="max-w-7xl mx-auto px-5 sm:px-8">
+            <p className="text-[#89BBdf] font-medium tracking-[0.35em] uppercase text-[11px] mb-4">Partnerships</p>
+            <h2 className="font-serif text-2xl sm:text-3xl font-bold leading-[1.15] mb-4">
+              Partnership Tiers
+            </h2>
+            <p className="text-gray-400 text-[15px] mb-12 max-w-lg">
+              Hussa works with a limited number of brands each quarter to maintain authenticity and impact.
+            </p>
+
+            <div className="grid sm:grid-cols-2 gap-5">
+              {[
+                { tier: "Single Post", desc: "One Instagram Reel or TikTok with Stories coverage. Perfect for product launches and seasonal campaigns.", price: "Available on request" },
+                { tier: "Campaign", desc: "Multi-post series (3-5 posts) across 2+ platforms. Ideal for sustained brand storytelling.", price: "Available on request" },
+                { tier: "Brand Ambassador", desc: "Quarterly or annual partnership with category exclusivity. Deep integration with Hussa's personal brand.", price: "Available on request" },
+                { tier: "Custom", desc: "Event appearances, creative direction, long-form content, or something we haven't thought of yet.", price: "Let's talk" },
+              ].map((item) => (
+                <div key={item.tier} className="result-card rounded-2xl p-7 sm:p-8 flex flex-col">
+                  <div className="flex items-start justify-between mb-3">
+                    <h3 className="font-serif text-lg font-bold text-gray-900">{item.tier}</h3>
+                    <span className="text-[11px] font-semibold text-[#89BBdf] bg-[#89BBdf]/10 px-3 py-1 rounded-full whitespace-nowrap shrink-0 ml-3">
+                      {item.price}
+                    </span>
+                  </div>
+                  <p className="text-gray-400 text-[13px] leading-relaxed flex-1">{item.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ============================================
             CONTACT CTA
             ============================================ */}
         <section className="py-20 sm:py-28 relative overflow-hidden print-break">

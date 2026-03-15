@@ -278,10 +278,10 @@ export default function Home() {
               </ScrollReveal>
               <ScrollReveal delay={0.4}>
                 <p className="text-gray-500 max-w-md leading-[1.8] mb-4 text-[16px] font-medium">
-                  She doesn&apos;t follow trends. She sets them. The defining voice in Saudi beauty, hair, and culture.
+                  The curly-hair icon with a PR degree, a book club, and the trust of the world&apos;s most discerning beauty houses.
                 </p>
                 <p className="text-gray-400 max-w-md leading-[1.8] mb-10 text-[14px]">
-                  Sephora. Fendi. Estee Lauder. MAC. Dyson. The world&apos;s most discerning houses choose Hussa.
+                  Sephora. Fendi. Dyson. Kerastase. Estée Lauder. MAC.
                 </p>
               </ScrollReveal>
               <ScrollReveal delay={0.5}>
@@ -353,23 +353,23 @@ export default function Home() {
           <div className="grid md:grid-cols-3 gap-6">
             <ScrollReveal delay={0.1}>
               <div className="result-card rounded-2xl p-8 sm:p-10">
-                <div className="text-[#89BBdf] text-3xl font-serif font-bold mb-3">Impact</div>
-                <div className="text-gray-900 font-semibold text-[15px] mb-2">Content That Converts</div>
-                <p className="text-gray-400 text-[13px] leading-relaxed">Hussa brings editorial instinct and genuine taste to every collaboration. Her audience trusts her voice &mdash; which is why brands choose to work with her.</p>
+                <div className="text-[#89BBdf] text-3xl font-serif font-bold mb-3">Pioneer</div>
+                <div className="text-gray-900 font-semibold text-[15px] mb-2">She Started the Movement</div>
+                <p className="text-gray-400 text-[13px] leading-relaxed">She pioneered the GCC curly hair movement. When Hussa talks about a product, her audience searches for it.</p>
               </div>
             </ScrollReveal>
             <ScrollReveal delay={0.2}>
               <div className="result-card rounded-2xl p-8 sm:p-10">
                 <div className="text-[#89BBdf] text-3xl font-serif font-bold mb-3">Repeat</div>
                 <div className="text-gray-900 font-semibold text-[15px] mb-2">Brands Come Back</div>
-                <p className="text-gray-400 text-[13px] leading-relaxed">Sephora, Estee Lauder, MAC, Kerastase &mdash; Hussa has built relationships with 13+ global brands across beauty, fashion, and lifestyle.</p>
+                <p className="text-gray-400 text-[13px] leading-relaxed">Sephora, Kerastase, Dyson &mdash; the brands that work with Hussa come back. Because the results speak.</p>
               </div>
             </ScrollReveal>
             <ScrollReveal delay={0.3}>
               <div className="result-card rounded-2xl p-8 sm:p-10">
                 <div className="text-[#89BBdf] text-3xl font-serif font-bold mb-3">Cultural</div>
-                <div className="text-gray-900 font-semibold text-[15px] mb-2">She Sets the Tone</div>
-                <p className="text-gray-400 text-[13px] leading-relaxed">From curly hair routines to seasonal beauty picks, Hussa creates the content Saudi women search for. She pioneered the GCC curly hair movement and her audience looks to her first.</p>
+                <div className="text-gray-900 font-semibold text-[15px] mb-2">Beyond Beauty</div>
+                <p className="text-gray-400 text-[13px] leading-relaxed">Book club host, TEDx organizer, bilingual storyteller. She&apos;s not just beauty &mdash; she&apos;s culture.</p>
               </div>
             </ScrollReveal>
           </div>
@@ -384,15 +384,15 @@ export default function Home() {
               <ScrollReveal>
                 <p className="text-[#89BBdf] font-medium tracking-[0.35em] uppercase text-[11px] mb-6">Hussa AlSaif</p>
               </ScrollReveal>
-              <TextReveal as="h2" className="font-serif text-3xl sm:text-4xl md:text-[2.8rem] font-bold leading-[1.15] mb-10">Saudi Arabia&apos;s definitive voice in beauty.</TextReveal>
+              <TextReveal as="h2" className="font-serif text-3xl sm:text-4xl md:text-[2.8rem] font-bold leading-[1.15] mb-10">Not an influencer. A cultural force.</TextReveal>
               <ScrollReveal delay={0.2}>
-                <p className="text-gray-500 leading-[1.85] mb-6 text-[15px]">Hussa AlSaif is a Saudi beauty and culture figure based between <strong className="text-gray-700">Al Khobar and Riyadh</strong>. With a background in <strong className="text-gray-700">Media &amp; Communication</strong>, she brings editorial instinct and genuine taste to everything she touches.</p>
+                <p className="text-gray-500 leading-[1.85] mb-6 text-[15px]">Hussa pioneered the Saudi curly hair movement before brands caught on. With a PR degree and a genuine obsession with beauty, she built an audience that trusts her taste implicitly.</p>
               </ScrollReveal>
               <ScrollReveal delay={0.3}>
-                <p className="text-gray-500 leading-[1.85] mb-6 text-[15px]">She pioneered the Saudi curly hair movement, founded <em>The Reading Room</em> &mdash; a literary community on Fable &mdash; and has organized TEDx events. Her world is beauty, but her range is culture.</p>
+                <p className="text-gray-500 leading-[1.85] mb-6 text-[15px]">25 carefully curated Instagram posts reaching 141K followers. 196K on TikTok. Every post is a conversation, not a broadcast. When Hussa recommends something, her audience acts.</p>
               </ScrollReveal>
               <ScrollReveal delay={0.4}>
-                <p className="text-gray-500 leading-[1.85] mb-8 text-[15px]">Brands don&apos;t brief Hussa. They collaborate with her. Because her audience doesn&apos;t follow recommendations &mdash; they follow <em>her</em>.</p>
+                <p className="text-gray-500 leading-[1.85] mb-8 text-[15px]">Beyond beauty: host of <em>The Reading Room</em> book club, TEDx organizer, bilingual storyteller. Brands don&apos;t brief Hussa. They collaborate with her.</p>
               </ScrollReveal>
               <ScrollReveal delay={0.5}>
                 <div className="flex flex-wrap gap-3">
@@ -631,9 +631,10 @@ export default function Home() {
               <p className="text-gray-600 text-[11px] tracking-[0.25em] uppercase">Khobar &middot; Riyadh</p>
             </div>
             <div className="flex items-center gap-8 text-[12px] text-gray-500 tracking-wide">
+              <a href="/media-kit" className="hover:text-[#89BBdf] transition-colors duration-300">Media Kit</a>
+              <a href="/links" className="hover:text-[#89BBdf] transition-colors duration-300">Links</a>
               <a href="https://instagram.com/hussa.ss" target="_blank" rel="noopener noreferrer" onClick={() => trackSocial("Instagram")} className="hover:text-[#89BBdf] transition-colors duration-300">Instagram</a>
               <a href="https://tiktok.com/@hussa.502" target="_blank" rel="noopener noreferrer" onClick={() => trackSocial("TikTok")} className="hover:text-[#89BBdf] transition-colors duration-300">TikTok</a>
-              <a href="https://youtube.com/@hussaalsaif" target="_blank" rel="noopener noreferrer" onClick={() => trackSocial("YouTube")} className="hover:text-[#89BBdf] transition-colors duration-300">YouTube</a>
               <a href="mailto:inquiries@hussaalsaif.com" onClick={() => trackEmail("inquiries@hussaalsaif.com", "footer")} className="hover:text-[#89BBdf] transition-colors duration-300">Contact</a>
             </div>
             <p className="text-gray-600 text-[11px]">&copy; 2026 Hussa AlSaif</p>

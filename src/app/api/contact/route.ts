@@ -55,7 +55,7 @@ export async function POST(req: NextRequest) {
     }
 
     const body = await req.json();
-    const { name, email, company, budget, message, _honeypot } = body;
+    const { name, email, company, budget, partnershipType, timeline, message, _honeypot } = body;
 
     // Honeypot: if this hidden field has a value, it's a bot
     if (_honeypot) {
@@ -88,6 +88,8 @@ export async function POST(req: NextRequest) {
     const safeEmail = escapeHtml(email.trim());
     const safeCompany = escapeHtml(company.trim());
     const safeBudget = escapeHtml((budget || "Not specified").trim());
+    const safePartnershipType = escapeHtml((partnershipType || "Not specified").trim());
+    const safeTimeline = escapeHtml((timeline || "Not specified").trim());
     const safeMessage = escapeHtml(message.trim());
 
     const emailHtml = `
@@ -112,6 +114,14 @@ export async function POST(req: NextRequest) {
           <tr>
             <td style="padding: 12px 0; color: #6b7280; font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; vertical-align: top;">Budget</td>
             <td style="padding: 12px 0; color: #1a1a1a; font-size: 15px;">${safeBudget}</td>
+          </tr>
+          <tr>
+            <td style="padding: 12px 0; color: #6b7280; font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; vertical-align: top;">Partnership</td>
+            <td style="padding: 12px 0; color: #1a1a1a; font-size: 15px;">${safePartnershipType}</td>
+          </tr>
+          <tr>
+            <td style="padding: 12px 0; color: #6b7280; font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; vertical-align: top;">Timeline</td>
+            <td style="padding: 12px 0; color: #1a1a1a; font-size: 15px;">${safeTimeline}</td>
           </tr>
           <tr>
             <td style="padding: 12px 0; color: #6b7280; font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; vertical-align: top;">Message</td>
@@ -154,6 +164,8 @@ export async function POST(req: NextRequest) {
         email: safeEmail,
         company: safeCompany,
         budget: safeBudget,
+        partnershipType: safePartnershipType,
+        timeline: safeTimeline,
         message: safeMessage,
         _subject: `New Brand Inquiry from ${name.trim()} — ${company.trim()}`,
         _template: "table",
