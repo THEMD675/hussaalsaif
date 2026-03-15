@@ -20,7 +20,6 @@ const BRANDS = [
   { name: "Fendi", logo: "/images/brands/fendi.svg", color: "#000000" },
   { name: "Too Faced", logo: "/images/brands/too-faced.svg", color: "#E91E8C" },
   { name: "Estée Lauder", logo: "/images/brands/estee-lauder.svg", color: "#002B5C" },
-  { name: "Lancôme", logo: "/images/brands/lancome.svg", color: "#000000" },
   { name: "Herbal Essences", logo: "/images/brands/herbal-essences.svg", color: "#006B3F" },
   { name: "MAC", logo: "/images/brands/mac.svg", color: "#000000" },
   { name: "Wella", logo: "/images/brands/wella.svg", color: "#C4161C" },
@@ -87,9 +86,9 @@ const PROJECTS = [
   },
   {
     image: "/images/sephora-grwm.jpg",
-    brand: "Sephora x Lancôme",
+    brand: "Sephora GRWM",
     category: "Beauty",
-    description: "GRWM content featuring new Lancôme products exclusively through Sephora Middle East.",
+    description: "GRWM content featuring new products exclusively through Sephora Middle East.",
     result: "Brand partnership",
   },
 ];
@@ -98,14 +97,14 @@ const STATS = [
   { value: "530K+", label: "Combined Reach" },
   { value: "191K", label: "YouTube Subs" },
   { value: "4.5M+", label: "TikTok Likes" },
-  { value: "13", label: "Brand Partners" },
+  { value: "12", label: "Brand Partners" },
 ];
 
 const SOCIALS = [
   { name: "Instagram", handle: "@hussa.ss", url: "https://instagram.com/hussa.ss", followers: "141K" },
   { name: "TikTok", handle: "@hussa.502", url: "https://tiktok.com/@hussa.502", followers: "198K" },
-  { name: "YouTube", handle: "@hussaalsaif", url: "https://youtube.com/@hussaalsaif" },
-  { name: "Snapchat", handle: "@hussa.alsaif", url: "https://snapchat.com/add/hussa.alsaif" },
+  { name: "YouTube", handle: "@hussaalsaif", url: "https://youtube.com/@hussaalsaif", followers: "191K" },
+  { name: "Snapchat", handle: "@hussa.alsaif", url: "https://snapchat.com/add/hussa.alsaif", followers: "Active" },
 ];
 
 const DEMOGRAPHICS = [
@@ -254,7 +253,7 @@ export default function Home() {
                   The curly-hair icon with a Masters in Marketing, a book club, and the trust of the world&apos;s most discerning beauty houses.
                 </p>
                 <p className="text-gray-500 max-w-md leading-[1.8] mb-10 text-[14px]">
-                  Sephora. Fendi. Estée Lauder. MAC. Lancôme. P&amp;G.
+                  Sephora. Fendi. Estée Lauder. MAC. P&amp;G.
                 </p>
               </ScrollReveal>
               <ScrollReveal delay={0.5}>
@@ -300,13 +299,13 @@ export default function Home() {
         <p className="text-center text-[10px] font-medium tracking-[0.4em] uppercase text-gray-300 mb-8">Trusted By</p>
         <div className="flex animate-marquee whitespace-nowrap items-center" aria-hidden="true">
           {[...BRANDS, ...BRANDS, ...BRANDS].map((brand, i) => (
-            <div key={i} className="mx-10 sm:mx-14 shrink-0 opacity-80 hover:opacity-100 transition-all duration-500 hover:scale-110">
+            <div key={i} className="mx-8 sm:mx-12 shrink-0 opacity-80 hover:opacity-100 transition-all duration-500 hover:scale-105 flex items-center justify-center" style={{ width: 120, height: 40 }}>
               <Image
                 src={brand.logo}
                 alt={brand.name}
-                width={140}
-                height={48}
-                className="h-7 sm:h-9 w-auto object-contain"
+                width={120}
+                height={40}
+                className="max-h-[28px] sm:max-h-[34px] w-auto object-contain"
                 loading="lazy"
               />
             </div>
@@ -346,7 +345,7 @@ export default function Home() {
               <div className="result-card rounded-2xl p-8 sm:p-10">
                 <div className="text-[#89BBdf] text-3xl font-serif font-bold mb-3">Repeat</div>
                 <div className="text-gray-900 font-semibold text-[15px] mb-2">Brands Come Back</div>
-                <p className="text-gray-500 text-[13px] leading-relaxed">Sephora, Estée Lauder, MAC, Lancôme &mdash; the brands that work with Hussa come back. Because the results speak.</p>
+                <p className="text-gray-500 text-[13px] leading-relaxed">Sephora, Estée Lauder, MAC &mdash; the brands that work with Hussa come back. Because the results speak.</p>
               </div>
               <div className="result-card rounded-2xl p-8 sm:p-10">
                 <div className="text-[#89BBdf] text-3xl font-serif font-bold mb-3">Cultural</div>
@@ -371,7 +370,7 @@ export default function Home() {
                 <p className="text-gray-500 leading-[1.85] mb-6 text-[15px]">Hussa pioneered the Saudi curly hair movement before brands caught on. With a <strong className="text-gray-700">Masters in Marketing</strong> and a Fine Arts background, she built an audience that trusts her taste implicitly.</p>
               </ScrollReveal>
               <ScrollReveal delay={0.3}>
-                <p className="text-gray-500 leading-[1.85] mb-6 text-[15px]">141K Instagram followers from just 25 curated posts. 198K on TikTok with 4.5M+ likes. Every piece of content is a conversation, not a broadcast. When Hussa recommends something, her audience buys it.</p>
+                <p className="text-gray-500 leading-[1.85] mb-6 text-[15px]">141K Instagram from 25 curated posts. 198K on TikTok. 191K YouTube subscribers with 2.5M+ views. Active daily on Snapchat. When Hussa recommends something, her audience buys it.</p>
               </ScrollReveal>
               <ScrollReveal delay={0.4}>
                 <p className="text-gray-500 leading-[1.85] mb-8 text-[15px]">Beyond beauty: host of <em>The Reading Room</em> book club, bilingual storyteller across Arabic and English. Brands don&apos;t brief Hussa &mdash; they collaborate with her.</p>

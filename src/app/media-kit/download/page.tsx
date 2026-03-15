@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 
 const BRANDS = [
-  "Sephora", "Fendi", "Too Faced", "Estée Lauder", "Lancôme",
+  "Sephora", "Fendi", "Too Faced", "Estée Lauder",
   "Herbal Essences", "MAC", "Wella", "P&G", "Oral-B",
   "Level Shoes", "Sol de Janeiro", "Denman",
 ];

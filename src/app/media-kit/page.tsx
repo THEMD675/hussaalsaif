@@ -37,7 +37,6 @@ const BRANDS = [
   { name: "Fendi", logo: "/images/brands/fendi.svg" },
   { name: "Too Faced", logo: "/images/brands/too-faced.svg" },
   { name: "Estée Lauder", logo: "/images/brands/estee-lauder.svg" },
-  { name: "Lancôme", logo: "/images/brands/lancome.svg" },
   { name: "Herbal Essences", logo: "/images/brands/herbal-essences.svg" },
   { name: "MAC", logo: "/images/brands/mac.svg" },
   { name: "Wella", logo: "/images/brands/wella.svg" },
