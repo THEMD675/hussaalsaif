@@ -156,22 +156,43 @@ export default function Home() {
     return initScrollDepthTracking();
   }, []);
 
-  // Force autoplay on all muted videos (iOS fix)
+  // Force autoplay on ALL muted videos — iOS/mobile fix
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           const video = entry.target as HTMLVideoElement;
           if (entry.isIntersecting) {
+            // Load the video first if preload was none
+            if (video.preload === "none") {
+              video.preload = "auto";
+              video.load();
+            }
             video.play().catch(() => {});
+          } else {
+            // Pause off-screen videos to save battery
+            video.pause();
           }
         });
       },
-      { threshold: 0.25 }
+      { threshold: 0, rootMargin: "200px" }
     );
-    const videos = document.querySelectorAll("video[autoplay]");
-    videos.forEach((v) => observer.observe(v));
-    return () => observer.disconnect();
+
+    // Observe all current videos
+    function observeAll() {
+      document.querySelectorAll("video[muted]").forEach((v) => observer.observe(v));
+    }
+
+    observeAll();
+
+    // Re-observe when new videos appear (HorizontalScroll renders later)
+    const mutationObserver = new MutationObserver(() => observeAll());
+    mutationObserver.observe(document.body, { childList: true, subtree: true });
+
+    return () => {
+      observer.disconnect();
+      mutationObserver.disconnect();
+    };
   }, []);
 
   return (

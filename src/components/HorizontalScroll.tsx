@@ -69,7 +69,7 @@ function ProjectCard({ project }: { project: Project }) {
               loop
               muted
               playsInline
-              preload="metadata"
+              preload="none"
               poster={project.image}
               className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out"
             >
