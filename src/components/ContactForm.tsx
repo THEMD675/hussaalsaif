@@ -127,17 +127,19 @@ export default function ContactForm() {
       hiddenForm.target = "formsubmit_target";
 
       const fields: Record<string, string> = {
-        name: data.name,
-        email: data.email,
-        company: data.company,
-        budget: data.budget,
-        "Partnership Type": data.partnershipType,
-        timeline: data.timeline,
-        message: data.message,
-        _subject: `New Inquiry: ${data.name} — ${data.company || "Direct"}`,
+        "Contact Name": data.name,
+        "Reply-To Email": data.email,
+        "Brand / Company": data.company || "Not specified",
+        "Budget Range": data.budget || "Not specified",
+        "Partnership Type": data.partnershipType || "Not specified",
+        "Timeline": data.timeline || "Not specified",
+        "Message": data.message,
+        _subject: `🔔 New Partnership Inquiry — ${data.company || data.name}`,
+        _replyto: data.email,
         _template: "table",
         _captcha: "false",
         _next: "https://hussaalsaif.com",
+        _autoresponse: `Thank you for reaching out, ${data.name}. Hussa's team has received your inquiry and will respond within 24 hours.\n\n— Hussa AlSaif Management\nhussaalsaif.com`,
       };
 
       for (const [key, value] of Object.entries(fields)) {

@@ -79,23 +79,29 @@ export async function POST(req: NextRequest) {
     const safeTimeline = escapeHtml(String(timeline || "Not specified").trim());
     const safeMessage = escapeHtml(String(message).slice(0, 5000).trim());
 
+    const labelStyle = "padding: 14px 0; color: #9ca3af; font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; width: 130px; vertical-align: top; border-bottom: 1px solid #f3f4f6;";
+    const valueStyle = "padding: 14px 0; color: #111827; font-size: 14px; border-bottom: 1px solid #f3f4f6;";
+
     const emailHtml = `
-      <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 600px; margin: 0 auto; padding: 40px 20px;">
-        <div style="border-bottom: 2px solid #89BBdf; padding-bottom: 20px; margin-bottom: 30px;">
-          <h1 style="margin: 0; font-size: 24px; color: #1a1a1a;">New Brand Inquiry</h1>
-          <p style="margin: 8px 0 0; color: #6b7280; font-size: 14px;">via hussaalsaif.com</p>
+      <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 640px; margin: 0 auto; padding: 0;">
+        <div style="background: linear-gradient(135deg, #89BBdf 0%, #a8d4f0 100%); padding: 40px 32px; border-radius: 12px 12px 0 0;">
+          <h1 style="margin: 0; font-size: 22px; color: #ffffff; font-weight: 700; letter-spacing: -0.01em;">New Partnership Inquiry</h1>
+          <p style="margin: 6px 0 0; color: rgba(255,255,255,0.8); font-size: 13px;">hussaalsaif.com &middot; ${new Date().toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}</p>
         </div>
-        <table style="width: 100%; border-collapse: collapse;">
-          <tr><td style="padding: 12px 0; color: #6b7280; font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; width: 120px; vertical-align: top;">Name</td><td style="padding: 12px 0; color: #1a1a1a; font-size: 15px;">${safeName}</td></tr>
-          <tr><td style="padding: 12px 0; color: #6b7280; font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; vertical-align: top;">Email</td><td style="padding: 12px 0; color: #1a1a1a; font-size: 15px;"><a href="mailto:${safeEmail}" style="color: #89BBdf;">${safeEmail}</a></td></tr>
-          <tr><td style="padding: 12px 0; color: #6b7280; font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; vertical-align: top;">Company</td><td style="padding: 12px 0; color: #1a1a1a; font-size: 15px;">${safeCompany || "—"}</td></tr>
-          <tr><td style="padding: 12px 0; color: #6b7280; font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; vertical-align: top;">Budget</td><td style="padding: 12px 0; color: #1a1a1a; font-size: 15px;">${safeBudget}</td></tr>
-          <tr><td style="padding: 12px 0; color: #6b7280; font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; vertical-align: top;">Partnership</td><td style="padding: 12px 0; color: #1a1a1a; font-size: 15px;">${safePartnershipType}</td></tr>
-          <tr><td style="padding: 12px 0; color: #6b7280; font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; vertical-align: top;">Timeline</td><td style="padding: 12px 0; color: #1a1a1a; font-size: 15px;">${safeTimeline}</td></tr>
-          <tr><td style="padding: 12px 0; color: #6b7280; font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; vertical-align: top;">Message</td><td style="padding: 12px 0; color: #1a1a1a; font-size: 15px; line-height: 1.6;">${safeMessage.replace(/\n/g, "<br />")}</td></tr>
-        </table>
-        <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #e5e7eb;">
-          <p style="color: #9ca3af; font-size: 12px; margin: 0;">Reply directly to this email to respond to ${safeName}.</p>
+        <div style="padding: 32px; background: #ffffff; border: 1px solid #e5e7eb; border-top: none; border-radius: 0 0 12px 12px;">
+          <table style="width: 100%; border-collapse: collapse;">
+            <tr><td style="${labelStyle}">Contact</td><td style="${valueStyle}"><strong>${safeName}</strong></td></tr>
+            <tr><td style="${labelStyle}">Email</td><td style="${valueStyle}"><a href="mailto:${safeEmail}" style="color: #89BBdf; text-decoration: none;">${safeEmail}</a></td></tr>
+            <tr><td style="${labelStyle}">Brand</td><td style="${valueStyle}">${safeCompany || "—"}</td></tr>
+            <tr><td style="${labelStyle}">Partnership</td><td style="${valueStyle}">${safePartnershipType}</td></tr>
+            <tr><td style="${labelStyle}">Budget</td><td style="${valueStyle}">${safeBudget}</td></tr>
+            <tr><td style="${labelStyle}">Timeline</td><td style="${valueStyle}">${safeTimeline}</td></tr>
+            <tr><td style="${labelStyle}">Message</td><td style="padding: 14px 0; color: #111827; font-size: 14px; line-height: 1.7;">${safeMessage.replace(/\n/g, "<br />")}</td></tr>
+          </table>
+          <div style="margin-top: 28px; padding-top: 20px; border-top: 1px solid #e5e7eb; display: flex; gap: 16px;">
+            <a href="mailto:${safeEmail}?subject=Re: Partnership Inquiry — Hussa AlSaif" style="display: inline-block; background: #89BBdf; color: #fff; padding: 10px 24px; border-radius: 8px; font-size: 13px; font-weight: 600; text-decoration: none;">Reply to ${safeName}</a>
+          </div>
+          <p style="color: #d1d5db; font-size: 11px; margin: 20px 0 0;">Hussa AlSaif Management &middot; hussaalsaif.com</p>
         </div>
       </div>
     `;
@@ -112,7 +118,7 @@ export async function POST(req: NextRequest) {
           from: "Hussa AlSaif <onboarding@resend.dev>",
           to: [TO_EMAIL],
           reply_to: email.trim(),
-          subject: `New Inquiry: ${safeName} — ${safeCompany || "Direct"}`,
+          subject: `🔔 New Partnership Inquiry — ${safeCompany || safeName}`,
           html: emailHtml,
         }),
       });
