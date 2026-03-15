@@ -60,7 +60,7 @@ export const metadata: Metadata = {
     telephone: false,
   },
   icons: {
-    icon: [{ url: "/images/logo-hs.svg", type: "image/svg+xml" }],
+    icon: [{ url: "/images/favicon.svg", type: "image/svg+xml" }],
     apple: [{ url: "/images/logo-hs.svg" }],
   },
   alternates: {

@@ -1,7 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
-  <rect width="120" height="120" rx="24" fill="#fafcfe"/>
-  <text x="60" y="72" text-anchor="middle" font-family="'Playfair Display', Georgia, serif" font-weight="700" font-size="52" fill="#1a1a1a">H</text>
-  <text x="60" y="72" text-anchor="middle" font-family="'Playfair Display', Georgia, serif" font-weight="700" font-size="52" fill="#1a1a1a" opacity="0">S</text>
-  <text x="75" y="82" text-anchor="middle" font-family="'Playfair Display', Georgia, serif" font-weight="400" font-size="28" fill="#89BBdf">s</text>
-  <circle cx="98" cy="36" r="4" fill="#89BBdf"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  <rect width="200" height="200" rx="40" fill="#fafcfe"/>
+  <path d="M48 52 L48 148" stroke="#1a1a1a" stroke-width="5" stroke-linecap="round"/>
+  <path d="M48 100 L88 100" stroke="#1a1a1a" stroke-width="5" stroke-linecap="round"/>
+  <path d="M88 52 L88 148" stroke="#1a1a1a" stroke-width="5" stroke-linecap="round"/>
+  <path d="M140 68 C140 68 155 55 140 55 C120 55 108 65 108 78 C108 91 125 95 135 100 C145 105 152 112 152 125 C152 142 138 150 122 148 C112 147 105 140 105 140" stroke="#89BBdf" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <circle cx="162" cy="52" r="5" fill="#89BBdf"/>
+  <line x1="92" y1="100" x2="105" y2="100" stroke="#89BBdf" stroke-width="1.5" opacity="0.4"/>
 </svg>

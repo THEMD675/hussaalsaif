@@ -38,66 +38,59 @@ const BRANDS = [
 
 const PROJECTS = [
   {
-    image: "/images/beauty-editorials.jpg",
+    image: "/images/sephora-campaign.jpg",
     brand: "Sephora Collection",
     category: "Beauty",
-    description: "Brand partnership across Instagram and TikTok for Sephora's KSA product launches.",
+    description: "Lip tint launch content across Instagram and TikTok for Sephora's KSA market.",
     result: "Ongoing partnership",
   },
   {
-    image: "/images/brand-campaigns.jpg",
+    image: "/images/fendi-campaign.jpg",
     brand: "Fendi FW25",
     category: "Fashion",
-    description: "Fashion content partnership for Fendi's regional presence.",
+    description: "Fashion week content partnership for Fendi's Fall/Winter 2025 regional presence.",
     result: "Brand collaboration",
   },
   {
-    image: "/images/gallery-6.jpg",
+    image: "/images/herbal-campaign.jpg",
     brand: "Herbal Essences",
     category: "Hair Care",
-    description: "Hair care content aligned with the GCC curly hair movement Hussa helped pioneer.",
+    description: "Curly hair content aligned with the GCC natural hair movement Hussa helped pioneer.",
     result: "Brand partnership",
   },
   {
-    image: "/images/gallery-5.jpg",
+    image: "/images/toofaced-campaign.jpg",
     brand: "Too Faced x Sephora ME",
     category: "Beauty",
-    description: "Beauty content for the Too Faced x Sephora Middle East collaboration.",
+    description: "Ramadan collection haul and looks for the Too Faced x Sephora Middle East collaboration.",
     result: "Brand partnership",
   },
   {
-    image: "/images/gallery-4.jpg",
+    image: "/images/soldejanerio-campaign.jpg",
     brand: "Sol de Janeiro",
     category: "Lifestyle",
-    description: "Lifestyle content introducing Sol de Janeiro to the Saudi market.",
+    description: "Limited-edition Sundays in Rio product launch for the Saudi market.",
     result: "Brand partnership",
   },
   {
-    image: "/images/event-coverage.jpg",
-    brand: "Estee Lauder",
+    image: "/images/estee-campaign.jpg",
+    brand: "Estée Lauder",
     category: "Skincare",
-    description: "Skincare content partnership with Estée Lauder.",
+    description: "Skincare routine and product integration with Estée Lauder.",
     result: "Brand partnership",
   },
   {
-    image: "/images/gallery-1.jpg",
+    image: "/images/mac-campaign.jpg",
     brand: "MAC Cosmetics",
     category: "Makeup",
-    description: "Makeup content for MAC new collection launches.",
+    description: "Studio Radiance foundation and concealer review and tutorial content.",
     result: "Brand partnership",
   },
   {
-    image: "/images/gallery-7.jpg",
-    brand: "La Belle",
-    category: "Fashion",
-    description: "Fashion content partnership with La Belle.",
-    result: "Brand partnership",
-  },
-  {
-    image: "/images/gallery-2.jpg",
-    brand: "Level Shoes",
-    category: "Fashion",
-    description: "Styling and fashion content with Level Shoes.",
+    image: "/images/sephora-grwm.jpg",
+    brand: "Sephora x Lancôme",
+    category: "Beauty",
+    description: "GRWM content featuring new Lancôme products exclusively through Sephora Middle East.",
     result: "Brand partnership",
   },
 ];
@@ -190,8 +183,9 @@ export default function Home() {
       {/* -- NAV -- */}
       <nav className="fixed top-0 left-0 right-0 z-50 glass" role="navigation" aria-label="Main navigation">
         <div className="max-w-7xl mx-auto px-5 sm:px-8 py-5 flex items-center justify-between">
-          <a href="#" className="font-serif text-xl font-bold tracking-tight" aria-label="Hussa AlSaif - Home">
-            Hussa<span className="text-[#89BBdf]">.</span>
+          <a href="#" className="flex items-center gap-2.5" aria-label="Hussa AlSaif - Home">
+            <img src="/images/logo-hs.svg" alt="" className="h-8 w-8 rounded-lg" />
+            <span className="font-serif text-xl font-bold tracking-tight">Hussa<span className="text-[#89BBdf]">.</span></span>
           </a>
           <div className="hidden md:flex items-center gap-10 text-[13px] font-medium tracking-wide uppercase text-gray-400">
             <a href="#world" onClick={() => trackNav("World")} className="nav-link hover:text-[#89BBdf] transition-colors duration-300">World</a>
@@ -595,14 +589,19 @@ export default function Home() {
             </div>
           </ScrollReveal>
           <ScrollReveal delay={0.35}>
-            <p className="text-gray-500 text-[13px] mb-6">
-              Or reach out directly: <a href="mailto:hussa.alsaif07@gmail.com?subject=Partnership%20Inquiry" onClick={() => trackEmail("hussa.alsaif07@gmail.com", "contact")} className="text-[#89BBdf] hover:underline">hussa.alsaif07@gmail.com</a>
-            </p>
-            <div className="flex justify-center gap-6">
-              <a href="https://instagram.com/hussa.ss" target="_blank" rel="noopener noreferrer" onClick={() => trackSocial("Instagram")} className="text-gray-500 hover:text-[#89BBdf] transition-colors text-[12px] tracking-wide">Instagram</a>
-              <a href="https://tiktok.com/@hussa.502" target="_blank" rel="noopener noreferrer" onClick={() => trackSocial("TikTok")} className="text-gray-500 hover:text-[#89BBdf] transition-colors text-[12px] tracking-wide">TikTok</a>
-              <a href="https://youtube.com/@hussaalsaif" target="_blank" rel="noopener noreferrer" onClick={() => trackSocial("YouTube")} className="text-gray-500 hover:text-[#89BBdf] transition-colors text-[12px] tracking-wide">YouTube</a>
-              <a href="https://snapchat.com/add/hussa.alsaif" target="_blank" rel="noopener noreferrer" onClick={() => trackSocial("Snapchat")} className="text-gray-500 hover:text-[#89BBdf] transition-colors text-[12px] tracking-wide">Snapchat</a>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+              <a href="mailto:inquiries@hussaalsaif.com?subject=Partnership%20Inquiry" onClick={() => trackEmail("inquiries@hussaalsaif.com", "contact")} className="border border-white/15 hover:border-[#89BBdf] text-white hover:text-[#89BBdf] px-8 py-3 rounded-full font-semibold transition-all text-[12px] tracking-wide inline-block">
+                inquiries@hussaalsaif.com
+              </a>
+              <a href="/media-kit" className="border border-white/15 hover:border-[#89BBdf] text-white hover:text-[#89BBdf] px-8 py-3 rounded-full font-semibold transition-all text-[12px] tracking-wide inline-block">
+                View Media Kit
+              </a>
+            </div>
+            <div className="flex justify-center gap-8 text-gray-600 text-[11px] tracking-[0.15em] uppercase">
+              <a href="https://instagram.com/hussa.ss" target="_blank" rel="noopener noreferrer" onClick={() => trackSocial("Instagram")} className="hover:text-[#89BBdf] transition-colors">Instagram</a>
+              <a href="https://tiktok.com/@hussa.502" target="_blank" rel="noopener noreferrer" onClick={() => trackSocial("TikTok")} className="hover:text-[#89BBdf] transition-colors">TikTok</a>
+              <a href="https://youtube.com/@hussaalsaif" target="_blank" rel="noopener noreferrer" onClick={() => trackSocial("YouTube")} className="hover:text-[#89BBdf] transition-colors">YouTube</a>
+              <a href="https://snapchat.com/add/hussa.alsaif" target="_blank" rel="noopener noreferrer" onClick={() => trackSocial("Snapchat")} className="hover:text-[#89BBdf] transition-colors">Snapchat</a>
             </div>
           </ScrollReveal>
           <ScrollReveal delay={0.4}>
@@ -637,7 +636,7 @@ export default function Home() {
               <a href="/links" className="hover:text-[#89BBdf] transition-colors duration-300">Links</a>
               <a href="https://instagram.com/hussa.ss" target="_blank" rel="noopener noreferrer" onClick={() => trackSocial("Instagram")} className="hover:text-[#89BBdf] transition-colors duration-300">Instagram</a>
               <a href="https://tiktok.com/@hussa.502" target="_blank" rel="noopener noreferrer" onClick={() => trackSocial("TikTok")} className="hover:text-[#89BBdf] transition-colors duration-300">TikTok</a>
-              <a href="mailto:hussa.alsaif07@gmail.com?subject=Partnership%20Inquiry" onClick={() => trackEmail("hussa.alsaif07@gmail.com", "footer")} className="hover:text-[#89BBdf] transition-colors duration-300">Contact</a>
+              <a href="mailto:inquiries@hussaalsaif.com?subject=Partnership%20Inquiry" onClick={() => trackEmail("inquiries@hussaalsaif.com", "footer")} className="hover:text-[#89BBdf] transition-colors duration-300">Contact</a>
             </div>
             <p className="text-gray-600 text-[11px]">&copy; 2026 Hussa AlSaif</p>
           </div>

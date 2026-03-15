@@ -108,31 +108,31 @@ const CONTENT_FORMATS = [
 
 const CASE_STUDIES = [
   {
-    image: "/images/beauty-editorials.jpg",
+    image: "/images/sephora-campaign.jpg",
     brand: "Sephora Collection",
     category: "Beauty Campaign",
-    description: "Brand partnership across Instagram and TikTok for Sephora's KSA product launches.",
+    description: "Lip tint launch content across Instagram and TikTok for Sephora's KSA product launches.",
     result: "Ongoing partnership",
   },
   {
-    image: "/images/brand-campaigns.jpg",
+    image: "/images/fendi-campaign.jpg",
     brand: "Fendi FW25",
     category: "Fashion",
-    description: "Fashion content partnership for Fendi's regional presence.",
+    description: "Fashion week content partnership for Fendi's Fall/Winter 2025 regional presence.",
     result: "Brand collaboration",
   },
   {
-    image: "/images/gallery-5.jpg",
+    image: "/images/toofaced-campaign.jpg",
     brand: "Too Faced x Sephora ME",
     category: "Beauty",
-    description: "Beauty content for the Too Faced x Sephora Middle East collaboration.",
+    description: "Ramadan collection haul and looks for the Too Faced x Sephora Middle East collaboration.",
     result: "Brand partnership",
   },
   {
-    image: "/images/event-coverage.jpg",
-    brand: "Estee Lauder",
-    category: "Skincare",
-    description: "Skincare content partnership with Estée Lauder.",
+    image: "/images/mac-campaign.jpg",
+    brand: "MAC Cosmetics",
+    category: "Makeup",
+    description: "Studio Radiance foundation and concealer review and tutorial content.",
     result: "Brand partnership",
   },
 ];
@@ -171,8 +171,9 @@ export default function MediaKit() {
         {/* -- NAV -- */}
         <nav className="no-print fixed top-0 left-0 right-0 z-50 glass" role="navigation">
           <div className="max-w-7xl mx-auto px-5 sm:px-8 py-5 flex items-center justify-between">
-            <Link href="/" className="font-serif text-xl font-bold tracking-tight">
-              Hussa<span className="text-[#89BBdf]">.</span>
+            <Link href="/" className="flex items-center gap-2.5">
+              <img src="/images/logo-hs.svg" alt="" className="h-8 w-8 rounded-lg" />
+              <span className="font-serif text-xl font-bold tracking-tight">Hussa<span className="text-[#89BBdf]">.</span></span>
             </Link>
             <div className="flex items-center gap-4">
               <Link href="/" className="text-gray-400 hover:text-gray-900 text-[13px] font-medium transition-colors">
@@ -222,7 +223,7 @@ export default function MediaKit() {
                 <div className="flex gap-4 text-[13px] text-gray-400">
                   <span>Saudi Arabia</span>
                   <span className="text-gray-200">|</span>
-                  <span>hussa.alsaif07@gmail.com</span>
+                  <span>inquiries@hussaalsaif.com</span>
                 </div>
               </div>
 
@@ -502,10 +503,10 @@ export default function MediaKit() {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-10 no-print">
               <a
-                href="mailto:hussa.alsaif07@gmail.com?subject=Brand%20Partnership%20Inquiry"
+                href="mailto:inquiries@hussaalsaif.com?subject=Brand%20Partnership%20Inquiry"
                 className="bg-[#89BBdf] hover:bg-[#6ea8d4] text-white px-10 py-4 rounded-full font-semibold transition-all text-[13px] tracking-wide inline-block shadow-lg shadow-[#89BBdf]/20"
               >
-                hussa.alsaif07@gmail.com
+                inquiries@hussaalsaif.com
               </a>
               <a
                 href="https://instagram.com/hussa.ss"
@@ -519,7 +520,7 @@ export default function MediaKit() {
 
             {/* Print-only contact info */}
             <div className="hidden print:block text-gray-400 text-[14px] space-y-1">
-              <p>hussa.alsaif07@gmail.com</p>
+              <p>inquiries@hussaalsaif.com</p>
               <p>Instagram: @hussa.ss</p>
               <p>TikTok: @hussa.502</p>
             </div>
