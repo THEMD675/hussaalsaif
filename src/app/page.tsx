@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState, Suspense } from "react";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import gsap from "gsap";
@@ -17,10 +17,6 @@ import { trackCTA, trackSocial, trackEmail, trackNav, initScrollDepthTracking } 
 gsap.registerPlugin(ScrollTrigger);
 
 const BackToTop = dynamic(() => import("@/components/BackToTop"), { ssr: false });
-const CustomCursor = dynamic(() => import("@/components/CustomCursor"), { ssr: false });
-const CursorGlow = dynamic(() => import("@/components/CursorGlow"), { ssr: false });
-const Preloader = dynamic(() => import("@/components/Preloader"), { ssr: false });
-
 const ParticleField = dynamic(() => import("@/components/ParticleField"), { ssr: false });
 const SmoothScroll = dynamic(() => import("@/components/SmoothScroll"), { ssr: false });
 
@@ -146,7 +142,6 @@ const MEDIA_KIT_ITEMS = [
 
 export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [preloaderDone, setPreloaderDone] = useState(false);
   const heroImageRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -189,10 +184,7 @@ export default function Home() {
 
   return (
     <main className="relative">
-      {!preloaderDone && <Preloader onComplete={() => setPreloaderDone(true)} />}
       <SmoothScroll />
-      <CustomCursor />
-      <CursorGlow />
       <BackToTop />
 
       {/* -- NAV -- */}
@@ -321,7 +313,7 @@ export default function Home() {
                 width={120}
                 height={40}
                 className="h-8 sm:h-10 w-auto object-contain"
-                unoptimized
+                loading="lazy"
               />
             </div>
           ))}
@@ -386,13 +378,13 @@ export default function Home() {
               </ScrollReveal>
               <TextReveal as="h2" className="font-serif text-3xl sm:text-4xl md:text-[2.8rem] font-bold leading-[1.15] mb-10">Not an influencer. A cultural force.</TextReveal>
               <ScrollReveal delay={0.2}>
-                <p className="text-gray-500 leading-[1.85] mb-6 text-[15px]">Hussa pioneered the Saudi curly hair movement before brands caught on. With a PR degree and a genuine obsession with beauty, she built an audience that trusts her taste implicitly.</p>
+                <p className="text-gray-500 leading-[1.85] mb-6 text-[15px]">Hussa pioneered the Saudi curly hair movement before brands caught on. With a <strong className="text-gray-700">Media &amp; Communication</strong> degree and a genuine obsession with beauty, she built an audience that trusts her taste implicitly.</p>
               </ScrollReveal>
               <ScrollReveal delay={0.3}>
-                <p className="text-gray-500 leading-[1.85] mb-6 text-[15px]">25 carefully curated Instagram posts reaching 141K followers. 196K on TikTok. Every post is a conversation, not a broadcast. When Hussa recommends something, her audience acts.</p>
+                <p className="text-gray-500 leading-[1.85] mb-6 text-[15px]">141K Instagram followers from just 25 curated posts. 196K on TikTok with 10.6M+ likes. Every piece of content is a conversation, not a broadcast. When Hussa recommends something, her audience buys it.</p>
               </ScrollReveal>
               <ScrollReveal delay={0.4}>
-                <p className="text-gray-500 leading-[1.85] mb-8 text-[15px]">Beyond beauty: host of <em>The Reading Room</em> book club, TEDx organizer, bilingual storyteller. Brands don&apos;t brief Hussa. They collaborate with her.</p>
+                <p className="text-gray-500 leading-[1.85] mb-8 text-[15px]">Beyond beauty: host of <em>The Reading Room</em> book club, TEDx organizer, bilingual storyteller across Arabic and English. Brands don&apos;t brief Hussa &mdash; they collaborate with her.</p>
               </ScrollReveal>
               <ScrollReveal delay={0.5}>
                 <div className="flex flex-wrap gap-3">
@@ -628,7 +620,7 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row justify-between items-center gap-6">
             <div className="flex flex-col items-center sm:items-start gap-1">
               <p className="font-serif text-xl font-bold text-white tracking-tight">Hussa AlSaif<span className="text-[#89BBdf]">.</span></p>
-              <p className="text-gray-600 text-[11px] tracking-[0.25em] uppercase">Khobar &middot; Riyadh</p>
+              <p className="text-gray-600 text-[11px] tracking-[0.25em] uppercase">Saudi Arabia</p>
             </div>
             <div className="flex items-center gap-8 text-[12px] text-gray-500 tracking-wide">
               <a href="/media-kit" className="hover:text-[#89BBdf] transition-colors duration-300">Media Kit</a>

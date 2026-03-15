@@ -31,6 +31,11 @@ const nextConfig: NextConfig = {
   // Consistent URLs for SEO (no trailing slashes = cleaner canonicals)
   trailingSlash: false,
 
+  // Tree-shake heavy packages
+  experimental: {
+    optimizePackageImports: ["three", "gsap", "framer-motion", "lenis"],
+  },
+
   // Image optimization
   images: {
     formats: ["image/avif", "image/webp"],

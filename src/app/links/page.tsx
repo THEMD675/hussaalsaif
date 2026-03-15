@@ -214,7 +214,7 @@ export default function LinksPage() {
             Beauty &amp; Culture Icon
           </p>
           <p className="text-[#89BBdf] text-[12px] font-medium tracking-wide mt-1">
-            Khobar & Riyadh
+            Saudi Arabia
           </p>
         </div>
 

@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     template: "%s | Hussa AlSaif",
   },
   description:
-    "Hussa AlSaif is Saudi Arabia's leading beauty and culture figure with 330K+ followers. Partnered with Sephora, Estee Lauder, MAC, Fendi, Dyson & more. Based in Khobar & Riyadh.",
+    "Hussa AlSaif is Saudi Arabia's leading beauty and culture figure with 330K+ followers. Partnered with Sephora, Estee Lauder, MAC, Fendi, Dyson & more. Based in Saudi Arabia.",
   keywords: [
     "Hussa AlSaif",
     "حصه السيف",
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     "fashion figure Saudi",
     "beauty and culture Saudi Arabia",
     "GCC influencer",
-    "Khobar influencer",
+    "Saudi influencer",
     "Riyadh content creator",
     "Saudi beauty blogger",
     "influencer marketing Saudi Arabia",
@@ -73,7 +73,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Hussa AlSaif — Beauty & Culture | Saudi Arabia",
     description:
-      "Saudi Arabia's leading beauty and culture figure with 330K+ followers. Partnered with Sephora, Estee Lauder, MAC, Fendi, Dyson & more. Based in Khobar & Riyadh.",
+      "Saudi Arabia's leading beauty and culture figure with 330K+ followers. Partnered with Sephora, Estee Lauder, MAC, Fendi, Dyson & more. Based in Saudi Arabia.",
     type: "website",
     locale: "en_US",
     alternateLocale: "ar_SA",
@@ -142,8 +142,8 @@ const personJsonLd = {
   address: [
     {
       "@type": "PostalAddress",
-      addressLocality: "Al Khobar",
-      addressRegion: "Eastern Province",
+      addressLocality: "Riyadh",
+      addressRegion: "Riyadh Province",
       addressCountry: "SA",
     },
     {
@@ -440,7 +440,7 @@ export default function RootLayout({
         <link rel="alternate" hrefLang="ar" href="https://hussaalsaif.com" />
         <link rel="alternate" hrefLang="x-default" href="https://hussaalsaif.com" />
         <meta name="geo.region" content="SA" />
-        <meta name="geo.placename" content="Al Khobar, Riyadh" />
+        <meta name="geo.placename" content="Saudi Arabia" />
         <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
         <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
         <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="anonymous" />

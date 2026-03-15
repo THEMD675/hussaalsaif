@@ -207,11 +207,10 @@ export default function MediaKit() {
                   <span className="text-gradient">AlSaif</span>
                 </h1>
                 <p className="text-gray-500 max-w-md leading-[1.8] text-[16px] font-medium mb-4">
-                  Beauty &amp; Culture Figure
+                  Beauty &amp; Culture Icon &mdash; Saudi Arabia
                 </p>
                 <p className="text-gray-400 max-w-md leading-[1.8] text-[14px] mb-8">
-                  Connecting global brands with 330K+ highly engaged Saudi &amp; GCC consumers
-                  through premium beauty, fashion, and lifestyle content.
+                  330K+ engaged followers across 5 platforms. 10.6M+ TikTok likes. 13+ brand partnerships with the world&apos;s most discerning beauty houses.
                 </p>
                 <div className="flex flex-wrap gap-3 mb-8">
                   {["Beauty", "Fashion", "Lifestyle", "Curly Hair", "Bilingual AR/EN"].map((tag) => (
@@ -221,7 +220,7 @@ export default function MediaKit() {
                   ))}
                 </div>
                 <div className="flex gap-4 text-[13px] text-gray-400">
-                  <span>Khobar &amp; Riyadh, KSA</span>
+                  <span>Saudi Arabia</span>
                   <span className="text-gray-200">|</span>
                   <span>inquiries@hussaalsaif.com</span>
                 </div>
@@ -547,7 +546,7 @@ export default function MediaKit() {
           <div className="max-w-7xl mx-auto px-5 sm:px-8 py-8 flex flex-col sm:flex-row justify-between items-center gap-4">
             <p className="font-serif text-lg font-bold text-white">Hussa<span className="text-[#89BBdf]">.</span></p>
             <p className="text-gray-500 text-[13px]">&copy; 2026 Hussa AlSaif. All rights reserved.</p>
-            <p className="text-gray-600 text-[11px] tracking-[0.2em] uppercase">Khobar &amp; Riyadh</p>
+            <p className="text-gray-600 text-[11px] tracking-[0.2em] uppercase">Saudi Arabia</p>
           </div>
         </footer>
       </main>
