@@ -4,15 +4,15 @@ import Image from "next/image";
 import Link from "next/link";
 
 const STATS = [
-  { value: "528K+", label: "Combined Reach" },
-  { value: "2.5M+", label: "YouTube Views" },
-  { value: "10.6M+", label: "TikTok Likes" },
-  { value: "14", label: "Brand Partners" },
+  { value: "530K+", label: "Combined Reach" },
+  { value: "191K", label: "YouTube Subs" },
+  { value: "4.5M+", label: "TikTok Likes" },
+  { value: "13", label: "Brand Partners" },
 ];
 
 const PLATFORMS = [
   { name: "Instagram", handle: "@hussa.ss", url: "https://instagram.com/hussa.ss", followers: "141K", engagement: "4.8%", color: "#E1306C" },
-  { name: "TikTok", handle: "@hussa.502", url: "https://tiktok.com/@hussa.502", followers: "196K", engagement: "10.6M likes", color: "#000000" },
+  { name: "TikTok", handle: "@hussa.502", url: "https://tiktok.com/@hussa.502", followers: "198K", engagement: "4.5M likes", color: "#000000" },
   { name: "YouTube", handle: "@hussaalsaif", url: "https://youtube.com/@hussaalsaif", followers: "191K", engagement: "2.5M views", color: "#FF0000" },
   { name: "Snapchat", handle: "@hussa.alsaif", url: "https://snapchat.com/add/hussa.alsaif", followers: "Active", engagement: "Daily stories", color: "#FFFC00" },
 ];
@@ -61,7 +61,7 @@ const CONTENT_FORMATS = [
   },
   {
     title: "TikTok",
-    description: "Trend-driven, authentic short-form content. High virality potential with 10.6M+ lifetime likes.",
+    description: "Trend-driven, authentic short-form content. 4.5M+ likes across 244 videos. Authentic, trend-driven.",
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/>
@@ -210,7 +210,7 @@ export default function MediaKit() {
                   Beauty &amp; Culture Icon &mdash; Saudi Arabia
                 </p>
                 <p className="text-gray-400 max-w-md leading-[1.8] text-[14px] mb-8">
-                  528K+ combined reach across Instagram, TikTok &amp; YouTube. 2.5M+ YouTube views. 10.6M+ TikTok likes. 14 brand partnerships with the world&apos;s most discerning beauty houses.
+                  530K+ combined reach across Instagram, TikTok &amp; YouTube. 191K YouTube subscribers. 4.5M+ TikTok likes. 13 brand partnerships with the world&apos;s most discerning beauty houses.
                 </p>
                 <div className="flex flex-wrap gap-3 mb-8">
                   {["Beauty", "Fashion", "Lifestyle", "Curly Hair", "Bilingual AR/EN"].map((tag) => (

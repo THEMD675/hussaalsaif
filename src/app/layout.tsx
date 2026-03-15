@@ -26,11 +26,11 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://hussaalsaif.com"),
   title: {
     default:
-      "Hussa AlSaif — Beauty & Culture | Saudi Arabia | 528K+ Followers",
+      "Hussa AlSaif — Beauty & Culture | Saudi Arabia | 530K+ Followers",
     template: "%s | Hussa AlSaif",
   },
   description:
-    "Hussa AlSaif is Saudi Arabia's leading beauty and culture figure with 528K+ followers. Partnered with Sephora, Estée Lauder, MAC, Fendi, Lancôme & more. Based in Saudi Arabia.",
+    "Hussa AlSaif is Saudi Arabia's leading beauty and culture figure with 530K+ followers. Partnered with Sephora, Estée Lauder, MAC, Fendi, Lancôme & more. Based in Saudi Arabia.",
   keywords: [
     "Hussa AlSaif",
     "حصه السيف",
@@ -73,7 +73,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Hussa AlSaif — Beauty & Culture | Saudi Arabia",
     description:
-      "Saudi Arabia's leading beauty and culture figure with 528K+ followers. Partnered with Sephora, Estée Lauder, MAC, Fendi, Lancôme & more. Based in Saudi Arabia.",
+      "Saudi Arabia's leading beauty and culture figure with 530K+ followers. Partnered with Sephora, Estée Lauder, MAC, Fendi, Lancôme & more. Based in Saudi Arabia.",
     type: "website",
     locale: "en_US",
     alternateLocale: "ar_SA",
@@ -93,7 +93,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Hussa AlSaif — Beauty & Culture | Saudi Arabia",
     description:
-      "528K+ followers. Partnered with Sephora, Estee Lauder, MAC, Fendi & more. Saudi Arabia's defining beauty and culture figure.",
+      "530K+ followers. Partnered with Sephora, Estee Lauder, MAC, Fendi & more. Saudi Arabia's defining beauty and culture figure.",
     images: [
       {
         url: "https://hussaalsaif.com/images/hero.jpg",
@@ -137,7 +137,7 @@ const personJsonLd = {
   },
   jobTitle: "Beauty & Culture Figure",
   description:
-    "Saudi Arabia's leading beauty and culture figure with 528K+ combined followers across Instagram, TikTok, YouTube, and Snapchat. The defining voice in beauty, fashion, and culture for the GCC market.",
+    "Saudi Arabia's leading beauty and culture figure with 530K+ combined followers across Instagram, TikTok, YouTube, and Snapchat. The defining voice in beauty, fashion, and culture for the GCC market.",
   nationality: { "@type": "Country", name: "Saudi Arabia" },
   address: [
     {
@@ -215,7 +215,7 @@ const webPageJsonLd = {
   url: "https://hussaalsaif.com",
   name: "Hussa AlSaif — Beauty & Culture | Saudi Arabia",
   description:
-    "Hussa AlSaif is Saudi Arabia's leading beauty and culture figure with 528K+ followers. Partnered with Sephora, Estée Lauder, MAC, Fendi, Lancôme & more.",
+    "Hussa AlSaif is Saudi Arabia's leading beauty and culture figure with 530K+ followers. Partnered with Sephora, Estée Lauder, MAC, Fendi, Lancôme & more.",
   isPartOf: { "@id": "https://hussaalsaif.com/#website" },
   about: { "@id": "https://hussaalsaif.com/#person" },
   inLanguage: "en",
@@ -377,7 +377,7 @@ const serviceJsonLd = {
   "@id": "https://hussaalsaif.com/#service",
   name: "Brand Partnership & Influencer Marketing",
   description:
-    "Brand campaigns, ambassadorships, event appearances, and product launch collaborations with Saudi beauty and culture figure Hussa AlSaif. Reach 528K+ highly engaged consumers in KSA and GCC.",
+    "Brand campaigns, ambassadorships, event appearances, and product launch collaborations with Saudi beauty and culture figure Hussa AlSaif. Reach 530K+ highly engaged consumers in KSA and GCC.",
   provider: { "@id": "https://hussaalsaif.com/#person" },
   serviceType: "Influencer Marketing",
   areaServed: [

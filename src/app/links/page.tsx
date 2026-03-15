@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Hussa AlSaif — Links | Social Media & Contact",
     description:
-      "Follow Hussa AlSaif on Instagram, TikTok, YouTube & Snapchat. Saudi beauty & culture icon with 528K+ followers. Brand partnership inquiries welcome.",
+      "Follow Hussa AlSaif on Instagram, TikTok, YouTube & Snapchat. Saudi beauty & culture icon with 530K+ followers. Brand partnership inquiries welcome.",
     type: "website",
     url: "https://hussaalsaif.com/links",
     images: [
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Hussa AlSaif — Links",
     description:
-      "All of Hussa AlSaif's social media links. Saudi beauty & culture icon with 528K+ followers.",
+      "All of Hussa AlSaif's social media links. Saudi beauty & culture icon with 530K+ followers.",
   },
 };
 

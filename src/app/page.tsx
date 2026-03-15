@@ -100,15 +100,15 @@ const PROJECTS = [
 ];
 
 const STATS = [
-  { value: "528K+", label: "Combined Reach" },
-  { value: "2.5M+", label: "YouTube Views" },
-  { value: "10.6M+", label: "TikTok Likes" },
-  { value: "14", label: "Brand Partners" },
+  { value: "530K+", label: "Combined Reach" },
+  { value: "191K", label: "YouTube Subs" },
+  { value: "4.5M+", label: "TikTok Likes" },
+  { value: "13", label: "Brand Partners" },
 ];
 
 const SOCIALS = [
   { name: "Instagram", handle: "@hussa.ss", url: "https://instagram.com/hussa.ss", followers: "141K" },
-  { name: "TikTok", handle: "@hussa.502", url: "https://tiktok.com/@hussa.502", followers: "196K" },
+  { name: "TikTok", handle: "@hussa.502", url: "https://tiktok.com/@hussa.502", followers: "198K" },
   { name: "YouTube", handle: "@hussaalsaif", url: "https://youtube.com/@hussaalsaif" },
   { name: "Snapchat", handle: "@hussa.alsaif", url: "https://snapchat.com/add/hussa.alsaif" },
 ];
@@ -406,7 +406,7 @@ export default function Home() {
                 <p className="text-gray-500 leading-[1.85] mb-6 text-[15px]">Hussa pioneered the Saudi curly hair movement before brands caught on. With a <strong className="text-gray-700">Masters in Marketing</strong> and a Fine Arts background, she built an audience that trusts her taste implicitly.</p>
               </ScrollReveal>
               <ScrollReveal delay={0.3}>
-                <p className="text-gray-500 leading-[1.85] mb-6 text-[15px]">141K Instagram followers from just 25 curated posts. 196K on TikTok with 10.6M+ likes. Every piece of content is a conversation, not a broadcast. When Hussa recommends something, her audience buys it.</p>
+                <p className="text-gray-500 leading-[1.85] mb-6 text-[15px]">141K Instagram followers from just 25 curated posts. 198K on TikTok with 4.5M+ likes. Every piece of content is a conversation, not a broadcast. When Hussa recommends something, her audience buys it.</p>
               </ScrollReveal>
               <ScrollReveal delay={0.4}>
                 <p className="text-gray-500 leading-[1.85] mb-8 text-[15px]">Beyond beauty: host of <em>The Reading Room</em> book club, bilingual storyteller across Arabic and English. Brands don&apos;t brief Hussa &mdash; they collaborate with her.</p>

@@ -124,9 +124,9 @@ export default function MediaKitDownload() {
           <h2>At a Glance</h2>
           <div className="stats-grid">
             {[
-              { value: "528K+", label: "Combined Reach" },
+              { value: "530K+", label: "Combined Reach" },
               { value: "2.5M+", label: "YouTube Views" },
-              { value: "10.6M+", label: "TikTok Likes" },
+              { value: "4.5M+", label: "TikTok Likes" },
               { value: "14", label: "Brand Partners" },
             ].map((s) => (
               <div key={s.label} className="stat-box">
@@ -143,7 +143,7 @@ export default function MediaKitDownload() {
           <div className="platform-grid">
             {[
               { name: "Instagram", followers: "141K", detail: "4.8% engagement" },
-              { name: "TikTok", followers: "196K", detail: "10.6M likes" },
+              { name: "TikTok", followers: "198K", detail: "4.5M likes" },
               { name: "YouTube", followers: "191K", detail: "2.5M views" },
               { name: "Snapchat", followers: "Active", detail: "Daily stories" },
             ].map((p) => (
