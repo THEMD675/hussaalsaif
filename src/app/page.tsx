@@ -11,9 +11,9 @@ import ContactForm from "@/components/ContactForm";
 import AnimatedCounter from "@/components/AnimatedCounter";
 import { trackCTA, trackSocial, trackEmail, trackNav, initScrollDepthTracking } from "@/lib/analytics";
 
-const BackToTop = dynamic(() => import("@/components/BackToTop").catch(() => ({ default: () => null })), { ssr: false });
-const ParticleField = dynamic(() => import("@/components/ParticleField").catch(() => ({ default: () => null })), { ssr: false });
-const SmoothScroll = dynamic(() => import("@/components/SmoothScroll").catch(() => ({ default: () => null })), { ssr: false });
+const BackToTop = dynamic(() => import("@/components/BackToTop"), { ssr: false });
+const ParticleField = dynamic(() => import("@/components/ParticleField"), { ssr: false });
+const SmoothScroll = dynamic(() => import("@/components/SmoothScroll"), { ssr: false });
 
 const BRANDS = [
   { name: "Sephora", logo: "/images/brands/sephora.svg", color: "#000000" },
