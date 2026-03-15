@@ -1,12 +1,17 @@
 "use client";
 
+import { useRef, useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import Image from "next/image";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ScrollReveal from "@/components/ScrollReveal";
 import MagneticButton from "@/components/MagneticButton";
 import TextReveal from "@/components/TextReveal";
 import ImageReveal from "@/components/ImageReveal";
 import HorizontalScroll from "@/components/HorizontalScroll";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const ParticleField = dynamic(() => import("@/components/ParticleField"), { ssr: false });
 const SmoothScroll = dynamic(() => import("@/components/SmoothScroll"), { ssr: false });
@@ -113,6 +118,48 @@ const AUDIENCE_INTERESTS = [
 ];
 
 export default function Home() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const heroImageRef = useRef<HTMLDivElement>(null);
+
+  // Parallax effect on hero image
+  useEffect(() => {
+    if (!heroImageRef.current) return;
+
+    const ctx = gsap.context(() => {
+      gsap.to(heroImageRef.current, {
+        yPercent: 15,
+        ease: "none",
+        scrollTrigger: {
+          trigger: heroImageRef.current,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true,
+        },
+      });
+    });
+
+    return () => ctx.revert();
+  }, []);
+
+  // Close mobile menu on anchor click
+  useEffect(() => {
+    if (!mobileMenuOpen) return;
+    const handleClick = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (target.closest("a[href^='#']")) {
+        setMobileMenuOpen(false);
+      }
+    };
+    document.addEventListener("click", handleClick);
+    return () => document.removeEventListener("click", handleClick);
+  }, [mobileMenuOpen]);
+
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    document.body.style.overflow = mobileMenuOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [mobileMenuOpen]);
+
   return (
     <main className="relative">
       <SmoothScroll />
@@ -134,9 +181,49 @@ export default function Home() {
             <a href="#media-kit" className="hidden sm:inline-block border border-[#89BBdf]/30 hover:border-[#89BBdf] text-[#89BBdf] px-5 py-2.5 rounded-full text-[12px] font-semibold transition-all duration-300">
               Media Kit
             </a>
-            <a href="#contact" className="bg-gray-900 hover:bg-[#89BBdf] text-white px-6 py-2.5 rounded-full text-[13px] font-semibold transition-all duration-300">
+            <a href="#contact" className="hidden sm:inline-block bg-gray-900 hover:bg-[#89BBdf] text-white px-6 py-2.5 rounded-full text-[13px] font-semibold transition-all duration-300">
               Brand Inquiry
             </a>
+            {/* Mobile hamburger */}
+            <button
+              className="md:hidden relative w-10 h-10 flex items-center justify-center"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={mobileMenuOpen}
+            >
+              <span className={`hamburger-line top-[13px] ${mobileMenuOpen ? "rotate-45 !top-[18px]" : ""}`} />
+              <span className={`hamburger-line top-[18px] ${mobileMenuOpen ? "opacity-0 scale-x-0" : ""}`} />
+              <span className={`hamburger-line top-[23px] ${mobileMenuOpen ? "-rotate-45 !top-[18px]" : ""}`} />
+            </button>
+          </div>
+        </div>
+
+        {/* Mobile menu overlay */}
+        <div className={`md:hidden fixed inset-0 top-[68px] bg-white/95 backdrop-blur-2xl transition-all duration-500 ${mobileMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}>
+          <div className={`flex flex-col items-center justify-center h-full gap-8 transition-transform duration-500 ${mobileMenuOpen ? "translate-y-0" : "-translate-y-8"}`}>
+            {[
+              { href: "#results", label: "Results" },
+              { href: "#about", label: "About" },
+              { href: "#work", label: "Work" },
+              { href: "#audience", label: "Audience" },
+              { href: "#contact", label: "Contact" },
+            ].map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                className="font-serif text-3xl font-bold text-gray-900 hover:text-[#89BBdf] transition-colors duration-300"
+              >
+                {link.label}
+              </a>
+            ))}
+            <div className="flex gap-4 mt-4">
+              <a href="#media-kit" className="border border-[#89BBdf]/30 text-[#89BBdf] px-6 py-3 rounded-full text-[13px] font-semibold">
+                Media Kit
+              </a>
+              <a href="#contact" className="bg-gray-900 text-white px-6 py-3 rounded-full text-[13px] font-semibold">
+                Brand Inquiry
+              </a>
+            </div>
           </div>
         </div>
       </nav>

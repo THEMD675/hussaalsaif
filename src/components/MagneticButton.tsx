@@ -30,8 +30,6 @@ export default function MagneticButton({
 
   const reset = () => setPosition({ x: 0, y: 0 });
 
-  const Component = href ? "a" : "div";
-
   return (
     <motion.div
       ref={ref}
@@ -40,14 +38,18 @@ export default function MagneticButton({
       animate={{ x: position.x, y: position.y }}
       transition={{ type: "spring", stiffness: 150, damping: 15, mass: 0.1 }}
     >
-      <Component
-        href={href}
-        target={target}
-        rel={target === "_blank" ? "noopener noreferrer" : undefined}
-        className={className}
-      >
-        {children}
-      </Component>
+      {href ? (
+        <a
+          href={href}
+          target={target}
+          rel={target === "_blank" ? "noopener noreferrer" : undefined}
+          className={className}
+        >
+          {children}
+        </a>
+      ) : (
+        <div className={className}>{children}</div>
+      )}
     </motion.div>
   );
 }

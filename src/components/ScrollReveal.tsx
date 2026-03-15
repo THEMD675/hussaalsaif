@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect, type ReactNode } from "react";
+import { useRef, type ReactNode } from "react";
 import { motion, useInView } from "framer-motion";
 
 interface ScrollRevealProps {
@@ -34,20 +34,22 @@ export default function ScrollReveal({
         opacity: 0,
         y: directions[direction].y,
         x: directions[direction].x,
+        filter: "blur(10px)",
       }}
       animate={
         isInView
-          ? { opacity: 1, y: 0, x: 0 }
+          ? { opacity: 1, y: 0, x: 0, filter: "blur(0px)" }
           : {
               opacity: 0,
               y: directions[direction].y,
               x: directions[direction].x,
+              filter: "blur(10px)",
             }
       }
       transition={{
-        duration: 0.8,
+        duration: 1,
         delay,
-        ease: [0.25, 0.4, 0, 1],
+        ease: [0.25, 0.46, 0.45, 0.94],
       }}
     >
       {children}
