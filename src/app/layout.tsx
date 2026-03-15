@@ -179,13 +179,13 @@ const personJsonLd = {
   ],
   alumniOf: {
     "@type": "EducationalOrganization",
-    name: "Media & Communication Graduate",
+    name: "Masters in Marketing Graduate",
   },
   hasCredential: {
     "@type": "EducationalOccupationalCredential",
     credentialCategory: "degree",
     educationalLevel: "Bachelor's Degree",
-    about: "Media & Communication",
+    about: "Marketing & Fine Arts",
   },
   hasOccupation: {
     "@type": "Occupation",

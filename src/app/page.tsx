@@ -25,12 +25,12 @@ const BRANDS = [
   { name: "Fendi", logo: "/images/brands/fendi.svg", color: "#000000" },
   { name: "Too Faced", logo: "/images/brands/too-faced.svg", color: "#E91E8C" },
   { name: "Estée Lauder", logo: "/images/brands/estee-lauder.svg", color: "#002B5C" },
-  { name: "Dyson", logo: "/images/brands/dyson.svg", color: "#DA291C" },
-  { name: "Kérastase", logo: "/images/brands/kerastase.svg", color: "#000000" },
+  { name: "Lancôme", logo: "/images/brands/lancome.svg", color: "#000000" },
   { name: "Herbal Essences", logo: "/images/brands/herbal-essences.svg", color: "#006B3F" },
-  { name: "Redken", logo: "/images/brands/redken.svg", color: "#000000" },
   { name: "MAC", logo: "/images/brands/mac.svg", color: "#000000" },
   { name: "Wella", logo: "/images/brands/wella.svg", color: "#C4161C" },
+  { name: "P&G", logo: "/images/brands/pg.svg", color: "#003DA5" },
+  { name: "Oral-B", logo: "/images/brands/oral-b.svg", color: "#003DA5" },
   { name: "Level Shoes", logo: "/images/brands/level-shoes.svg", color: "#000000" },
   { name: "Sol de Janeiro", logo: "/images/brands/sol-de-janeiro.svg", color: "#F7C948" },
   { name: "Denman", logo: "/images/brands/denman.svg", color: "#E30613" },
@@ -224,6 +224,7 @@ export default function Home() {
               { href: "#about", label: "About" },
               { href: "#work", label: "Portfolio" },
               { href: "#audience", label: "Reach" },
+              { href: "/media-kit", label: "Media Kit" },
               { href: "#contact", label: "Contact" },
             ].map((link) => (
               <a
@@ -267,10 +268,10 @@ export default function Home() {
               </ScrollReveal>
               <ScrollReveal delay={0.4}>
                 <p className="text-gray-500 max-w-md leading-[1.8] mb-4 text-[16px] font-medium">
-                  The curly-hair icon with a PR degree, a book club, and the trust of the world&apos;s most discerning beauty houses.
+                  The curly-hair icon with a Masters in Marketing, a book club, and the trust of the world&apos;s most discerning beauty houses.
                 </p>
                 <p className="text-gray-400 max-w-md leading-[1.8] mb-10 text-[14px]">
-                  Sephora. Fendi. Dyson. Kerastase. Estée Lauder. MAC.
+                  Sephora. Fendi. Estée Lauder. MAC. Lancôme. P&amp;G.
                 </p>
               </ScrollReveal>
               <ScrollReveal delay={0.5}>
@@ -364,14 +365,14 @@ export default function Home() {
               <div className="result-card rounded-2xl p-8 sm:p-10">
                 <div className="text-[#89BBdf] text-3xl font-serif font-bold mb-3">Repeat</div>
                 <div className="text-gray-900 font-semibold text-[15px] mb-2">Brands Come Back</div>
-                <p className="text-gray-400 text-[13px] leading-relaxed">Sephora, Kerastase, Dyson &mdash; the brands that work with Hussa come back. Because the results speak.</p>
+                <p className="text-gray-400 text-[13px] leading-relaxed">Sephora, Estée Lauder, MAC, Lancôme &mdash; the brands that work with Hussa come back. Because the results speak.</p>
               </div>
             </ScrollReveal>
             <ScrollReveal delay={0.3}>
               <div className="result-card rounded-2xl p-8 sm:p-10">
                 <div className="text-[#89BBdf] text-3xl font-serif font-bold mb-3">Cultural</div>
                 <div className="text-gray-900 font-semibold text-[15px] mb-2">Beyond Beauty</div>
-                <p className="text-gray-400 text-[13px] leading-relaxed">Book club host, TEDx organizer, bilingual storyteller. She&apos;s not just beauty &mdash; she&apos;s culture.</p>
+                <p className="text-gray-400 text-[13px] leading-relaxed">Book club host, bilingual storyteller, cultural tastemaker. She&apos;s not just beauty &mdash; she&apos;s culture.</p>
               </div>
             </ScrollReveal>
           </div>
@@ -388,17 +389,17 @@ export default function Home() {
               </ScrollReveal>
               <TextReveal as="h2" className="font-serif text-3xl sm:text-4xl md:text-[2.8rem] font-bold leading-[1.15] mb-10">Not an influencer. A cultural force.</TextReveal>
               <ScrollReveal delay={0.2}>
-                <p className="text-gray-500 leading-[1.85] mb-6 text-[15px]">Hussa pioneered the Saudi curly hair movement before brands caught on. With a <strong className="text-gray-700">Media &amp; Communication</strong> degree and a genuine obsession with beauty, she built an audience that trusts her taste implicitly.</p>
+                <p className="text-gray-500 leading-[1.85] mb-6 text-[15px]">Hussa pioneered the Saudi curly hair movement before brands caught on. With a <strong className="text-gray-700">Masters in Marketing</strong> and a Fine Arts background, she built an audience that trusts her taste implicitly.</p>
               </ScrollReveal>
               <ScrollReveal delay={0.3}>
                 <p className="text-gray-500 leading-[1.85] mb-6 text-[15px]">141K Instagram followers from just 25 curated posts. 196K on TikTok with 10.6M+ likes. Every piece of content is a conversation, not a broadcast. When Hussa recommends something, her audience buys it.</p>
               </ScrollReveal>
               <ScrollReveal delay={0.4}>
-                <p className="text-gray-500 leading-[1.85] mb-8 text-[15px]">Beyond beauty: host of <em>The Reading Room</em> book club, TEDx organizer, bilingual storyteller across Arabic and English. Brands don&apos;t brief Hussa &mdash; they collaborate with her.</p>
+                <p className="text-gray-500 leading-[1.85] mb-8 text-[15px]">Beyond beauty: host of <em>The Reading Room</em> book club, bilingual storyteller across Arabic and English, with a Masters in Marketing. Brands don&apos;t brief Hussa &mdash; they collaborate with her.</p>
               </ScrollReveal>
               <ScrollReveal delay={0.5}>
                 <div className="flex flex-wrap gap-3">
-                  {["Beauty Authority", "Cultural Figure", "The Reading Room", "TEDx Organizer", "Bilingual AR/EN"].map((tag) => (
+                  {["Beauty Authority", "Cultural Figure", "The Reading Room", "Masters in Marketing", "Bilingual AR/EN"].map((tag) => (
                     <span key={tag} className="bg-[#89BBdf]/10 text-[#5a9ac5] px-4 py-2 rounded-full text-[12px] font-medium">{tag}</span>
                   ))}
                 </div>
@@ -607,7 +608,7 @@ export default function Home() {
           </ScrollReveal>
           <ScrollReveal delay={0.35}>
             <div className="flex flex-col sm:flex-row gap-3 justify-center mb-10">
-              <a href="/media-kit" onClick={() => trackCTA("Download Media Kit", "contact")} className="bg-white/10 hover:bg-white/15 backdrop-blur text-white px-8 py-3.5 rounded-full font-semibold transition-all text-[12px] tracking-wide inline-flex items-center gap-2 border border-white/10 hover:border-white/20">
+              <a href="/media-kit/download" onClick={() => trackCTA("Download Media Kit", "contact")} className="bg-white/10 hover:bg-white/15 backdrop-blur text-white px-8 py-3.5 rounded-full font-semibold transition-all text-[12px] tracking-wide inline-flex items-center gap-2 border border-white/10 hover:border-white/20">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                 Download Media Kit
               </a>
