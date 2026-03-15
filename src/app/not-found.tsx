@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Page Not Found",
   description:
-    "The page you are looking for does not exist. Return to Hussa AlSaif's official website — Saudi content creator and brand ambassador.",
+    "The page you are looking for does not exist. Return to Hussa AlSaif's official website — Saudi beauty and culture icon.",
   robots: {
     index: false,
     follow: true,

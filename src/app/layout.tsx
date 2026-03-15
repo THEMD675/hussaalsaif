@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://hussaalsaif.com"),
   title: {
     default:
-      "Hussa AlSaif — Beauty & Culture | Saudi Arabia | 330K+ Followers",
+      "Hussa AlSaif — Beauty & Culture | Saudi Arabia | 528K+ Followers",
     template: "%s | Hussa AlSaif",
   },
   description:
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     "beauty and culture Saudi Arabia",
     "GCC influencer",
     "Saudi influencer",
-    "Riyadh content creator",
+    "Riyadh beauty and culture figure",
     "Saudi beauty blogger",
     "influencer marketing Saudi Arabia",
     "brand partnerships KSA",
@@ -137,7 +137,7 @@ const personJsonLd = {
   },
   jobTitle: "Beauty & Culture Figure",
   description:
-    "Saudi Arabia's leading beauty and culture figure with 330K+ combined followers across Instagram, TikTok, YouTube, and Snapchat. The defining voice in beauty, fashion, and culture for the GCC market.",
+    "Saudi Arabia's leading beauty and culture figure with 528K+ combined followers across Instagram, TikTok, YouTube, and Snapchat. The defining voice in beauty, fashion, and culture for the GCC market.",
   nationality: { "@type": "Country", name: "Saudi Arabia" },
   address: [
     {
@@ -239,7 +239,7 @@ const campaignsJsonLd = {
   "@id": "https://hussaalsaif.com/#campaigns",
   name: "Brand Campaigns by Hussa AlSaif",
   description:
-    "Selected brand campaigns and collaborations by Saudi content creator Hussa AlSaif",
+    "Selected brand campaigns and collaborations by Saudi beauty and culture figure Hussa AlSaif",
   numberOfItems: 9,
   itemListElement: [
     {
@@ -377,7 +377,7 @@ const serviceJsonLd = {
   "@id": "https://hussaalsaif.com/#service",
   name: "Brand Partnership & Influencer Marketing",
   description:
-    "Brand campaigns, ambassadorships, event appearances, and product launch collaborations with Saudi content creator Hussa AlSaif. Reach 330K+ highly engaged consumers in KSA and GCC.",
+    "Brand campaigns, ambassadorships, event appearances, and product launch collaborations with Saudi beauty and culture figure Hussa AlSaif. Reach 528K+ highly engaged consumers in KSA and GCC.",
   provider: { "@id": "https://hussaalsaif.com/#person" },
   serviceType: "Influencer Marketing",
   areaServed: [
