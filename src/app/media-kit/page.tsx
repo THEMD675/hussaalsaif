@@ -11,10 +11,10 @@ const STATS = [
 ];
 
 const PLATFORMS = [
-  { name: "Instagram", handle: "@hussa.ss", url: "https://instagram.com/hussa.ss", followers: "141K", color: "#E1306C" },
-  { name: "TikTok", handle: "@hussa.502", url: "https://tiktok.com/@hussa.502", followers: "196K", color: "#000000" },
-  { name: "YouTube", handle: "@hussaalsaif", url: "https://youtube.com/@hussaalsaif", followers: "--", color: "#FF0000" },
-  { name: "Snapchat", handle: "@hussa.alsaif", url: "https://snapchat.com/add/hussa.alsaif", followers: "--", color: "#FFFC00" },
+  { name: "Instagram", handle: "@hussa.ss", url: "https://instagram.com/hussa.ss", followers: "141K", engagement: "4.8%", color: "#E1306C" },
+  { name: "TikTok", handle: "@hussa.502", url: "https://tiktok.com/@hussa.502", followers: "196K", engagement: "10.6M likes", color: "#000000" },
+  { name: "YouTube", handle: "@hussaalsaif", url: "https://youtube.com/@hussaalsaif", followers: "Growing", engagement: "20 videos", color: "#FF0000" },
+  { name: "Snapchat", handle: "@hussa.alsaif", url: "https://snapchat.com/add/hussa.alsaif", followers: "Active", engagement: "Daily stories", color: "#FFFC00" },
 ];
 
 const DEMOGRAPHICS = [
@@ -229,8 +229,8 @@ export default function MediaKit() {
               <div className="flex justify-center lg:justify-end">
                 <div className="relative w-[320px] h-[420px] sm:w-[360px] sm:h-[480px] rounded-3xl overflow-hidden shadow-2xl shadow-[#89BBdf]/10">
                   <Image
-                    src="/images/hero.jpg"
-                    alt="Hussa AlSaif — Saudi content creator and brand ambassador media kit portrait"
+                    src="/images/media-kit-hero.jpg"
+                    alt="Hussa AlSaif — Beauty and Culture Icon media kit portrait"
                     fill
                     sizes="(max-width: 768px) 320px, 360px"
                     className="object-cover object-[center_20%]"
@@ -290,7 +290,8 @@ export default function MediaKit() {
                   <p className="font-semibold text-[14px] text-gray-900 group-hover:text-[#89BBdf] transition-colors mb-1">
                     {p.name}
                   </p>
-                  <p className="text-gray-400 text-[12px]">{p.handle}</p>
+                  <p className="text-gray-400 text-[12px] mb-2">{p.handle}</p>
+                  <p className="text-[#89BBdf] text-[11px] font-medium">{p.engagement}</p>
                 </a>
               ))}
             </div>

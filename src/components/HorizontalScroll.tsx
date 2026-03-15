@@ -69,9 +69,9 @@ function ProjectCard({ project }: { project: Project }) {
               loop
               muted
               playsInline
-              preload="none"
+              preload="metadata"
               poster={project.image}
-              className="absolute inset-0 w-full h-full object-cover"
+              className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out"
             >
               <source src={project.video} type="video/mp4" />
             </video>

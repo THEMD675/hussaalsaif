@@ -405,7 +405,7 @@ export default function Home() {
               </ScrollReveal>
             </div>
             <ScrollReveal delay={0.2}>
-              <ImageReveal src="/images/hero.jpg" alt="Hussa AlSaif" containerClassName="rounded-3xl h-[400px] sm:h-[500px] lg:h-[550px] shadow-2xl shadow-[#89BBdf]/8" />
+              <ImageReveal src="/images/about.jpg" alt="Hussa AlSaif — curly hair, leather jacket, smiling at dinner in London" containerClassName="rounded-3xl h-[400px] sm:h-[500px] lg:h-[550px] shadow-2xl shadow-[#89BBdf]/8" />
             </ScrollReveal>
           </div>
         </div>

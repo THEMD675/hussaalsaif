@@ -199,8 +199,8 @@ export default function LinksPage() {
         <div className="text-center mb-10">
           <div className="relative w-28 h-28 mx-auto mb-5 rounded-full overflow-hidden ring-2 ring-[#89BBdf]/30 ring-offset-4 ring-offset-[#fafcfe] shadow-xl shadow-[#89BBdf]/10">
             <Image
-              src="/images/hero.jpg"
-              alt="Hussa AlSaif — Saudi content creator and brand ambassador profile photo"
+              src="/images/avatar-hd.jpg"
+              alt="Hussa AlSaif"
               fill
               sizes="112px"
               className="object-cover object-[center_20%]"
