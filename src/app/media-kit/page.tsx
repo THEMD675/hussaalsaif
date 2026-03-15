@@ -222,7 +222,7 @@ export default function MediaKit() {
                 <div className="flex gap-4 text-[13px] text-gray-400">
                   <span>Saudi Arabia</span>
                   <span className="text-gray-200">|</span>
-                  <span>inquiries@hussaalsaif.com</span>
+                  <span>hussa.alsaif07@gmail.com</span>
                 </div>
               </div>
 
@@ -502,10 +502,10 @@ export default function MediaKit() {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-10 no-print">
               <a
-                href="mailto:inquiries@hussaalsaif.com?subject=Brand%20Partnership%20Inquiry"
+                href="mailto:hussa.alsaif07@gmail.com?subject=Brand%20Partnership%20Inquiry"
                 className="bg-[#89BBdf] hover:bg-[#6ea8d4] text-white px-10 py-4 rounded-full font-semibold transition-all text-[13px] tracking-wide inline-block shadow-lg shadow-[#89BBdf]/20"
               >
-                inquiries@hussaalsaif.com
+                hussa.alsaif07@gmail.com
               </a>
               <a
                 href="https://instagram.com/hussa.ss"
@@ -519,7 +519,7 @@ export default function MediaKit() {
 
             {/* Print-only contact info */}
             <div className="hidden print:block text-gray-400 text-[14px] space-y-1">
-              <p>inquiries@hussaalsaif.com</p>
+              <p>hussa.alsaif07@gmail.com</p>
               <p>Instagram: @hussa.ss</p>
               <p>TikTok: @hussa.502</p>
             </div>

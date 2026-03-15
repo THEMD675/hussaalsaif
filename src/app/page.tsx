@@ -289,7 +289,16 @@ export default function Home() {
             </div>
             <ScrollReveal delay={0.3}>
               <div ref={heroImageRef} className="hero-image-wrapper rounded-3xl h-[420px] sm:h-[520px] lg:h-[620px] shadow-2xl shadow-[#89BBdf]/8 overflow-hidden relative">
-                <Image src="/images/hero.jpg" alt="Hussa AlSaif" fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 45vw" className="object-cover hero-image" priority />
+                <video
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  poster="/images/hero.jpg"
+                  className="absolute inset-0 w-full h-full object-cover hero-image"
+                >
+                  <source src="/videos/hero.mp4" type="video/mp4" />
+                </video>
               </div>
             </ScrollReveal>
           </div>
@@ -586,13 +595,14 @@ export default function Home() {
             </div>
           </ScrollReveal>
           <ScrollReveal delay={0.35}>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-              <MagneticButton href="mailto:inquiries@hussaalsaif.com?subject=Partnership%20Inquiry" onClick={() => trackEmail("inquiries@hussaalsaif.com", "contact")} className="bg-[#89BBdf] hover:bg-[#6ea8d4] text-white px-10 py-4 rounded-full font-semibold transition-all text-[13px] tracking-wide inline-block shadow-lg shadow-[#89BBdf]/15">
-                inquiries@hussaalsaif.com
-              </MagneticButton>
-              <MagneticButton href="https://instagram.com/hussa.ss" target="_blank" onClick={() => trackSocial("Instagram")} className="border border-white/15 hover:border-[#89BBdf] text-white hover:text-[#89BBdf] px-10 py-4 rounded-full font-semibold transition-all text-[13px] tracking-wide inline-block">
-                @hussa.ss
-              </MagneticButton>
+            <p className="text-gray-500 text-[13px] mb-6">
+              Or reach out directly: <a href="mailto:hussa.alsaif07@gmail.com?subject=Partnership%20Inquiry" onClick={() => trackEmail("hussa.alsaif07@gmail.com", "contact")} className="text-[#89BBdf] hover:underline">hussa.alsaif07@gmail.com</a>
+            </p>
+            <div className="flex justify-center gap-6">
+              <a href="https://instagram.com/hussa.ss" target="_blank" rel="noopener noreferrer" onClick={() => trackSocial("Instagram")} className="text-gray-500 hover:text-[#89BBdf] transition-colors text-[12px] tracking-wide">Instagram</a>
+              <a href="https://tiktok.com/@hussa.502" target="_blank" rel="noopener noreferrer" onClick={() => trackSocial("TikTok")} className="text-gray-500 hover:text-[#89BBdf] transition-colors text-[12px] tracking-wide">TikTok</a>
+              <a href="https://youtube.com/@hussaalsaif" target="_blank" rel="noopener noreferrer" onClick={() => trackSocial("YouTube")} className="text-gray-500 hover:text-[#89BBdf] transition-colors text-[12px] tracking-wide">YouTube</a>
+              <a href="https://snapchat.com/add/hussa.alsaif" target="_blank" rel="noopener noreferrer" onClick={() => trackSocial("Snapchat")} className="text-gray-500 hover:text-[#89BBdf] transition-colors text-[12px] tracking-wide">Snapchat</a>
             </div>
           </ScrollReveal>
           <ScrollReveal delay={0.4}>
@@ -627,7 +637,7 @@ export default function Home() {
               <a href="/links" className="hover:text-[#89BBdf] transition-colors duration-300">Links</a>
               <a href="https://instagram.com/hussa.ss" target="_blank" rel="noopener noreferrer" onClick={() => trackSocial("Instagram")} className="hover:text-[#89BBdf] transition-colors duration-300">Instagram</a>
               <a href="https://tiktok.com/@hussa.502" target="_blank" rel="noopener noreferrer" onClick={() => trackSocial("TikTok")} className="hover:text-[#89BBdf] transition-colors duration-300">TikTok</a>
-              <a href="mailto:inquiries@hussaalsaif.com" onClick={() => trackEmail("inquiries@hussaalsaif.com", "footer")} className="hover:text-[#89BBdf] transition-colors duration-300">Contact</a>
+              <a href="mailto:hussa.alsaif07@gmail.com?subject=Partnership%20Inquiry" onClick={() => trackEmail("hussa.alsaif07@gmail.com", "footer")} className="hover:text-[#89BBdf] transition-colors duration-300">Contact</a>
             </div>
             <p className="text-gray-600 text-[11px]">&copy; 2026 Hussa AlSaif</p>
           </div>

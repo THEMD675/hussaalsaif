@@ -320,8 +320,8 @@ export default function ContactForm() {
           </p>
           <p className="text-red-400/70 text-[12px]">
             Or email{" "}
-            <a href="mailto:inquiries@hussaalsaif.com" className="underline underline-offset-2 hover:text-red-300 transition-colors">
-              inquiries@hussaalsaif.com
+            <a href="mailto:hussa.alsaif07@gmail.com" className="underline underline-offset-2 hover:text-red-300 transition-colors">
+              hussa.alsaif07@gmail.com
             </a>
             {" "}directly.
           </p>

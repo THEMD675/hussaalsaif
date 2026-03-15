@@ -35,7 +35,7 @@ export const metadata: Metadata = {
 const LINKS = [
   {
     label: "Work With Me",
-    href: "mailto:inquiries@hussaalsaif.com?subject=Brand%20Partnership%20Inquiry",
+    href: "mailto:hussa.alsaif07@gmail.com?subject=Brand%20Partnership%20Inquiry",
     description: "Brand partnerships & collaborations",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -119,8 +119,8 @@ const LINKS = [
   },
   {
     label: "Brand Inquiries",
-    href: "mailto:inquiries@hussaalsaif.com?subject=Brand%20Partnership%20Inquiry",
-    description: "inquiries@hussaalsaif.com",
+    href: "mailto:hussa.alsaif07@gmail.com?subject=Brand%20Partnership%20Inquiry",
+    description: "hussa.alsaif07@gmail.com",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
