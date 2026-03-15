@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
-const TO_EMAIL = "hussa.alsaif07@gmail.com";
+const TO_EMAIL = "inquiries@hussaalsaif.com";
 
 const rateLimit = new Map<string, { count: number; resetAt: number }>();
 const RATE_LIMIT_WINDOW = 60 * 60 * 1000;

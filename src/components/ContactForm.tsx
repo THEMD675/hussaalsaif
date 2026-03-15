@@ -115,7 +115,7 @@ export default function ContactForm() {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ ...data, ...utmParams }),
         }),
-        fetch("https://formsubmit.co/ajax/hussa.alsaif07@gmail.com", {
+        fetch("https://formsubmit.co/ajax/inquiries@hussaalsaif.com", {
           method: "POST",
           headers: { "Content-Type": "application/json", Accept: "application/json" },
           body: JSON.stringify({
