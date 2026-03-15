@@ -343,39 +343,35 @@ export default function Home() {
           <ScrollReveal delay={0.1}>
             <p className="text-gray-400 text-[15px] mb-16 max-w-lg">When Hussa partners with a brand, her audience pays attention. 13+ global brands trust her to introduce their products to the Saudi and GCC market.</p>
           </ScrollReveal>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 mb-20">
-            {STATS.map((stat, i) => (
-              <ScrollReveal key={stat.label} delay={0.1 * i}>
-                <div className="glass rounded-2xl p-7 sm:p-9 text-center hover:shadow-xl hover:shadow-[#89BBdf]/5 transition-all duration-500">
+          <ScrollReveal delay={0.1}>
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 mb-20">
+              {STATS.map((stat) => (
+                <div key={stat.label} className="glass rounded-2xl p-7 sm:p-9 text-center hover:shadow-xl hover:shadow-[#89BBdf]/5 transition-all duration-500">
                   <p className="text-3xl sm:text-4xl font-serif font-bold text-gradient mb-2"><AnimatedCounter value={stat.value} /></p>
                   <p className="text-[11px] text-gray-400 font-medium tracking-[0.15em] uppercase">{stat.label}</p>
                 </div>
-              </ScrollReveal>
-            ))}
-          </div>
-          <div className="grid md:grid-cols-3 gap-6">
-            <ScrollReveal delay={0.1}>
+              ))}
+            </div>
+          </ScrollReveal>
+          <ScrollReveal delay={0.15}>
+            <div className="grid md:grid-cols-3 gap-6">
               <div className="result-card rounded-2xl p-8 sm:p-10">
                 <div className="text-[#89BBdf] text-3xl font-serif font-bold mb-3">Pioneer</div>
                 <div className="text-gray-900 font-semibold text-[15px] mb-2">She Started the Movement</div>
                 <p className="text-gray-400 text-[13px] leading-relaxed">She pioneered the GCC curly hair movement. When Hussa talks about a product, her audience searches for it.</p>
               </div>
-            </ScrollReveal>
-            <ScrollReveal delay={0.2}>
               <div className="result-card rounded-2xl p-8 sm:p-10">
                 <div className="text-[#89BBdf] text-3xl font-serif font-bold mb-3">Repeat</div>
                 <div className="text-gray-900 font-semibold text-[15px] mb-2">Brands Come Back</div>
                 <p className="text-gray-400 text-[13px] leading-relaxed">Sephora, Estée Lauder, MAC, Lancôme &mdash; the brands that work with Hussa come back. Because the results speak.</p>
               </div>
-            </ScrollReveal>
-            <ScrollReveal delay={0.3}>
               <div className="result-card rounded-2xl p-8 sm:p-10">
                 <div className="text-[#89BBdf] text-3xl font-serif font-bold mb-3">Cultural</div>
                 <div className="text-gray-900 font-semibold text-[15px] mb-2">Beyond Beauty</div>
                 <p className="text-gray-400 text-[13px] leading-relaxed">Book club host, bilingual storyteller, cultural tastemaker. She&apos;s not just beauty &mdash; she&apos;s culture.</p>
               </div>
-            </ScrollReveal>
-          </div>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 
@@ -432,9 +428,8 @@ export default function Home() {
         </div>
         <div className="md:hidden px-5 pb-16">
           <div className="grid grid-cols-1 gap-6">
-            {PROJECTS.slice(0, 6).map((project, i) => (
-              <ScrollReveal key={project.brand} delay={0.08 * i}>
-                <div className="group">
+            {PROJECTS.slice(0, 6).map((project) => (
+                <div key={project.brand} className="group">
                   <div className="relative aspect-[4/5] rounded-2xl overflow-hidden mb-4">
                     {project.video ? (
                       <video autoPlay loop muted playsInline preload="none" poster={project.image} className="absolute inset-0 w-full h-full object-cover">
@@ -452,7 +447,6 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-              </ScrollReveal>
             ))}
           </div>
         </div>
@@ -468,16 +462,16 @@ export default function Home() {
           <ScrollReveal delay={0.1}>
             <p className="text-gray-400 text-[15px] mb-16 max-w-lg">Young Saudi women with purchasing power, brand awareness, and trust in Hussa&apos;s taste. This is the audience every beauty and fashion brand is trying to reach.</p>
           </ScrollReveal>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 mb-16">
-            {DEMOGRAPHICS.map((demo, i) => (
-              <ScrollReveal key={demo.label} delay={0.1 * i}>
-                <div className="demo-card rounded-2xl p-7 sm:p-9">
+          <ScrollReveal delay={0.1}>
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 mb-16">
+              {DEMOGRAPHICS.map((demo) => (
+                <div key={demo.label} className="demo-card rounded-2xl p-7 sm:p-9">
                   <p className="text-[#89BBdf] font-serif font-bold text-[18px] sm:text-[20px] mb-2">{demo.label}</p>
                   <p className="text-gray-500 text-[13px] leading-relaxed">{demo.description}</p>
                 </div>
-              </ScrollReveal>
-            ))}
-          </div>
+              ))}
+            </div>
+          </ScrollReveal>
           <div className="grid md:grid-cols-2 gap-8">
             <ScrollReveal delay={0.2}>
               <div className="glass rounded-2xl p-8 sm:p-10">
@@ -527,10 +521,10 @@ export default function Home() {
           <ScrollReveal delay={0.1}>
             <p className="text-gray-400 text-[15px] mb-16 max-w-lg">The partnership deck includes audience intelligence, past collaboration results, and creative scope. It&apos;s designed for teams evaluating a strategic fit.</p>
           </ScrollReveal>
+          <ScrollReveal delay={0.1}>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-16">
-            {MEDIA_KIT_ITEMS.map((item, i) => (
-              <ScrollReveal key={item.title} delay={0.08 * i}>
-                <div className="media-kit-card rounded-2xl p-7 sm:p-8">
+            {MEDIA_KIT_ITEMS.map((item) => (
+                <div key={item.title} className="media-kit-card rounded-2xl p-7 sm:p-8">
                   <div className="w-10 h-10 rounded-xl bg-[#89BBdf]/10 flex items-center justify-center mb-4">
                     {item.icon === "chart" && (<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#89BBdf" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>)}
                     {item.icon === "grid" && (<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#89BBdf" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>)}
@@ -542,9 +536,9 @@ export default function Home() {
                   <h3 className="font-semibold text-[15px] text-gray-900 mb-1.5">{item.title}</h3>
                   <p className="text-gray-400 text-[13px] leading-relaxed">{item.desc}</p>
                 </div>
-              </ScrollReveal>
             ))}
           </div>
+          </ScrollReveal>
           <ScrollReveal delay={0.3}>
             <div className="media-kit-cta rounded-3xl p-10 sm:p-14 text-center relative overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-[#0d1a26]" />
@@ -622,22 +616,6 @@ export default function Home() {
               <a href="https://tiktok.com/@hussa.502" target="_blank" rel="noopener noreferrer" onClick={() => trackSocial("TikTok")} className="hover:text-[#89BBdf] transition-colors">TikTok</a>
               <a href="https://youtube.com/@hussaalsaif" target="_blank" rel="noopener noreferrer" onClick={() => trackSocial("YouTube")} className="hover:text-[#89BBdf] transition-colors">YouTube</a>
               <a href="https://snapchat.com/add/hussa.alsaif" target="_blank" rel="noopener noreferrer" onClick={() => trackSocial("Snapchat")} className="hover:text-[#89BBdf] transition-colors">Snapchat</a>
-            </div>
-          </ScrollReveal>
-          <ScrollReveal delay={0.4}>
-            <div className="grid grid-cols-3 gap-4 max-w-md mx-auto mt-12 pt-12 border-t border-white/5">
-              <div className="text-center">
-                <p className="text-white font-serif font-bold text-lg">Fast</p>
-                <p className="text-gray-500 text-[11px] mt-1">Response</p>
-              </div>
-              <div className="text-center">
-                <p className="text-white font-serif font-bold text-lg">English & Arabic</p>
-                <p className="text-gray-500 text-[11px] mt-1">Bilingual</p>
-              </div>
-              <div className="text-center">
-                <p className="text-white font-serif font-bold text-lg">KSA & GCC</p>
-                <p className="text-gray-500 text-[11px] mt-1">Primary Markets</p>
-              </div>
             </div>
           </ScrollReveal>
         </div>
