@@ -108,49 +108,64 @@ export default function ContactForm() {
     setStatus("sending");
 
     try {
-      // Send to both: our API (logging) + Formsubmit (actual email delivery)
-      const [apiRes, emailRes] = await Promise.allSettled([
-        fetch("/api/contact", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ ...data, ...utmParams }),
-        }),
-        fetch("https://formsubmit.co/ajax/inquiries@hussaalsaif.com", {
-          method: "POST",
-          headers: { "Content-Type": "application/json", Accept: "application/json" },
-          body: JSON.stringify({
-            name: data.name,
-            email: data.email,
-            company: data.company,
-            budget: data.budget,
-            "Partnership Type": data.partnershipType,
-            timeline: data.timeline,
-            message: data.message,
-            _subject: `New Inquiry: ${data.name} — ${data.company || "Direct"}`,
-            _template: "table",
-            _captcha: "false",
-          }),
-        }),
-      ]);
+      // Log to our API
+      fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...data, ...utmParams }),
+      }).catch(() => {});
 
-      // Consider success if either succeeded
-      const apiOk = apiRes.status === "fulfilled" && apiRes.value.ok;
-      const emailOk = emailRes.status === "fulfilled" && emailRes.value.ok;
+      // Send email via hidden form POST to Formsubmit
+      const iframe = document.createElement("iframe");
+      iframe.name = "formsubmit_target";
+      iframe.style.display = "none";
+      document.body.appendChild(iframe);
 
-      if (apiOk || emailOk) {
-        trackFormSubmission({
-          budget: data.budget,
-          company: data.company,
-        });
-        setStatus("sent");
-        form.reset();
-      } else {
-        setStatus("error");
-        setErrorMessage("Something went wrong. Please try again.");
+      const hiddenForm = document.createElement("form");
+      hiddenForm.method = "POST";
+      hiddenForm.action = "https://formsubmit.co/inquiries@hussaalsaif.com";
+      hiddenForm.target = "formsubmit_target";
+
+      const fields: Record<string, string> = {
+        name: data.name,
+        email: data.email,
+        company: data.company,
+        budget: data.budget,
+        "Partnership Type": data.partnershipType,
+        timeline: data.timeline,
+        message: data.message,
+        _subject: `New Inquiry: ${data.name} — ${data.company || "Direct"}`,
+        _template: "table",
+        _captcha: "false",
+        _next: "https://hussaalsaif.com",
+      };
+
+      for (const [key, value] of Object.entries(fields)) {
+        const input = document.createElement("input");
+        input.type = "hidden";
+        input.name = key;
+        input.value = value;
+        hiddenForm.appendChild(input);
       }
+
+      document.body.appendChild(hiddenForm);
+      hiddenForm.submit();
+
+      // Cleanup after submit
+      setTimeout(() => {
+        hiddenForm.remove();
+        iframe.remove();
+      }, 3000);
+
+      trackFormSubmission({
+        budget: data.budget,
+        company: data.company,
+      });
+      setStatus("sent");
+      form.reset();
     } catch {
       setStatus("error");
-      setErrorMessage("Network error. Please check your connection and try again.");
+      setErrorMessage("Something went wrong. Please try again.");
     }
   };
 
