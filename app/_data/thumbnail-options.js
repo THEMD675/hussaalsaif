@@ -2,25 +2,25 @@ export const thumbnailOptions = [
   {
     href: '#',
     title: 'Brand Campaigns',
-    image: 'Dennis-Portfolio/images/hlz36eeb3ddfvqt9tex9',
+    image: '/images/brand-campaigns.jpg',
     category: 'Content & Strategy',
   },
   {
     href: '#',
     title: 'Event Coverage',
-    image: 'Dennis-Portfolio/images/aigt2q3xiqb8ovujzscc',
+    image: '/images/event-coverage.jpg',
     category: 'Red Carpet & Launches',
   },
   {
     href: '#',
     title: 'Beauty Editorials',
-    image: 'Dennis-Portfolio/images/ahuzarh793qmv9sdveyk',
+    image: '/images/beauty-editorials.jpg',
     category: 'Photoshoots & Campaigns',
   },
   {
     href: '#',
     title: 'YouTube & Reels',
-    image: 'Dennis-Portfolio/images/pzychyr1ans60gqlevhg',
+    image: '/images/youtube-reels.jpg',
     category: 'Video Content',
   },
 ];

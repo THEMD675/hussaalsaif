@@ -2,7 +2,6 @@
 
 import { motion } from 'framer-motion';
 import { MoveDownRight } from 'lucide-react';
-import Image from 'next/image';
 
 import { ParallaxSlider } from '@/components';
 
@@ -12,13 +11,16 @@ export function Header() {
   return (
     <motion.header
       className='relative h-screen overflow-hidden text-background'
-      style={{ background: 'linear-gradient(135deg, #89BBdf 0%, #a8d4f0 30%, #f0f7fc 100%)' }}
       variants={slideUp}
       initial='initial'
       animate='enter'
     >
-      {/* Placeholder gradient - replace with her actual hero photo */}
-      <div className='absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/30' />
+      <img
+        src='/images/hero.jpg'
+        alt='Hussa AlSaif'
+        className='absolute inset-0 size-full object-cover'
+      />
+      <div className='absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/50' />
 
       <div className='relative flex h-full flex-col justify-end gap-2 md:flex-col-reverse md:justify-normal'>
         <div className='select-none'>

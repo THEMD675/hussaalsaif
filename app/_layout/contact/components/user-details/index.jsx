@@ -18,7 +18,7 @@ export function UserDetails({ transformX }) {
       <Row>
         <div className='flex items-center gap-8'>
           <ImageWrapper>
-            <div className='w-full h-full rounded-full bg-gradient-to-br from-[#89BBdf] to-[#c4e0f5]' />
+            <img src='/images/avatar.jpg' alt='Hussa AlSaif' className='size-full rounded-full object-cover' />
           </ImageWrapper>
           <MainTitle>Let&apos;s work</MainTitle>
         </div>
