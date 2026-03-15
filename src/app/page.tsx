@@ -11,9 +11,9 @@ import ContactForm from "@/components/ContactForm";
 import AnimatedCounter from "@/components/AnimatedCounter";
 import { trackCTA, trackSocial, trackEmail, trackNav, initScrollDepthTracking } from "@/lib/analytics";
 
-const BackToTop = dynamic(() => import("@/components/BackToTop"), { ssr: false });
-const ParticleField = dynamic(() => import("@/components/ParticleField"), { ssr: false });
-const SmoothScroll = dynamic(() => import("@/components/SmoothScroll"), { ssr: false });
+const BackToTop = dynamic(() => import("@/components/BackToTop").catch(() => ({ default: () => null })), { ssr: false });
+const ParticleField = dynamic(() => import("@/components/ParticleField").catch(() => ({ default: () => null })), { ssr: false });
+const SmoothScroll = dynamic(() => import("@/components/SmoothScroll").catch(() => ({ default: () => null })), { ssr: false });
 
 const BRANDS = [
   { name: "Sephora", logo: "/images/brands/sephora.svg", color: "#000000" },
@@ -158,41 +158,35 @@ export default function Home() {
 
   // Force autoplay on ALL muted videos — iOS/mobile fix
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          const video = entry.target as HTMLVideoElement;
-          if (entry.isIntersecting) {
-            // Load the video first if preload was none
-            if (video.preload === "none") {
-              video.preload = "auto";
-              video.load();
+    try {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            const video = entry.target as HTMLVideoElement;
+            if (entry.isIntersecting) {
+              if (video.preload === "none") {
+                video.preload = "auto";
+                video.load();
+              }
+              video.play().catch(() => {});
             }
-            video.play().catch(() => {});
-          } else {
-            // Pause off-screen videos to save battery
-            video.pause();
-          }
-        });
-      },
-      { threshold: 0, rootMargin: "200px" }
-    );
+          });
+        },
+        { threshold: 0, rootMargin: "100px" }
+      );
 
-    // Observe all current videos
-    function observeAll() {
-      document.querySelectorAll("video[muted]").forEach((v) => observer.observe(v));
+      // Observe videos after a delay to let React finish hydrating
+      const timer = setTimeout(() => {
+        document.querySelectorAll("video[muted]").forEach((v) => observer.observe(v));
+      }, 1000);
+
+      return () => {
+        clearTimeout(timer);
+        observer.disconnect();
+      };
+    } catch {
+      // Silently fail — page works without video autoplay
     }
-
-    observeAll();
-
-    // Re-observe when new videos appear (HorizontalScroll renders later)
-    const mutationObserver = new MutationObserver(() => observeAll());
-    mutationObserver.observe(document.body, { childList: true, subtree: true });
-
-    return () => {
-      observer.disconnect();
-      mutationObserver.disconnect();
-    };
   }, []);
 
   return (
