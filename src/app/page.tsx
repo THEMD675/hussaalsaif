@@ -283,13 +283,16 @@ export default function Home() {
             </div>
             <ScrollReveal delay={0.3}>
               <div ref={heroImageRef} className="hero-image-wrapper rounded-3xl h-[420px] sm:h-[520px] lg:h-[620px] shadow-2xl shadow-[#89BBdf]/8 overflow-hidden relative">
+                {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
                 <video
                   autoPlay
                   loop
                   muted
                   playsInline
+                  preload="auto"
                   poster="/images/hero.jpg"
-                  className="absolute inset-0 w-full h-full object-cover hero-image"
+                  className="absolute inset-0 w-full h-full object-cover"
+                  data-webkit-playsinline="true"
                 >
                   <source src="/videos/hero.mp4" type="video/mp4" />
                 </video>
