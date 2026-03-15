@@ -171,9 +171,8 @@ export default function MediaKit() {
         {/* -- NAV -- */}
         <nav className="no-print fixed top-0 left-0 right-0 z-50 glass" role="navigation">
           <div className="max-w-7xl mx-auto px-5 sm:px-8 py-5 flex items-center justify-between">
-            <Link href="/" className="flex items-center gap-2.5">
-              <img src="/images/logo-hs.svg" alt="" className="h-8 w-8 rounded-lg" />
-              <span className="font-serif text-xl font-bold tracking-tight">Hussa<span className="text-[#89BBdf]">.</span></span>
+            <Link href="/" aria-label="Hussa AlSaif - Home">
+              <img src="/images/logo-hs.svg" alt="Hussa AlSaif" className="h-9 w-9 rounded-lg" />
             </Link>
             <div className="flex items-center gap-4">
               <Link href="/" className="text-gray-400 hover:text-gray-900 text-[13px] font-medium transition-colors">

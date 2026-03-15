@@ -183,9 +183,8 @@ export default function Home() {
       {/* -- NAV -- */}
       <nav className="fixed top-0 left-0 right-0 z-50 glass" role="navigation" aria-label="Main navigation">
         <div className="max-w-7xl mx-auto px-5 sm:px-8 py-5 flex items-center justify-between">
-          <a href="#" className="flex items-center gap-2.5" aria-label="Hussa AlSaif - Home">
-            <img src="/images/logo-hs.svg" alt="" className="h-8 w-8 rounded-lg" />
-            <span className="font-serif text-xl font-bold tracking-tight">Hussa<span className="text-[#89BBdf]">.</span></span>
+          <a href="#" aria-label="Hussa AlSaif - Home">
+            <img src="/images/logo-hs.svg" alt="Hussa AlSaif" className="h-9 w-9 rounded-lg" />
           </a>
           <div className="hidden md:flex items-center gap-10 text-[13px] font-medium tracking-wide uppercase text-gray-400">
             <a href="#world" onClick={() => trackNav("World")} className="nav-link hover:text-[#89BBdf] transition-colors duration-300">World</a>
