@@ -448,28 +448,6 @@ export default function RootLayout({
         {children}
         <Analytics />
         <SpeedInsights />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              // Auto-clear ALL browser caches and register service worker
-              // This runs for EVERY visitor — fixes stale cached JS from old deploys
-              (function() {
-                try {
-                  // Clear all Cache API storage
-                  if ('caches' in window) {
-                    caches.keys().then(function(names) {
-                      names.forEach(function(name) { caches.delete(name); });
-                    });
-                  }
-                  // Register service worker that prevents future cache issues
-                  if ('serviceWorker' in navigator) {
-                    navigator.serviceWorker.register('/sw.js').catch(function(){});
-                  }
-                } catch(e) {}
-              })();
-            `,
-          }}
-        />
       </body>
     </html>
   );
