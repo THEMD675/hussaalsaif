@@ -8,6 +8,8 @@ interface ScrollRevealProps {
   className?: string;
   delay?: number;
   direction?: "up" | "down" | "left" | "right";
+  /** Distance of initial offset in pixels */
+  distance?: number;
 }
 
 export default function ScrollReveal({
@@ -15,15 +17,16 @@ export default function ScrollReveal({
   className = "",
   delay = 0,
   direction = "up",
+  distance = 40,
 }: ScrollRevealProps) {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-80px" });
+  const isInView = useInView(ref, { once: true, margin: "-60px" });
 
   const directions = {
-    up: { y: 60, x: 0 },
-    down: { y: -60, x: 0 },
-    left: { y: 0, x: 60 },
-    right: { y: 0, x: -60 },
+    up: { y: distance, x: 0 },
+    down: { y: -distance, x: 0 },
+    left: { y: 0, x: distance },
+    right: { y: 0, x: -distance },
   };
 
   return (
@@ -34,7 +37,7 @@ export default function ScrollReveal({
         opacity: 0,
         y: directions[direction].y,
         x: directions[direction].x,
-        filter: "blur(10px)",
+        filter: "blur(6px)",
       }}
       animate={
         isInView
@@ -43,13 +46,13 @@ export default function ScrollReveal({
               opacity: 0,
               y: directions[direction].y,
               x: directions[direction].x,
-              filter: "blur(10px)",
+              filter: "blur(6px)",
             }
       }
       transition={{
-        duration: 1,
+        duration: 0.9,
         delay,
-        ease: [0.25, 0.46, 0.45, 0.94],
+        ease: [0.22, 1, 0.36, 1],
       }}
     >
       {children}

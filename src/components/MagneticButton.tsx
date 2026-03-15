@@ -8,6 +8,7 @@ interface MagneticButtonProps {
   className?: string;
   href?: string;
   target?: string;
+  onClick?: () => void;
 }
 
 export default function MagneticButton({
@@ -15,19 +16,19 @@ export default function MagneticButton({
   className = "",
   href,
   target,
+  onClick,
 }: MagneticButtonProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
-  const [isTouchDevice, setIsTouchDevice] = useState(false);
+  const isTouchRef = useRef(false);
 
   useEffect(() => {
-    setIsTouchDevice(
-      "ontouchstart" in window || navigator.maxTouchPoints > 0
-    );
+    isTouchRef.current =
+      "ontouchstart" in window || navigator.maxTouchPoints > 0;
   }, []);
 
   const handleMouse = (e: React.MouseEvent) => {
-    if (isTouchDevice || !ref.current) return;
+    if (isTouchRef.current || !ref.current) return;
     const { clientX, clientY } = e;
     const { left, top, width, height } = ref.current.getBoundingClientRect();
     const x = (clientX - (left + width / 2)) * 0.3;
@@ -37,25 +38,24 @@ export default function MagneticButton({
 
   const reset = () => setPosition({ x: 0, y: 0 });
 
-  // On touch devices, render without the magnetic motion wrapper
-  if (isTouchDevice) {
-    return (
-      <div ref={ref}>
-        {href ? (
-          <a
-            href={href}
-            target={target}
-            rel={target === "_blank" ? "noopener noreferrer" : undefined}
-            className={`${className} min-h-[44px] min-w-[44px] flex items-center justify-center`}
-          >
-            {children}
-          </a>
-        ) : (
-          <div className={`${className} min-h-[44px] min-w-[44px] flex items-center justify-center`}>{children}</div>
-        )}
-      </div>
-    );
-  }
+  const inner = href ? (
+    <a
+      href={href}
+      target={target}
+      rel={target === "_blank" ? "noopener noreferrer" : undefined}
+      className={`${className} min-h-[44px] min-w-[44px] flex items-center justify-center`}
+      onClick={onClick}
+    >
+      {children}
+    </a>
+  ) : (
+    <div
+      className={`${className} min-h-[44px] min-w-[44px] flex items-center justify-center`}
+      onClick={onClick}
+    >
+      {children}
+    </div>
+  );
 
   return (
     <motion.div
@@ -65,18 +65,7 @@ export default function MagneticButton({
       animate={{ x: position.x, y: position.y }}
       transition={{ type: "spring", stiffness: 150, damping: 15, mass: 0.1 }}
     >
-      {href ? (
-        <a
-          href={href}
-          target={target}
-          rel={target === "_blank" ? "noopener noreferrer" : undefined}
-          className={className}
-        >
-          {children}
-        </a>
-      ) : (
-        <div className={className}>{children}</div>
-      )}
+      {inner}
     </motion.div>
   );
 }

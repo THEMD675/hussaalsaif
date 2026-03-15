@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Playfair_Display, Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -16,55 +16,419 @@ const inter = Inter({
   display: "swap",
 });
 
+export const viewport: Viewport = {
+  themeColor: "#89BBdf",
+  width: "device-width",
+  initialScale: 1,
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://hussaalsaif.com"),
-  title: "Hussa AlSaif — Content Creator & Brand Ambassador",
+  title: {
+    default:
+      "Hussa AlSaif — Saudi Content Creator & Brand Ambassador | 330K+ Followers",
+    template: "%s | Hussa AlSaif",
+  },
   description:
-    "Saudi content creator & brand ambassador with 330K+ followers. Partnered with Sephora, Estée Lauder, MAC, Too Faced, Fendi & more. Based in Khobar & Riyadh.",
-  keywords: ["Hussa AlSaif", "Saudi content creator", "brand ambassador", "beauty", "lifestyle", "fashion", "Riyadh", "Khobar"],
+    "Hussa AlSaif is a leading Saudi content creator and brand ambassador with 330K+ followers. Partnered with Sephora, Estee Lauder, MAC, Fendi, Dyson & more. Beauty, fashion & lifestyle influencer based in Khobar & Riyadh, Saudi Arabia.",
+  keywords: [
+    "Hussa AlSaif",
+    "حصه السيف",
+    "Saudi content creator",
+    "Saudi influencer",
+    "brand ambassador Saudi Arabia",
+    "beauty influencer KSA",
+    "fashion influencer Saudi",
+    "lifestyle content creator",
+    "GCC influencer",
+    "Khobar influencer",
+    "Riyadh content creator",
+    "Saudi beauty blogger",
+    "influencer marketing Saudi Arabia",
+    "brand partnerships KSA",
+    "Sephora influencer",
+    "curly hair Saudi",
+    "makeup influencer Arab",
+    "TikTok creator Saudi",
+    "Instagram influencer KSA",
+  ],
+  authors: [{ name: "Hussa AlSaif", url: "https://hussaalsaif.com" }],
+  creator: "Hussa AlSaif",
+  publisher: "Hussa AlSaif",
+  formatDetection: {
+    email: false,
+    telephone: false,
+  },
+  icons: {
+    icon: [{ url: "/favicon.ico", sizes: "any" }],
+    apple: [{ url: "/favicon.ico", sizes: "180x180" }],
+  },
+  alternates: {
+    canonical: "https://hussaalsaif.com",
+    languages: {
+      en: "https://hussaalsaif.com",
+      ar: "https://hussaalsaif.com",
+    },
+  },
   openGraph: {
-    title: "Hussa AlSaif — Content Creator & Brand Ambassador",
-    description: "Saudi content creator with 330K+ followers. Partnered with Sephora, Estée Lauder, MAC, Fendi & more.",
+    title: "Hussa AlSaif — Saudi Content Creator & Brand Ambassador",
+    description:
+      "Saudi content creator with 330K+ followers. Partnered with Sephora, Estee Lauder, MAC, Fendi, Dyson & more. Beauty, fashion & lifestyle influencer in Khobar & Riyadh.",
     type: "website",
     locale: "en_US",
+    alternateLocale: "ar_SA",
     url: "https://hussaalsaif.com",
-    images: [{ url: "/images/hero.jpg", width: 640, height: 640, alt: "Hussa AlSaif" }],
+    siteName: "Hussa AlSaif",
+    images: [
+      {
+        url: "https://hussaalsaif.com/images/hero.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Hussa AlSaif — Saudi Content Creator and Brand Ambassador based in Khobar and Riyadh",
+        type: "image/jpeg",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Hussa AlSaif — Content Creator & Brand Ambassador",
-    description: "Saudi content creator with 330K+ followers. Partnered with Sephora, Estée Lauder, MAC, Fendi & more.",
-    images: ["/images/hero.jpg"],
+    title: "Hussa AlSaif — Saudi Content Creator & Brand Ambassador",
+    description:
+      "330K+ followers. Partnered with Sephora, Estee Lauder, MAC, Fendi & more. Beauty, fashion & lifestyle influencer in KSA.",
+    images: [
+      {
+        url: "https://hussaalsaif.com/images/hero.jpg",
+        alt: "Hussa AlSaif — Saudi Content Creator and Brand Ambassador",
+      },
+    ],
+    creator: "@hussaalsaif",
   },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  category: "entertainment",
 };
 
-const jsonLd = {
+/* ──────────────────────────────────────
+   STRUCTURED DATA (JSON-LD)
+   ────────────────────────────────────── */
+
+const personJsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
+  "@id": "https://hussaalsaif.com/#person",
   name: "Hussa AlSaif",
-  alternateName: "حصه السيف",
+  alternateName: ["حصه السيف", "Hussa"],
   url: "https://hussaalsaif.com",
-  image: "https://hussaalsaif.com/images/hero.jpg",
+  image: {
+    "@type": "ImageObject",
+    url: "https://hussaalsaif.com/images/hero.jpg",
+    width: 1200,
+    height: 630,
+    caption:
+      "Hussa AlSaif — Saudi Content Creator and Brand Ambassador",
+  },
   jobTitle: "Content Creator & Brand Ambassador",
   description:
-    "Saudi content creator & brand ambassador with 330K+ followers. Partnered with Sephora, Estée Lauder, MAC, Too Faced, Fendi & more.",
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: "Khobar & Riyadh",
-    addressCountry: "SA",
-  },
+    "Leading Saudi content creator and brand ambassador with 330K+ combined followers across Instagram, TikTok, YouTube, and Snapchat. Specializing in beauty, fashion, and lifestyle content for the GCC market.",
+  nationality: { "@type": "Country", name: "Saudi Arabia" },
+  address: [
+    {
+      "@type": "PostalAddress",
+      addressLocality: "Al Khobar",
+      addressRegion: "Eastern Province",
+      addressCountry: "SA",
+    },
+    {
+      "@type": "PostalAddress",
+      addressLocality: "Riyadh",
+      addressRegion: "Riyadh Province",
+      addressCountry: "SA",
+    },
+  ],
+  email: "inquiries@hussaalsaif.com",
   sameAs: [
     "https://instagram.com/hussa.ss",
     "https://tiktok.com/@hussa.502",
     "https://youtube.com/@hussaalsaif",
     "https://snapchat.com/add/hussa.alsaif",
-    "https://linktr.ee/Hussaalsaif",
+    "https://hussaalsaif.com/links",
+    "https://www.linkedin.com/in/hussa-alsaif-07a970289/",
     "https://fable.co/club/the-reading-room-with-hussa-205180405525",
   ],
-  knowsAbout: ["Beauty", "Lifestyle", "Fashion", "Content Creation", "Brand Partnerships"],
+  knowsAbout: [
+    "Beauty & Skincare",
+    "Fashion & Luxury",
+    "Lifestyle Content",
+    "Content Creation",
+    "Brand Partnerships",
+    "Influencer Marketing",
+    "Curly Hair Care",
+    "Public Relations",
+  ],
+  knowsLanguage: [
+    { "@type": "Language", name: "Arabic", alternateName: "ar" },
+    { "@type": "Language", name: "English", alternateName: "en" },
+  ],
   alumniOf: {
     "@type": "CollegeOrUniversity",
     name: "Imam Abdulrahman Bin Faisal University",
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Dammam",
+      addressCountry: "SA",
+    },
+  },
+  hasCredential: {
+    "@type": "EducationalOccupationalCredential",
+    credentialCategory: "degree",
+    educationalLevel: "Bachelor's Degree",
+    about: "Media & Communication",
+  },
+  hasOccupation: {
+    "@type": "Occupation",
+    name: "Content Creator & Brand Ambassador",
+    occupationLocation: { "@type": "Country", name: "Saudi Arabia" },
+    skills:
+      "Content Creation, Brand Partnerships, Social Media Marketing, Beauty Content, Fashion Styling",
+  },
+};
+
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://hussaalsaif.com/#website",
+  url: "https://hussaalsaif.com",
+  name: "Hussa AlSaif",
+  description:
+    "Official website of Hussa AlSaif — Saudi content creator and brand ambassador",
+  publisher: { "@id": "https://hussaalsaif.com/#person" },
+  inLanguage: ["en", "ar"],
+};
+
+const webPageJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "https://hussaalsaif.com/#webpage",
+  url: "https://hussaalsaif.com",
+  name: "Hussa AlSaif — Saudi Content Creator & Brand Ambassador",
+  description:
+    "Hussa AlSaif is a leading Saudi content creator and brand ambassador with 330K+ followers. Partnered with Sephora, Estee Lauder, MAC, Fendi, Dyson & more.",
+  isPartOf: { "@id": "https://hussaalsaif.com/#website" },
+  about: { "@id": "https://hussaalsaif.com/#person" },
+  inLanguage: "en",
+  dateModified: "2026-03-15",
+  breadcrumb: {
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://hussaalsaif.com",
+      },
+    ],
+  },
+};
+
+const campaignsJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "@id": "https://hussaalsaif.com/#campaigns",
+  name: "Brand Campaigns by Hussa AlSaif",
+  description:
+    "Selected brand campaigns and collaborations by Saudi content creator Hussa AlSaif",
+  numberOfItems: 9,
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      item: {
+        "@type": "CreativeWork",
+        name: "Sephora Collection — Full-Funnel Beauty Campaign",
+        description:
+          "Full-funnel beauty campaign across Instagram & TikTok driving in-store traffic across KSA. 2.1M reach, 340K+ engagements.",
+        creator: { "@id": "https://hussaalsaif.com/#person" },
+        about: { "@type": "Brand", name: "Sephora" },
+        genre: "Beauty Campaign",
+        image: "https://hussaalsaif.com/images/beauty-editorials.jpg",
+      },
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      item: {
+        "@type": "CreativeWork",
+        name: "Fendi FW25 — Luxury Fashion Partnership",
+        description:
+          "Luxury fashion partnership with event coverage and editorial content for regional launch. 1.8M impressions, 12% engagement rate.",
+        creator: { "@id": "https://hussaalsaif.com/#person" },
+        about: { "@type": "Brand", name: "Fendi" },
+        genre: "Fashion",
+        image: "https://hussaalsaif.com/images/brand-campaigns.jpg",
+      },
+    },
+    {
+      "@type": "ListItem",
+      position: 3,
+      item: {
+        "@type": "CreativeWork",
+        name: "Estee Lauder — Premium Skincare Campaign",
+        description:
+          "Premium skincare campaign with educational content series and product deep-dives. 2.4M reach, 15% conversion lift.",
+        creator: { "@id": "https://hussaalsaif.com/#person" },
+        about: { "@type": "Brand", name: "Estee Lauder" },
+        genre: "Skincare",
+        image: "https://hussaalsaif.com/images/event-coverage.jpg",
+      },
+    },
+    {
+      "@type": "ListItem",
+      position: 4,
+      item: {
+        "@type": "CreativeWork",
+        name: "Too Faced x Sephora ME — Exclusive Collaboration",
+        description:
+          "Exclusive collaboration for regional Sephora launch. In-store and digital activation. 1.5M reach, sold out in 72 hours.",
+        creator: { "@id": "https://hussaalsaif.com/#person" },
+        about: { "@type": "Brand", name: "Too Faced" },
+        genre: "Beauty",
+        image: "https://hussaalsaif.com/images/gallery-5.jpg",
+      },
+    },
+    {
+      "@type": "ListItem",
+      position: 5,
+      item: {
+        "@type": "CreativeWork",
+        name: "MAC Cosmetics — Creative Makeup Series",
+        description:
+          "Creative makeup content series featuring new collection launches and tutorials. 1.1M reach, 290K engagements.",
+        creator: { "@id": "https://hussaalsaif.com/#person" },
+        about: { "@type": "Brand", name: "MAC Cosmetics" },
+        genre: "Makeup",
+        image: "https://hussaalsaif.com/images/gallery-1.jpg",
+      },
+    },
+    {
+      "@type": "ListItem",
+      position: 6,
+      item: {
+        "@type": "CreativeWork",
+        name: "Herbal Essences — GCC Product Campaign",
+        description:
+          "Multi-platform product integration with authentic storytelling for the GCC market. 890K reach, 4.2x ROI.",
+        creator: { "@id": "https://hussaalsaif.com/#person" },
+        about: { "@type": "Brand", name: "Herbal Essences" },
+        genre: "Hair Care",
+        image: "https://hussaalsaif.com/images/gallery-6.jpg",
+      },
+    },
+    {
+      "@type": "ListItem",
+      position: 7,
+      item: {
+        "@type": "CreativeWork",
+        name: "Sol de Janeiro — Saudi Summer Campaign",
+        description:
+          "Lifestyle-driven brand awareness campaign for Saudi summer market. 1.2M impressions, 280K engagements.",
+        creator: { "@id": "https://hussaalsaif.com/#person" },
+        about: { "@type": "Brand", name: "Sol de Janeiro" },
+        genre: "Lifestyle",
+        image: "https://hussaalsaif.com/images/gallery-4.jpg",
+      },
+    },
+    {
+      "@type": "ListItem",
+      position: 8,
+      item: {
+        "@type": "CreativeWork",
+        name: "La Belle — Regional Fashion Editorial",
+        description:
+          "Regional fashion brand partnership with editorial content and event coverage. 670K reach, 8.7% engagement rate.",
+        creator: { "@id": "https://hussaalsaif.com/#person" },
+        about: { "@type": "Brand", name: "La Belle" },
+        genre: "Fashion",
+        image: "https://hussaalsaif.com/images/gallery-7.jpg",
+      },
+    },
+    {
+      "@type": "ListItem",
+      position: 9,
+      item: {
+        "@type": "CreativeWork",
+        name: "Level Shoes — Luxury Footwear Campaign",
+        description:
+          "Luxury footwear campaign with styling content and in-store activation. 940K impressions, 210K engagements.",
+        creator: { "@id": "https://hussaalsaif.com/#person" },
+        about: { "@type": "Brand", name: "Level Shoes" },
+        genre: "Fashion",
+        image: "https://hussaalsaif.com/images/gallery-2.jpg",
+      },
+    },
+  ],
+};
+
+const serviceJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "@id": "https://hussaalsaif.com/#service",
+  name: "Brand Partnership & Influencer Marketing",
+  description:
+    "Brand campaigns, ambassadorships, event appearances, and product launch collaborations with Saudi content creator Hussa AlSaif. Reach 330K+ highly engaged consumers in KSA and GCC.",
+  provider: { "@id": "https://hussaalsaif.com/#person" },
+  serviceType: "Influencer Marketing",
+  areaServed: [
+    { "@type": "Country", name: "Saudi Arabia" },
+    { "@type": "Place", name: "GCC Region" },
+  ],
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Collaboration Types",
+    itemListElement: [
+      {
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: "Brand Campaigns" },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: "Brand Ambassadorships" },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: "Event Appearances" },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: "Product Launches" },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Instagram Reels & Stories",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: "TikTok Content" },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: "YouTube Videos" },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: "UGC Content" },
+      },
+    ],
   },
 };
 
@@ -74,12 +438,32 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${playfair.variable} ${inter.variable}`}>
-      <body className="font-sans antialiased bg-[#fafcfe] text-gray-900 overflow-x-hidden">
+    <html lang="en" dir="ltr" className={`${playfair.variable} ${inter.variable}`}>
+      <head>
+        <link rel="canonical" href="https://hussaalsaif.com" />
+        <link rel="alternate" hrefLang="en" href="https://hussaalsaif.com" />
+        <link rel="alternate" hrefLang="ar" href="https://hussaalsaif.com" />
+        <link rel="alternate" hrefLang="x-default" href="https://hussaalsaif.com" />
+        <meta name="geo.region" content="SA" />
+        <meta name="geo.placename" content="Al Khobar, Riyadh" />
+        <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+        <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify([
+              personJsonLd,
+              websiteJsonLd,
+              webPageJsonLd,
+              campaignsJsonLd,
+              serviceJsonLd,
+            ]),
+          }}
         />
+      </head>
+      <body className="font-sans antialiased bg-[#fafcfe] text-gray-900 overflow-x-hidden">
         {children}
         <Analytics />
         <SpeedInsights />

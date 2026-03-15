@@ -3,47 +3,80 @@
 import { useEffect, useRef, useState } from "react";
 
 export default function CustomCursor() {
-  const cursorRef = useRef<HTMLDivElement>(null);
-  const [isHovering, setIsHovering] = useState(false);
-  const [isVisible, setIsVisible] = useState(false);
-  const posRef = useRef({ x: 0, y: 0 });
-  const targetRef = useRef({ x: 0, y: 0 });
+  const dotRef = useRef<HTMLDivElement>(null);
+  const ringRef = useRef<HTMLDivElement>(null);
+  const [isMounted, setIsMounted] = useState(false);
+  const dotPos = useRef({ x: 0, y: 0 });
+  const ringPos = useRef({ x: 0, y: 0 });
+  const target = useRef({ x: 0, y: 0 });
+  const isHovering = useRef(false);
   const rafRef = useRef<number>(0);
 
   useEffect(() => {
-    // Only show custom cursor on desktop
-    const isTouchDevice = "ontouchstart" in window || navigator.maxTouchPoints > 0;
+    const isTouchDevice =
+      "ontouchstart" in window || navigator.maxTouchPoints > 0;
     if (isTouchDevice) return;
 
+    setIsMounted(true);
+
     function onMouseMove(e: MouseEvent) {
-      targetRef.current.x = e.clientX;
-      targetRef.current.y = e.clientY;
-      if (!isVisible) setIsVisible(true);
+      target.current.x = e.clientX;
+      target.current.y = e.clientY;
     }
 
-    function onMouseEnterInteractive() {
-      setIsHovering(true);
+    function onEnterInteractive() {
+      isHovering.current = true;
+      if (ringRef.current) {
+        ringRef.current.style.width = "48px";
+        ringRef.current.style.height = "48px";
+        ringRef.current.style.borderColor = "rgba(137, 187, 223, 0.5)";
+        ringRef.current.style.background = "rgba(137, 187, 223, 0.06)";
+      }
+      if (dotRef.current) {
+        dotRef.current.style.opacity = "0";
+        dotRef.current.style.transform = "translate(-50%, -50%) scale(0)";
+      }
     }
 
-    function onMouseLeaveInteractive() {
-      setIsHovering(false);
+    function onLeaveInteractive() {
+      isHovering.current = false;
+      if (ringRef.current) {
+        ringRef.current.style.width = "32px";
+        ringRef.current.style.height = "32px";
+        ringRef.current.style.borderColor = "rgba(137, 187, 223, 0.2)";
+        ringRef.current.style.background = "transparent";
+      }
+      if (dotRef.current) {
+        dotRef.current.style.opacity = "1";
+        dotRef.current.style.transform = "translate(-50%, -50%) scale(1)";
+      }
     }
 
     function onMouseLeaveWindow() {
-      setIsVisible(false);
+      if (dotRef.current) dotRef.current.style.opacity = "0";
+      if (ringRef.current) ringRef.current.style.opacity = "0";
     }
 
     function onMouseEnterWindow() {
-      setIsVisible(true);
+      if (dotRef.current) dotRef.current.style.opacity = "1";
+      if (ringRef.current) ringRef.current.style.opacity = "1";
     }
 
-    // Smooth cursor animation loop
     function animate() {
-      posRef.current.x += (targetRef.current.x - posRef.current.x) * 0.15;
-      posRef.current.y += (targetRef.current.y - posRef.current.y) * 0.15;
+      // Dot follows closely
+      dotPos.current.x += (target.current.x - dotPos.current.x) * 0.25;
+      dotPos.current.y += (target.current.y - dotPos.current.y) * 0.25;
+      // Ring trails behind with more lag
+      ringPos.current.x += (target.current.x - ringPos.current.x) * 0.1;
+      ringPos.current.y += (target.current.y - ringPos.current.y) * 0.1;
 
-      if (cursorRef.current) {
-        cursorRef.current.style.transform = `translate3d(${posRef.current.x}px, ${posRef.current.y}px, 0) translate(-50%, -50%)`;
+      if (dotRef.current) {
+        dotRef.current.style.left = `${dotPos.current.x}px`;
+        dotRef.current.style.top = `${dotPos.current.y}px`;
+      }
+      if (ringRef.current) {
+        ringRef.current.style.left = `${ringPos.current.x}px`;
+        ringRef.current.style.top = `${ringPos.current.y}px`;
       }
 
       rafRef.current = requestAnimationFrame(animate);
@@ -53,30 +86,28 @@ export default function CustomCursor() {
     document.addEventListener("mouseleave", onMouseLeaveWindow);
     document.addEventListener("mouseenter", onMouseEnterWindow);
 
-    // Attach hover listeners to interactive elements
-    const interactiveSelectors = "a, button, [role='button'], input, textarea, select, .magnetic-wrap, .result-card, .demo-card, .glass";
-    const interactiveElements = document.querySelectorAll(interactiveSelectors);
-    interactiveElements.forEach((el) => {
-      el.addEventListener("mouseenter", onMouseEnterInteractive);
-      el.addEventListener("mouseleave", onMouseLeaveInteractive);
+    const selectors =
+      "a, button, [role='button'], input, textarea, select, .result-card, .demo-card, .media-kit-card";
+    const elements = document.querySelectorAll(selectors);
+    elements.forEach((el) => {
+      el.addEventListener("mouseenter", onEnterInteractive);
+      el.addEventListener("mouseleave", onLeaveInteractive);
     });
 
-    // Use MutationObserver to catch dynamically added elements
     const observer = new MutationObserver(() => {
-      const newElements = document.querySelectorAll(interactiveSelectors);
+      const newElements = document.querySelectorAll(selectors);
       newElements.forEach((el) => {
-        el.removeEventListener("mouseenter", onMouseEnterInteractive);
-        el.removeEventListener("mouseleave", onMouseLeaveInteractive);
-        el.addEventListener("mouseenter", onMouseEnterInteractive);
-        el.addEventListener("mouseleave", onMouseLeaveInteractive);
+        el.removeEventListener("mouseenter", onEnterInteractive);
+        el.removeEventListener("mouseleave", onLeaveInteractive);
+        el.addEventListener("mouseenter", onEnterInteractive);
+        el.addEventListener("mouseleave", onLeaveInteractive);
       });
     });
-
     observer.observe(document.body, { childList: true, subtree: true });
 
     rafRef.current = requestAnimationFrame(animate);
 
-    // Add cursor:none to body
+    // Hide default cursor
     document.body.style.cursor = "none";
     const style = document.createElement("style");
     style.textContent = "*, *::before, *::after { cursor: none !important; }";
@@ -90,35 +121,59 @@ export default function CustomCursor() {
       observer.disconnect();
       document.body.style.cursor = "";
       style.remove();
-      interactiveElements.forEach((el) => {
-        el.removeEventListener("mouseenter", onMouseEnterInteractive);
-        el.removeEventListener("mouseleave", onMouseLeaveInteractive);
+      elements.forEach((el) => {
+        el.removeEventListener("mouseenter", onEnterInteractive);
+        el.removeEventListener("mouseleave", onLeaveInteractive);
       });
     };
-  }, [isVisible]);
+  }, []);
+
+  if (!isMounted) return null;
 
   return (
-    <div
-      ref={cursorRef}
-      className="custom-cursor"
-      style={{
-        position: "fixed",
-        top: 0,
-        left: 0,
-        zIndex: 9999,
-        pointerEvents: "none",
-        width: isHovering ? "44px" : "12px",
-        height: isHovering ? "44px" : "12px",
-        borderRadius: "50%",
-        background: isHovering
-          ? "rgba(137, 187, 223, 0.15)"
-          : "rgba(137, 187, 223, 0.9)",
-        border: isHovering ? "1.5px solid rgba(137, 187, 223, 0.6)" : "none",
-        transition: "width 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), height 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), background 0.3s ease, border 0.3s ease, opacity 0.3s ease",
-        opacity: isVisible ? 1 : 0,
-        mixBlendMode: "normal",
-        willChange: "transform",
-      }}
-    />
+    <>
+      {/* Inner dot */}
+      <div
+        ref={dotRef}
+        aria-hidden="true"
+        style={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          zIndex: 9999,
+          pointerEvents: "none",
+          width: 5,
+          height: 5,
+          borderRadius: "50%",
+          background: "rgba(137, 187, 223, 0.9)",
+          transform: "translate(-50%, -50%)",
+          transition: "opacity 0.3s ease, transform 0.3s ease",
+          opacity: 0,
+          willChange: "left, top",
+        }}
+      />
+      {/* Outer ring */}
+      <div
+        ref={ringRef}
+        aria-hidden="true"
+        style={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          zIndex: 9998,
+          pointerEvents: "none",
+          width: 32,
+          height: 32,
+          borderRadius: "50%",
+          background: "transparent",
+          border: "1px solid rgba(137, 187, 223, 0.2)",
+          transform: "translate(-50%, -50%)",
+          transition:
+            "width 0.35s cubic-bezier(0.22, 1, 0.36, 1), height 0.35s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.3s ease, background 0.3s ease, opacity 0.3s ease",
+          opacity: 0,
+          willChange: "left, top",
+        }}
+      />
+    </>
   );
 }

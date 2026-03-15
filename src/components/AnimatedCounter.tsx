@@ -29,6 +29,7 @@ export default function AnimatedCounter({ value, className = "" }: AnimatedCount
   const [displayValue, setDisplayValue] = useState("0");
   const { prefix, number, decimals, suffix } = parseValue(value);
   const hasStarted = useRef(false);
+  const rafRef = useRef<number>(0);
 
   useEffect(() => {
     if (!isInView || hasStarted.current) return;
@@ -55,11 +56,15 @@ export default function AnimatedCounter({ value, className = "" }: AnimatedCount
       }
 
       if (progress < 1) {
-        requestAnimationFrame(animate);
+        rafRef.current = requestAnimationFrame(animate);
       }
     }
 
-    requestAnimationFrame(animate);
+    rafRef.current = requestAnimationFrame(animate);
+
+    return () => {
+      cancelAnimationFrame(rafRef.current);
+    };
   }, [isInView, number, decimals]);
 
   return (

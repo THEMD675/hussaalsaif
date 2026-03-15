@@ -12,6 +12,8 @@ interface TextRevealProps {
   as?: "h1" | "h2" | "h3" | "h4" | "p" | "span";
   delay?: number;
   stagger?: number;
+  /** Split by "word" (default) or "char" for character-level animation */
+  splitBy?: "word" | "char";
 }
 
 export default function TextReveal({
@@ -19,7 +21,8 @@ export default function TextReveal({
   className = "",
   as: Tag = "p",
   delay = 0,
-  stagger = 0.03,
+  stagger = 0.04,
+  splitBy = "word",
 }: TextRevealProps) {
   const ref = useRef<HTMLElement>(null);
   const hasAnimated = useRef(false);
@@ -29,47 +32,76 @@ export default function TextReveal({
     hasAnimated.current = true;
 
     const el = ref.current;
-
-    // Split text into words safely using DOM API instead of innerHTML
     const text = children;
-    const words = text.split(" ");
     el.textContent = "";
 
-    const wordSpans: HTMLSpanElement[] = [];
-    words.forEach((word, i) => {
-      if (i > 0) {
-        el.appendChild(document.createTextNode(" "));
-      }
-      const wrapper = document.createElement("span");
-      wrapper.style.display = "inline-block";
-      wrapper.style.overflow = "hidden";
-      wrapper.style.verticalAlign = "bottom";
-      const inner = document.createElement("span");
-      inner.style.display = "inline-block";
-      inner.style.transform = "translateY(100%)";
-      inner.textContent = word;
-      wrapper.appendChild(inner);
-      el.appendChild(wrapper);
-      wordSpans.push(inner);
-    });
+    const animTargets: HTMLSpanElement[] = [];
+
+    if (splitBy === "char") {
+      const words = text.split(" ");
+      words.forEach((word, wi) => {
+        if (wi > 0) {
+          el.appendChild(document.createTextNode(" "));
+        }
+        const wordWrap = document.createElement("span");
+        wordWrap.style.display = "inline-block";
+        wordWrap.style.whiteSpace = "nowrap";
+
+        word.split("").forEach((char) => {
+          const wrapper = document.createElement("span");
+          wrapper.style.display = "inline-block";
+          wrapper.style.overflow = "hidden";
+          wrapper.style.verticalAlign = "bottom";
+          const inner = document.createElement("span");
+          inner.style.display = "inline-block";
+          inner.style.transform = "translateY(110%)";
+          inner.style.willChange = "transform";
+          inner.textContent = char;
+          wrapper.appendChild(inner);
+          wordWrap.appendChild(wrapper);
+          animTargets.push(inner);
+        });
+
+        el.appendChild(wordWrap);
+      });
+    } else {
+      const words = text.split(" ");
+      words.forEach((word, i) => {
+        if (i > 0) {
+          el.appendChild(document.createTextNode(" "));
+        }
+        const wrapper = document.createElement("span");
+        wrapper.style.display = "inline-block";
+        wrapper.style.overflow = "hidden";
+        wrapper.style.verticalAlign = "bottom";
+        const inner = document.createElement("span");
+        inner.style.display = "inline-block";
+        inner.style.transform = "translateY(110%)";
+        inner.style.willChange = "transform";
+        inner.textContent = word;
+        wrapper.appendChild(inner);
+        el.appendChild(wrapper);
+        animTargets.push(inner);
+      });
+    }
 
     const ctx = gsap.context(() => {
-      gsap.to(wordSpans, {
+      gsap.to(animTargets, {
         y: 0,
-        duration: 0.8,
+        duration: 1,
         stagger,
         delay,
-        ease: "power3.out",
+        ease: "power4.out",
         scrollTrigger: {
           trigger: el,
-          start: "top 85%",
+          start: "top 88%",
           toggleActions: "play none none none",
         },
       });
     }, el);
 
     return ctx;
-  }, [children, delay, stagger]);
+  }, [children, delay, stagger, splitBy]);
 
   useEffect(() => {
     hasAnimated.current = false;

@@ -11,10 +11,13 @@ import TextReveal from "@/components/TextReveal";
 import ImageReveal from "@/components/ImageReveal";
 import HorizontalScroll from "@/components/HorizontalScroll";
 import ContactForm from "@/components/ContactForm";
+import AnimatedCounter from "@/components/AnimatedCounter";
+import { trackCTA, trackSocial, trackEmail, trackNav, initScrollDepthTracking } from "@/lib/analytics";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const BackToTop = dynamic(() => import("@/components/BackToTop"), { ssr: false });
+const CustomCursor = dynamic(() => import("@/components/CustomCursor"), { ssr: false });
 
 const ParticleField = dynamic(() => import("@/components/ParticleField"), { ssr: false });
 const SmoothScroll = dynamic(() => import("@/components/SmoothScroll"), { ssr: false });
@@ -129,8 +132,6 @@ const MEDIA_KIT_ITEMS = [
   { icon: "play", title: "Content Formats", desc: "Reels, TikTok, YouTube, Stories, Event Coverage, UGC" },
 ];
 
-const TRUSTED_BRANDS = ["Sephora", "Fendi", "Dyson", "Estee Lauder", "MAC", "Kerastase", "Too Faced"];
-
 export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const heroImageRef = useRef<HTMLDivElement>(null);
@@ -174,9 +175,15 @@ export default function Home() {
     return () => { document.body.style.overflow = ""; };
   }, [mobileMenuOpen]);
 
+  // Scroll depth tracking
+  useEffect(() => {
+    return initScrollDepthTracking();
+  }, []);
+
   return (
     <main className="relative">
       <SmoothScroll />
+      <CustomCursor />
 
       {/* -- NAV -- */}
       <nav className="fixed top-0 left-0 right-0 z-50 glass" role="navigation" aria-label="Main navigation">
@@ -185,17 +192,17 @@ export default function Home() {
             Hussa<span className="text-[#89BBdf]">.</span>
           </a>
           <div className="hidden md:flex items-center gap-10 text-[13px] font-medium tracking-wide uppercase text-gray-400">
-            <a href="#results" className="hover:text-[#89BBdf] transition-colors duration-300">Results</a>
-            <a href="#about" className="hover:text-[#89BBdf] transition-colors duration-300">About</a>
-            <a href="#work" className="hover:text-[#89BBdf] transition-colors duration-300">Work</a>
-            <a href="#audience" className="hover:text-[#89BBdf] transition-colors duration-300">Audience</a>
-            <a href="#contact" className="hover:text-[#89BBdf] transition-colors duration-300">Contact</a>
+            <a href="#results" onClick={() => trackNav("Results")} className="hover:text-[#89BBdf] transition-colors duration-300">Results</a>
+            <a href="#about" onClick={() => trackNav("About")} className="hover:text-[#89BBdf] transition-colors duration-300">About</a>
+            <a href="#work" onClick={() => trackNav("Work")} className="hover:text-[#89BBdf] transition-colors duration-300">Work</a>
+            <a href="#audience" onClick={() => trackNav("Audience")} className="hover:text-[#89BBdf] transition-colors duration-300">Audience</a>
+            <a href="#contact" onClick={() => trackNav("Contact")} className="hover:text-[#89BBdf] transition-colors duration-300">Contact</a>
           </div>
           <div className="flex items-center gap-3">
-            <a href="#media-kit" className="hidden sm:inline-block border border-[#89BBdf]/30 hover:border-[#89BBdf] text-[#89BBdf] px-5 py-2.5 rounded-full text-[12px] font-semibold transition-all duration-300">
+            <a href="/media-kit" onClick={() => trackCTA("Media Kit", "nav")} className="hidden sm:inline-block border border-[#89BBdf]/30 hover:border-[#89BBdf] text-[#89BBdf] px-5 py-2.5 rounded-full text-[12px] font-semibold transition-all duration-300">
               Media Kit
             </a>
-            <a href="#contact" className="hidden sm:inline-block bg-gray-900 hover:bg-[#89BBdf] text-white px-6 py-2.5 rounded-full text-[13px] font-semibold transition-all duration-300">
+            <a href="#contact" onClick={() => trackCTA("Brand Inquiry", "nav")} className="hidden sm:inline-block bg-gray-900 hover:bg-[#89BBdf] text-white px-6 py-2.5 rounded-full text-[13px] font-semibold transition-all duration-300">
               Brand Inquiry
             </a>
             {/* Mobile hamburger */}
@@ -225,16 +232,17 @@ export default function Home() {
               <a
                 key={link.href}
                 href={link.href}
+                onClick={() => trackNav(link.label)}
                 className="font-serif text-3xl font-bold text-gray-900 hover:text-[#89BBdf] transition-colors duration-300"
               >
                 {link.label}
               </a>
             ))}
             <div className="flex gap-4 mt-4">
-              <a href="#media-kit" className="border border-[#89BBdf]/30 text-[#89BBdf] px-6 py-3 rounded-full text-[13px] font-semibold">
+              <a href="/media-kit" onClick={() => trackCTA("Media Kit", "mobile-nav")} className="border border-[#89BBdf]/30 text-[#89BBdf] px-6 py-3 rounded-full text-[13px] font-semibold">
                 Media Kit
               </a>
-              <a href="#contact" className="bg-gray-900 text-white px-6 py-3 rounded-full text-[13px] font-semibold">
+              <a href="#contact" onClick={() => trackCTA("Brand Inquiry", "mobile-nav")} className="bg-gray-900 text-white px-6 py-3 rounded-full text-[13px] font-semibold">
                 Brand Inquiry
               </a>
             </div>
@@ -275,11 +283,11 @@ export default function Home() {
 
               <ScrollReveal delay={0.5}>
                 <div className="flex gap-4 flex-wrap">
-                  <MagneticButton href="#contact" className="bg-gray-900 hover:bg-gray-800 text-white px-8 py-4 rounded-full font-semibold transition-all text-[13px] tracking-wide inline-block">
+                  <MagneticButton href="#contact" onClick={() => trackCTA("Start a Campaign", "hero")} className="bg-gray-900 hover:bg-gray-800 text-white px-8 py-4 rounded-full font-semibold transition-all text-[13px] tracking-wide inline-block">
                     Start a Campaign
                   </MagneticButton>
-                  <MagneticButton href="#media-kit" className="border border-[#89BBdf]/40 hover:border-[#89BBdf] text-[#89BBdf] px-8 py-4 rounded-full font-semibold transition-all text-[13px] tracking-wide inline-block">
-                    Request Media Kit
+                  <MagneticButton href="/media-kit" onClick={() => trackCTA("View Media Kit", "hero")} className="border border-[#89BBdf]/40 hover:border-[#89BBdf] text-[#89BBdf] px-8 py-4 rounded-full font-semibold transition-all text-[13px] tracking-wide inline-block">
+                    View Media Kit
                   </MagneticButton>
                 </div>
               </ScrollReveal>
@@ -289,7 +297,7 @@ export default function Home() {
               <div ref={heroImageRef} className="hero-image-wrapper rounded-3xl h-[420px] sm:h-[520px] lg:h-[620px] shadow-2xl shadow-[#89BBdf]/8 overflow-hidden relative">
                 <Image
                   src="/images/hero.jpg"
-                  alt="Hussa AlSaif"
+                  alt="Hussa AlSaif — Saudi content creator and brand ambassador based in Khobar and Riyadh with 330K+ followers"
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 45vw"
                   className="object-cover hero-image"
@@ -344,7 +352,9 @@ export default function Home() {
             {STATS.map((stat, i) => (
               <ScrollReveal key={stat.label} delay={0.1 * i}>
                 <div className="glass rounded-2xl p-7 sm:p-9 text-center hover:shadow-xl hover:shadow-[#89BBdf]/5 transition-all duration-500">
-                  <p className="text-3xl sm:text-4xl font-serif font-bold text-gradient mb-2">{stat.value}</p>
+                  <p className="text-3xl sm:text-4xl font-serif font-bold text-gradient mb-2">
+                    <AnimatedCounter value={stat.value} />
+                  </p>
                   <p className="text-[11px] text-gray-400 font-medium tracking-[0.15em] uppercase">{stat.label}</p>
                 </div>
               </ScrollReveal>
@@ -430,8 +440,8 @@ export default function Home() {
 
             <ScrollReveal delay={0.2}>
               <ImageReveal
-                src="/images/avatar.jpg"
-                alt="Hussa AlSaif"
+                src="/images/hero.jpg"
+                alt="Hussa AlSaif portrait — PR graduate, TEDx organizer, book club host, and curly hair content expert from Al Khobar, Saudi Arabia"
                 containerClassName="rounded-3xl h-[400px] sm:h-[500px] lg:h-[550px] shadow-2xl shadow-[#89BBdf]/8"
               />
             </ScrollReveal>
@@ -469,7 +479,7 @@ export default function Home() {
                   <div className="relative aspect-[4/5] rounded-2xl overflow-hidden mb-4">
                     <Image
                       src={project.image}
-                      alt={`${project.brand} — ${project.category}`}
+                      alt={`${project.brand} ${project.category} campaign by Hussa AlSaif — ${project.result}`}
                       fill
                       sizes="(max-width: 768px) 100vw, 50vw"
                       className="object-cover transition-transform duration-700 group-hover:scale-105"
@@ -556,6 +566,7 @@ export default function Home() {
                 <div className="space-y-5">
                   {SOCIALS.map((s) => (
                     <a key={s.name} href={s.url} target="_blank" rel="noopener noreferrer"
+                      onClick={() => trackSocial(s.name)}
                       className="flex items-center justify-between group py-2">
                       <div>
                         <p className="font-semibold text-[14px] group-hover:text-[#89BBdf] transition-colors">{s.name}</p>
@@ -638,11 +649,13 @@ export default function Home() {
                   Get a comprehensive PDF with all metrics, pricing, and case studies delivered to your inbox.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <MagneticButton href="mailto:inquiries@hussaalsaif.com?subject=Media%20Kit%20Request&body=Hi%20Hussa%2C%0A%0AI%27d%20like%20to%20request%20your%20media%20kit.%0A%0ACompany%3A%20%0ARole%3A%20%0A%0AThank%20you!"
+                  <MagneticButton href="/media-kit"
+                    onClick={() => trackCTA("View Media Kit", "media-kit")}
                     className="bg-[#89BBdf] hover:bg-[#6ea8d4] text-white px-10 py-4 rounded-full font-semibold transition-all text-[13px] tracking-wide inline-block shadow-lg shadow-[#89BBdf]/20">
-                    Request Media Kit
+                    View Media Kit
                   </MagneticButton>
                   <MagneticButton href="#contact"
+                    onClick={() => trackCTA("Send an Inquiry", "media-kit")}
                     className="border border-white/15 hover:border-[#89BBdf] text-white hover:text-[#89BBdf] px-10 py-4 rounded-full font-semibold transition-all text-[13px] tracking-wide inline-block">
                     Or Send an Inquiry
                   </MagneticButton>
@@ -661,74 +674,108 @@ export default function Home() {
           <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] bg-[#89BBdf]/15 rounded-full blur-[150px]" />
           <div className="absolute bottom-1/4 right-1/4 w-[300px] h-[300px] bg-[#89BBdf]/10 rounded-full blur-[120px]" />
         </div>
-        <div className="relative z-10 max-w-4xl mx-auto px-5 sm:px-8 text-center">
-          <ScrollReveal>
-            <div className="inline-block bg-white/5 border border-white/10 rounded-full px-5 py-2 mb-8">
-              <p className="text-[#89BBdf] font-medium text-[12px]">
-                Q2 2026 — Limited Availability
-              </p>
+        <div className="relative z-10 max-w-6xl mx-auto px-5 sm:px-8">
+          <div className="grid lg:grid-cols-[1fr_1.2fr] gap-12 lg:gap-20 items-start">
+            {/* Left: Copy */}
+            <div className="text-center lg:text-left lg:pt-4">
+              <ScrollReveal>
+                <div className="inline-block bg-white/5 border border-white/10 rounded-full px-5 py-2 mb-8">
+                  <p className="text-[#89BBdf] font-medium text-[12px]">
+                    Q2 2026 — Limited Availability
+                  </p>
+                </div>
+              </ScrollReveal>
+              <ScrollReveal delay={0.1}>
+                <h2 className="font-serif font-bold text-white leading-[1.05] mb-6"
+                  style={{ fontSize: "clamp(2.2rem, 5vw, 4rem)" }}>
+                  Let&apos;s build your<br /><span className="text-gradient">next campaign</span>
+                </h2>
+              </ScrollReveal>
+              <ScrollReveal delay={0.2}>
+                <p className="text-gray-400 text-[15px] max-w-lg mx-auto lg:mx-0 mb-8 leading-[1.8]">
+                  Accepting select brand partnerships, ambassadorships, and campaign collaborations for Q2 2026.
+                  Early inquiry recommended — calendar fills 6-8 weeks in advance.
+                </p>
+              </ScrollReveal>
+              <ScrollReveal delay={0.25}>
+                <div className="flex flex-wrap justify-center lg:justify-start gap-2 mb-10">
+                  {["Brand Campaigns", "Ambassadorships", "Event Appearances", "Product Launches"].map((item) => (
+                    <span key={item} className="bg-white/5 border border-white/8 text-gray-400 px-4 py-1.5 rounded-full text-[12px]">
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              </ScrollReveal>
+              <ScrollReveal delay={0.3}>
+                <div className="grid grid-cols-3 gap-4 max-w-sm mx-auto lg:mx-0 pt-8 border-t border-white/5">
+                  <div className="text-center lg:text-left">
+                    <p className="text-white font-serif font-bold text-lg">24hrs</p>
+                    <p className="text-gray-500 text-[11px] mt-1">Response Time</p>
+                  </div>
+                  <div className="text-center lg:text-left">
+                    <p className="text-white font-serif font-bold text-lg">EN & AR</p>
+                    <p className="text-gray-500 text-[11px] mt-1">Bilingual</p>
+                  </div>
+                  <div className="text-center lg:text-left">
+                    <p className="text-white font-serif font-bold text-lg">KSA & GCC</p>
+                    <p className="text-gray-500 text-[11px] mt-1">Coverage</p>
+                  </div>
+                </div>
+              </ScrollReveal>
+              <ScrollReveal delay={0.35}>
+                <p className="text-gray-500 text-[13px] mt-8">
+                  Or email directly:{" "}
+                  <a href="mailto:inquiries@hussaalsaif.com" onClick={() => trackEmail("inquiries@hussaalsaif.com", "contact")} className="text-[#89BBdf] hover:text-[#6ea8d4] transition-colors underline underline-offset-2">
+                    inquiries@hussaalsaif.com
+                  </a>
+                </p>
+              </ScrollReveal>
             </div>
-          </ScrollReveal>
-          <ScrollReveal delay={0.1}>
-            <h2 className="font-serif font-bold text-white leading-[1.05] mb-6"
-              style={{ fontSize: "clamp(2.5rem, 6vw, 5rem)" }}>
-              Let&apos;s build your<br /><span className="text-gradient">next campaign</span>
-            </h2>
-          </ScrollReveal>
-          <ScrollReveal delay={0.2}>
-            <p className="text-gray-400 text-[15px] max-w-lg mx-auto mb-4 leading-[1.8]">
-              Accepting select brand partnerships, ambassadorships, and campaign collaborations for Q2 2026.
-              Early inquiry recommended — calendar fills 6-8 weeks in advance.
-            </p>
-          </ScrollReveal>
-          <ScrollReveal delay={0.25}>
-            <div className="flex flex-wrap justify-center gap-x-8 gap-y-2 text-gray-500 text-[13px] mb-12">
-              <span>Brand Campaigns</span>
-              <span>&bull;</span>
-              <span>Ambassadorships</span>
-              <span>&bull;</span>
-              <span>Event Appearances</span>
-              <span>&bull;</span>
-              <span>Product Launches</span>
-            </div>
-          </ScrollReveal>
-          <ScrollReveal delay={0.3}>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-              <MagneticButton href="mailto:inquiries@hussaalsaif.com?subject=Brand%20Partnership%20Inquiry"
-                className="bg-[#89BBdf] hover:bg-[#6ea8d4] text-white px-10 py-4 rounded-full font-semibold transition-all text-[13px] tracking-wide inline-block shadow-lg shadow-[#89BBdf]/15">
-                inquiries@hussaalsaif.com
-              </MagneticButton>
-              <MagneticButton href="https://instagram.com/hussa.ss" target="_blank"
-                className="border border-white/15 hover:border-[#89BBdf] text-white hover:text-[#89BBdf] px-10 py-4 rounded-full font-semibold transition-all text-[13px] tracking-wide inline-block">
-                @hussa.ss
-              </MagneticButton>
-            </div>
-          </ScrollReveal>
-          <ScrollReveal delay={0.35}>
-            <div className="grid grid-cols-3 gap-4 max-w-md mx-auto mt-12 pt-12 border-t border-white/5">
-              <div className="text-center">
-                <p className="text-white font-serif font-bold text-lg">24hrs</p>
-                <p className="text-gray-500 text-[11px] mt-1">Response Time</p>
-              </div>
-              <div className="text-center">
-                <p className="text-white font-serif font-bold text-lg">English & Arabic</p>
-                <p className="text-gray-500 text-[11px] mt-1">Bilingual Content</p>
-              </div>
-              <div className="text-center">
-                <p className="text-white font-serif font-bold text-lg">KSA & GCC</p>
-                <p className="text-gray-500 text-[11px] mt-1">Coverage Area</p>
-              </div>
-            </div>
-          </ScrollReveal>
+
+            {/* Right: Form */}
+            <ScrollReveal delay={0.2}>
+              <ContactForm />
+            </ScrollReveal>
+          </div>
         </div>
       </section>
 
+      <BackToTop />
+
       {/* -- FOOTER -- */}
-      <footer className="bg-gray-950 border-t border-white/5">
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 py-8 flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p className="font-serif text-lg font-bold text-white">Hussa<span className="text-[#89BBdf]">.</span></p>
-          <p className="text-gray-500 text-[13px]">&copy; 2026 Hussa AlSaif. All rights reserved.</p>
-          <p className="text-gray-600 text-[11px] tracking-[0.2em] uppercase">Khobar & Riyadh</p>
+      <footer className="bg-gray-950 border-t border-white/5" role="contentinfo">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 py-12">
+          <div className="grid sm:grid-cols-3 gap-8 mb-8">
+            <div>
+              <p className="font-serif text-lg font-bold text-white mb-3">Hussa<span className="text-[#89BBdf]">.</span></p>
+              <p className="text-gray-500 text-[13px] leading-relaxed">
+                Saudi content creator &amp; brand ambassador. Connecting global brands with 330K+ engaged consumers in KSA &amp; GCC.
+              </p>
+            </div>
+            <div>
+              <p className="text-gray-400 text-[12px] font-semibold tracking-[0.15em] uppercase mb-3">Quick Links</p>
+              <nav aria-label="Footer navigation" className="flex flex-col gap-2">
+                <a href="#results" className="text-gray-500 hover:text-[#89BBdf] text-[13px] transition-colors">Campaign Results</a>
+                <a href="#about" className="text-gray-500 hover:text-[#89BBdf] text-[13px] transition-colors">About Hussa</a>
+                <a href="#work" className="text-gray-500 hover:text-[#89BBdf] text-[13px] transition-colors">Selected Work</a>
+                <a href="/media-kit" className="text-gray-500 hover:text-[#89BBdf] text-[13px] transition-colors">Media Kit</a>
+                <a href="/links" className="text-gray-500 hover:text-[#89BBdf] text-[13px] transition-colors">All Links</a>
+              </nav>
+            </div>
+            <div>
+              <p className="text-gray-400 text-[12px] font-semibold tracking-[0.15em] uppercase mb-3">Connect</p>
+              <nav aria-label="Social media links" className="flex flex-col gap-2">
+                <a href="https://instagram.com/hussa.ss" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-[#89BBdf] text-[13px] transition-colors">Instagram @hussa.ss</a>
+                <a href="https://tiktok.com/@hussa.502" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-[#89BBdf] text-[13px] transition-colors">TikTok @hussa.502</a>
+                <a href="https://youtube.com/@hussaalsaif" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-[#89BBdf] text-[13px] transition-colors">YouTube @hussaalsaif</a>
+                <a href="https://snapchat.com/add/hussa.alsaif" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-[#89BBdf] text-[13px] transition-colors">Snapchat @hussa.alsaif</a>
+              </nav>
+            </div>
+          </div>
+          <div className="border-t border-white/5 pt-6 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <p className="text-gray-500 text-[13px]">&copy; 2026 Hussa AlSaif. All rights reserved.</p>
+            <p className="text-gray-600 text-[11px] tracking-[0.2em] uppercase">Khobar &amp; Riyadh, Saudi Arabia</p>
+          </div>
         </div>
       </footer>
     </main>

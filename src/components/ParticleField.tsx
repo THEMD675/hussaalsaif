@@ -1,31 +1,46 @@
 "use client";
 
 import { useRef, useMemo, useState, useEffect } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import * as THREE from "three";
+
+// Track mouse position globally for the 3D scene
+const mouseState = { x: 0, y: 0 };
 
 function Particles({ count = 300 }: { count?: number }) {
   const mesh = useRef<THREE.Points>(null);
 
   const particles = useMemo(() => {
     const positions = new Float32Array(count * 3);
+    const basePositions = new Float32Array(count * 3);
     const sizes = new Float32Array(count);
     for (let i = 0; i < count; i++) {
-      positions[i * 3] = (Math.random() - 0.5) * 20;
-      positions[i * 3 + 1] = (Math.random() - 0.5) * 20;
-      positions[i * 3 + 2] = (Math.random() - 0.5) * 12;
+      const x = (Math.random() - 0.5) * 20;
+      const y = (Math.random() - 0.5) * 20;
+      const z = (Math.random() - 0.5) * 12;
+      positions[i * 3] = x;
+      positions[i * 3 + 1] = y;
+      positions[i * 3 + 2] = z;
+      basePositions[i * 3] = x;
+      basePositions[i * 3 + 1] = y;
+      basePositions[i * 3 + 2] = z;
       sizes[i] = Math.random() * 1.5 + 0.3;
     }
-    return { positions, sizes };
+    return { positions, basePositions, sizes };
   }, [count]);
 
   useFrame((state) => {
     const time = state.clock.getElapsedTime();
     if (mesh.current) {
-      mesh.current.rotation.y = time * 0.015;
+      // Subtle mouse parallax on the whole particle group
+      mesh.current.rotation.y = time * 0.015 + mouseState.x * 0.3;
+      mesh.current.rotation.x = mouseState.y * 0.15;
+
       const positions = mesh.current.geometry.attributes.position.array as Float32Array;
       for (let i = 0; i < count; i++) {
-        positions[i * 3 + 1] += Math.sin(time * 0.3 + i * 0.05) * 0.001;
+        positions[i * 3 + 1] =
+          particles.basePositions[i * 3 + 1] +
+          Math.sin(time * 0.3 + i * 0.05) * 0.15;
       }
       mesh.current.geometry.attributes.position.needsUpdate = true;
     }
@@ -56,8 +71,8 @@ function FloatingRing() {
   useFrame((state) => {
     const time = state.clock.getElapsedTime();
     if (mesh.current) {
-      mesh.current.rotation.x = Math.PI / 4 + time * 0.08;
-      mesh.current.rotation.y = time * 0.05;
+      mesh.current.rotation.x = Math.PI / 4 + time * 0.08 + mouseState.y * 0.2;
+      mesh.current.rotation.y = time * 0.05 + mouseState.x * 0.15;
       mesh.current.position.y = Math.sin(time * 0.3) * 0.3;
     }
   });
@@ -76,8 +91,8 @@ function FloatingArc() {
   useFrame((state) => {
     const time = state.clock.getElapsedTime();
     if (mesh.current) {
-      mesh.current.rotation.z = time * 0.06;
-      mesh.current.rotation.x = Math.PI / 3 + Math.sin(time * 0.2) * 0.1;
+      mesh.current.rotation.z = time * 0.06 + mouseState.x * 0.1;
+      mesh.current.rotation.x = Math.PI / 3 + Math.sin(time * 0.2) * 0.1 + mouseState.y * 0.1;
       mesh.current.position.y = Math.cos(time * 0.25) * 0.2 - 0.5;
     }
   });
@@ -90,12 +105,27 @@ function FloatingArc() {
   );
 }
 
+function MouseTracker() {
+  const { size } = useThree();
+
+  useEffect(() => {
+    function onMouseMove(e: MouseEvent) {
+      // Normalized -1 to 1
+      mouseState.x = (e.clientX / size.width - 0.5) * 2;
+      mouseState.y = (e.clientY / size.height - 0.5) * 2;
+    }
+    window.addEventListener("mousemove", onMouseMove);
+    return () => window.removeEventListener("mousemove", onMouseMove);
+  }, [size]);
+
+  return null;
+}
+
 export default function ParticleField() {
   const [canRender, setCanRender] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    // Check for WebGL support and device capability
     try {
       const canvas = document.createElement("canvas");
       const gl = canvas.getContext("webgl") || canvas.getContext("experimental-webgl");
@@ -111,7 +141,6 @@ export default function ParticleField() {
     const mobile = window.innerWidth < 768 || /Mobi|Android/i.test(navigator.userAgent);
     setIsMobile(mobile);
 
-    // Completely disable on low-end devices: low memory, high device pixel ratio on small screen, or slow connection
     if (mobile) {
       const lowMemory = (navigator as unknown as { deviceMemory?: number }).deviceMemory !== undefined
         && (navigator as unknown as { deviceMemory?: number }).deviceMemory! <= 4;
@@ -128,7 +157,6 @@ export default function ParticleField() {
 
   if (!canRender) return null;
 
-  // On mobile, render a much lighter version — no rings/arcs, fewer particles, on-demand rendering
   return (
     <div className="absolute inset-0 z-0" aria-hidden="true">
       <Canvas
@@ -136,13 +164,14 @@ export default function ParticleField() {
         dpr={isMobile ? [1, 1] : [1, 1.5]}
         gl={{ antialias: !isMobile, alpha: true, powerPreference: "low-power" }}
         style={{ background: "transparent" }}
-        frameloop={isMobile ? "demand" : "always"}
+        frameloop="always"
       >
         <ambientLight intensity={0.4} />
         <pointLight position={[5, 3, 5]} intensity={3} color="#89BBdf" distance={25} />
         <Particles count={isMobile ? 80 : 300} />
         {!isMobile && <FloatingRing />}
         {!isMobile && <FloatingArc />}
+        {!isMobile && <MouseTracker />}
       </Canvas>
     </div>
   );

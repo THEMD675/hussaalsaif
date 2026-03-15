@@ -10,7 +10,7 @@ gsap.registerPlugin(ScrollTrigger);
 export default function SmoothScroll() {
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 1.2,
+      duration: 1.4,
       easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       touchMultiplier: 2,
     });
@@ -25,40 +25,84 @@ export default function SmoothScroll() {
     gsap.ticker.add(tickerCallback);
     gsap.ticker.lagSmoothing(0);
 
-    // --- Section background color transitions ---
-    // Targets sections that transition between white and blue-tinted backgrounds
-    const sectionTransitions = [
-      { trigger: "#results", from: "#fafcfe", to: "#ffffff" },
-      { trigger: "#about", from: "#ffffff", to: "#f8fbfe" },
-      { trigger: "#work", from: "#f8fbfe", to: "#ffffff" },
-      { trigger: "#audience", from: "#ffffff", to: "#f8fbfe" },
-      { trigger: "#media-kit", from: "#f8fbfe", to: "#ffffff" },
-    ];
+    // --- Parallax between sections ---
+    const sections = document.querySelectorAll("section");
+    const parallaxCtxs: gsap.Context[] = [];
 
-    const sectionCtxs: gsap.Context[] = [];
-    sectionTransitions.forEach(({ trigger }) => {
-      const el = document.querySelector(trigger);
-      if (!el) return;
+    sections.forEach((section) => {
       const ctx = gsap.context(() => {
+        // Subtle parallax on section content
+        const inner = section.querySelector(":scope > div");
+        if (inner) {
+          gsap.fromTo(
+            inner,
+            { y: 40 },
+            {
+              y: -40,
+              ease: "none",
+              scrollTrigger: {
+                trigger: section,
+                start: "top bottom",
+                end: "bottom top",
+                scrub: true,
+              },
+            }
+          );
+        }
+
+        // Section fade-in
         gsap.fromTo(
-          el,
-          { opacity: 0.85 },
+          section,
+          { opacity: 0.7 },
           {
             opacity: 1,
             duration: 0.5,
             scrollTrigger: {
-              trigger: el,
-              start: "top 80%",
-              end: "top 20%",
+              trigger: section,
+              start: "top 85%",
+              end: "top 30%",
               scrub: true,
             },
           }
         );
       });
-      sectionCtxs.push(ctx);
+      parallaxCtxs.push(ctx);
     });
 
-    // Handle scroll-to for anchor links (#about, #work, #contact, etc.)
+    // --- Scroll-linked body color transitions ---
+    // Alternate between warm white and cool blue-white
+    const colorSections = [
+      { trigger: "#about", bg: "#f6f9fc" },
+      { trigger: "#audience", bg: "#f6f9fc" },
+    ];
+
+    const colorCtxs: gsap.Context[] = [];
+    colorSections.forEach(({ trigger, bg }) => {
+      const el = document.querySelector(trigger);
+      if (!el) return;
+      const ctx = gsap.context(() => {
+        ScrollTrigger.create({
+          trigger: el,
+          start: "top 50%",
+          end: "bottom 50%",
+          onEnter: () => {
+            gsap.to("body", { backgroundColor: bg, duration: 0.8, ease: "power2.out" });
+          },
+          onLeave: () => {
+            gsap.to("body", { backgroundColor: "#fafcfe", duration: 0.8, ease: "power2.out" });
+          },
+          onEnterBack: () => {
+            gsap.to("body", { backgroundColor: bg, duration: 0.8, ease: "power2.out" });
+          },
+          onLeaveBack: () => {
+            gsap.to("body", { backgroundColor: "#fafcfe", duration: 0.8, ease: "power2.out" });
+          },
+        });
+      });
+      colorCtxs.push(ctx);
+    });
+
+    // Handle scroll-to for anchor links
     function handleAnchorClick(e: MouseEvent) {
       const target = e.target as HTMLElement;
       const anchor = target.closest("a[href^='#']");
@@ -80,10 +124,14 @@ export default function SmoothScroll() {
 
     document.addEventListener("click", handleAnchorClick);
 
+    // Ensure ScrollTrigger measurements are correct after Lenis is set up
+    ScrollTrigger.refresh();
+
     return () => {
       document.removeEventListener("click", handleAnchorClick);
       gsap.ticker.remove(tickerCallback);
-      sectionCtxs.forEach((ctx) => ctx.revert());
+      parallaxCtxs.forEach((ctx) => ctx.revert());
+      colorCtxs.forEach((ctx) => ctx.revert());
       lenis.destroy();
     };
   }, []);
