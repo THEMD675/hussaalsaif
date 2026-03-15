@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     template: "%s | Hussa AlSaif",
   },
   description:
-    "Hussa AlSaif is Saudi Arabia's leading beauty and culture figure with 330K+ followers. Partnered with Sephora, Estee Lauder, MAC, Fendi, Dyson & more. Based in Saudi Arabia.",
+    "Hussa AlSaif is Saudi Arabia's leading beauty and culture figure with 528K+ followers. Partnered with Sephora, Estée Lauder, MAC, Fendi, Lancôme & more. Based in Saudi Arabia.",
   keywords: [
     "Hussa AlSaif",
     "حصه السيف",
@@ -73,7 +73,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Hussa AlSaif — Beauty & Culture | Saudi Arabia",
     description:
-      "Saudi Arabia's leading beauty and culture figure with 330K+ followers. Partnered with Sephora, Estee Lauder, MAC, Fendi, Dyson & more. Based in Saudi Arabia.",
+      "Saudi Arabia's leading beauty and culture figure with 528K+ followers. Partnered with Sephora, Estée Lauder, MAC, Fendi, Lancôme & more. Based in Saudi Arabia.",
     type: "website",
     locale: "en_US",
     alternateLocale: "ar_SA",
@@ -93,7 +93,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Hussa AlSaif — Beauty & Culture | Saudi Arabia",
     description:
-      "330K+ followers. Partnered with Sephora, Estee Lauder, MAC, Fendi & more. Saudi Arabia's defining beauty and culture figure.",
+      "528K+ followers. Partnered with Sephora, Estee Lauder, MAC, Fendi & more. Saudi Arabia's defining beauty and culture figure.",
     images: [
       {
         url: "https://hussaalsaif.com/images/hero.jpg",
@@ -215,7 +215,7 @@ const webPageJsonLd = {
   url: "https://hussaalsaif.com",
   name: "Hussa AlSaif — Beauty & Culture | Saudi Arabia",
   description:
-    "Hussa AlSaif is Saudi Arabia's leading beauty and culture figure with 330K+ followers. Partnered with Sephora, Estee Lauder, MAC, Fendi, Dyson & more.",
+    "Hussa AlSaif is Saudi Arabia's leading beauty and culture figure with 528K+ followers. Partnered with Sephora, Estée Lauder, MAC, Fendi, Lancôme & more.",
   isPartOf: { "@id": "https://hussaalsaif.com/#website" },
   about: { "@id": "https://hussaalsaif.com/#person" },
   inLanguage: "en",
