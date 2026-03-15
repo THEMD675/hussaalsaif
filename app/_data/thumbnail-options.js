@@ -3,11 +3,11 @@ export const thumbnailOptions = [
     href: '#',
     title: 'Brand Campaigns',
     image: '/images/brand-campaigns.jpg',
-    category: 'Sephora · MAC · Estée Lauder · Too Faced',
+    category: 'Sephora · Estée Lauder · MAC · Too Faced',
   },
   {
     href: '#',
-    title: 'Beauty & Lifestyle',
+    title: 'Beauty & Hair',
     image: '/images/beauty-editorials.jpg',
     category: 'Sol de Janeiro · Herbal Essences · P&G',
   },
@@ -19,8 +19,8 @@ export const thumbnailOptions = [
   },
   {
     href: '#',
-    title: 'YouTube & Reels',
+    title: 'Video Content',
     image: '/images/youtube-reels.jpg',
-    category: 'Laverne · ClaraLevel · More',
+    category: 'Laverne · ClaraLevel · Reels & Vlogs',
   },
 ];

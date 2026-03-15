@@ -8,13 +8,25 @@
   }
 
   *::selection {
-    background-color: theme(colors.muted.foreground);
+    background-color: hsl(210 50% 71%);
     color: theme(colors.background);
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
   }
 
   body {
     background-color: theme(colors.background);
     color: theme(colors.foreground);
+    overflow-x: hidden;
+  }
+
+  img {
+    -webkit-user-drag: none;
+    user-select: none;
   }
 }
 

@@ -18,9 +18,9 @@ export function Header() {
       <img
         src='/images/hero.jpg'
         alt='Hussa AlSaif'
-        className='absolute inset-0 size-full object-cover'
+        className='absolute inset-0 size-full object-cover object-top scale-105'
       />
-      <div className='absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/50' />
+      <div className='absolute inset-0 bg-gradient-to-b from-black/30 via-black/10 to-black/60' />
 
       <div className='relative flex h-full flex-col justify-end gap-2 md:flex-col-reverse md:justify-normal'>
         <div className='select-none'>

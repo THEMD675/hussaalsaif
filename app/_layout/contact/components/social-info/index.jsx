@@ -34,7 +34,7 @@ export function SocialInfo() {
           <div>
             <ListTitle>Local time</ListTitle>
             <p className='mt-7'>
-              <time>Riyadh, GMT+3</time>
+              <time>Khobar / Riyadh, GMT+3</time>
             </p>
           </div>
         </div>

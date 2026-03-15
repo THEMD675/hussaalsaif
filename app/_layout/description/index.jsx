@@ -9,7 +9,7 @@ import { MagneticButton, ParallaxFade, ParallaxReveal } from '@/components';
 import { Title, Wrapper } from './index.styled';
 
 const phrase =
-  'Trusted by Sephora, Estée Lauder, MAC, Too Faced, Sol de Janeiro, P&G, Herbal Essences, Fendi, Level Shoes, La Belle, Assaf & Laverne. Beauty, lifestyle & fashion — across every platform.';
+  'Trusted by Sephora, Estée Lauder, MAC, Too Faced, Sol de Janeiro, Herbal Essences, Fendi, Level Shoes, La Belle, Assaf & Laverne — creating content that converts.';
 
 export function Description() {
   return (
@@ -24,8 +24,9 @@ export function Description() {
         <div className='basis-7/12 lg:basis-3/12'>
           <ParallaxFade>
             <Balancer as='p' className='mt-2 text-base lg:text-lg'>
-              330K+ engaged followers across Instagram, TikTok, YouTube &
-              Snapchat. Based in Riyadh, connecting global brands with the Saudi & GCC market.
+              330K+ followers across Instagram, TikTok, YouTube &
+              Snapchat. Based in Khobar & Riyadh — bridging global brands with
+              the Saudi & GCC market through authentic storytelling.
             </Balancer>
           </ParallaxFade>
         </div>

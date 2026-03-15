@@ -3,28 +3,51 @@ export const rootMetadata = {
   metadataBase: new URL('https://hussaalsaif.com/'),
   title: {
     template: '%s | Hussa AlSaif',
-    default: 'Hussa AlSaif • Content Creator & Brand Ambassador',
+    default: 'Hussa AlSaif — Content Creator & Brand Ambassador',
   },
   description:
-    'Saudi-based lifestyle, beauty & fashion content creator. 140K+ followers across Instagram, TikTok, YouTube & Snapchat. Brand partnerships, event coverage & campaign collaborations.',
+    'Saudi content creator & brand ambassador with 330K+ followers. Partnered with Sephora, Estée Lauder, MAC, Too Faced, Fendi & more. Beauty, lifestyle & fashion. Based in Khobar & Riyadh.',
   generator: 'Hussa AlSaif',
   applicationName: 'Hussa AlSaif',
   referrer: 'origin-when-cross-origin',
-  keywords: ['Content Creator', 'Brand Ambassador', 'Beauty', 'Lifestyle', 'Saudi Arabia', 'Influencer'],
+  keywords: [
+    'Hussa AlSaif', 'Saudi content creator', 'brand ambassador',
+    'beauty influencer', 'lifestyle', 'fashion', 'Riyadh',
+    'Sephora', 'Estée Lauder', 'MAC', 'Too Faced', 'Fendi',
+  ],
   authors: [
     { name: 'Hussa AlSaif', url: 'https://hussaalsaif.com' },
   ],
   creator: 'Hussa AlSaif',
   publisher: 'Hussa AlSaif',
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://hussaalsaif.com',
+    siteName: 'Hussa AlSaif',
+    title: 'Hussa AlSaif — Content Creator & Brand Ambassador',
+    description:
+      'Saudi content creator with 330K+ followers. Partnered with Sephora, Estée Lauder, MAC, Fendi & more.',
+    images: [
+      {
+        url: '/images/hero.jpg',
+        width: 640,
+        height: 640,
+        alt: 'Hussa AlSaif',
+      },
+    ],
+  },
   twitter: {
     card: 'summary_large_image',
-    title: 'Hussa AlSaif',
+    title: 'Hussa AlSaif — Content Creator & Brand Ambassador',
     description:
-      'Saudi-based lifestyle, beauty & fashion content creator. 140K+ followers. Brand partnerships & campaign collaborations.',
-    images: {
-      url: 'https://hussaalsaif.com/screenshot.png',
-      alt: 'Hussa AlSaif Portfolio',
-    },
+      'Saudi content creator with 330K+ followers. Partnered with Sephora, Estée Lauder, MAC, Fendi & more.',
+    images: [
+      {
+        url: '/images/hero.jpg',
+        alt: 'Hussa AlSaif',
+      },
+    ],
   },
   robots: {
     index: true,

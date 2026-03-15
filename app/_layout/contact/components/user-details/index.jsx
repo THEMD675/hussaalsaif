@@ -32,10 +32,10 @@ export function UserDetails({ transformX }) {
 
       <Row>
         <div className='relative w-full'>
-          <div className='h-[1px] bg-muted-foreground' />
+          <div className='h-px bg-muted-foreground' />
           <div className='absolute right-0 top-0 z-20 -translate-x-1/2 -translate-y-1/2'>
             <motion.div style={{ x: transformX }}>
-              <Link href='/contact' passHref>
+              <Link href='mailto:inquiries@hussaalsaif.com' passHref>
                 <MagneticButton variant='primary' size='lg'>
                   Get in touch
                 </MagneticButton>
