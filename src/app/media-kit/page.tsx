@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const STATS = [
   { value: "330K+", label: "Combined Followers" },
-  { value: "8.2%", label: "Avg. Engagement Rate" },
+  { value: "20%+", label: "Avg. Engagement Rate" },
   { value: "10.6M+", label: "TikTok Likes" },
   { value: "13+", label: "Brand Partners" },
 ];

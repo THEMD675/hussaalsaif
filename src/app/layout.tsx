@@ -178,13 +178,8 @@ const personJsonLd = {
     { "@type": "Language", name: "English", alternateName: "en" },
   ],
   alumniOf: {
-    "@type": "CollegeOrUniversity",
-    name: "Imam Abdulrahman Bin Faisal University",
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: "Dammam",
-      addressCountry: "SA",
-    },
+    "@type": "EducationalOrganization",
+    name: "Media & Communication Graduate",
   },
   hasCredential: {
     "@type": "EducationalOccupationalCredential",

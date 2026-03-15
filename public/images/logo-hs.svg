@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
+  <rect width="120" height="120" rx="24" fill="#fafcfe"/>
+  <text x="60" y="72" text-anchor="middle" font-family="'Playfair Display', Georgia, serif" font-weight="700" font-size="52" fill="#1a1a1a">H</text>
+  <text x="60" y="72" text-anchor="middle" font-family="'Playfair Display', Georgia, serif" font-weight="700" font-size="52" fill="#1a1a1a" opacity="0">S</text>
+  <text x="75" y="82" text-anchor="middle" font-family="'Playfair Display', Georgia, serif" font-weight="400" font-size="28" fill="#89BBdf">s</text>
+  <circle cx="98" cy="36" r="4" fill="#89BBdf"/>
+</svg>
