@@ -4,10 +4,10 @@ import Image from "next/image";
 import Link from "next/link";
 
 const STATS = [
-  { value: "330K+", label: "Combined Followers" },
-  { value: "5", label: "Platforms" },
+  { value: "337K+", label: "Combined Reach" },
   { value: "10.6M+", label: "TikTok Likes" },
-  { value: "13+", label: "Brand Partners" },
+  { value: "14", label: "Brand Partners" },
+  { value: "4.8%", label: "Avg. Engagement" },
 ];
 
 const PLATFORMS = [

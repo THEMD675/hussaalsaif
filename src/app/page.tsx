@@ -312,16 +312,17 @@ export default function Home() {
       </section>
 
       {/* -- BRAND MARQUEE -- */}
-      <section className="marquee-container py-12 sm:py-16 border-y border-gray-100/60 bg-white/50" aria-label="Brand partners">
+      <section className="marquee-container py-16 sm:py-20 border-y border-gray-100/40 bg-white" aria-label="Brand partners">
+        <p className="text-center text-[10px] font-medium tracking-[0.4em] uppercase text-gray-300 mb-8">Trusted By</p>
         <div className="flex animate-marquee whitespace-nowrap items-center" aria-hidden="true">
           {[...BRANDS, ...BRANDS, ...BRANDS].map((brand, i) => (
-            <div key={i} className="mx-8 sm:mx-12 shrink-0 opacity-40 hover:opacity-80 transition-opacity duration-500 grayscale hover:grayscale-0">
+            <div key={i} className="mx-10 sm:mx-14 shrink-0 opacity-30 hover:opacity-70 transition-all duration-700 grayscale hover:grayscale-0 hover:scale-110">
               <Image
                 src={brand.logo}
                 alt={brand.name}
-                width={120}
-                height={40}
-                className="h-8 sm:h-10 w-auto object-contain"
+                width={140}
+                height={48}
+                className="h-7 sm:h-9 w-auto object-contain"
                 loading="lazy"
               />
             </div>
@@ -601,12 +602,14 @@ export default function Home() {
             </div>
           </ScrollReveal>
           <ScrollReveal delay={0.35}>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-              <a href="mailto:inquiries@hussaalsaif.com?subject=Partnership%20Inquiry" onClick={() => trackEmail("inquiries@hussaalsaif.com", "contact")} className="border border-white/15 hover:border-[#89BBdf] text-white hover:text-[#89BBdf] px-8 py-3 rounded-full font-semibold transition-all text-[12px] tracking-wide inline-block">
-                inquiries@hussaalsaif.com
+            <div className="flex flex-col sm:flex-row gap-3 justify-center mb-10">
+              <a href="/media-kit" onClick={() => trackCTA("Download Media Kit", "contact")} className="bg-white/10 hover:bg-white/15 backdrop-blur text-white px-8 py-3.5 rounded-full font-semibold transition-all text-[12px] tracking-wide inline-flex items-center gap-2 border border-white/10 hover:border-white/20">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Download Media Kit
               </a>
-              <a href="/media-kit" className="border border-white/15 hover:border-[#89BBdf] text-white hover:text-[#89BBdf] px-8 py-3 rounded-full font-semibold transition-all text-[12px] tracking-wide inline-block">
-                View Media Kit
+              <a href="mailto:inquiries@hussaalsaif.com?subject=Urgent%20Partnership%20Inquiry" onClick={() => trackEmail("inquiries@hussaalsaif.com", "contact")} className="border border-white/10 hover:border-[#89BBdf]/40 text-gray-400 hover:text-[#89BBdf] px-8 py-3.5 rounded-full font-semibold transition-all text-[12px] tracking-wide inline-flex items-center gap-2">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                Direct Email
               </a>
             </div>
             <div className="flex justify-center gap-8 text-gray-600 text-[11px] tracking-[0.15em] uppercase">
