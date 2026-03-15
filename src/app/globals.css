@@ -207,7 +207,7 @@ noscript .noscript-visible {
   left: 50%;
   transform: translateX(-50%);
   width: 22px;
-  height: 1.5px;
+  height: 2px;
   background: #1f2937;
   border-radius: 2px;
   transition: all 0.35s cubic-bezier(0.77, 0, 0.18, 1);
@@ -407,5 +407,39 @@ video::-webkit-media-controls-enclosure {
   /* Portfolio grid spacing */
   section .grid.grid-cols-1 {
     gap: 1.25rem;
+  }
+  /* Contact form submit button full width */
+  .contact-form-card button[type="submit"] {
+    width: 100%;
+  }
+  /* Brand marquee smaller logos */
+  .marquee-container .animate-marquee > div {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+}
+
+/* ========================
+   MOBILE — Small phones (375px iPhone SE)
+   ======================== */
+@media (max-width: 390px) {
+  /* Hero text clamping */
+  section h1 {
+    font-size: clamp(2.6rem, 10vw, 3.2rem) !important;
+  }
+  /* Stats grid: prevent overflow */
+  .grid.grid-cols-2 {
+    gap: 0.75rem;
+  }
+  .grid.grid-cols-2 > div {
+    padding: 1rem 0.5rem;
+  }
+  /* Portfolio cards: proper aspect ratio */
+  .aspect-\[4\/5\] {
+    aspect-ratio: 3/4;
+  }
+  /* About section video */
+  section .rounded-3xl video {
+    min-height: 280px;
   }
 }

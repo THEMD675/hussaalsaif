@@ -6,8 +6,8 @@ import Link from "next/link";
 const STATS = [
   { value: "530K+", label: "Combined Reach" },
   { value: "191K", label: "YouTube Subs" },
-  { value: "4.5M+", label: "TikTok Likes" },
-  { value: "13", label: "Brand Partners" },
+  { value: "4.8%", label: "Avg Engagement" },
+  { value: "12", label: "Brand Partners" },
 ];
 
 const PLATFORMS = [
@@ -195,7 +195,7 @@ export default function MediaKit() {
           <div className="max-w-7xl mx-auto px-5 sm:px-8">
             <div className="grid lg:grid-cols-[1fr_1fr] gap-12 lg:gap-20 items-center">
               <div>
-                <p className="text-[#89BBdf] font-medium tracking-[0.35em] uppercase text-[11px] mb-6">
+                <p className="text-[#89BBdf] font-medium tracking-[0.35em] uppercase text-[12px] mb-6">
                   Media Kit 2026
                 </p>
                 <h1
@@ -209,7 +209,7 @@ export default function MediaKit() {
                   Beauty &amp; Culture Icon &mdash; Saudi Arabia
                 </p>
                 <p className="text-gray-400 max-w-md leading-[1.8] text-[14px] mb-8">
-                  530K+ combined reach across Instagram, TikTok &amp; YouTube. 191K YouTube subscribers. 4.5M+ TikTok likes. 13 brand partnerships with the world&apos;s most discerning beauty houses.
+                  530K+ combined reach across Instagram, TikTok &amp; YouTube. 191K YouTube subscribers. 4.5M+ TikTok likes. 12 brand partnerships with the world&apos;s most discerning beauty houses.
                 </p>
                 <div className="flex flex-wrap gap-3 mb-8">
                   {["Beauty", "Fashion", "Lifestyle", "Curly Hair", "Bilingual AR/EN"].map((tag) => (
@@ -246,7 +246,7 @@ export default function MediaKit() {
             ============================================ */}
         <section className="py-16 sm:py-20 bg-white border-y border-gray-100/60">
           <div className="max-w-7xl mx-auto px-5 sm:px-8">
-            <p className="text-[#89BBdf] font-medium tracking-[0.35em] uppercase text-[11px] mb-10 text-center">
+            <p className="text-[#89BBdf] font-medium tracking-[0.35em] uppercase text-[12px] mb-10 text-center">
               At a Glance
             </p>
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-5">
@@ -256,7 +256,7 @@ export default function MediaKit() {
                   className="glass rounded-2xl p-7 sm:p-9 text-center hover:shadow-xl hover:shadow-[#89BBdf]/5 transition-all duration-500"
                 >
                   <p className="text-3xl sm:text-4xl font-serif font-bold text-gradient mb-2">{stat.value}</p>
-                  <p className="text-[11px] text-gray-400 font-medium tracking-[0.15em] uppercase">{stat.label}</p>
+                  <p className="text-[12px] text-gray-400 font-medium tracking-[0.15em] uppercase">{stat.label}</p>
                 </div>
               ))}
             </div>
@@ -268,11 +268,11 @@ export default function MediaKit() {
             ============================================ */}
         <section className="py-20 sm:py-28 bg-[#f8fbfe]">
           <div className="max-w-7xl mx-auto px-5 sm:px-8">
-            <p className="text-[#89BBdf] font-medium tracking-[0.35em] uppercase text-[11px] mb-4">Platforms</p>
+            <p className="text-[#89BBdf] font-medium tracking-[0.35em] uppercase text-[12px] mb-4">Platforms</p>
             <h2 className="font-serif text-2xl sm:text-3xl font-bold leading-[1.15] mb-4">
               Platform Breakdown
             </h2>
-            <p className="text-gray-400 text-[15px] mb-12 max-w-lg">
+            <p className="text-gray-500 text-[15px] mb-12 max-w-lg">
               Multi-platform presence with strong engagement across all channels.
             </p>
 
@@ -302,11 +302,11 @@ export default function MediaKit() {
             ============================================ */}
         <section className="py-20 sm:py-28 bg-white print-break">
           <div className="max-w-7xl mx-auto px-5 sm:px-8">
-            <p className="text-[#89BBdf] font-medium tracking-[0.35em] uppercase text-[11px] mb-4">Audience</p>
+            <p className="text-[#89BBdf] font-medium tracking-[0.35em] uppercase text-[12px] mb-4">Audience</p>
             <h2 className="font-serif text-2xl sm:text-3xl font-bold leading-[1.15] mb-4">
               Audience Demographics
             </h2>
-            <p className="text-gray-400 text-[15px] mb-12 max-w-lg">
+            <p className="text-gray-500 text-[15px] mb-12 max-w-lg">
               Hussa&apos;s audience aligns with the highest-value consumer segment in the GCC: young Saudi women with purchasing power.
             </p>
 
@@ -328,7 +328,7 @@ export default function MediaKit() {
                     <div className="w-1.5 h-1.5 rounded-full bg-[#89BBdf] mt-2 shrink-0" />
                     <div>
                       <p className="text-gray-900 text-[14px] font-semibold mb-0.5">{interest.name}</p>
-                      <p className="text-gray-400 text-[13px] leading-relaxed">{interest.description}</p>
+                      <p className="text-gray-500 text-[13px] leading-relaxed">{interest.description}</p>
                     </div>
                   </div>
                 ))}
@@ -342,11 +342,11 @@ export default function MediaKit() {
             ============================================ */}
         <section className="py-20 sm:py-28 bg-[#f8fbfe]">
           <div className="max-w-7xl mx-auto px-5 sm:px-8">
-            <p className="text-[#89BBdf] font-medium tracking-[0.35em] uppercase text-[11px] mb-4">Trusted By</p>
+            <p className="text-[#89BBdf] font-medium tracking-[0.35em] uppercase text-[12px] mb-4">Trusted By</p>
             <h2 className="font-serif text-2xl sm:text-3xl font-bold leading-[1.15] mb-4">
               Brand Partners
             </h2>
-            <p className="text-gray-400 text-[15px] mb-12 max-w-lg">
+            <p className="text-gray-500 text-[15px] mb-12 max-w-lg">
               Partnered with leading global and regional brands across beauty, fashion, lifestyle, and haircare.
             </p>
 
@@ -376,11 +376,11 @@ export default function MediaKit() {
             ============================================ */}
         <section className="py-20 sm:py-28 bg-white print-break">
           <div className="max-w-7xl mx-auto px-5 sm:px-8">
-            <p className="text-[#89BBdf] font-medium tracking-[0.35em] uppercase text-[11px] mb-4">Services</p>
+            <p className="text-[#89BBdf] font-medium tracking-[0.35em] uppercase text-[12px] mb-4">Services</p>
             <h2 className="font-serif text-2xl sm:text-3xl font-bold leading-[1.15] mb-4">
               Content Formats
             </h2>
-            <p className="text-gray-400 text-[15px] mb-12 max-w-lg">
+            <p className="text-gray-500 text-[15px] mb-12 max-w-lg">
               Flexible content solutions across every major platform and format.
             </p>
 
@@ -394,7 +394,7 @@ export default function MediaKit() {
                     {format.icon}
                   </div>
                   <h3 className="font-semibold text-[15px] text-gray-900 mb-2">{format.title}</h3>
-                  <p className="text-gray-400 text-[13px] leading-relaxed">{format.description}</p>
+                  <p className="text-gray-500 text-[13px] leading-relaxed">{format.description}</p>
                 </div>
               ))}
             </div>
@@ -406,11 +406,11 @@ export default function MediaKit() {
             ============================================ */}
         <section className="py-20 sm:py-28 bg-[#f8fbfe] print-break">
           <div className="max-w-7xl mx-auto px-5 sm:px-8">
-            <p className="text-[#89BBdf] font-medium tracking-[0.35em] uppercase text-[11px] mb-4">Results</p>
+            <p className="text-[#89BBdf] font-medium tracking-[0.35em] uppercase text-[12px] mb-4">Results</p>
             <h2 className="font-serif text-2xl sm:text-3xl font-bold leading-[1.15] mb-4">
               Campaign Case Studies
             </h2>
-            <p className="text-gray-400 text-[15px] mb-12 max-w-lg">
+            <p className="text-gray-500 text-[15px] mb-12 max-w-lg">
               A selection of brand collaborations across beauty, fashion, and lifestyle.
             </p>
 
@@ -451,11 +451,11 @@ export default function MediaKit() {
             ============================================ */}
         <section className="py-20 sm:py-28 bg-white print-break">
           <div className="max-w-7xl mx-auto px-5 sm:px-8">
-            <p className="text-[#89BBdf] font-medium tracking-[0.35em] uppercase text-[11px] mb-4">Partnerships</p>
+            <p className="text-[#89BBdf] font-medium tracking-[0.35em] uppercase text-[12px] mb-4">Partnerships</p>
             <h2 className="font-serif text-2xl sm:text-3xl font-bold leading-[1.15] mb-4">
               Partnership Tiers
             </h2>
-            <p className="text-gray-400 text-[15px] mb-12 max-w-lg">
+            <p className="text-gray-500 text-[15px] mb-12 max-w-lg">
               Hussa works with a limited number of brands each quarter to maintain authenticity and impact.
             </p>
 
@@ -473,7 +473,7 @@ export default function MediaKit() {
                       {item.price}
                     </span>
                   </div>
-                  <p className="text-gray-400 text-[13px] leading-relaxed flex-1">{item.desc}</p>
+                  <p className="text-gray-500 text-[13px] leading-relaxed flex-1">{item.desc}</p>
                 </div>
               ))}
             </div>
@@ -489,7 +489,7 @@ export default function MediaKit() {
             <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] bg-[#89BBdf]/15 rounded-full blur-[150px]" />
           </div>
           <div className="relative z-10 max-w-4xl mx-auto px-5 sm:px-8 text-center">
-            <p className="text-[#89BBdf] font-medium tracking-[0.35em] uppercase text-[11px] mb-6">Get in Touch</p>
+            <p className="text-[#89BBdf] font-medium tracking-[0.35em] uppercase text-[12px] mb-6">Get in Touch</p>
             <h2
               className="font-serif font-bold text-white leading-[1.05] mb-6"
               style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)" }}

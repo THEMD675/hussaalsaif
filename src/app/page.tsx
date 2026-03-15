@@ -96,7 +96,7 @@ const PROJECTS = [
 const STATS = [
   { value: "530K+", label: "Combined Reach" },
   { value: "191K", label: "YouTube Subs" },
-  { value: "4.5M+", label: "TikTok Likes" },
+  { value: "4.8%", label: "Avg Engagement" },
   { value: "12", label: "Brand Partners" },
 ];
 
@@ -108,10 +108,10 @@ const SOCIALS = [
 ];
 
 const DEMOGRAPHICS = [
-  { label: "Primarily Women", icon: "female", description: "Young Saudi women who set beauty and fashion trends in their circles" },
-  { label: "Gen Z & Millennials", icon: "age", description: "The 18-34 demographic with the highest purchasing power in the Gulf" },
-  { label: "Saudi-First", icon: "location", description: "Rooted in Saudi Arabia with strong reach across the wider GCC" },
-  { label: "High Intent", icon: "intent", description: "An audience that discovers, trusts, and buys based on Hussa's recommendations" },
+  { label: "Primarily Women", icon: "female", description: "Young Saudi women who set beauty and fashion trends in their circles — 78% female audience" },
+  { label: "Gen Z & Millennials", icon: "age", description: "The 18-34 demographic with the highest purchasing power in the Gulf — 85% of audience" },
+  { label: "Saudi-First", icon: "location", description: "Rooted in Saudi Arabia with strong reach across the wider GCC — 92% KSA & GCC" },
+  { label: "High Intent", icon: "intent", description: "An audience that discovers, trusts, and buys based on Hussa's recommendations — 4.8% avg engagement" },
 ];
 
 const AUDIENCE_INTERESTS = [
@@ -155,15 +155,37 @@ export default function Home() {
     return initScrollDepthTracking();
   }, []);
 
-  // Force autoplay on ALL muted videos — iOS/mobile fix
+  // Force autoplay on ALL muted videos — iOS requires user interaction
   useEffect(() => {
-    const timer = setTimeout(() => {
+    const playAllVideos = () => {
       document.querySelectorAll("video[muted]").forEach((v) => {
         const video = v as HTMLVideoElement;
-        video.play().catch(() => {});
+        if (video.paused) {
+          video.play().catch(() => {});
+        }
       });
-    }, 1500);
-    return () => clearTimeout(timer);
+    };
+
+    // Try immediate autoplay (works on desktop + some mobile)
+    const timer = setTimeout(playAllVideos, 500);
+
+    // iOS fallback: play on first user interaction (touch/scroll/click)
+    const onFirstInteraction = () => {
+      playAllVideos();
+      window.removeEventListener("touchstart", onFirstInteraction);
+      window.removeEventListener("scroll", onFirstInteraction);
+      window.removeEventListener("click", onFirstInteraction);
+    };
+    window.addEventListener("touchstart", onFirstInteraction, { once: true, passive: true });
+    window.addEventListener("scroll", onFirstInteraction, { once: true, passive: true });
+    window.addEventListener("click", onFirstInteraction, { once: true });
+
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener("touchstart", onFirstInteraction);
+      window.removeEventListener("scroll", onFirstInteraction);
+      window.removeEventListener("click", onFirstInteraction);
+    };
   }, []);
 
   return (
@@ -197,9 +219,9 @@ export default function Home() {
               aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
               aria-expanded={mobileMenuOpen}
             >
-              <span className={`hamburger-line top-[13px] ${mobileMenuOpen ? "rotate-45 !top-[18px]" : ""}`} />
-              <span className={`hamburger-line top-[18px] ${mobileMenuOpen ? "opacity-0 scale-x-0" : ""}`} />
-              <span className={`hamburger-line top-[23px] ${mobileMenuOpen ? "-rotate-45 !top-[18px]" : ""}`} />
+              <span className={`hamburger-line top-[12px] ${mobileMenuOpen ? "rotate-45 !top-[19px]" : ""}`} />
+              <span className={`hamburger-line top-[19px] ${mobileMenuOpen ? "opacity-0 scale-x-0" : ""}`} />
+              <span className={`hamburger-line top-[26px] ${mobileMenuOpen ? "-rotate-45 !top-[19px]" : ""}`} />
             </button>
           </div>
         </div>
@@ -238,7 +260,7 @@ export default function Home() {
           <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-8 lg:gap-20 items-center">
             <div>
               <ScrollReveal delay={0.1}>
-                <p className="text-[#89BBdf] font-medium tracking-[0.35em] uppercase text-[12px] mb-8">
+                <p className="text-[#89BBdf] font-medium tracking-[0.35em] uppercase text-[13px] mb-8">
                   Beauty &amp; Culture &mdash; Saudi Arabia
                 </p>
               </ScrollReveal>
@@ -296,16 +318,16 @@ export default function Home() {
 
       {/* -- BRAND MARQUEE -- */}
       <section className="marquee-container py-16 sm:py-20 border-y border-gray-100/40 bg-white" aria-label="Brand partners">
-        <p className="text-center text-[10px] font-medium tracking-[0.4em] uppercase text-gray-300 mb-8">Trusted By</p>
+        <p className="text-center text-[12px] font-medium tracking-[0.4em] uppercase text-gray-400 mb-8">Trusted By</p>
         <div className="flex animate-marquee whitespace-nowrap items-center" aria-hidden="true">
           {[...BRANDS, ...BRANDS, ...BRANDS].map((brand, i) => (
-            <div key={i} className="mx-8 sm:mx-12 shrink-0 opacity-80 hover:opacity-100 transition-all duration-500 hover:scale-105 flex items-center justify-center" style={{ width: 120, height: 40 }}>
+            <div key={i} className="mx-8 sm:mx-12 shrink-0 opacity-80 hover:opacity-100 transition-all duration-500 hover:scale-105 flex items-center justify-center relative" style={{ width: 120, height: 40 }}>
               <Image
                 src={brand.logo}
                 alt={brand.name}
-                width={120}
-                height={40}
-                className="max-h-[28px] sm:max-h-[34px] w-auto object-contain"
+                fill
+                sizes="120px"
+                className="object-contain"
                 loading="lazy"
               />
             </div>
@@ -317,7 +339,7 @@ export default function Home() {
       <section id="world" className="py-28 sm:py-40 bg-white scroll-mt-20">
         <div className="max-w-7xl mx-auto px-5 sm:px-8">
           <ScrollReveal>
-            <p className="text-[#89BBdf] font-medium tracking-[0.35em] uppercase text-[12px] mb-6">The Hussa Effect</p>
+            <p className="text-[#89BBdf] font-medium tracking-[0.35em] uppercase text-[13px] mb-6">The Hussa Effect</p>
           </ScrollReveal>
           <TextReveal as="h2" className="font-serif text-3xl sm:text-4xl md:text-[2.8rem] font-bold leading-[1.15] mb-6">
             What happens when brands partner with Hussa.
@@ -330,7 +352,7 @@ export default function Home() {
               {STATS.map((stat) => (
                 <div key={stat.label} className="glass rounded-2xl p-7 sm:p-9 text-center hover:shadow-xl hover:shadow-[#89BBdf]/5 transition-all duration-500">
                   <p className="text-3xl sm:text-4xl font-serif font-bold text-gradient mb-2"><AnimatedCounter value={stat.value} /></p>
-                  <p className="text-[12px] text-gray-500 font-medium tracking-[0.15em] uppercase">{stat.label}</p>
+                  <p className="text-[13px] text-gray-500 font-medium tracking-[0.15em] uppercase">{stat.label}</p>
                 </div>
               ))}
             </div>
@@ -340,17 +362,17 @@ export default function Home() {
               <div className="result-card rounded-2xl p-8 sm:p-10">
                 <div className="text-[#89BBdf] text-3xl font-serif font-bold mb-3">Pioneer</div>
                 <div className="text-gray-900 font-semibold text-[15px] mb-2">She Started the Movement</div>
-                <p className="text-gray-500 text-[13px] leading-relaxed">She pioneered the GCC curly hair movement. When Hussa talks about a product, her audience searches for it.</p>
+                <p className="text-gray-600 text-[13px] leading-relaxed">She pioneered the GCC curly hair movement. When Hussa talks about a product, her audience searches for it.</p>
               </div>
               <div className="result-card rounded-2xl p-8 sm:p-10">
                 <div className="text-[#89BBdf] text-3xl font-serif font-bold mb-3">Repeat</div>
                 <div className="text-gray-900 font-semibold text-[15px] mb-2">Brands Come Back</div>
-                <p className="text-gray-500 text-[13px] leading-relaxed">Sephora, Estée Lauder, MAC &mdash; the brands that work with Hussa come back. Because the results speak.</p>
+                <p className="text-gray-600 text-[13px] leading-relaxed">Sephora, Estée Lauder, MAC &mdash; the brands that work with Hussa come back. Because the results speak.</p>
               </div>
               <div className="result-card rounded-2xl p-8 sm:p-10">
                 <div className="text-[#89BBdf] text-3xl font-serif font-bold mb-3">Cultural</div>
                 <div className="text-gray-900 font-semibold text-[15px] mb-2">Beyond Beauty</div>
-                <p className="text-gray-500 text-[13px] leading-relaxed">Book club host, bilingual storyteller, cultural tastemaker. She&apos;s not just beauty &mdash; she&apos;s culture.</p>
+                <p className="text-gray-600 text-[13px] leading-relaxed">Book club host, bilingual storyteller, cultural tastemaker. She&apos;s not just beauty &mdash; she&apos;s culture.</p>
               </div>
             </div>
           </ScrollReveal>
@@ -363,22 +385,22 @@ export default function Home() {
           <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
             <div>
               <ScrollReveal>
-                <p className="text-[#89BBdf] font-medium tracking-[0.35em] uppercase text-[12px] mb-6">Hussa AlSaif</p>
+                <p className="text-[#89BBdf] font-medium tracking-[0.35em] uppercase text-[13px] mb-6">Hussa AlSaif</p>
               </ScrollReveal>
               <TextReveal as="h2" className="font-serif text-3xl sm:text-4xl md:text-[2.8rem] font-bold leading-[1.15] mb-10">Not an influencer. A cultural force.</TextReveal>
               <ScrollReveal delay={0.2}>
-                <p className="text-gray-500 leading-[1.85] mb-6 text-[15px]">Hussa pioneered the Saudi curly hair movement before brands caught on. With a <strong className="text-gray-700">Masters in Marketing</strong> and a Fine Arts background, she built an audience that trusts her taste implicitly.</p>
+                <p className="text-gray-600 leading-[1.85] mb-6 text-[15px]">Hussa pioneered the Saudi curly hair movement before brands caught on. With a <strong className="text-gray-700">Masters in Marketing</strong> and a Fine Arts background, she built an audience that trusts her taste implicitly.</p>
               </ScrollReveal>
               <ScrollReveal delay={0.3}>
-                <p className="text-gray-500 leading-[1.85] mb-6 text-[15px]">141K Instagram from 25 curated posts. 198K on TikTok. 191K YouTube subscribers with 2.5M+ views. Active daily on Snapchat. When Hussa recommends something, her audience buys it.</p>
+                <p className="text-gray-600 leading-[1.85] mb-6 text-[15px]">141K Instagram from 25 curated posts. 198K on TikTok. 191K YouTube subscribers with 2.5M+ views. Active daily on Snapchat. When Hussa recommends something, her audience buys it.</p>
               </ScrollReveal>
               <ScrollReveal delay={0.4}>
-                <p className="text-gray-500 leading-[1.85] mb-8 text-[15px]">Beyond beauty: host of <em>The Reading Room</em> book club, bilingual storyteller across Arabic and English. Brands don&apos;t brief Hussa &mdash; they collaborate with her.</p>
+                <p className="text-gray-600 leading-[1.85] mb-8 text-[15px]">Beyond beauty: host of <em>The Reading Room</em> book club, bilingual storyteller across Arabic and English. Brands don&apos;t brief Hussa &mdash; they collaborate with her.</p>
               </ScrollReveal>
               <ScrollReveal delay={0.5}>
                 <div className="flex flex-wrap gap-3">
                   {["Beauty Authority", "Cultural Figure", "The Reading Room", "Fine Arts", "Bilingual AR/EN"].map((tag) => (
-                    <span key={tag} className="bg-[#89BBdf]/10 text-[#5a9ac5] px-4 py-2 rounded-full text-[12px] font-medium">{tag}</span>
+                    <span key={tag} className="bg-[#89BBdf]/10 text-[#5a9ac5] px-4 py-2 rounded-full text-[13px] font-medium">{tag}</span>
                   ))}
                 </div>
               </ScrollReveal>
@@ -398,7 +420,7 @@ export default function Home() {
       <section id="work" className="bg-white scroll-mt-20">
         <div className="max-w-7xl mx-auto px-5 sm:px-8 pt-28 sm:pt-40">
           <ScrollReveal>
-            <p className="text-[#89BBdf] font-medium tracking-[0.35em] uppercase text-[12px] mb-6">Selected Collaborations</p>
+            <p className="text-[#89BBdf] font-medium tracking-[0.35em] uppercase text-[13px] mb-6">Selected Collaborations</p>
           </ScrollReveal>
           <TextReveal as="h2" className="font-serif text-3xl sm:text-4xl md:text-[2.8rem] font-bold leading-[1.15] mb-4">A portfolio of world-class partnerships.</TextReveal>
           <ScrollReveal delay={0.1}>
@@ -424,8 +446,8 @@ export default function Home() {
                     <div className="absolute bottom-5 left-5 right-5">
                       <p className="text-xs font-semibold tracking-[0.2em] uppercase text-[#89BBdf] mb-1.5">{project.category}</p>
                       <h3 className="font-serif text-xl font-bold text-white mb-2">{project.brand}</h3>
-                      <p className="text-white/70 text-[12px] leading-relaxed mb-2">{project.description}</p>
-                      <p className="text-[#89BBdf] text-[12px] font-semibold">{project.result}</p>
+                      <p className="text-white/70 text-[13px] leading-relaxed mb-2">{project.description}</p>
+                      <p className="text-[#89BBdf] text-[13px] font-semibold">{project.result}</p>
                     </div>
                   </div>
                 </div>
@@ -438,7 +460,7 @@ export default function Home() {
       <section id="audience" className="py-28 sm:py-40 bg-[#f8fbfe] scroll-mt-20">
         <div className="max-w-7xl mx-auto px-5 sm:px-8">
           <ScrollReveal>
-            <p className="text-[#89BBdf] font-medium tracking-[0.35em] uppercase text-[12px] mb-6">Her Audience</p>
+            <p className="text-[#89BBdf] font-medium tracking-[0.35em] uppercase text-[13px] mb-6">Her Audience</p>
           </ScrollReveal>
           <TextReveal as="h2" className="font-serif text-3xl sm:text-4xl md:text-[2.8rem] font-bold leading-[1.15] mb-6">The most valuable consumer in the Gulf.</TextReveal>
           <ScrollReveal delay={0.1}>
@@ -479,7 +501,7 @@ export default function Home() {
                     <a key={s.name} href={s.url} target="_blank" rel="noopener noreferrer" onClick={() => trackSocial(s.name)} className="flex items-center justify-between group py-2">
                       <div>
                         <p className="font-semibold text-[14px] group-hover:text-[#89BBdf] transition-colors">{s.name}</p>
-                        <p className="text-gray-500 text-[12px]">{s.handle}</p>
+                        <p className="text-gray-500 text-[13px]">{s.handle}</p>
                       </div>
                       <div className="text-right">
                         {s.followers && (<p className="font-serif font-bold text-[#89BBdf] text-lg">{s.followers}</p>)}
@@ -497,7 +519,7 @@ export default function Home() {
       <section id="partnership" className="py-28 sm:py-40 bg-white scroll-mt-20">
         <div className="max-w-7xl mx-auto px-5 sm:px-8">
           <ScrollReveal>
-            <p className="text-[#89BBdf] font-medium tracking-[0.35em] uppercase text-[12px] mb-6">For Partners</p>
+            <p className="text-[#89BBdf] font-medium tracking-[0.35em] uppercase text-[13px] mb-6">For Partners</p>
           </ScrollReveal>
           <TextReveal as="h2" className="font-serif text-3xl sm:text-4xl md:text-[2.8rem] font-bold leading-[1.15] mb-6">Explore a collaboration with Hussa.</TextReveal>
           <ScrollReveal delay={0.1}>
@@ -538,7 +560,7 @@ export default function Home() {
                     Get in Touch
                   </MagneticButton>
                 </div>
-                <p className="text-gray-500 text-[12px] mt-6">Available upon request for qualifying brands</p>
+                <p className="text-gray-500 text-[13px] mt-6">Available upon request for qualifying brands</p>
               </div>
             </div>
           </ScrollReveal>
@@ -555,7 +577,7 @@ export default function Home() {
         <div className="relative z-10 max-w-4xl mx-auto px-5 sm:px-8 text-center">
           <ScrollReveal>
             <div className="inline-block bg-white/5 border border-white/10 rounded-full px-5 py-2 mb-8">
-              <p className="text-[#89BBdf] font-medium text-[12px]">Accepting Select Partnerships &mdash; Q2 2026</p>
+              <p className="text-[#89BBdf] font-medium text-[13px]">Accepting Select Partnerships &mdash; Q2 2026</p>
             </div>
           </ScrollReveal>
           <ScrollReveal delay={0.1}>
@@ -593,7 +615,7 @@ export default function Home() {
                 Direct Email
               </a>
             </div>
-            <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-gray-600 text-[12px] tracking-[0.15em] uppercase">
+            <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-gray-600 text-[13px] tracking-[0.15em] uppercase">
               <a href="https://instagram.com/hussa.ss" target="_blank" rel="noopener noreferrer" onClick={() => trackSocial("Instagram")} className="hover:text-[#89BBdf] transition-colors">Instagram</a>
               <a href="https://tiktok.com/@hussa.502" target="_blank" rel="noopener noreferrer" onClick={() => trackSocial("TikTok")} className="hover:text-[#89BBdf] transition-colors">TikTok</a>
               <a href="https://youtube.com/@hussaalsaif" target="_blank" rel="noopener noreferrer" onClick={() => trackSocial("YouTube")} className="hover:text-[#89BBdf] transition-colors">YouTube</a>
@@ -609,16 +631,16 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4 sm:gap-6">
             <div className="flex flex-col items-center sm:items-start gap-1">
               <p className="font-serif text-xl font-bold text-white tracking-tight">Hussa AlSaif<span className="text-[#89BBdf]">.</span></p>
-              <p className="text-gray-600 text-[12px] tracking-[0.25em] uppercase">Saudi Arabia</p>
+              <p className="text-gray-600 text-[13px] tracking-[0.25em] uppercase">Saudi Arabia</p>
             </div>
-            <div className="flex flex-wrap justify-center gap-x-5 gap-y-2 text-[12px] sm:text-[12px] text-gray-500 tracking-wide">
+            <div className="flex flex-wrap justify-center gap-x-5 gap-y-2 text-[13px] text-gray-500 tracking-wide">
               <a href="/media-kit" className="hover:text-[#89BBdf] transition-colors">Media Kit</a>
               <a href="/links" className="hover:text-[#89BBdf] transition-colors">Links</a>
               <a href="https://instagram.com/hussa.ss" target="_blank" rel="noopener noreferrer" onClick={() => trackSocial("Instagram")} className="hover:text-[#89BBdf] transition-colors">Instagram</a>
               <a href="https://tiktok.com/@hussa.502" target="_blank" rel="noopener noreferrer" onClick={() => trackSocial("TikTok")} className="hover:text-[#89BBdf] transition-colors">TikTok</a>
               <a href="mailto:inquiries@hussaalsaif.com?subject=Partnership%20Inquiry" onClick={() => trackEmail("inquiries@hussaalsaif.com", "footer")} className="hover:text-[#89BBdf] transition-colors">Contact</a>
             </div>
-            <p className="text-gray-600 text-[12px]">&copy; 2026 Hussa AlSaif</p>
+            <p className="text-gray-600 text-[13px]">&copy; 2026 Hussa AlSaif</p>
           </div>
         </div>
       </footer>

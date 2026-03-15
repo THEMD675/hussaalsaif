@@ -240,7 +240,7 @@ const campaignsJsonLd = {
   name: "Brand Campaigns by Hussa AlSaif",
   description:
     "Selected brand campaigns and collaborations by Saudi beauty and culture figure Hussa AlSaif",
-  numberOfItems: 9,
+  numberOfItems: 8,
   itemListElement: [
     {
       "@type": "ListItem",
@@ -253,7 +253,7 @@ const campaignsJsonLd = {
         creator: { "@id": "https://hussaalsaif.com/#person" },
         about: { "@type": "Brand", name: "Sephora" },
         genre: "Beauty Campaign",
-        image: "https://hussaalsaif.com/images/beauty-editorials.jpg",
+        image: "https://hussaalsaif.com/images/sephora-campaign.jpg",
       },
     },
     {
@@ -267,7 +267,7 @@ const campaignsJsonLd = {
         creator: { "@id": "https://hussaalsaif.com/#person" },
         about: { "@type": "Brand", name: "Fendi" },
         genre: "Fashion",
-        image: "https://hussaalsaif.com/images/brand-campaigns.jpg",
+        image: "https://hussaalsaif.com/images/fendi-campaign.jpg",
       },
     },
     {
@@ -281,7 +281,7 @@ const campaignsJsonLd = {
         creator: { "@id": "https://hussaalsaif.com/#person" },
         about: { "@type": "Brand", name: "Estee Lauder" },
         genre: "Skincare",
-        image: "https://hussaalsaif.com/images/event-coverage.jpg",
+        image: "https://hussaalsaif.com/images/estee-campaign.jpg",
       },
     },
     {
@@ -295,7 +295,7 @@ const campaignsJsonLd = {
         creator: { "@id": "https://hussaalsaif.com/#person" },
         about: { "@type": "Brand", name: "Too Faced" },
         genre: "Beauty",
-        image: "https://hussaalsaif.com/images/gallery-5.jpg",
+        image: "https://hussaalsaif.com/images/toofaced-campaign.jpg",
       },
     },
     {
@@ -309,7 +309,7 @@ const campaignsJsonLd = {
         creator: { "@id": "https://hussaalsaif.com/#person" },
         about: { "@type": "Brand", name: "MAC Cosmetics" },
         genre: "Makeup",
-        image: "https://hussaalsaif.com/images/gallery-1.jpg",
+        image: "https://hussaalsaif.com/images/mac-campaign.jpg",
       },
     },
     {
@@ -323,7 +323,7 @@ const campaignsJsonLd = {
         creator: { "@id": "https://hussaalsaif.com/#person" },
         about: { "@type": "Brand", name: "Herbal Essences" },
         genre: "Hair Care",
-        image: "https://hussaalsaif.com/images/gallery-6.jpg",
+        image: "https://hussaalsaif.com/images/herbal-campaign.jpg",
       },
     },
     {
@@ -337,26 +337,12 @@ const campaignsJsonLd = {
         creator: { "@id": "https://hussaalsaif.com/#person" },
         about: { "@type": "Brand", name: "Sol de Janeiro" },
         genre: "Lifestyle",
-        image: "https://hussaalsaif.com/images/gallery-4.jpg",
+        image: "https://hussaalsaif.com/images/soldejanerio-campaign.jpg",
       },
     },
     {
       "@type": "ListItem",
       position: 8,
-      item: {
-        "@type": "CreativeWork",
-        name: "La Belle — Brand Partnership",
-        description:
-          "Fashion content partnership with La Belle.",
-        creator: { "@id": "https://hussaalsaif.com/#person" },
-        about: { "@type": "Brand", name: "La Belle" },
-        genre: "Fashion",
-        image: "https://hussaalsaif.com/images/gallery-7.jpg",
-      },
-    },
-    {
-      "@type": "ListItem",
-      position: 9,
       item: {
         "@type": "CreativeWork",
         name: "Level Shoes — Brand Partnership",
@@ -365,7 +351,7 @@ const campaignsJsonLd = {
         creator: { "@id": "https://hussaalsaif.com/#person" },
         about: { "@type": "Brand", name: "Level Shoes" },
         genre: "Fashion",
-        image: "https://hussaalsaif.com/images/gallery-2.jpg",
+        image: "https://hussaalsaif.com/images/sephora-grwm.jpg",
       },
     },
   ],
