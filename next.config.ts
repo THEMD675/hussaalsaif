@@ -33,7 +33,7 @@ const nextConfig: NextConfig = {
 
   // Tree-shake heavy packages
   experimental: {
-    optimizePackageImports: ["gsap", "lenis"],
+    optimizePackageImports: ["three", "gsap", "framer-motion", "lenis"],
   },
 
   // Image optimization
@@ -62,8 +62,9 @@ const nextConfig: NextConfig = {
         headers: [
           ...securityHeaders,
           {
+            // HTML pages: revalidate on every request (no stale cache)
             key: "Cache-Control",
-            value: "public, s-maxage=10, stale-while-revalidate=59",
+            value: "public, s-maxage=60, stale-while-revalidate=300",
           },
         ],
       },
@@ -98,7 +99,7 @@ const nextConfig: NextConfig = {
         ],
       },
       {
-        // Cache JS/CSS — Next.js uses content-hashed filenames so immutable is safe
+        // Cache JS/CSS with revalidation
         source: "/_next/static/:path*",
         headers: [
           {

@@ -139,12 +139,20 @@ const personJsonLd = {
   description:
     "Saudi Arabia's leading beauty and culture figure with 530K+ combined followers across Instagram, TikTok, YouTube, and Snapchat. The defining voice in beauty, fashion, and culture for the GCC market.",
   nationality: { "@type": "Country", name: "Saudi Arabia" },
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: "Riyadh",
-    addressRegion: "Riyadh Province",
-    addressCountry: "SA",
-  },
+  address: [
+    {
+      "@type": "PostalAddress",
+      addressLocality: "Riyadh",
+      addressRegion: "Riyadh Province",
+      addressCountry: "SA",
+    },
+    {
+      "@type": "PostalAddress",
+      addressLocality: "Riyadh",
+      addressRegion: "Riyadh Province",
+      addressCountry: "SA",
+    },
+  ],
   email: "inquiries@hussaalsaif.com",
   sameAs: [
     "https://instagram.com/hussa.ss",
@@ -171,22 +179,14 @@ const personJsonLd = {
   ],
   alumniOf: {
     "@type": "EducationalOrganization",
-    name: "University",
+    name: "Masters in Marketing Graduate",
   },
-  hasCredential: [
-    {
-      "@type": "EducationalOccupationalCredential",
-      credentialCategory: "degree",
-      educationalLevel: "Master's Degree",
-      about: "Marketing",
-    },
-    {
-      "@type": "EducationalOccupationalCredential",
-      credentialCategory: "degree",
-      educationalLevel: "Bachelor's Degree",
-      about: "Fine Arts",
-    },
-  ],
+  hasCredential: {
+    "@type": "EducationalOccupationalCredential",
+    credentialCategory: "degree",
+    educationalLevel: "Bachelor's Degree",
+    about: "Marketing & Fine Arts",
+  },
   hasOccupation: {
     "@type": "Occupation",
     name: "Beauty & Culture Figure",
@@ -240,7 +240,7 @@ const campaignsJsonLd = {
   name: "Brand Campaigns by Hussa AlSaif",
   description:
     "Selected brand campaigns and collaborations by Saudi beauty and culture figure Hussa AlSaif",
-  numberOfItems: 8,
+  numberOfItems: 9,
   itemListElement: [
     {
       "@type": "ListItem",
@@ -249,11 +249,11 @@ const campaignsJsonLd = {
         "@type": "CreativeWork",
         name: "Sephora Collection — Brand Partnership",
         description:
-          "Lip tint launch content across Instagram and TikTok for Sephora's KSA market.",
+          "Brand partnership across Instagram and TikTok for Sephora's KSA product launches.",
         creator: { "@id": "https://hussaalsaif.com/#person" },
         about: { "@type": "Brand", name: "Sephora" },
         genre: "Beauty Campaign",
-        image: "https://hussaalsaif.com/images/sephora-campaign.jpg",
+        image: "https://hussaalsaif.com/images/beauty-editorials.jpg",
       },
     },
     {
@@ -261,13 +261,13 @@ const campaignsJsonLd = {
       position: 2,
       item: {
         "@type": "CreativeWork",
-        name: "Fendi FW25 — Fashion Partnership",
+        name: "Fendi — Fashion Partnership",
         description:
-          "Fashion week content partnership for Fendi's Fall/Winter 2025 regional presence.",
+          "Fashion content partnership for Fendi's regional presence.",
         creator: { "@id": "https://hussaalsaif.com/#person" },
         about: { "@type": "Brand", name: "Fendi" },
         genre: "Fashion",
-        image: "https://hussaalsaif.com/images/fendi-campaign.jpg",
+        image: "https://hussaalsaif.com/images/brand-campaigns.jpg",
       },
     },
     {
@@ -275,13 +275,13 @@ const campaignsJsonLd = {
       position: 3,
       item: {
         "@type": "CreativeWork",
-        name: "Herbal Essences — Brand Partnership",
+        name: "Estée Lauder — Brand Partnership",
         description:
-          "Curly hair content aligned with the GCC natural hair movement.",
+          "Skincare content partnership with Estée Lauder.",
         creator: { "@id": "https://hussaalsaif.com/#person" },
-        about: { "@type": "Brand", name: "Herbal Essences" },
-        genre: "Hair Care",
-        image: "https://hussaalsaif.com/images/herbal-campaign.jpg",
+        about: { "@type": "Brand", name: "Estee Lauder" },
+        genre: "Skincare",
+        image: "https://hussaalsaif.com/images/event-coverage.jpg",
       },
     },
     {
@@ -291,11 +291,11 @@ const campaignsJsonLd = {
         "@type": "CreativeWork",
         name: "Too Faced x Sephora ME — Brand Partnership",
         description:
-          "Ramadan collection haul and looks for the Too Faced x Sephora Middle East collaboration.",
+          "Beauty content for the Too Faced x Sephora Middle East collaboration.",
         creator: { "@id": "https://hussaalsaif.com/#person" },
         about: { "@type": "Brand", name: "Too Faced" },
         genre: "Beauty",
-        image: "https://hussaalsaif.com/images/toofaced-campaign.jpg",
+        image: "https://hussaalsaif.com/images/gallery-5.jpg",
       },
     },
     {
@@ -303,13 +303,13 @@ const campaignsJsonLd = {
       position: 5,
       item: {
         "@type": "CreativeWork",
-        name: "Sol de Janeiro — Brand Partnership",
+        name: "MAC Cosmetics — Brand Partnership",
         description:
-          "Limited-edition Sundays in Rio product launch for the Saudi market.",
+          "Makeup content for MAC new collection launches.",
         creator: { "@id": "https://hussaalsaif.com/#person" },
-        about: { "@type": "Brand", name: "Sol de Janeiro" },
-        genre: "Lifestyle",
-        image: "https://hussaalsaif.com/images/soldejanerio-campaign.jpg",
+        about: { "@type": "Brand", name: "MAC Cosmetics" },
+        genre: "Makeup",
+        image: "https://hussaalsaif.com/images/gallery-1.jpg",
       },
     },
     {
@@ -317,13 +317,13 @@ const campaignsJsonLd = {
       position: 6,
       item: {
         "@type": "CreativeWork",
-        name: "Estée Lauder — Brand Partnership",
+        name: "Herbal Essences — Brand Partnership",
         description:
-          "Skincare routine and product integration with Estée Lauder.",
+          "Hair care content aligned with the GCC curly hair movement.",
         creator: { "@id": "https://hussaalsaif.com/#person" },
-        about: { "@type": "Brand", name: "Estee Lauder" },
-        genre: "Skincare",
-        image: "https://hussaalsaif.com/images/estee-campaign.jpg",
+        about: { "@type": "Brand", name: "Herbal Essences" },
+        genre: "Hair Care",
+        image: "https://hussaalsaif.com/images/gallery-6.jpg",
       },
     },
     {
@@ -331,13 +331,13 @@ const campaignsJsonLd = {
       position: 7,
       item: {
         "@type": "CreativeWork",
-        name: "MAC Cosmetics — Brand Partnership",
+        name: "Sol de Janeiro — Brand Partnership",
         description:
-          "Studio Radiance foundation and concealer review and tutorial content.",
+          "Lifestyle content introducing Sol de Janeiro to the Saudi market.",
         creator: { "@id": "https://hussaalsaif.com/#person" },
-        about: { "@type": "Brand", name: "MAC Cosmetics" },
-        genre: "Makeup",
-        image: "https://hussaalsaif.com/images/mac-campaign.jpg",
+        about: { "@type": "Brand", name: "Sol de Janeiro" },
+        genre: "Lifestyle",
+        image: "https://hussaalsaif.com/images/gallery-4.jpg",
       },
     },
     {
@@ -345,13 +345,27 @@ const campaignsJsonLd = {
       position: 8,
       item: {
         "@type": "CreativeWork",
-        name: "Sephora x Lancôme — Brand Partnership",
+        name: "La Belle — Brand Partnership",
         description:
-          "GRWM content featuring new Lancôme products exclusively through Sephora Middle East.",
+          "Fashion content partnership with La Belle.",
         creator: { "@id": "https://hussaalsaif.com/#person" },
-        about: { "@type": "Brand", name: "Lancôme" },
-        genre: "Beauty",
-        image: "https://hussaalsaif.com/images/sephora-grwm.jpg",
+        about: { "@type": "Brand", name: "La Belle" },
+        genre: "Fashion",
+        image: "https://hussaalsaif.com/images/gallery-7.jpg",
+      },
+    },
+    {
+      "@type": "ListItem",
+      position: 9,
+      item: {
+        "@type": "CreativeWork",
+        name: "Level Shoes — Brand Partnership",
+        description:
+          "Styling and fashion content with Level Shoes.",
+        creator: { "@id": "https://hussaalsaif.com/#person" },
+        about: { "@type": "Brand", name: "Level Shoes" },
+        genre: "Fashion",
+        image: "https://hussaalsaif.com/images/gallery-2.jpg",
       },
     },
   ],

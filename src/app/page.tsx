@@ -158,35 +158,13 @@ export default function Home() {
 
   // Force autoplay on ALL muted videos — iOS/mobile fix
   useEffect(() => {
-    try {
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            const video = entry.target as HTMLVideoElement;
-            if (entry.isIntersecting) {
-              if (video.preload === "none") {
-                video.preload = "auto";
-                video.load();
-              }
-              video.play().catch(() => {});
-            }
-          });
-        },
-        { threshold: 0, rootMargin: "100px" }
-      );
-
-      // Observe videos after a delay to let React finish hydrating
-      const timer = setTimeout(() => {
-        document.querySelectorAll("video[muted]").forEach((v) => observer.observe(v));
-      }, 1000);
-
-      return () => {
-        clearTimeout(timer);
-        observer.disconnect();
-      };
-    } catch {
-      // Silently fail — page works without video autoplay
-    }
+    const timer = setTimeout(() => {
+      document.querySelectorAll("video[muted]").forEach((v) => {
+        const video = v as HTMLVideoElement;
+        video.play().catch(() => {});
+      });
+    }, 1500);
+    return () => clearTimeout(timer);
   }, []);
 
   return (
@@ -322,7 +300,7 @@ export default function Home() {
         <p className="text-center text-[10px] font-medium tracking-[0.4em] uppercase text-gray-300 mb-8">Trusted By</p>
         <div className="flex animate-marquee whitespace-nowrap items-center" aria-hidden="true">
           {[...BRANDS, ...BRANDS, ...BRANDS].map((brand, i) => (
-            <div key={i} className="mx-10 sm:mx-14 shrink-0 opacity-75 hover:opacity-100 transition-all duration-500 hover:scale-105">
+            <div key={i} className="mx-10 sm:mx-14 shrink-0 opacity-60 hover:opacity-100 transition-all duration-500 hover:scale-110">
               <Image
                 src={brand.logo}
                 alt={brand.name}

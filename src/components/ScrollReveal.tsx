@@ -6,6 +6,7 @@ interface ScrollRevealProps {
   children: ReactNode;
   className?: string;
   delay?: number;
+  direction?: "up" | "down" | "left" | "right";
 }
 
 export default function ScrollReveal({
@@ -27,7 +28,7 @@ export default function ScrollReveal({
           observer.disconnect();
         }
       },
-      { threshold: 0.08, rootMargin: "-30px" }
+      { threshold: 0.1, rootMargin: "-40px" }
     );
 
     observer.observe(el);
@@ -42,6 +43,7 @@ export default function ScrollReveal({
         opacity: visible ? 1 : 0,
         transform: visible ? "translateY(0)" : "translateY(24px)",
         transition: `opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1) ${delay}s, transform 0.6s cubic-bezier(0.22, 1, 0.36, 1) ${delay}s`,
+        willChange: visible ? "auto" : "opacity, transform",
       }}
     >
       {children}
