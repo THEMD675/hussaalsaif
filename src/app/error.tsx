@@ -46,10 +46,21 @@ export default function Error({
           style={{
             color: "#9ca3af",
             fontSize: "0.875rem",
-            marginBottom: "2rem",
+            marginBottom: "1rem",
           }}
         >
           Please refresh to continue.
+        </p>
+        <p
+          style={{
+            color: "#d1d5db",
+            fontSize: "0.7rem",
+            marginBottom: "2rem",
+            maxWidth: "300px",
+            wordBreak: "break-all",
+          }}
+        >
+          {error?.message || "Unknown error"}
         </p>
         <button
           onClick={() => {
