@@ -59,7 +59,14 @@ const nextConfig: NextConfig = {
       {
         // Apply security headers to all routes
         source: "/(.*)",
-        headers: securityHeaders,
+        headers: [
+          ...securityHeaders,
+          {
+            // HTML pages: revalidate on every request (no stale cache)
+            key: "Cache-Control",
+            value: "public, s-maxage=60, stale-while-revalidate=300",
+          },
+        ],
       },
       {
         // Cache static assets aggressively
@@ -68,6 +75,16 @@ const nextConfig: NextConfig = {
           {
             key: "Cache-Control",
             value: "public, max-age=31536000, immutable",
+          },
+        ],
+      },
+      {
+        // Cache videos
+        source: "/videos/:path*",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=86400, stale-while-revalidate=604800",
           },
         ],
       },
