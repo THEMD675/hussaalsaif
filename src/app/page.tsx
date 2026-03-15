@@ -328,7 +328,7 @@ export default function Home() {
         <p className="text-center text-[10px] font-medium tracking-[0.4em] uppercase text-gray-300 mb-8">Trusted By</p>
         <div className="flex animate-marquee whitespace-nowrap items-center" aria-hidden="true">
           {[...BRANDS, ...BRANDS, ...BRANDS].map((brand, i) => (
-            <div key={i} className="mx-10 sm:mx-14 shrink-0 opacity-60 hover:opacity-100 transition-all duration-500 hover:scale-110">
+            <div key={i} className="mx-10 sm:mx-14 shrink-0 opacity-75 hover:opacity-100 transition-all duration-500 hover:scale-105">
               <Image
                 src={brand.logo}
                 alt={brand.name}
