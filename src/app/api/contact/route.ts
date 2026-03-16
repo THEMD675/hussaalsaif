@@ -117,7 +117,7 @@ export async function POST(req: NextRequest) {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          from: "Hussa AlSaif <noreply@hussaalsaif.com>",
+          from: "Hussa AlSaif <inquiries@hussaalsaif.com>",
           to: [TO_EMAIL],
           reply_to: email.trim(),
           subject: `🔔 New Partnership Inquiry — ${safeCompany || safeName}`,
