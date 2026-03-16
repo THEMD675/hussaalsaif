@@ -36,16 +36,21 @@ export default function AnimatedCounter({ value, className = "" }: AnimatedCount
     observer.observe(el);
     return () => observer.disconnect();
   }, []);
-  const [displayValue, setDisplayValue] = useState("0");
   const { prefix, number, decimals, suffix } = parseValue(value);
-  const hasStarted = useRef(false);
+  const [displayValue, setDisplayValue] = useState(
+    decimals > 0 ? number.toFixed(decimals) : number.toString()
+  );
+  const hasAnimated = useRef(false);
   const rafRef = useRef<number>(0);
 
   useEffect(() => {
-    if (!isInView || hasStarted.current) return;
-    hasStarted.current = true;
+    if (!isInView || hasAnimated.current) return;
+    hasAnimated.current = true;
 
-    const duration = 2000; // 2 seconds
+    // Reset to 0 then animate up
+    setDisplayValue(decimals > 0 ? "0." + "0".repeat(decimals) : "0");
+
+    const duration = 2000;
     const startTime = performance.now();
 
     function easeOutExpo(t: number): number {

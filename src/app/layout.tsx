@@ -67,7 +67,6 @@ export const metadata: Metadata = {
     canonical: "https://hussaalsaif.com",
     languages: {
       en: "https://hussaalsaif.com",
-      ar: "https://hussaalsaif.com",
     },
   },
   openGraph: {
@@ -76,7 +75,6 @@ export const metadata: Metadata = {
       "Saudi Arabia's leading beauty and culture figure with 530K+ followers. Partnered with Sephora, Estée Lauder, MAC, Fendi & more. Based in Saudi Arabia.",
     type: "website",
     locale: "en_US",
-    alternateLocale: "ar_SA",
     url: "https://hussaalsaif.com",
     siteName: "Hussa AlSaif",
     images: [
@@ -139,20 +137,12 @@ const personJsonLd = {
   description:
     "Saudi Arabia's leading beauty and culture figure with 530K+ combined followers across Instagram, TikTok, YouTube, and Snapchat. The defining voice in beauty, fashion, and culture for the GCC market.",
   nationality: { "@type": "Country", name: "Saudi Arabia" },
-  address: [
-    {
-      "@type": "PostalAddress",
-      addressLocality: "Riyadh",
-      addressRegion: "Riyadh Province",
-      addressCountry: "SA",
-    },
-    {
-      "@type": "PostalAddress",
-      addressLocality: "Riyadh",
-      addressRegion: "Riyadh Province",
-      addressCountry: "SA",
-    },
-  ],
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Riyadh",
+    addressRegion: "Riyadh Province",
+    addressCountry: "SA",
+  },
   email: "inquiries@hussaalsaif.com",
   sameAs: [
     "https://instagram.com/hussa.ss",
@@ -205,7 +195,7 @@ const websiteJsonLd = {
   description:
     "Official website of Hussa AlSaif — Beauty & Culture, Saudi Arabia",
   publisher: { "@id": "https://hussaalsaif.com/#person" },
-  inLanguage: ["en", "ar"],
+  inLanguage: "en",
 };
 
 const webPageJsonLd = {
@@ -423,7 +413,6 @@ export default function RootLayout({
       <head>
         <link rel="canonical" href="https://hussaalsaif.com" />
         <link rel="alternate" hrefLang="en" href="https://hussaalsaif.com" />
-        <link rel="alternate" hrefLang="ar" href="https://hussaalsaif.com" />
         <link rel="alternate" hrefLang="x-default" href="https://hussaalsaif.com" />
         <meta name="geo.region" content="SA" />
         <meta name="geo.placename" content="Saudi Arabia" />

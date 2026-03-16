@@ -9,6 +9,7 @@ import TextReveal from "@/components/TextReveal";
 import HorizontalScroll from "@/components/HorizontalScroll";
 import ContactForm from "@/components/ContactForm";
 import AnimatedCounter from "@/components/AnimatedCounter";
+import WhatsAppButton from "@/components/WhatsAppButton";
 import { trackCTA, trackSocial, trackEmail, trackNav, initScrollDepthTracking } from "@/lib/analytics";
 
 const BackToTop = dynamic(() => import("@/components/BackToTop"), { ssr: false });
@@ -125,8 +126,8 @@ const AUDIENCE_INTERESTS = [
 const MEDIA_KIT_ITEMS = [
   { icon: "chart", title: "Audience Profile", desc: "Who she reaches: demographics, psychographics, and purchasing behavior" },
   { icon: "grid", title: "Platform Presence", desc: "Where she shows up and the cultural weight behind each channel" },
-  { icon: "trending", title: "Commercial Impact", desc: "Sell-through rates, conversion data, and brand lift metrics" },
-  { icon: "star", title: "Partnership Case Studies", desc: "How past collaborations translated into measurable business results" },
+  { icon: "trending", title: "Commercial Impact", desc: "How Hussa's audience responds to brand content" },
+  { icon: "star", title: "Partnership Case Studies", desc: "A look at past brand collaborations and creative direction" },
   { icon: "tag", title: "Collaboration Framework", desc: "Scope, creative approach, and investment levels for different partnership tiers" },
   { icon: "play", title: "Creative Formats", desc: "Editorial, campaign, event, digital, and long-form storytelling capabilities" },
 ];
@@ -192,6 +193,7 @@ export default function Home() {
     <main className="relative">
       <SmoothScroll />
       <BackToTop />
+      <WhatsAppButton />
 
       {/* -- NAV -- */}
       <nav className="fixed top-0 left-0 right-0 z-50 glass" role="navigation" aria-label="Main navigation">
@@ -616,6 +618,7 @@ export default function Home() {
               </a>
             </div>
             <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-gray-600 text-[13px] tracking-[0.15em] uppercase">
+              <a href="https://wa.me/966552550777" target="_blank" rel="noopener noreferrer" onClick={() => trackSocial("WhatsApp")} className="hover:text-[#25D366] transition-colors">WhatsApp</a>
               <a href="https://instagram.com/hussa.ss" target="_blank" rel="noopener noreferrer" onClick={() => trackSocial("Instagram")} className="hover:text-[#89BBdf] transition-colors">Instagram</a>
               <a href="https://tiktok.com/@hussa.502" target="_blank" rel="noopener noreferrer" onClick={() => trackSocial("TikTok")} className="hover:text-[#89BBdf] transition-colors">TikTok</a>
               <a href="https://youtube.com/@hussaalsaif" target="_blank" rel="noopener noreferrer" onClick={() => trackSocial("YouTube")} className="hover:text-[#89BBdf] transition-colors">YouTube</a>

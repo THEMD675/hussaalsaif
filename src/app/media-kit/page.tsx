@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import WhatsAppButton from "@/components/WhatsAppButton";
 
 const STATS = [
   { value: "530K+", label: "Combined Reach" },
@@ -167,6 +168,7 @@ export default function MediaKit() {
       `}</style>
 
       <main className="relative bg-white min-h-screen">
+        <WhatsAppButton />
         {/* -- NAV -- */}
         <nav className="no-print fixed top-0 left-0 right-0 z-50 glass" role="navigation">
           <div className="max-w-7xl mx-auto px-5 sm:px-8 py-5 flex items-center justify-between">
@@ -461,9 +463,9 @@ export default function MediaKit() {
 
             <div className="grid sm:grid-cols-2 gap-5">
               {[
-                { tier: "Single Post", desc: "One Instagram Reel or TikTok with Stories coverage. Perfect for product launches and seasonal campaigns.", price: "Available on request" },
-                { tier: "Campaign", desc: "Multi-post series (3-5 posts) across 2+ platforms. Ideal for sustained brand storytelling.", price: "Available on request" },
-                { tier: "Brand Ambassador", desc: "Quarterly or annual partnership with category exclusivity. Deep integration with Hussa's personal brand.", price: "Available on request" },
+                { tier: "Single Post", desc: "One Instagram Reel or TikTok with Stories coverage. Perfect for product launches and seasonal campaigns.", price: "From SAR 11,000" },
+                { tier: "Campaign", desc: "Multi-post series (3-5 posts) across 2+ platforms. Ideal for sustained brand storytelling.", price: "From SAR 25,000" },
+                { tier: "Brand Ambassador", desc: "Quarterly or annual partnership with category exclusivity. Deep integration with Hussa's personal brand.", price: "From SAR 40,000" },
                 { tier: "Custom", desc: "Event appearances, creative direction, long-form content, or something we haven't thought of yet.", price: "Let's talk" },
               ].map((item) => (
                 <div key={item.tier} className="result-card rounded-2xl p-7 sm:p-8 flex flex-col">
@@ -508,12 +510,12 @@ export default function MediaKit() {
                 inquiries@hussaalsaif.com
               </a>
               <a
-                href="https://instagram.com/hussa.ss"
+                href="https://wa.me/966552550777"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="border border-white/15 hover:border-[#89BBdf] text-white hover:text-[#89BBdf] px-10 py-4 rounded-full font-semibold transition-all text-[13px] tracking-wide inline-block"
+                className="border border-white/15 hover:border-[#25D366] text-white hover:text-[#25D366] px-10 py-4 rounded-full font-semibold transition-all text-[13px] tracking-wide inline-block"
               >
-                @hussa.ss
+                WhatsApp
               </a>
             </div>
 
