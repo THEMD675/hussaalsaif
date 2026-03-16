@@ -3,6 +3,8 @@ import { NextRequest, NextResponse } from "next/server";
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
 const TO_EMAIL = "inquiries@hussaalsaif.com";
 
+// NOTE: In-memory Map resets per serverless instance. For distributed rate limiting,
+// migrate to Vercel KV (Redis). Current approach still prevents abuse within a single instance.
 const rateLimit = new Map<string, { count: number; resetAt: number }>();
 const RATE_LIMIT_WINDOW = 60 * 60 * 1000;
 const RATE_LIMIT_MAX = 5;
@@ -115,7 +117,7 @@ export async function POST(req: NextRequest) {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          from: "Hussa AlSaif <onboarding@resend.dev>",
+          from: "Hussa AlSaif <noreply@hussaalsaif.com>",
           to: [TO_EMAIL],
           reply_to: email.trim(),
           subject: `🔔 New Partnership Inquiry — ${safeCompany || safeName}`,
