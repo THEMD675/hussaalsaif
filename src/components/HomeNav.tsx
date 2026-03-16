@@ -10,7 +10,7 @@ export default function HomeNav() {
     if (!mobileMenuOpen) return;
     const handleClick = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
-      if (target.closest("a[href^='#']")) {
+      if (target.closest("a[href^='#']") || target.closest("a[href^='/']")) {
         setMobileMenuOpen(false);
       }
     };
@@ -49,15 +49,18 @@ export default function HomeNav() {
             aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
             aria-expanded={mobileMenuOpen}
           >
-            <span className={`hamburger-line top-[12px] ${mobileMenuOpen ? "rotate-45 !top-[19px]" : ""}`} />
-            <span className={`hamburger-line top-[19px] ${mobileMenuOpen ? "opacity-0 scale-x-0" : ""}`} />
-            <span className={`hamburger-line top-[26px] ${mobileMenuOpen ? "-rotate-45 !top-[19px]" : ""}`} />
+            <span className={`hamburger-line top-[14px] ${mobileMenuOpen ? "rotate-45 !top-[21px]" : ""}`} />
+            <span className={`hamburger-line top-[21px] ${mobileMenuOpen ? "opacity-0 scale-x-0" : ""}`} />
+            <span className={`hamburger-line top-[28px] ${mobileMenuOpen ? "-rotate-45 !top-[21px]" : ""}`} />
           </button>
         </div>
       </div>
 
-      <div className={`md:hidden fixed inset-0 top-[56px] sm:top-[68px] bg-white/95 backdrop-blur-2xl transition-all duration-500 ${mobileMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}>
-        <div className={`flex flex-col items-center justify-center h-full gap-6 transition-transform duration-500 ${mobileMenuOpen ? "translate-y-0" : "-translate-y-8"}`}>
+      {/* Mobile menu — solid bg, no backdrop-blur for performance */}
+      <div
+        className={`md:hidden fixed inset-0 top-[56px] sm:top-[68px] bg-white transition-opacity duration-300 ${mobileMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
+      >
+        <div className={`flex flex-col items-center justify-center h-full gap-7 transition-transform duration-300 ${mobileMenuOpen ? "translate-y-0" : "-translate-y-4"}`}>
           {[
             { href: "#world", label: "World" },
             { href: "#about", label: "About" },
@@ -70,7 +73,7 @@ export default function HomeNav() {
               key={link.href}
               href={link.href}
               onClick={() => trackNav(link.label)}
-              className="font-serif text-2xl sm:text-3xl font-bold text-gray-900 hover:text-[#89BBdf] transition-colors duration-300"
+              className="font-serif text-2xl sm:text-3xl font-bold text-gray-900 hover:text-[#89BBdf] transition-colors duration-200"
             >
               {link.label}
             </a>
