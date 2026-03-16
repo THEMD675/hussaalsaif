@@ -206,8 +206,8 @@ noscript .noscript-visible {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  width: 22px;
-  height: 2px;
+  width: 24px;
+  height: 2.5px;
   background: #1f2937;
   border-radius: 2px;
   transition: all 0.35s cubic-bezier(0.77, 0, 0.18, 1);

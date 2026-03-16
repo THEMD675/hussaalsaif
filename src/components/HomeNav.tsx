@@ -44,7 +44,7 @@ export default function HomeNav() {
             Inquiries
           </a>
           <button
-            className="md:hidden relative w-10 h-10 flex items-center justify-center"
+            className="md:hidden relative w-11 h-11 flex items-center justify-center focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#89BBdf] rounded-lg"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
             aria-expanded={mobileMenuOpen}

@@ -14,7 +14,9 @@ export default function ParticleField() {
 
   const init = useCallback((canvas: HTMLCanvasElement) => {
     const isMobile = window.innerWidth < 768;
-    const count = isMobile ? 80 : 250;
+    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReduced) return;
+    const count = isMobile ? 40 : 250;
     const w = canvas.width;
     const h = canvas.height;
 
