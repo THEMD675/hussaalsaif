@@ -60,8 +60,11 @@ export const metadata: Metadata = {
     telephone: false,
   },
   icons: {
-    icon: [{ url: "/images/favicon.svg", type: "image/svg+xml" }],
-    apple: [{ url: "/images/logo-hs.svg" }],
+    icon: [
+      { url: "/favicon.ico", sizes: "32x32" },
+      { url: "/images/favicon.svg", type: "image/svg+xml" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
   },
   alternates: {
     canonical: "https://hussaalsaif.com",

@@ -1,7 +1,3 @@
-"use client";
-
-import { useEffect, useState } from "react";
-import dynamic from "next/dynamic";
 import Image from "next/image";
 import ScrollReveal from "@/components/ScrollReveal";
 import MagneticButton from "@/components/MagneticButton";
@@ -9,26 +5,24 @@ import TextReveal from "@/components/TextReveal";
 import HorizontalScroll from "@/components/HorizontalScroll";
 import ContactForm from "@/components/ContactForm";
 import AnimatedCounter from "@/components/AnimatedCounter";
-import WhatsAppButton from "@/components/WhatsAppButton";
-import { trackCTA, trackSocial, trackEmail, trackNav, initScrollDepthTracking } from "@/lib/analytics";
-
-const BackToTop = dynamic(() => import("@/components/BackToTop"), { ssr: false });
-const ParticleField = dynamic(() => import("@/components/ParticleField"), { ssr: false });
-const SmoothScroll = dynamic(() => import("@/components/SmoothScroll"), { ssr: false });
+import HomeNav from "@/components/HomeNav";
+import HomeEffects from "@/components/HomeEffects";
+import HeroParticles from "@/components/HeroParticles";
+import LazyVideo from "@/components/LazyVideo";
 
 const BRANDS = [
-  { name: "Sephora", logo: "/images/brands/sephora.svg", color: "#000000" },
-  { name: "Fendi", logo: "/images/brands/fendi.svg", color: "#000000" },
-  { name: "Too Faced", logo: "/images/brands/too-faced.svg", color: "#E91E8C" },
-  { name: "Estée Lauder", logo: "/images/brands/estee-lauder.svg", color: "#002B5C" },
-  { name: "Herbal Essences", logo: "/images/brands/herbal-essences.svg", color: "#006B3F" },
-  { name: "MAC", logo: "/images/brands/mac.svg", color: "#000000" },
-  { name: "Wella", logo: "/images/brands/wella.svg", color: "#C4161C" },
-  { name: "P&G", logo: "/images/brands/pg.svg", color: "#003DA5" },
-  { name: "Oral-B", logo: "/images/brands/oral-b.svg", color: "#003DA5" },
-  { name: "Level Shoes", logo: "/images/brands/level-shoes.svg", color: "#000000" },
-  { name: "Sol de Janeiro", logo: "/images/brands/sol-de-janeiro.svg", color: "#F7C948" },
-  { name: "Denman", logo: "/images/brands/denman.svg", color: "#E30613" },
+  { name: "Sephora", logo: "/images/brands/sephora.svg" },
+  { name: "Fendi", logo: "/images/brands/fendi.svg" },
+  { name: "Too Faced", logo: "/images/brands/too-faced.svg" },
+  { name: "Estée Lauder", logo: "/images/brands/estee-lauder.svg" },
+  { name: "Herbal Essences", logo: "/images/brands/herbal-essences.svg" },
+  { name: "MAC", logo: "/images/brands/mac.svg" },
+  { name: "Wella", logo: "/images/brands/wella.svg" },
+  { name: "P&G", logo: "/images/brands/pg.svg" },
+  { name: "Oral-B", logo: "/images/brands/oral-b.svg" },
+  { name: "Level Shoes", logo: "/images/brands/level-shoes.svg" },
+  { name: "Sol de Janeiro", logo: "/images/brands/sol-de-janeiro.svg" },
+  { name: "Denman", logo: "/images/brands/denman.svg" },
 ];
 
 const PROJECTS = [
@@ -109,10 +103,10 @@ const SOCIALS = [
 ];
 
 const DEMOGRAPHICS = [
-  { label: "Primarily Women", icon: "female", description: "Young Saudi women who set beauty and fashion trends in their circles — 78% female audience" },
-  { label: "Gen Z & Millennials", icon: "age", description: "The 18-34 demographic with the highest purchasing power in the Gulf — 85% of audience" },
-  { label: "Saudi-First", icon: "location", description: "Rooted in Saudi Arabia with strong reach across the wider GCC — 92% KSA & GCC" },
-  { label: "High Intent", icon: "intent", description: "An audience that discovers, trusts, and buys based on Hussa's recommendations — 4.8% avg engagement" },
+  { label: "Primarily Women", description: "Young Saudi women who set beauty and fashion trends in their circles — 78% female audience" },
+  { label: "Gen Z & Millennials", description: "The 18-34 demographic with the highest purchasing power in the Gulf — 85% of audience" },
+  { label: "Saudi-First", description: "Rooted in Saudi Arabia with strong reach across the wider GCC — 92% KSA & GCC" },
+  { label: "High Intent", description: "An audience that discovers, trusts, and buys based on Hussa's recommendations — 4.8% avg engagement" },
 ];
 
 const AUDIENCE_INTERESTS = [
@@ -133,130 +127,14 @@ const MEDIA_KIT_ITEMS = [
 ];
 
 export default function Home() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  useEffect(() => {
-    if (!mobileMenuOpen) return;
-    const handleClick = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
-      if (target.closest("a[href^='#']")) {
-        setMobileMenuOpen(false);
-      }
-    };
-    document.addEventListener("click", handleClick);
-    return () => document.removeEventListener("click", handleClick);
-  }, [mobileMenuOpen]);
-
-  useEffect(() => {
-    document.body.style.overflow = mobileMenuOpen ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
-  }, [mobileMenuOpen]);
-
-  useEffect(() => {
-    return initScrollDepthTracking();
-  }, []);
-
-  // Force autoplay on ALL muted videos — iOS requires user interaction
-  useEffect(() => {
-    const playAllVideos = () => {
-      document.querySelectorAll("video[muted]").forEach((v) => {
-        const video = v as HTMLVideoElement;
-        if (video.paused) {
-          video.play().catch(() => {});
-        }
-      });
-    };
-
-    // Try immediate autoplay (works on desktop + some mobile)
-    const timer = setTimeout(playAllVideos, 500);
-
-    // iOS fallback: play on first user interaction (touch/scroll/click)
-    const onFirstInteraction = () => {
-      playAllVideos();
-      window.removeEventListener("touchstart", onFirstInteraction);
-      window.removeEventListener("scroll", onFirstInteraction);
-      window.removeEventListener("click", onFirstInteraction);
-    };
-    window.addEventListener("touchstart", onFirstInteraction, { once: true, passive: true });
-    window.addEventListener("scroll", onFirstInteraction, { once: true, passive: true });
-    window.addEventListener("click", onFirstInteraction, { once: true });
-
-    return () => {
-      clearTimeout(timer);
-      window.removeEventListener("touchstart", onFirstInteraction);
-      window.removeEventListener("scroll", onFirstInteraction);
-      window.removeEventListener("click", onFirstInteraction);
-    };
-  }, []);
-
   return (
     <main className="relative">
-      <SmoothScroll />
-      <BackToTop />
-      <WhatsAppButton />
-
-      {/* -- NAV -- */}
-      <nav className="fixed top-0 left-0 right-0 z-50 glass" role="navigation" aria-label="Main navigation">
-        <div className="max-w-7xl mx-auto px-4 sm:px-8 py-3 sm:py-5 flex items-center justify-between">
-          <a href="#" aria-label="Hussa AlSaif - Home">
-            <img src="/images/logo-hs.svg" alt="Hussa AlSaif" className="h-8 w-8 sm:h-9 sm:w-9 rounded-lg" />
-          </a>
-          <div className="hidden md:flex items-center gap-10 text-[13px] font-medium tracking-wide uppercase text-gray-500">
-            <a href="#world" onClick={() => trackNav("World")} className="nav-link hover:text-[#89BBdf] transition-colors duration-300">World</a>
-            <a href="#about" onClick={() => trackNav("About")} className="nav-link hover:text-[#89BBdf] transition-colors duration-300">About</a>
-            <a href="#work" onClick={() => trackNav("Portfolio")} className="nav-link hover:text-[#89BBdf] transition-colors duration-300">Portfolio</a>
-            <a href="#audience" onClick={() => trackNav("Reach")} className="nav-link hover:text-[#89BBdf] transition-colors duration-300">Reach</a>
-            <a href="#contact" onClick={() => trackNav("Contact")} className="nav-link hover:text-[#89BBdf] transition-colors duration-300">Contact</a>
-          </div>
-          <div className="flex items-center gap-2 sm:gap-3">
-            <a href="#partnership" onClick={() => trackCTA("Partnerships", "nav")} className="hidden md:inline-block border border-[#89BBdf]/30 hover:border-[#89BBdf] text-[#89BBdf] px-5 py-2.5 rounded-full text-[12px] font-semibold transition-all duration-300">
-              Partnerships
-            </a>
-            <a href="#contact" onClick={() => trackCTA("Inquiries", "nav")} className="hidden md:inline-block bg-gray-900 hover:bg-[#89BBdf] text-white px-6 py-2.5 rounded-full text-[13px] font-semibold transition-all duration-300">
-              Inquiries
-            </a>
-            <button
-              className="md:hidden relative w-10 h-10 flex items-center justify-center"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
-              aria-expanded={mobileMenuOpen}
-            >
-              <span className={`hamburger-line top-[12px] ${mobileMenuOpen ? "rotate-45 !top-[19px]" : ""}`} />
-              <span className={`hamburger-line top-[19px] ${mobileMenuOpen ? "opacity-0 scale-x-0" : ""}`} />
-              <span className={`hamburger-line top-[26px] ${mobileMenuOpen ? "-rotate-45 !top-[19px]" : ""}`} />
-            </button>
-          </div>
-        </div>
-
-        <div className={`md:hidden fixed inset-0 top-[56px] sm:top-[68px] bg-white/95 backdrop-blur-2xl transition-all duration-500 ${mobileMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}>
-          <div className={`flex flex-col items-center justify-center h-full gap-6 transition-transform duration-500 ${mobileMenuOpen ? "translate-y-0" : "-translate-y-8"}`}>
-            {[
-              { href: "#world", label: "World" },
-              { href: "#about", label: "About" },
-              { href: "#work", label: "Portfolio" },
-              { href: "#audience", label: "Reach" },
-              { href: "/media-kit", label: "Media Kit" },
-              { href: "#contact", label: "Contact" },
-            ].map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={() => trackNav(link.label)}
-                className="font-serif text-2xl sm:text-3xl font-bold text-gray-900 hover:text-[#89BBdf] transition-colors duration-300"
-              >
-                {link.label}
-              </a>
-            ))}
-            <a href="#contact" onClick={() => trackCTA("Inquiries", "mobile-nav")} className="mt-4 bg-gray-900 text-white px-8 py-3 rounded-full text-[13px] font-semibold">
-              Inquiries
-            </a>
-          </div>
-        </div>
-      </nav>
+      <HomeEffects />
+      <HomeNav />
 
       {/* -- HERO -- */}
       <section className="relative min-h-screen flex items-center overflow-hidden">
-        <ParticleField />
+        <HeroParticles />
         <div className="absolute inset-0 bg-gradient-to-b from-[#f0f7fc] via-[#fafcfe] to-white -z-10" />
         <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 pt-28 sm:pt-40 pb-24 w-full">
           <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-8 lg:gap-20 items-center">
@@ -282,12 +160,16 @@ export default function Home() {
               </ScrollReveal>
               <ScrollReveal delay={0.5}>
                 <div className="flex gap-4 flex-wrap">
-                  <MagneticButton href="#contact" onClick={() => trackCTA("Explore Partnership", "hero")} className="bg-gray-900 hover:bg-gray-800 text-white px-8 py-4 rounded-full font-semibold transition-all text-[13px] tracking-wide inline-block">
-                    Explore Partnership
-                  </MagneticButton>
-                  <MagneticButton href="#work" onClick={() => trackCTA("View Portfolio", "hero")} className="border border-[#89BBdf]/40 hover:border-[#89BBdf] text-[#89BBdf] px-8 py-4 rounded-full font-semibold transition-all text-[13px] tracking-wide inline-block">
-                    View Portfolio
-                  </MagneticButton>
+                  <div data-track={JSON.stringify({type:"cta",label:"Explore Partnership",section:"hero"})}>
+                    <MagneticButton href="#contact" className="bg-gray-900 hover:bg-gray-800 text-white px-8 py-4 rounded-full font-semibold transition-all text-[13px] tracking-wide inline-block">
+                      Explore Partnership
+                    </MagneticButton>
+                  </div>
+                  <div data-track={JSON.stringify({type:"cta",label:"View Portfolio",section:"hero"})}>
+                    <MagneticButton href="#work" className="border border-[#89BBdf]/40 hover:border-[#89BBdf] text-[#89BBdf] px-8 py-4 rounded-full font-semibold transition-all text-[13px] tracking-wide inline-block">
+                      View Portfolio
+                    </MagneticButton>
+                  </div>
                 </div>
               </ScrollReveal>
             </div>
@@ -409,9 +291,7 @@ export default function Home() {
             </div>
             <ScrollReveal delay={0.2}>
               <div className="rounded-3xl h-[400px] sm:h-[500px] lg:h-[550px] shadow-2xl shadow-[#89BBdf]/8 overflow-hidden relative">
-                <video autoPlay loop muted playsInline preload="metadata" poster="/images/about.jpg" className="absolute inset-0 w-full h-full object-cover">
-                  <source src="/videos/about.mp4" type="video/mp4" />
-                </video>
+                <LazyVideo src="/videos/about.mp4" poster="/images/about.jpg" />
               </div>
             </ScrollReveal>
           </div>
@@ -438,9 +318,7 @@ export default function Home() {
                 <div key={project.brand} className="group">
                   <div className="relative aspect-[4/5] rounded-2xl overflow-hidden mb-4">
                     {project.video ? (
-                      <video autoPlay loop muted playsInline preload="none" poster={project.image} className="absolute inset-0 w-full h-full object-cover">
-                        <source src={project.video} type="video/mp4" />
-                      </video>
+                      <LazyVideo src={project.video} poster={project.image} />
                     ) : (
                       <Image src={project.image} alt={`${project.brand} — ${project.category}`} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" />
                     )}
@@ -500,7 +378,7 @@ export default function Home() {
                 <h3 className="font-serif text-xl font-bold mb-6">Where She Lives</h3>
                 <div className="space-y-5">
                   {SOCIALS.map((s) => (
-                    <a key={s.name} href={s.url} target="_blank" rel="noopener noreferrer" onClick={() => trackSocial(s.name)} className="flex items-center justify-between group py-2">
+                    <a key={s.name} href={s.url} target="_blank" rel="noopener noreferrer" data-track={JSON.stringify({type:"social",platform:s.name})} className="flex items-center justify-between group py-2">
                       <div>
                         <p className="font-semibold text-[14px] group-hover:text-[#89BBdf] transition-colors">{s.name}</p>
                         <p className="text-gray-500 text-[13px]">{s.handle}</p>
@@ -555,12 +433,16 @@ export default function Home() {
                 <h3 className="font-serif text-2xl sm:text-3xl font-bold text-white leading-[1.15] mb-4">Request the Partnership Deck</h3>
                 <p className="text-gray-500 text-[15px] max-w-md mx-auto mb-8 leading-[1.8]">A curated overview of Hussa&apos;s world, audience, and collaboration framework &mdash; built for brand and agency teams.</p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <MagneticButton href="/media-kit" onClick={() => trackCTA("View Partnership Deck", "partnership")} className="bg-[#89BBdf] hover:bg-[#6ea8d4] text-white px-10 py-4 rounded-full font-semibold transition-all text-[13px] tracking-wide inline-block shadow-lg shadow-[#89BBdf]/20">
-                    View Partnership Deck
-                  </MagneticButton>
-                  <MagneticButton href="#contact" onClick={() => trackCTA("Get in Touch", "partnership")} className="border border-white/15 hover:border-[#89BBdf] text-white hover:text-[#89BBdf] px-10 py-4 rounded-full font-semibold transition-all text-[13px] tracking-wide inline-block">
-                    Get in Touch
-                  </MagneticButton>
+                  <div data-track={JSON.stringify({type:"cta",label:"View Partnership Deck",section:"partnership"})}>
+                    <MagneticButton href="/media-kit" className="bg-[#89BBdf] hover:bg-[#6ea8d4] text-white px-10 py-4 rounded-full font-semibold transition-all text-[13px] tracking-wide inline-block shadow-lg shadow-[#89BBdf]/20">
+                      View Partnership Deck
+                    </MagneticButton>
+                  </div>
+                  <div data-track={JSON.stringify({type:"cta",label:"Get in Touch",section:"partnership"})}>
+                    <MagneticButton href="#contact" className="border border-white/15 hover:border-[#89BBdf] text-white hover:text-[#89BBdf] px-10 py-4 rounded-full font-semibold transition-all text-[13px] tracking-wide inline-block">
+                      Get in Touch
+                    </MagneticButton>
+                  </div>
                 </div>
                 <p className="text-gray-500 text-[13px] mt-6">Available upon request for qualifying brands</p>
               </div>
@@ -608,21 +490,21 @@ export default function Home() {
           </ScrollReveal>
           <ScrollReveal delay={0.35}>
             <div className="flex flex-col sm:flex-row gap-3 justify-center mb-10">
-              <a href="/media-kit/download" onClick={() => trackCTA("Download Media Kit", "contact")} className="bg-white/10 hover:bg-white/15 backdrop-blur text-white px-8 py-3.5 rounded-full font-semibold transition-all text-[12px] tracking-wide inline-flex items-center gap-2 border border-white/10 hover:border-white/20">
+              <a href="/media-kit/download" data-track={JSON.stringify({type:"cta",label:"Download Media Kit",section:"contact"})} className="bg-white/10 hover:bg-white/15 backdrop-blur text-white px-8 py-3.5 rounded-full font-semibold transition-all text-[12px] tracking-wide inline-flex items-center gap-2 border border-white/10 hover:border-white/20">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                 Download Media Kit
               </a>
-              <a href="mailto:inquiries@hussaalsaif.com?subject=Urgent%20Partnership%20Inquiry" onClick={() => trackEmail("inquiries@hussaalsaif.com", "contact")} className="border border-white/10 hover:border-[#89BBdf]/40 text-gray-500 hover:text-[#89BBdf] px-8 py-3.5 rounded-full font-semibold transition-all text-[12px] tracking-wide inline-flex items-center gap-2">
+              <a href="mailto:inquiries@hussaalsaif.com?subject=Urgent%20Partnership%20Inquiry" data-track={JSON.stringify({type:"email",email:"inquiries@hussaalsaif.com",section:"contact"})} className="border border-white/10 hover:border-[#89BBdf]/40 text-gray-500 hover:text-[#89BBdf] px-8 py-3.5 rounded-full font-semibold transition-all text-[12px] tracking-wide inline-flex items-center gap-2">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
                 Direct Email
               </a>
             </div>
             <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-gray-600 text-[13px] tracking-[0.15em] uppercase">
-              <a href="https://wa.me/966552550777" target="_blank" rel="noopener noreferrer" onClick={() => trackSocial("WhatsApp")} className="hover:text-[#25D366] transition-colors">WhatsApp</a>
-              <a href="https://instagram.com/hussa.ss" target="_blank" rel="noopener noreferrer" onClick={() => trackSocial("Instagram")} className="hover:text-[#89BBdf] transition-colors">Instagram</a>
-              <a href="https://tiktok.com/@hussa.502" target="_blank" rel="noopener noreferrer" onClick={() => trackSocial("TikTok")} className="hover:text-[#89BBdf] transition-colors">TikTok</a>
-              <a href="https://youtube.com/@hussaalsaif" target="_blank" rel="noopener noreferrer" onClick={() => trackSocial("YouTube")} className="hover:text-[#89BBdf] transition-colors">YouTube</a>
-              <a href="https://snapchat.com/add/hussa.alsaif" target="_blank" rel="noopener noreferrer" onClick={() => trackSocial("Snapchat")} className="hover:text-[#89BBdf] transition-colors">Snapchat</a>
+              <a href="https://wa.me/966552550777" target="_blank" rel="noopener noreferrer" data-track={JSON.stringify({type:"social",platform:"WhatsApp"})} className="hover:text-[#25D366] transition-colors">WhatsApp</a>
+              <a href="https://instagram.com/hussa.ss" target="_blank" rel="noopener noreferrer" data-track={JSON.stringify({type:"social",platform:"Instagram"})} className="hover:text-[#89BBdf] transition-colors">Instagram</a>
+              <a href="https://tiktok.com/@hussa.502" target="_blank" rel="noopener noreferrer" data-track={JSON.stringify({type:"social",platform:"TikTok"})} className="hover:text-[#89BBdf] transition-colors">TikTok</a>
+              <a href="https://youtube.com/@hussaalsaif" target="_blank" rel="noopener noreferrer" data-track={JSON.stringify({type:"social",platform:"YouTube"})} className="hover:text-[#89BBdf] transition-colors">YouTube</a>
+              <a href="https://snapchat.com/add/hussa.alsaif" target="_blank" rel="noopener noreferrer" data-track={JSON.stringify({type:"social",platform:"Snapchat"})} className="hover:text-[#89BBdf] transition-colors">Snapchat</a>
             </div>
           </ScrollReveal>
         </div>
@@ -639,9 +521,9 @@ export default function Home() {
             <div className="flex flex-wrap justify-center gap-x-5 gap-y-2 text-[13px] text-gray-500 tracking-wide">
               <a href="/media-kit" className="hover:text-[#89BBdf] transition-colors">Media Kit</a>
               <a href="/links" className="hover:text-[#89BBdf] transition-colors">Links</a>
-              <a href="https://instagram.com/hussa.ss" target="_blank" rel="noopener noreferrer" onClick={() => trackSocial("Instagram")} className="hover:text-[#89BBdf] transition-colors">Instagram</a>
-              <a href="https://tiktok.com/@hussa.502" target="_blank" rel="noopener noreferrer" onClick={() => trackSocial("TikTok")} className="hover:text-[#89BBdf] transition-colors">TikTok</a>
-              <a href="mailto:inquiries@hussaalsaif.com?subject=Partnership%20Inquiry" onClick={() => trackEmail("inquiries@hussaalsaif.com", "footer")} className="hover:text-[#89BBdf] transition-colors">Contact</a>
+              <a href="https://instagram.com/hussa.ss" target="_blank" rel="noopener noreferrer" data-track={JSON.stringify({type:"social",platform:"Instagram"})} className="hover:text-[#89BBdf] transition-colors">Instagram</a>
+              <a href="https://tiktok.com/@hussa.502" target="_blank" rel="noopener noreferrer" data-track={JSON.stringify({type:"social",platform:"TikTok"})} className="hover:text-[#89BBdf] transition-colors">TikTok</a>
+              <a href="mailto:inquiries@hussaalsaif.com?subject=Partnership%20Inquiry" data-track={JSON.stringify({type:"email",email:"inquiries@hussaalsaif.com",section:"footer"})} className="hover:text-[#89BBdf] transition-colors">Contact</a>
             </div>
             <p className="text-gray-600 text-[13px]">&copy; 2026 Hussa AlSaif</p>
           </div>
