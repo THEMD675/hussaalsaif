@@ -15,6 +15,7 @@ const BRANDS = [
   { name: "Fendi", logo: "/images/brands/fendi.svg" },
   { name: "Too Faced", logo: "/images/brands/too-faced.svg" },
   { name: "Estée Lauder", logo: "/images/brands/estee-lauder.svg" },
+  { name: "Lancôme", logo: "/images/brands/lancome.svg" },
   { name: "Herbal Essences", logo: "/images/brands/herbal-essences.svg" },
   { name: "MAC", logo: "/images/brands/mac.svg" },
   { name: "Wella", logo: "/images/brands/wella.svg" },
@@ -92,7 +93,7 @@ const STATS = [
   { value: "530K+", label: "Combined Reach" },
   { value: "191K", label: "YouTube Subs" },
   { value: "4.8%", label: "Avg Engagement" },
-  { value: "12", label: "Brand Partners" },
+  { value: "13+", label: "Brand Partners" },
 ];
 
 const SOCIALS = [
@@ -500,7 +501,6 @@ export default function Home() {
               </a>
             </div>
             <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-gray-600 text-[13px] tracking-[0.15em] uppercase">
-              <a href="https://wa.me/966552550777" target="_blank" rel="noopener noreferrer" data-track={JSON.stringify({type:"social",platform:"WhatsApp"})} className="hover:text-[#25D366] transition-colors">WhatsApp</a>
               <a href="https://instagram.com/hussa.ss" target="_blank" rel="noopener noreferrer" data-track={JSON.stringify({type:"social",platform:"Instagram"})} className="hover:text-[#89BBdf] transition-colors">Instagram</a>
               <a href="https://tiktok.com/@hussa.502" target="_blank" rel="noopener noreferrer" data-track={JSON.stringify({type:"social",platform:"TikTok"})} className="hover:text-[#89BBdf] transition-colors">TikTok</a>
               <a href="https://youtube.com/@hussaalsaif" target="_blank" rel="noopener noreferrer" data-track={JSON.stringify({type:"social",platform:"YouTube"})} className="hover:text-[#89BBdf] transition-colors">YouTube</a>

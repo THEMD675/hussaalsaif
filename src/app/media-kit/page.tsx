@@ -2,13 +2,11 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import WhatsAppButton from "@/components/WhatsAppButton";
-
 const STATS = [
   { value: "530K+", label: "Combined Reach" },
   { value: "191K", label: "YouTube Subs" },
   { value: "4.8%", label: "Avg Engagement" },
-  { value: "12", label: "Brand Partners" },
+  { value: "13+", label: "Brand Partners" },
 ];
 
 const PLATFORMS = [
@@ -38,6 +36,7 @@ const BRANDS = [
   { name: "Fendi", logo: "/images/brands/fendi.svg" },
   { name: "Too Faced", logo: "/images/brands/too-faced.svg" },
   { name: "Estée Lauder", logo: "/images/brands/estee-lauder.svg" },
+  { name: "Lancôme", logo: "/images/brands/lancome.svg" },
   { name: "Herbal Essences", logo: "/images/brands/herbal-essences.svg" },
   { name: "MAC", logo: "/images/brands/mac.svg" },
   { name: "Wella", logo: "/images/brands/wella.svg" },
@@ -168,7 +167,6 @@ export default function MediaKit() {
       `}</style>
 
       <main className="relative bg-white min-h-screen">
-        <WhatsAppButton />
         {/* -- NAV -- */}
         <nav className="no-print fixed top-0 left-0 right-0 z-50 glass" role="navigation">
           <div className="max-w-7xl mx-auto px-5 sm:px-8 py-5 flex items-center justify-between">
@@ -510,12 +508,12 @@ export default function MediaKit() {
                 inquiries@hussaalsaif.com
               </a>
               <a
-                href="https://wa.me/966552550777"
+                href="https://instagram.com/hussa.ss"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="border border-white/15 hover:border-[#25D366] text-white hover:text-[#25D366] px-10 py-4 rounded-full font-semibold transition-all text-[13px] tracking-wide inline-block"
+                className="border border-white/15 hover:border-[#89BBdf] text-white hover:text-[#89BBdf] px-10 py-4 rounded-full font-semibold transition-all text-[13px] tracking-wide inline-block"
               >
-                WhatsApp
+                @hussa.ss
               </a>
             </div>
 

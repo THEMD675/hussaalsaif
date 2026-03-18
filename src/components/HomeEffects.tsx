@@ -2,7 +2,6 @@
 
 import { useEffect } from "react";
 import dynamic from "next/dynamic";
-import WhatsAppButton from "@/components/WhatsAppButton";
 import { trackCTA, trackSocial, trackEmail, initScrollDepthTracking } from "@/lib/analytics";
 
 const BackToTop = dynamic(() => import("@/components/BackToTop"), { ssr: false });
@@ -66,7 +65,6 @@ export default function HomeEffects() {
     <>
       <SmoothScroll />
       <BackToTop />
-      <WhatsAppButton />
     </>
   );
 }
