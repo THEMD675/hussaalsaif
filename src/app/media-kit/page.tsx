@@ -461,9 +461,9 @@ export default function MediaKit() {
 
             <div className="grid sm:grid-cols-2 gap-5">
               {[
-                { tier: "Single Post", desc: "One Instagram Reel or TikTok with Stories coverage. Perfect for product launches and seasonal campaigns.", price: "From SAR 11,000" },
-                { tier: "Campaign", desc: "Multi-post series (3-5 posts) across 2+ platforms. Ideal for sustained brand storytelling.", price: "From SAR 25,000" },
-                { tier: "Brand Ambassador", desc: "Quarterly or annual partnership with category exclusivity. Deep integration with Hussa's personal brand.", price: "From SAR 40,000" },
+                { tier: "Single Post", desc: "One Instagram Reel or TikTok with Stories coverage. Perfect for product launches and seasonal campaigns.", price: "Inquire" },
+                { tier: "Campaign", desc: "Multi-post series (3-5 posts) across 2+ platforms. Ideal for sustained brand storytelling.", price: "Inquire" },
+                { tier: "Brand Ambassador", desc: "Quarterly or annual partnership with category exclusivity. Deep integration with Hussa's personal brand.", price: "Inquire" },
                 { tier: "Custom", desc: "Event appearances, creative direction, long-form content, or something we haven't thought of yet.", price: "Let's talk" },
               ].map((item) => (
                 <div key={item.tier} className="result-card rounded-2xl p-7 sm:p-8 flex flex-col">

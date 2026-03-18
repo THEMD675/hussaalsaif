@@ -26,7 +26,7 @@ export default function HomeNav() {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100/50" role="navigation" aria-label="Main navigation">
       <div className="max-w-7xl mx-auto px-5 sm:px-8 h-14 sm:h-16 flex items-center justify-between">
-        <a href="#" aria-label="Hussa AlSaif - Home">
+        <a href="/" aria-label="Hussa AlSaif - Home">
           <img src="/images/logo-hs.svg" alt="Hussa AlSaif" className="h-8 w-8 sm:h-9 sm:w-9 rounded-lg" />
         </a>
 

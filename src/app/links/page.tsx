@@ -20,7 +20,7 @@ export const metadata: Metadata = {
         url: "https://hussaalsaif.com/images/hero.jpg",
         width: 1200,
         height: 630,
-        alt: "Hussa AlSaif — Saudi beauty &amp; culture icon social media links",
+        alt: "Hussa AlSaif — Saudi beauty and culture icon social media links",
       },
     ],
   },

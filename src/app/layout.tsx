@@ -414,9 +414,6 @@ export default function RootLayout({
   return (
     <html lang="en" dir="ltr" className={`${playfair.variable} ${inter.variable}`}>
       <head>
-        <link rel="canonical" href="https://hussaalsaif.com" />
-        <link rel="alternate" hrefLang="en" href="https://hussaalsaif.com" />
-        <link rel="alternate" hrefLang="x-default" href="https://hussaalsaif.com" />
         <meta name="geo.region" content="SA" />
         <meta name="geo.placename" content="Saudi Arabia" />
         <link rel="dns-prefetch" href="https://fonts.googleapis.com" />

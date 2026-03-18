@@ -127,7 +127,7 @@ export default function MediaKitDownload() {
               { value: "530K+", label: "Combined Reach" },
               { value: "191K", label: "YouTube Subs" },
               { value: "4.8%", label: "Avg Engagement" },
-              { value: "12", label: "Brand Partners" },
+              { value: "13+", label: "Brand Partners" },
             ].map((s) => (
               <div key={s.label} className="stat-box">
                 <div className="stat-value">{s.value}</div>

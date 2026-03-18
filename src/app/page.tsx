@@ -182,7 +182,7 @@ export default function Home() {
                   loop
                   muted
                   playsInline
-                  preload="auto"
+                  preload="metadata"
                   poster="/images/hero.jpg"
                   className="absolute inset-0 w-full h-full object-cover"
                   data-webkit-playsinline="true"
