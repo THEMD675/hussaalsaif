@@ -45,7 +45,7 @@ export default function LazyVideo({ src, poster, className = "" }: LazyVideoProp
         </video>
       ) : (
         // eslint-disable-next-line @next/next/no-img-element
-        <img src={poster} alt="" className="absolute inset-0 w-full h-full object-cover" />
+        <img src={poster} alt="Video thumbnail" className="absolute inset-0 w-full h-full object-cover" />
       )}
     </div>
   );

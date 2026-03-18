@@ -172,14 +172,22 @@ const personJsonLd = {
   ],
   alumniOf: {
     "@type": "EducationalOrganization",
-    name: "Masters in Marketing Graduate",
+    name: "Imam Abdulrahman Bin Faisal University",
   },
-  hasCredential: {
-    "@type": "EducationalOccupationalCredential",
-    credentialCategory: "degree",
-    educationalLevel: "Bachelor's Degree",
-    about: "Marketing & Fine Arts",
-  },
+  hasCredential: [
+    {
+      "@type": "EducationalOccupationalCredential",
+      credentialCategory: "degree",
+      educationalLevel: "Bachelor's Degree",
+      about: "Marketing & Fine Arts",
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      credentialCategory: "degree",
+      educationalLevel: "Master's Degree",
+      about: "Marketing",
+    },
+  ],
   hasOccupation: {
     "@type": "Occupation",
     name: "Beauty & Culture Figure",
@@ -272,7 +280,7 @@ const campaignsJsonLd = {
         description:
           "Skincare content partnership with Estée Lauder.",
         creator: { "@id": "https://hussaalsaif.com/#person" },
-        about: { "@type": "Brand", name: "Estee Lauder" },
+        about: { "@type": "Brand", name: "Estée Lauder" },
         genre: "Skincare",
         image: "https://hussaalsaif.com/images/estee-campaign.jpg",
       },

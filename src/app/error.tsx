@@ -60,7 +60,7 @@ export default function Error({
             wordBreak: "break-all",
           }}
         >
-          {error?.message || "Unknown error"}
+          {error?.digest || "ERR"}
         </p>
         <button
           onClick={() => {

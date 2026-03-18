@@ -171,7 +171,7 @@ export default function MediaKit() {
         <nav className="no-print fixed top-0 left-0 right-0 z-50 glass" role="navigation">
           <div className="max-w-7xl mx-auto px-5 sm:px-8 py-5 flex items-center justify-between">
             <Link href="/" aria-label="Hussa AlSaif - Home">
-              <img src="/images/logo-hs.svg" alt="Hussa AlSaif" className="h-9 w-9 rounded-lg" />
+              <Image src="/images/logo-hs.svg" alt="Hussa AlSaif" width={36} height={36} className="h-9 w-9 rounded-lg" />
             </Link>
             <div className="flex items-center gap-4">
               <Link href="/" className="text-gray-400 hover:text-gray-900 text-[13px] font-medium transition-colors">
@@ -356,11 +356,13 @@ export default function MediaKit() {
                   key={brand.name}
                   className="glass rounded-2xl p-6 sm:p-8 text-center hover:shadow-lg hover:shadow-[#89BBdf]/5 transition-all duration-500 flex flex-col items-center justify-center gap-3"
                 >
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
+                  <Image
                     src={brand.logo}
                     alt={brand.name}
+                    width={120}
+                    height={40}
                     className="h-8 sm:h-10 w-auto object-contain opacity-50 grayscale"
+                    unoptimized
                   />
                   <p className="font-serif text-sm font-bold text-gray-300">
                     {brand.name}
